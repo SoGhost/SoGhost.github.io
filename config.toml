@@ -1,0 +1,51 @@
+baseURL = "soghost.github.io"
+languageCode = "us-en"
+defaultContentLanguage = "zh"
+title = "PY-> Blog"
+
+pygmentsCodeFences = true
+pygmentsUseClasses = true
+pygmentsOptions = "linenos=table"
+
+disqusShortname = "So Serious"
+
+enableRobotsTXT = true
+
+#Enable Hugo Emoji Conversion
+enableEmoji=true
+
+[params]
+	author = "So Serious"			#名字
+	description = "Do your best."	#描述
+	avatar = "/img/avatar.png"		#头像
+	motto = "Do your best."		#座右铭
+	enableToc = true
+	enableShareCard = true
+
+	favicon = "/img/Fav.gif"		#博客图标
+
+  	#Background settings
+	enableColorBG= false			#随机颜色-背景
+	bgBlur = "0px"
+	bgImage = "/img/bg1.jpeg"	#6K 背景图
+
+	#Post-displaying Settings
+	enableTags = true
+	enableCategories = true
+	
+	#Cards or posts shown per page
+	itemsPerPage = 4
+	
+	#Set whether you're hosting "cards" or "post"
+	contentType = "post"
+	
+	#Enable Twitter Emoji
+	twitterEmoji=true
+
+[social]
+	email = "17051224442zx@gmail.com"
+	github = "SoGhost"
+	stackoverflow = ""
+	medium = ""
+	twitter = "" 
+	siteStartYear = 2018
