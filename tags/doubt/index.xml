@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Doubt on PY-&gt; Blog</title>
+    <link>soghost.github.io/tags/doubt/</link>
+    <description>Recent content in Doubt on PY-&gt; Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>us-en</language>
+    <lastBuildDate>Sat, 21 Jul 2018 10:38:10 +0800</lastBuildDate>
+    
+	<atom:link href="soghost.github.io/tags/doubt/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Unity 疑问</title>
+      <link>soghost.github.io/post/unity-doubt/</link>
+      <pubDate>Sat, 21 Jul 2018 10:38:10 +0800</pubDate>
+      
+      <guid>soghost.github.io/post/unity-doubt/</guid>
+      <description> 疑难杂症——👇 一亿个区别: 1.Local和Global  Local是指的自身的坐标，Global指的是世界坐标。假如一个物体没有父物体（即这个物体不是某个物体的子物体），或者父物体的坐标为（0，0，0）。这时候Local和Global的坐标是一样的。假如有父物体，Local坐标是相对与父物体的坐标，而Global是指在空间中实际的坐标。
+ 2.Awake()和Start()  Awake()在游戏开始时自动调用，无论是否激活脚本组件都能被调用，一般用来创建变量。
+Start()在Awake之后Update之前，一般用来初始化变量。
+ 3.Update()和FixUpdate()  Update()每一帧调用一次，一般用于非物理运动。
+fixupdate()每隔固定时间调用一次，一般用于物理运动。
+ 4. </description>
+    </item>
+    
+  </channel>
+</rss>

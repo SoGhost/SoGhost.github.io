@@ -16,24 +16,26 @@ body, body.pushable {
 }
 
 </style><title>
-Word Book
+Unity Script
 </title><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<meta name="author" content="So Serious" />
-	<meta name="description" content="Word Note edit 编辑
-enable 允许/可用//使能够
-disable 禁用/不可用
-inspector 检视窗口
-static 静态
-layer 层
-collider 碰撞体
-rigidbody 刚体" />
+	<meta name="description" content=" Monobehavior事件响应 交互函数 1.物理 Physic OnTriggerEnter()  当Collider进入trigger时调用
+ OnTriggerStay()  当Collider停留trigger时每一帧被调用
+ OnTriggerExit()  当Collider离开trigger时调用
+ OnaCollisionEnter()  当collider/rigidbody触发另一个rigidbody/collider时被调用
+ OnCollisionStay()  当collider/rigidbody触发另一个rigidbody/collider时，将会在每一帧被调用
+ OnCollisionExit()  当collider/rigidbody停止触发另一个rigidbody/collider时被调用
+ 2.输入 Input 3.渲染 Rendering 4.对象与组件 OnEnable()  当对象变为可用或激活状态时此函数被调用
+ OnDisable()  当对象变为不可用或非激活状态时此函数被调用
+ OnDestroy()  当Monobehavior（脚本）被销毁时运行
+ " />
 <meta name="generator" content="Hugo 0.44" />
 
 <link rel="shortcut icon" href="/img/Fav.gif">
 
-<link rel="canonical" href="soghost.github.io/post/words-notes/" />
+<link rel="canonical" href="soghost.github.io/post/unity-script/" />
 <link rel="alternative" href="/soghost.github.io/index.xml" title="PY-&gt; Blog" type="application/atom+xml"/><link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.css">
 <style>
 body.pushable {
@@ -257,16 +259,38 @@ var bodyBgSwitchIndex = 0;
 	<div class="sixteen wide mobile fifteen wide tablet twelve wide computer column post-list">
 		<section class="ui secondary top attached black segment post-head">
 			<h1 class="post-title">
-				Word Book
+				Unity Script
 			</h1>
 			<div class="sub header">
-					<div><span><i class="calendar outline icon"></i>Jul 20, 2018</span></div><div><span class="disqusComment"><i class="comment outline icon"></i><a href="soghost.github.io/post/words-notes/#disqus_thread" class="disqus-comment-count" data-disqus-identifier="8dddec43f5cf0cc072ac286aadc680d1"></a></span></div>
+					<div><span><i class="calendar outline icon"></i>Jul 21, 2018</span></div><div><span class="disqusComment"><i class="comment outline icon"></i><a href="soghost.github.io/post/unity-script/#disqus_thread" class="disqus-comment-count" data-disqus-identifier="3d984baa660f32d29915fa8c1ef62c81"></a></span></div>
 					<div><span><i class="clock outline icon"></i>1 min read</span></div>
-					<div><span><i class="angle double up icon"></i>更新于 Jul 20, 2018</span></div>
+					<div><span><i class="angle double up icon"></i>更新于 Jul 21, 2018</span></div>
 			</div>
 			<hr><div class="toc"><nav id="TableOfContents">
 <ul>
-<li><a href="#word-note">Word Note</a></li>
+<li><a href="#monobehavior事件响应">Monobehavior事件响应</a>
+<ul>
+<li><a href="#交互函数">交互函数</a>
+<ul>
+<li><a href="#1-物理-physic">1.物理 Physic</a>
+<ul>
+<li><a href="#ontriggerenter">OnTriggerEnter()</a></li>
+<li><a href="#ontriggerstay">OnTriggerStay()</a></li>
+<li><a href="#ontriggerexit">OnTriggerExit()</a></li>
+<li><a href="#onacollisionenter">OnaCollisionEnter()</a></li>
+<li><a href="#oncollisionstay">OnCollisionStay()</a></li>
+<li><a href="#oncollisionexit">OnCollisionExit()</a></li>
+</ul></li>
+<li><a href="#2-输入-input">2.输入 Input</a></li>
+<li><a href="#3-渲染-rendering">3.渲染 Rendering</a></li>
+<li><a href="#4-对象与组件">4.对象与组件</a>
+<ul>
+<li><a href="#onenable">OnEnable()</a></li>
+<li><a href="#ondisable">OnDisable()</a></li>
+<li><a href="#ondestroy">OnDestroy()</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
 </ul>
 </nav></div>
 			
@@ -274,23 +298,71 @@ var bodyBgSwitchIndex = 0;
 			<article class="post-content twemoji">
 				
 
-<h1 id="word-note">Word Note&nbsp;<a class="anchor" href="#word-note"><i class="small linkify icon"></i></a> </h1>
+<h1 id="monobehavior事件响应">Monobehavior事件响应&nbsp;<a class="anchor" href="#monobehavior事件响应"><i class="small linkify icon"></i></a> </h1>
 
-<p>edit    编辑</p>
+<h2 id="交互函数">交互函数&nbsp;<a class="anchor" href="#交互函数"><i class="small linkify icon"></i></a> </h2>
 
-<p>enable  允许/可用//使能够</p>
+<h3 id="1-物理-physic">1.物理 Physic&nbsp;<a class="anchor" href="#1-物理-physic"><i class="small linkify icon"></i></a> </h3>
 
-<p>disable 禁用/不可用</p>
+<h4 id="ontriggerenter">OnTriggerEnter()&nbsp;<a class="anchor" href="#ontriggerenter"><i class="small linkify icon"></i></a> </h4>
 
-<p>inspector   检视窗口</p>
+<blockquote>
+<p>当Collider进入trigger时调用</p>
+</blockquote>
 
-<p>static  静态</p>
+<h4 id="ontriggerstay">OnTriggerStay()&nbsp;<a class="anchor" href="#ontriggerstay"><i class="small linkify icon"></i></a> </h4>
 
-<p>layer   层</p>
+<blockquote>
+<p>当Collider停留trigger时<strong>每一帧</strong>被调用</p>
+</blockquote>
 
-<p>collider    碰撞体</p>
+<h4 id="ontriggerexit">OnTriggerExit()&nbsp;<a class="anchor" href="#ontriggerexit"><i class="small linkify icon"></i></a> </h4>
 
-<p>rigidbody   刚体</p>
+<blockquote>
+<p>当Collider离开trigger时调用</p>
+</blockquote>
+
+<h4 id="onacollisionenter">OnaCollisionEnter()&nbsp;<a class="anchor" href="#onacollisionenter"><i class="small linkify icon"></i></a> </h4>
+
+<blockquote>
+<p>当collider/rigidbody触发另一个rigidbody/collider时被调用</p>
+</blockquote>
+
+<h4 id="oncollisionstay">OnCollisionStay()&nbsp;<a class="anchor" href="#oncollisionstay"><i class="small linkify icon"></i></a> </h4>
+
+<blockquote>
+<p>当collider/rigidbody触发另一个rigidbody/collider时，将会在每一帧被调用</p>
+</blockquote>
+
+<h4 id="oncollisionexit">OnCollisionExit()&nbsp;<a class="anchor" href="#oncollisionexit"><i class="small linkify icon"></i></a> </h4>
+
+<blockquote>
+<p>当collider/rigidbody停止触发另一个rigidbody/collider时被调用</p>
+</blockquote>
+
+<h3 id="2-输入-input">2.输入 Input&nbsp;<a class="anchor" href="#2-输入-input"><i class="small linkify icon"></i></a> </h3>
+
+<h3 id="3-渲染-rendering">3.渲染 Rendering&nbsp;<a class="anchor" href="#3-渲染-rendering"><i class="small linkify icon"></i></a> </h3>
+
+<h3 id="4-对象与组件">4.对象与组件&nbsp;<a class="anchor" href="#4-对象与组件"><i class="small linkify icon"></i></a> </h3>
+
+<h4 id="onenable">OnEnable()&nbsp;<a class="anchor" href="#onenable"><i class="small linkify icon"></i></a> </h4>
+
+<blockquote>
+<p>当对象变为可用或激活状态时此函数被调用</p>
+</blockquote>
+
+<h4 id="ondisable">OnDisable()&nbsp;<a class="anchor" href="#ondisable"><i class="small linkify icon"></i></a> </h4>
+
+<blockquote>
+<p>当对象变为不可用或非激活状态时此函数被调用</p>
+</blockquote>
+
+<h4 id="ondestroy">OnDestroy()&nbsp;<a class="anchor" href="#ondestroy"><i class="small linkify icon"></i></a> </h4>
+
+<blockquote>
+<p>当Monobehavior（脚本）被销毁时运行</p>
+</blockquote>
 
 			</article>
 		</section>
@@ -318,7 +390,7 @@ var bodyBgSwitchIndex = 0;
 			'width=626,height=436'); return false;">
 		<button class="ui facebook button"><i class="facebook icon"></i>Share</button>
 	</div>
-	<div class="twitter none flexbox" onclick="window.open('https://twitter.com/intent/tweet?text=Read &quot;Word Book  soghost.github.io\/post\/words-notes\/','_self')">
+	<div class="twitter none flexbox" onclick="window.open('https://twitter.com/intent/tweet?text=Read &quot;Unity Script  soghost.github.io\/post\/unity-script\/','_self')">
 		<button class="ui twitter button"><i class="twitter icon"></i>Tweet</button>
 	</div>
 </section>
@@ -329,8 +401,8 @@ var bodyBgSwitchIndex = 0;
 		<div class="ui secondary bottom attached stacked segment disqus"><div id="disqus_thread"></div>
 <script>
 	var disqus_config = function () {
-		this.page.url = 'soghost.github.io\/post\/words-notes\/';
-		this.page.identifier = '8dddec43f5cf0cc072ac286aadc680d1';
+		this.page.url = 'soghost.github.io\/post\/unity-script\/';
+		this.page.identifier = '3d984baa660f32d29915fa8c1ef62c81';
 	};
 	(function() {
    	var d = document, s = d.createElement('script');

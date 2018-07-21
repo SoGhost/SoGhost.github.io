@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>PY-&gt; Blog</title>
-    <link>soghost.github.io/</link>
-    <description>Recent content on PY-&gt; Blog</description>
+    <title>Unity on PY-&gt; Blog</title>
+    <link>soghost.github.io/tags/unity/</link>
+    <description>Recent content in Unity on PY-&gt; Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>us-en</language>
     <lastBuildDate>Sat, 21 Jul 2018 15:26:16 +0800</lastBuildDate>
     
-	<atom:link href="soghost.github.io/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="soghost.github.io/tags/unity/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -41,41 +41,6 @@ Start()在Awake之后Update之前，一般用来初始化变量。
  3.Update()和FixUpdate()  Update()每一帧调用一次，一般用于非物理运动。
 fixupdate()每隔固定时间调用一次，一般用于物理运动。
  4. </description>
-    </item>
-    
-    <item>
-      <title>Word Book</title>
-      <link>soghost.github.io/post/words-notes/</link>
-      <pubDate>Fri, 20 Jul 2018 15:14:20 +0800</pubDate>
-      
-      <guid>soghost.github.io/post/words-notes/</guid>
-      <description>Word Note edit 编辑
-enable 允许/可用//使能够
-disable 禁用/不可用
-inspector 检视窗口
-static 静态
-layer 层
-collider 碰撞体
-rigidbody 刚体</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>soghost.github.io/404/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>soghost.github.io/404/</guid>
-      <description>错误404：找不到页面 您尝试访问的页面似乎不存在。😟
-如果你确定它存在，很可能它已被移动到一个新的链接! 您可以在主页上搜索它.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>soghost.github.io/about/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>soghost.github.io/about/</guid>
-      <description>So, Who Am I?</description>
     </item>
     
   </channel>

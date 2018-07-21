@@ -11,11 +11,20 @@
     
     
     <item>
-      <title>Learn</title>
-      <link>soghost.github.io/categories/learn/</link>
-      <pubDate>Fri, 20 Jul 2018 15:14:20 +0800</pubDate>
+      <title>Doubt</title>
+      <link>soghost.github.io/categories/doubt/</link>
+      <pubDate>Sat, 21 Jul 2018 10:38:10 +0800</pubDate>
       
-      <guid>soghost.github.io/categories/learn/</guid>
+      <guid>soghost.github.io/categories/doubt/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Notes</title>
+      <link>soghost.github.io/categories/notes/</link>
+      <pubDate>Sat, 21 Jul 2018 15:26:16 +0800</pubDate>
+      
+      <guid>soghost.github.io/categories/notes/</guid>
       <description></description>
     </item>
     
