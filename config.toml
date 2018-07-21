@@ -27,7 +27,7 @@ enableEmoji=true
   	#Background settings
 	enableColorBG= false		#随机颜色-背景
 	bgBlur = "0px"
-	#bgList = ["/img/bg1.jpeg", "/img/bg2.jpg"] 
+	bgList = ["/img/bg1.jpeg", "/img/bg2.jpg"] 
 	bgImage = "/img/bg1.jpeg"	#6K 背景图
 
 	#Post-displaying Settings
