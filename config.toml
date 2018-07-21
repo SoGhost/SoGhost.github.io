@@ -25,7 +25,7 @@ enableEmoji=true
 	favicon = "/img/Fav.gif"	#博客图标
 
   	#Background settings
-	enableColorBG= true		#随机颜色-背景
+	enableColorBG= false		#随机颜色-背景
 	bgBlur = "0px"
 	bgList = ["/img/bg1副本.jpeg","/img/bg2.jpg"]
 	bgImage = "/img/bg1副本.jpeg"	#6K 背景图
