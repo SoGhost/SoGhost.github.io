@@ -16,17 +16,18 @@ body, body.pushable {
 }
 
 </style><title>
-Word Book
+Testing &#34;django-netjsonconfig&#34;
 </title><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<meta name="author" content="So Serious" />
-	<meta name="description" content="Word Note edit_编辑" />
+	<meta name="description" content="A task came up in Google Code-in which asked me to install the django-netjsonconfig module by OpenWISP. Furthermore, I&amp;rsquo;m also supposed to share the challenges I faced during the set-up process as a sort of feedback. I&amp;rsquo;ll be trying be concise in this post so, without further ado, I&amp;rsquo;m beginning with this post.
+Installing &amp;ldquo;django-netjsonconfig&amp;rdquo; The installation instructions for this this module have been well-documented on its GitHub repository. So I began the installation by creating a Python 2." />
 <meta name="generator" content="Hugo 0.44" />
 
 <link rel="shortcut icon" href="/img/Fav.gif">
 
-<link rel="canonical" href="soghost.github.io/post/words-notes/" />
+<link rel="canonical" href="soghost.github.io/post/test/" />
 <link rel="alternative" href="/soghost.github.io/index.xml" title="PY-&gt; Blog" type="application/atom+xml"/><link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.css">
 <style>
 body.pushable {
@@ -86,6 +87,8 @@ var bodyBgSwitchIndex = 0;
 	<div class="sub header">Do your best.</div>
 </h3>
 </section><section class="ui attached center aligned inverted segment sidebar-dream-tags">
+<a class="ui label" href="/soghost.github.io/tags/test" title="test">test</a>
+
 <a class="ui label" href="/soghost.github.io/tags/words-notes" title="words-notes">words-notes</a>
 
 </section>	
@@ -102,6 +105,13 @@ var bodyBgSwitchIndex = 0;
 		<div>
 			<i class="cocktail icon"></i>
 			<p>Word Book</p>
+		</div>
+	</a>
+
+	<a class="item" href="soghost.github.io/post/test/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>Testing &#34;django-netjsonconfig&#34;</p>
 		</div>
 	</a>
 
@@ -164,6 +174,8 @@ var bodyBgSwitchIndex = 0;
 				<i class="hand point icon down"title="点击弹出标签和分类"></i>		
 			</div></div>
 		<div id="tag-category" class=" content"><section class="ui attached center aligned inverted segment dream-tags none flexbox">
+<a class="ui label" href="/soghost.github.io/tags/test" title="test">test</a>
+
 <a class="ui label" href="/soghost.github.io/tags/words-notes" title="words-notes">words-notes</a>
 
 </section><section class="ui attached inverted segment dream-categories both flexbox">
@@ -181,6 +193,13 @@ var bodyBgSwitchIndex = 0;
 		</div>
 	</a>
 
+	<a class="item" href="soghost.github.io/post/test/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>Testing &#34;django-netjsonconfig&#34;</p>
+		</div>
+	</a>
+
 </div>
 
 </div>
@@ -194,16 +213,19 @@ var bodyBgSwitchIndex = 0;
 	<div class="sixteen wide mobile fifteen wide tablet twelve wide computer column post-list">
 		<section class="ui secondary top attached black segment post-head">
 			<h1 class="post-title">
-				Word Book
+				Testing &#34;django-netjsonconfig&#34;
 			</h1>
 			<div class="sub header">
-					<div><span><i class="calendar outline icon"></i>Jul 20, 2018</span></div><div><span class="disqusComment"><i class="comment outline icon"></i><a href="soghost.github.io/post/words-notes/#disqus_thread" class="disqus-comment-count" data-disqus-identifier="8dddec43f5cf0cc072ac286aadc680d1"></a></span></div>
-					<div><span><i class="clock outline icon"></i>1 min read</span></div>
+					<div><span><i class="calendar outline icon"></i>Jul 20, 2018</span></div><div><span class="disqusComment"><i class="comment outline icon"></i><a href="soghost.github.io/post/test/#disqus_thread" class="disqus-comment-count" data-disqus-identifier="2428ec7a948d62d1e37f65fbab8a7988"></a></span></div>
+					<div><span><i class="clock outline icon"></i>3 min read</span></div>
 					<div><span><i class="angle double up icon"></i>更新于 Jul 20, 2018</span></div>
 			</div>
 			<hr><div class="toc"><nav id="TableOfContents">
 <ul>
-<li><a href="#word-note">Word Note</a></li>
+<li><a href="#installing-django-netjsonconfig">Installing &ldquo;django-netjsonconfig&rdquo;</a></li>
+<li><a href="#making-migrations-and-creating-a-superuser">Making Migrations and Creating a superuser</a></li>
+<li><a href="#running-the-test-server">Running the Test Server</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
 </ul>
 </nav></div>
 			
@@ -211,13 +233,67 @@ var bodyBgSwitchIndex = 0;
 			<article class="post-content twemoji">
 				
 
-<h1 id="word-note">Word Note&nbsp;<a class="anchor" href="#word-note"><i class="small linkify icon"></i></a> </h1>
+<p>A task came up in Google Code-in which asked me to install the <a href="https://github.com/openwisp/django-netjsonconfig">django-netjsonconfig</a> module by <a href="https://www.openwisp.org">OpenWISP</a>. Furthermore, I&rsquo;m also supposed to share the challenges I faced during the set-up process as a sort of feedback. I&rsquo;ll be trying be concise in this post so, without further ado, I&rsquo;m beginning with this post.</p>
 
-<p>edit_编辑</p>
+<h1 id="installing-django-netjsonconfig">Installing &ldquo;django-netjsonconfig&rdquo;&nbsp;<a class="anchor" href="#installing-django-netjsonconfig"><i class="small linkify icon"></i></a> </h1>
+
+<p>The installation instructions for this this module have been well-documented on its <a href="https://github.com/openwisp/django-netjsonconfig#installing-for-development">GitHub repository</a>. So I began the installation by creating a <strong>Python 2.7 Virtual Environment</strong> using <code>python2 -m virtualenv py2</code> for the sake of cleanliness on my local machine. I chose <code>python2</code> for since for this since I was also on the lookout for bugs in the module and most of the bugs seem to be related with it since it&rsquo;s a bit outdated now.
+I then activated the <code>virtualenv</code> and started entering the installation commands according to the instructions in the repository. Everything went on smoothly until the <code>python setup.py develop</code> command. I got an error as shown in the below picture.</p>
+
+<p><img src="https://raw.githubusercontent.com/UtkarshVerma/blog/source/static/images/netjsonconfig/django2.png" alt="develop failed" /></p>
+
+<p>Clearly, the error suggests that <strong>Django v2.0.1</strong> was being downloaded which <strong>isn&rsquo;t supported</strong> by <strong>Python 2.7</strong>. A bit of browsing led me to the conclusion that the <code>setup.py</code> needed to be modified to download <strong>older Django versions</strong> for Python 2.7. So, I added a simple <code>if-else</code> block to the django installation statement as shown in the picture.</p>
+
+<p><img src="https://raw.githubusercontent.com/UtkarshVerma/blog/source/static/images/netjsonconfig/my-fix.png" alt="setup.py fix" /></p>
+
+<p>If you&rsquo;re curious about my fix,  this is the <a href="https://github.com/UtkarshVerma/django-netjsonconfig/commit/1575acbbc719e539cd8ecbffc761d8b9c2023d56">link</a>.</p>
+
+<p>Here, what&rsquo;s being done is basically:</p>
+
+<ul>
+<li>Detect <code>python</code> version used for installation using <code>sys.version_info[0]</code>.</li>
+<li>Install older Django versions if <code>sys.version_info[0]&lt;3</code>, that is <code>python2</code> is detected.</li>
+<li>Install latest version if above condition isn&rsquo;t satisfied, that is <code>python3</code> is detected.</li>
+</ul>
+
+<p>I also had to remove the django installation line from <code>requirements.txt</code> since <code>setup.py</code> was fetching the requirement names from there. After applying this fix, I re-ran the <code>python setup.py develop</code> command and there it was! The sweet smell of success. Now an <strong>older yet python2 compatible</strong> version of <strong>Django</strong> was being installed when using <code>python2</code> as clearly shown in one of the pictures below:</p>
+
+<p><img src="https://raw.githubusercontent.com/UtkarshVerma/blog/source/static/images/netjsonconfig/django-v-fixed.png" alt="Older Django being downloaded" /></p>
+
+<p><img src="https://raw.githubusercontent.com/UtkarshVerma/blog/source/static/images/netjsonconfig/Success!.png" alt="Successful!" /></p>
+
+<p>After this, I installed some more requirements using <code>pip install -r requirements-test.txt</code>
+This was how I&rsquo;d finished installing <code>django-netjsonconfig</code> using Python2. Now all that was left to do was to to do the migrations and run the server.</p>
+
+<h1 id="making-migrations-and-creating-a-superuser">Making Migrations and Creating a superuser&nbsp;<a class="anchor" href="#making-migrations-and-creating-a-superuser"><i class="small linkify icon"></i></a> </h1>
+
+<p>By referring to the instructions on the repo again, I opened the <code>tests</code> directory,
+did the migrations using <code>./manage.py migrate</code>. It was really satisfying to see all the CLI responses coloured in <strong>green</strong>. 😄
+<img src="https://raw.githubusercontent.com/UtkarshVerma/blog/source/static/images/netjsonconfig/migrate.png" alt="Migrate" /></p>
+
+<p>After that, there was the superuser creation using <code>./manage.py createsuperuser</code>.</p>
+
+<p><img src="https://raw.githubusercontent.com/UtkarshVerma/blog/source/static/images/netjsonconfig/superuser.png" alt="Superuser creation" /></p>
+
+<h1 id="running-the-test-server">Running the Test Server&nbsp;<a class="anchor" href="#running-the-test-server"><i class="small linkify icon"></i></a> </h1>
+
+<p>I started the test server using <code>./manage.py runserver</code> and it was successful.</p>
+
+<p><img src="https://raw.githubusercontent.com/UtkarshVerma/blog/source/static/images/netjsonconfig/up-and-running.png" alt="Server Up and Running!" /></p>
+
+<p>I could also now visit the server at <a href="http://localhost/admin">http://localhost:8000/admin</a>.</p>
+
+<p><img src="https://raw.githubusercontent.com/UtkarshVerma/blog/source/static/images/netjsonconfig/logged-in.png" alt="Logged In" /></p>
+
+<h1 id="conclusion">Conclusion&nbsp;<a class="anchor" href="#conclusion"><i class="small linkify icon"></i></a> </h1>
+
+<p>So, that&rsquo;s how I installed the <strong>django-netjsonconfig</strong> module. Also, I&rsquo;ve commited my fixes to my <strong>forked repo</strong> <a href="https://github.com/UtkarshVerma/django-netjsonconfig">here</a>. Here&rsquo;s the <a href="https://github.com/openwisp/django-netjsonconfig/pull/71">link to my pull request</a>. That concludes this post.</p>
 
 			</article>
 		</section>
 		<section class="ui secondary attached segment dream-tags">
+<a class="ui label" href="/soghost.github.io/tags/test" title="test">test</a>
+
 <a class="ui label" href="/soghost.github.io/tags/words-notes" title="words-notes">words-notes</a>
 
 
@@ -235,7 +311,7 @@ var bodyBgSwitchIndex = 0;
 			'width=626,height=436'); return false;">
 		<button class="ui facebook button"><i class="facebook icon"></i>Share</button>
 	</div>
-	<div class="twitter none flexbox" onclick="window.open('https://twitter.com/intent/tweet?text=Read &quot;Word Book  soghost.github.io\/post\/words-notes\/','_self')">
+	<div class="twitter none flexbox" onclick="window.open('https://twitter.com/intent/tweet?text=Read &quot;Testing \x22django-netjsonconfig\x22  soghost.github.io\/post\/test\/','_self')">
 		<button class="ui twitter button"><i class="twitter icon"></i>Tweet</button>
 	</div>
 </section>
@@ -246,8 +322,8 @@ var bodyBgSwitchIndex = 0;
 		<div class="ui secondary bottom attached stacked segment disqus"><div id="disqus_thread"></div>
 <script>
 	var disqus_config = function () {
-		this.page.url = 'soghost.github.io\/post\/words-notes\/';
-		this.page.identifier = '8dddec43f5cf0cc072ac286aadc680d1';
+		this.page.url = 'soghost.github.io\/post\/test\/';
+		this.page.identifier = '2428ec7a948d62d1e37f65fbab8a7988';
 	};
 	(function() {
    	var d = document, s = d.createElement('script');
