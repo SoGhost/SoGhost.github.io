@@ -6,28 +6,10 @@
     <description>Recent content in Notes on PY-&gt; Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>us-en</language>
-    <lastBuildDate>Sat, 21 Jul 2018 15:26:16 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 20 Jul 2018 15:14:20 +0800</lastBuildDate>
     
 	<atom:link href="soghost.github.io/categories/notes/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Unity Script</title>
-      <link>soghost.github.io/post/unity-script/</link>
-      <pubDate>Sat, 21 Jul 2018 15:26:16 +0800</pubDate>
-      
-      <guid>soghost.github.io/post/unity-script/</guid>
-      <description> Monobehavior事件响应 交互函数 1.物理 Physic OnTriggerEnter()  当Collider进入trigger时调用
- OnTriggerStay()  当Collider停留trigger时每一帧被调用
- OnTriggerExit()  当Collider离开trigger时调用
- OnaCollisionEnter()  当collider/rigidbody触发另一个rigidbody/collider时被调用
- OnCollisionStay()  当collider/rigidbody触发另一个rigidbody/collider时，将会在每一帧被调用
- OnCollisionExit()  当collider/rigidbody停止触发另一个rigidbody/collider时被调用
- 2.输入 Input 3.渲染 Rendering 4.对象与组件 OnEnable()  当对象变为可用或激活状态时此函数被调用
- OnDisable()  当对象变为不可用或非激活状态时此函数被调用
- OnDestroy()  当Monobehavior（脚本）被销毁时运行
- </description>
-    </item>
     
     <item>
       <title>Word Book</title>
@@ -36,13 +18,39 @@
       
       <guid>soghost.github.io/post/words-notes/</guid>
       <description>Word Note edit 编辑
-enable 允许/可用//使能够
+assets 资源；资产
+enable 允许；可用；使能够
 disable 禁用/不可用
 inspector 检视窗口
+hierarchy 层级窗口
+component 组件
+variable 变量
+scene 场景
+analytics 分析
+project 工程窗口
+packages 包；封装；包装
 static 静态
 layer 层
+layouts 布局
+mesh 网格
+renderer 渲染器
+filter 过滤器
+shader 着色器
 collider 碰撞体
-rigidbody 刚体</description>
+rigidbody 刚体
+collider 碰撞体
+trigger 触发
+material 材质；材料
+collision 碰撞
+velocity 力；速度
+eulerAngles 欧拉角
+description 描述
+transform 改变
+translate 翻译；转化
+rotation 旋转
+position 位置；方位
+scale 缩放；比例；规模
+mass 质量</description>
     </item>
     
   </channel>
