@@ -318,14 +318,9 @@ var bodyBgSwitchIndex = 0;
 <li><a href="#函数方法-3">函数方法</a></li>
 </ul></li>
 </ul></li>
-<li><a href="#time-时间体系">Time 时间体系</a>
-<ul>
-<li><a href="#变量-5">变量</a></li>
-</ul></li>
-<li><a href="#random-随机数">Random 随机数</a>
-<ul>
-<li><a href="#变量-6">变量</a></li>
-</ul></li>
+<li><a href="#time-时间体系">Time 时间体系</a></li>
+<li><a href="#random-随机数">Random 随机数</a></li>
+<li><a href="#mathf-数学运算">Mathf 数学运算</a></li>
 </ul></li>
 </ul>
 </nav></div>
@@ -619,8 +614,6 @@ var bodyBgSwitchIndex = 0;
 
 <h2 id="time-时间体系">Time 时间体系&nbsp;<a class="anchor" href="#time-时间体系"><i class="small linkify icon"></i></a> </h2>
 
-<h3 id="变量-5">变量&nbsp;<a class="anchor" href="#变量-5"><i class="small linkify icon"></i></a> </h3>
-
 <ul>
 <li>time</li>
 </ul>
@@ -727,8 +720,6 @@ var bodyBgSwitchIndex = 0;
 
 <h2 id="random-随机数">Random 随机数&nbsp;<a class="anchor" href="#random-随机数"><i class="small linkify icon"></i></a> </h2>
 
-<h3 id="变量-6">变量&nbsp;<a class="anchor" href="#变量-6"><i class="small linkify icon"></i></a> </h3>
-
 <ul>
 <li>seed</li>
 </ul>
@@ -777,7 +768,7 @@ var bodyBgSwitchIndex = 0;
         <span class="n">rotationValues</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Quaternion</span><span class="na">[50]</span><span class="p">;</span><span class="c1">//定义50个new rotation
 </span><span class="c1"></span>        <span class="n">colorValues</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Color</span><span class="na">[50]</span><span class="p">;</span>
         <span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
-        <span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="p">&lt;</span> <span class="n">rotationValues</span><span class="p">.</span><span class="n">Length</span><span class="p">)</span><span class="c1">//当i &lt; array Length(为当前数组element)
+        <span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="p">&lt;</span> <span class="n">rotationValues</span><span class="p">.</span><span class="n">Length</span><span class="p">)</span><span class="c1">//当i &lt; array Length(为当前数组element数)
 </span><span class="c1"></span>        <span class="p">{</span>
             <span class="n">rotationValues</span><span class="na">[i]</span> <span class="p">=</span> <span class="n">Random</span><span class="p">.</span><span class="n">rotation</span><span class="p">;</span>
             <span class="n">colorValues</span><span class="na">[i]</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Color</span><span class="p">(</span><span class="n">Random</span><span class="p">.</span><span class="k">value</span><span class="p">,</span> <span class="n">Random</span><span class="p">.</span><span class="k">value</span><span class="p">,</span> <span class="n">Random</span><span class="p">.</span><span class="k">value</span><span class="p">);</span>
@@ -839,6 +830,46 @@ var bodyBgSwitchIndex = 0;
 <blockquote>
 <p>返回一个随机float/int数，在min和max之间</p>
 </blockquote>
+
+<h2 id="mathf-数学运算">Mathf 数学运算&nbsp;<a class="anchor" href="#mathf-数学运算"><i class="small linkify icon"></i></a> </h2>
+
+<p>Ceil：返回大于或等于f的最小整数。 </p>
+
+<p>Floor：返回小于或等于该数的最大整数。</p>
+
+<p>Round：返回浮点数 f 进行四舍五入最接近的整数。如果数字末尾是.5，因此它是在两个整数中间，不管是偶数或是奇数，将返回偶数。</p>
+
+<p>Sigh：返回 f 的数字符号。当 f 为正或为0返回1，为负返回-1。</p>
+
+<p>Clamp：限制value的值在min和max之间， 如果value小于min，返回min。 如果value大于max，返回max，否则返value</p>
+
+<p>Clamp01：限制value在0,1之间并返回value。如果value小于0，返回0。如果value大于1,返回1，否则返回value 。</p>
+
+<p>Lerp：基于浮点数t返回a到b之间的插值</p>
+
+<p>LerpAngle：基于浮点数t返回a到b之间的角度插值</p>
+
+<p>MoveTowards：改变一个当前值向目标靠近</p>
+
+<p>MoveTowardsAngle：改变一个当前值向目标角度靠近</p>
+
+<p>SmoothStep：和lerp类似，在最小和最大值之间的插值，并在限制处渐入渐出</p>
+
+<p>SmoothDamp：随着时间的推移逐渐改变一个值到期望值</p>
+
+<p>SmoothDampAngle：随着时间的推移逐渐改变一个角度到期望角度</p>
+
+<p><img src="C:hugosoghoststaticimages2018年07月23日13时55分26秒.png" alt="" /></p>
+
+<p>PingPong：让数值t在 0到length之间往返。t值永远不会大于length的值，也永远不会小于0。 返回值将在0和length之间来回移动。</p>
+
+<p>Repeat：循环t值，从来不会比length大，并且从不会小于0，取值在0~length之间。</p>
+
+<p>GammaToLinearSpace：转换给定值从伽马到线性颜色空间。</p>
+
+<p>LinearToGammaSpace：转换给定值从线性到伽马颜色空间。</p>
+
+<p>PerlinNoise：生成二维柏林噪波。</p>
 
 			</article>
 		</section>
