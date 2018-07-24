@@ -13,13 +13,11 @@
     
     <item>
       <title>C# 笔记</title>
-      <link>soghost.github.io/post/c#-notes/</link>
+      <link>soghost.github.io/post/c-sharp-notes/</link>
       <pubDate>Tue, 24 Jul 2018 07:43:47 +0800</pubDate>
       
-      <guid>soghost.github.io/post/c#-notes/</guid>
-      <description>C# 笔记 1.C#定义变量 必须声明 才能用
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19  //&amp;amp;&amp;amp;逻辑和||逻辑或 class Program { static void (string[] args) { int a=3; int b=0; if(a==3) { b=4; } else if(a==4) { b=5; } Console.ReadKey();//获取按键 暂停  } }   2.if()
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41  //随机抽卡 Random random = new Random(); int r = random.</description>
+      <guid>soghost.github.io/post/c-sharp-notes/</guid>
+      <description>1.C#定义变量 必须声明 才能用 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19  //&amp;amp;&amp;amp;逻辑和||逻辑或 class Program { static void (string[] args) { int a=3; int b=0; if(a==3) { b=4; } else if(a==4) { b=5; } Console.ReadKey();//获取按键 暂停  } }   2.if() 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41  //随机抽卡 Random random = new Random(); int r = random.</description>
     </item>
     
   </channel>

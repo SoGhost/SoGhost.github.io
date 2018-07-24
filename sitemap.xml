@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>soghost.github.io/post/c#-notes/</loc>
+    <loc>soghost.github.io/post/c-sharp-notes/</loc>
     <lastmod>2018-07-24T07:43:47+08:00</lastmod>
   </url>
   
@@ -44,12 +44,6 @@
   
   <url>
     <loc>soghost.github.io/categories/</loc>
-    <lastmod>2018-07-24T07:43:47+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>soghost.github.io/tags/notes/</loc>
     <lastmod>2018-07-24T07:43:47+08:00</lastmod>
     <priority>0</priority>
   </url>
