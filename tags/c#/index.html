@@ -16,26 +16,19 @@ body, body.pushable {
 }
 
 </style><title>
-Unity 注意事项
+
+Tag | c#
+
 </title><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<meta name="author" content="So Serious" />
-	<meta name="description" content=" 疑难杂症——👇 一亿个注意: 1.Local和Global  Local是指的自身的坐标，Global指的是世界坐标。
-假如一个物体没有父物体（即这个物体不是某个物体的子物体），或者父物体的坐标为（0，0，0）。这时候Local和Global的坐标是一样的。
-假如有父物体，Local坐标是相对与父物体的坐标，而Global是指在空间中实际的坐标。
- 2.Awake()和Start()  Awake()在游戏开始时自动调用，无论是否激活脚本组件都能被调用，一般用来创建变量。
-Start()在Awake之后Update之前，一般用来初始化变量。
- 3.Update()和FixUpdate()  Update()每一帧调用一次，一般用于非物理运动，如逻辑运算 。
-Fixupdate()每隔固定时间调用一次，通过Edit-&amp;gt;Project Settings-&amp;gt;Time 进行设置，默认为20毫秒 ，一般用于物理运动。
- 4.transform01translate0  transform是Gameobject的位置属性，translate是一个动作属性。
-获取某个object的位置信息时就是transform，若是对其做动作，那就translate。
- 5. " />
+	<meta name="description" content="Do your best." />
 <meta name="generator" content="Hugo 0.44" />
 
 <link rel="shortcut icon" href="/img/Fav.gif">
 
-<link rel="canonical" href="soghost.github.io/post/unity-notice/" />
+<link rel="canonical" href="soghost.github.io/tags/c#/" />
 <link rel="alternative" href="/soghost.github.io/index.xml" title="PY-&gt; Blog" type="application/atom+xml"/><link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.css">
 <style>
 body.pushable {
@@ -95,6 +88,8 @@ var bodyBgSwitchIndex = 0;
 	<div class="sub header">Do your best.</div>
 </h3>
 </section><section class="ui attached center aligned inverted segment sidebar-dream-tags">
+<a class="ui label" href="/soghost.github.io/tags/c" title="c#">c#</a>
+
 <a class="ui label" href="/soghost.github.io/tags/notes" title="notes">notes</a>
 
 <a class="ui label" href="/soghost.github.io/tags/unity" title="unity">unity</a>
@@ -105,6 +100,21 @@ var bodyBgSwitchIndex = 0;
 	
 	<section class="ui attached inverted segment sidebar-dream-categories both flexbox">
 		<div class="ui inverted accordion">
+<div class="title">
+	<i class="dropdown icon"></i>
+	<a class="link" href="/soghost.github.io/categories/c">c#</a>
+</div>
+<div class="content">
+
+	<a class="item" href="soghost.github.io/post/c#-notes/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>C# 笔记</p>
+		</div>
+	</a>
+
+</div>
+
 <div class="title">
 	<i class="dropdown icon"></i>
 	<a class="link" href="/soghost.github.io/categories/notes">notes</a>
@@ -133,7 +143,7 @@ var bodyBgSwitchIndex = 0;
 		</div>
 	</a>
 
-	<a class="item" href="soghost.github.io/post/unity-notice/">
+	<a class="item" href="soghost.github.io/post/unity-notes/">
 		<div>
 			<i class="cocktail icon"></i>
 			<p>Unity 注意事项</p>
@@ -177,16 +187,22 @@ var bodyBgSwitchIndex = 0;
 			<i class="inverted big link cubes icon" title="所有类别"></i>
 		</a>
     </div>
-	<div class="ui container tablet computer only grid">
-		<div class="item" onClick="$('.ui.sidebar').sidebar('setting', 'transition', 'overlay').sidebar('toggle');">
-			<i class="inverted big link sidebar icon" title="Show Sidebar"></i>
-		</div>
+	
+	<div class="item">
+		
+		<i class="disabled inverted big chevron circle left icon" title="前一页"></i>
+  	
+  </div>
+	<div class="item">	
+		<i class="disabled inverted big chevron circle right icon" title="后一页"></i>
+		
 	</div>
 	
 </nav>
 
 <div class="ui centered grid">
-	<div class="sixteen wide mobile only column"><div class="ui inverted accordion">
+	<div class="fifteen wide mobile fifteen wide tablet four wide computer column">
+		<div class="ui inverted accordion">
 	<div id="header" class="ui inverted segment column box">
 		<header id="author" class="ui top attached center aligned inverted segment"><div class="ui small circular image">
 	<img src="/img/avatar.png">
@@ -195,10 +211,12 @@ var bodyBgSwitchIndex = 0;
 	<div class="sub header">Do your best.</div>
 </h3>
 </header>
-		<div class=" title header-title"><div id="tag-category-pop" class="ui red right corner label">		
-				<i class="hand point icon down"title="点击弹出标签和分类"></i>		
+		<div class="active title header-title"><div id="tag-category-pop" class="ui red right corner label">		
+				<i class="hand point icon up"title="点击弹出标签和分类"></i>		
 			</div></div>
-		<div id="tag-category" class=" content"><section class="ui attached center aligned inverted segment dream-tags none flexbox">
+		<div id="tag-category" class="active content"><section class="ui attached center aligned inverted segment dream-tags none flexbox">
+<a class="ui label" href="/soghost.github.io/tags/c" title="c#">c#</a>
+
 <a class="ui label" href="/soghost.github.io/tags/notes" title="notes">notes</a>
 
 <a class="ui label" href="/soghost.github.io/tags/unity" title="unity">unity</a>
@@ -207,6 +225,21 @@ var bodyBgSwitchIndex = 0;
 
 </section><section class="ui attached inverted segment dream-categories both flexbox">
 			<div class="inverted accordion">
+<div class="title">
+	<i class="dropdown icon"></i>
+	<a class="link" href="/soghost.github.io/categories/c">c#</a>
+</div>
+<div class="content">
+
+	<a class="item" href="soghost.github.io/post/c#-notes/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>C# 笔记</p>
+		</div>
+	</a>
+
+</div>
+
 <div class="title">
 	<i class="dropdown icon"></i>
 	<a class="link" href="/soghost.github.io/categories/notes">notes</a>
@@ -235,7 +268,7 @@ var bodyBgSwitchIndex = 0;
 		</div>
 	</a>
 
-	<a class="item" href="soghost.github.io/post/unity-notice/">
+	<a class="item" href="soghost.github.io/post/unity-notes/">
 		<div>
 			<i class="cocktail icon"></i>
 			<p>Unity 注意事项</p>
@@ -251,126 +284,33 @@ var bodyBgSwitchIndex = 0;
     
 <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with <a href="https://github.com/UtkarshVerma/hugo-dream-plus" target="_blank">Dream Plus</a> theme.</p></footer>
 	</div>
-</div></div>
-	<div class="sixteen wide mobile fifteen wide tablet twelve wide computer column post-list">
-		<section class="ui secondary top attached black segment post-head">
-			<h1 class="post-title">
-				Unity 注意事项
-			</h1>
-			<div class="sub header">
-					<div><span><i class="calendar outline icon"></i>Jul 21, 2018</span></div><div><span class="disqusComment"><i class="comment outline icon"></i><a href="soghost.github.io/post/unity-notice/#disqus_thread" class="disqus-comment-count" data-disqus-identifier="cb13fcdb9db07aaad9536f901c0addf9"></a></span></div>
-					<div><span><i class="clock outline icon"></i>1 min read</span></div>
-					<div><span><i class="angle double up icon"></i>更新于 Jul 21, 2018</span></div>
-			</div>
-			<hr><div class="toc"><nav id="TableOfContents">
-<ul>
-<li><a href="#疑难杂症">疑难杂症——👇</a>
-<ul>
-<li><a href="#一亿个注意">一亿个注意:</a>
-<ul>
-<li><a href="#1-local和global">1.Local和Global</a></li>
-<li><a href="#2-awake-和start">2.Awake()和Start()</a></li>
-<li><a href="#3-update-和fixupdate">3.Update()和FixUpdate()</a></li>
-<li><a href="#4-transform01translate0">4.transform01translate0</a></li>
-<li><a href="#5">5.</a></li>
-</ul></li>
-</ul></li>
-</ul>
-</nav></div>
-			
-			
-			<article class="post-content twemoji">
-				
-
-<h1 id="疑难杂症">疑难杂症——👇&nbsp;<a class="anchor" href="#疑难杂症"><i class="small linkify icon"></i></a> </h1>
-
-<h2 id="一亿个注意">一亿个注意:&nbsp;<a class="anchor" href="#一亿个注意"><i class="small linkify icon"></i></a> </h2>
-
-<h3 id="1-local和global">1.Local和Global&nbsp;<a class="anchor" href="#1-local和global"><i class="small linkify icon"></i></a> </h3>
-
-<blockquote>
-<p><font color=#191970>Local是指的自身的坐标，Global指的是世界坐标。</p>
-
-<p>假如一个物体没有父物体（即这个物体不是某个物体的子物体），或者父物体的坐标为（0，0，0）。这时候Local和Global的坐标是一样的。</p>
-
-<p>假如有父物体，Local坐标是相对与父物体的坐标，而Global是指在空间中实际的坐标。</font></p>
-</blockquote>
-
-<h3 id="2-awake-和start">2.Awake()和Start()&nbsp;<a class="anchor" href="#2-awake-和start"><i class="small linkify icon"></i></a> </h3>
-
-<blockquote>
-<p><font color=#008080>Awake()在游戏开始时自动调用，无论是否激活脚本组件都能被调用，一般用来创建变量。</p>
-
-<p>Start()在Awake之后Update之前，一般用来初始化变量。</font></p>
-</blockquote>
-
-<h3 id="3-update-和fixupdate">3.Update()和FixUpdate()&nbsp;<a class="anchor" href="#3-update-和fixupdate"><i class="small linkify icon"></i></a> </h3>
-
-<blockquote>
-<p>Update()每一帧调用一次，一般用于非物理运动，如逻辑运算 。</p>
-
-<p>Fixupdate()每隔固定时间调用一次，通过Edit-&gt;Project Settings-&gt;Time 进行设置，默认为20毫秒 ，一般用于物理运动。</p>
-</blockquote>
-
-<h3 id="4-transform01translate0">4.transform01translate0&nbsp;<a class="anchor" href="#4-transform01translate0"><i class="small linkify icon"></i></a> </h3>
-
-<blockquote>
-<p>transform是Gameobject的位置属性，translate是一个动作属性。</p>
-
-<p>获取某个object的位置信息时就是transform，若是对其做动作，那就translate。</p>
-</blockquote>
-
-<h3 id="5">5.&nbsp;<a class="anchor" href="#5"><i class="small linkify icon"></i></a> </h3>
-
-			</article>
-		</section>
-		<section class="ui secondary attached segment dream-tags">
-<a class="ui label" href="/soghost.github.io/tags/notes" title="notes">notes</a>
-
-<a class="ui label" href="/soghost.github.io/tags/unity" title="unity">unity</a>
-
-<a class="ui label" href="/soghost.github.io/tags/word-book" title="word-book">word-book</a>
-
-
-		</section><section class="ui secondary  attached segment share row box"><div class="author"><img class="avatar" src="/img/avatar.png">
-	
 </div>
-<div class="info grow flexbox">
-	<p class="name">So Serious</p>
-	<p class="desc">Do your best.</p>		
-</div>
-<section class="buttons row box">
-	<div class="facebook none flexbox" href="#" onclick="window.open(
-			'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),
-			'facebook-share-dialog',
-			'width=626,height=436'); return false;">
-		<button class="ui facebook button"><i class="facebook icon"></i>Share</button>
 	</div>
-	<div class="twitter none flexbox" onclick="window.open('https://twitter.com/intent/tweet?text=Read &quot;Unity 注意事项  soghost.github.io\/post\/unity-notice\/','_self')">
-		<button class="ui twitter button"><i class="twitter icon"></i>Tweet</button>
-	</div>
-</section>
-</section>
-		<section class="ui secondary attached segment copyright">
+	<div class="fifteen wide mobile fifteen wide tablet eleven wide computer column post-list">
+		<div class="cards row box">
 			
-		</section>
-		<div class="ui secondary bottom attached stacked segment disqus"><div id="disqus_thread"></div>
-<script>
-	var disqus_config = function () {
-		this.page.url = 'soghost.github.io\/post\/unity-notice\/';
-		this.page.identifier = 'cb13fcdb9db07aaad9536f901c0addf9';
-	};
-	(function() {
-   	var d = document, s = d.createElement('script');
-   	s.src = 'https://' + 'So Serious' + '.disqus.com/embed.js';
-   	s.setAttribute('data-timestamp', +new Date());
-   	(d.head || d.body).appendChild(s);
-	})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-
+	<article class="blog-card none flexbox" style="background-image: url(/img/bg2.jpg)">
+<img class="image" src="/img/bg2.jpg"></img>
+<div class="title-content twemoji">
+	<h3><a class="title" href=soghost.github.io/post/c#-notes/>C# 笔记</a></h3>
+	<div class="intro twemoji"></div>
 </div>
+<div class="utility-info">
+	<ul class="utility-list">
 		
+		<div><i class="comment icon"></i><span class="disqus-comment-count" data-disqus-identifier="d64608f6a6933b32a1b1e5bea5e0ab39"></span></div>
+		
+		<div><span><i class="calendar icon"></i>Jul 24, 2018</span></div>
+		<div><span><i class="clock icon"></i>3 min read</span></div>
+	</ul>
+</div>
+<div class="color-overlay"></div>
+</article>
+
+	
+
+
+		</div>
 	</div>
 </div>
 

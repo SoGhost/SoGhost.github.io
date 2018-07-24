@@ -95,6 +95,8 @@ var bodyBgSwitchIndex = 0;
 	<div class="sub header">Do your best.</div>
 </h3>
 </section><section class="ui attached center aligned inverted segment sidebar-dream-tags">
+<a class="ui label" href="/soghost.github.io/tags/c" title="c#">c#</a>
+
 <a class="ui label" href="/soghost.github.io/tags/notes" title="notes">notes</a>
 
 <a class="ui label" href="/soghost.github.io/tags/unity" title="unity">unity</a>
@@ -105,6 +107,21 @@ var bodyBgSwitchIndex = 0;
 	
 	<section class="ui attached inverted segment sidebar-dream-categories both flexbox">
 		<div class="ui inverted accordion">
+<div class="title">
+	<i class="dropdown icon"></i>
+	<a class="link" href="/soghost.github.io/categories/c">c#</a>
+</div>
+<div class="content">
+
+	<a class="item" href="soghost.github.io/post/c#-notes/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>C# 笔记</p>
+		</div>
+	</a>
+
+</div>
+
 <div class="title">
 	<i class="dropdown icon"></i>
 	<a class="link" href="/soghost.github.io/categories/notes">notes</a>
@@ -133,7 +150,7 @@ var bodyBgSwitchIndex = 0;
 		</div>
 	</a>
 
-	<a class="item" href="soghost.github.io/post/unity-notice/">
+	<a class="item" href="soghost.github.io/post/unity-notes/">
 		<div>
 			<i class="cocktail icon"></i>
 			<p>Unity 注意事项</p>
@@ -199,6 +216,8 @@ var bodyBgSwitchIndex = 0;
 				<i class="hand point icon down"title="点击弹出标签和分类"></i>		
 			</div></div>
 		<div id="tag-category" class=" content"><section class="ui attached center aligned inverted segment dream-tags none flexbox">
+<a class="ui label" href="/soghost.github.io/tags/c" title="c#">c#</a>
+
 <a class="ui label" href="/soghost.github.io/tags/notes" title="notes">notes</a>
 
 <a class="ui label" href="/soghost.github.io/tags/unity" title="unity">unity</a>
@@ -207,6 +226,21 @@ var bodyBgSwitchIndex = 0;
 
 </section><section class="ui attached inverted segment dream-categories both flexbox">
 			<div class="inverted accordion">
+<div class="title">
+	<i class="dropdown icon"></i>
+	<a class="link" href="/soghost.github.io/categories/c">c#</a>
+</div>
+<div class="content">
+
+	<a class="item" href="soghost.github.io/post/c#-notes/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>C# 笔记</p>
+		</div>
+	</a>
+
+</div>
+
 <div class="title">
 	<i class="dropdown icon"></i>
 	<a class="link" href="/soghost.github.io/categories/notes">notes</a>
@@ -235,7 +269,7 @@ var bodyBgSwitchIndex = 0;
 		</div>
 	</a>
 
-	<a class="item" href="soghost.github.io/post/unity-notice/">
+	<a class="item" href="soghost.github.io/post/unity-notes/">
 		<div>
 			<i class="cocktail icon"></i>
 			<p>Unity 注意事项</p>
@@ -259,7 +293,7 @@ var bodyBgSwitchIndex = 0;
 			</h1>
 			<div class="sub header">
 					<div><span><i class="calendar outline icon"></i>Jul 21, 2018</span></div><div><span class="disqusComment"><i class="comment outline icon"></i><a href="soghost.github.io/post/unity-script/#disqus_thread" class="disqus-comment-count" data-disqus-identifier="3d984baa660f32d29915fa8c1ef62c81"></a></span></div>
-					<div><span><i class="clock outline icon"></i>2 min read</span></div>
+					<div><span><i class="clock outline icon"></i>3 min read</span></div>
 					<div><span><i class="angle double up icon"></i>更新于 Jul 21, 2018</span></div>
 			</div>
 			<hr><div class="toc"><nav id="TableOfContents">
@@ -320,7 +354,11 @@ var bodyBgSwitchIndex = 0;
 </ul></li>
 <li><a href="#time-时间体系">Time 时间体系</a></li>
 <li><a href="#random-随机数">Random 随机数</a></li>
-<li><a href="#mathf-数学运算">Mathf 数学运算</a></li>
+<li><a href="#mathf-数学运算">Mathf 数学运算</a>
+<ul>
+<li><a href="#基础数学">基础数学</a></li>
+<li><a href="#3d-数学">3D 数学</a></li>
+</ul></li>
 </ul></li>
 </ul>
 </nav></div>
@@ -833,6 +871,8 @@ var bodyBgSwitchIndex = 0;
 
 <h2 id="mathf-数学运算">Mathf 数学运算&nbsp;<a class="anchor" href="#mathf-数学运算"><i class="small linkify icon"></i></a> </h2>
 
+<h3 id="基础数学">基础数学&nbsp;<a class="anchor" href="#基础数学"><i class="small linkify icon"></i></a> </h3>
+
 <p>Ceil：返回大于或等于f的最小整数。 </p>
 
 <p>Floor：返回小于或等于该数的最大整数。</p>
@@ -845,13 +885,97 @@ var bodyBgSwitchIndex = 0;
 
 <p>Clamp01：限制value在0,1之间并返回value。如果value小于0，返回0。如果value大于1,返回1，否则返回value 。</p>
 
-<p>Lerp：基于浮点数t返回a到b之间的插值</p>
+<p>Lerp：基于浮点数t返回a到b之间的插值(<strong>定义时间</strong>)</p>
 
 <p>LerpAngle：基于浮点数t返回a到b之间的角度插值</p>
 
-<p>MoveTowards：改变一个当前值向目标靠近</p>
+<blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#">  <span class="k">public</span> <span class="kt">float</span> <span class="n">start</span> <span class="p">=</span> <span class="m">0f</span><span class="p">;</span>
+  <span class="k">public</span> <span class="kt">float</span> <span class="n">end</span> <span class="p">=</span> <span class="m">5f</span><span class="p">;</span>
+  <span class="k">private</span> <span class="kt">float</span> <span class="n">startTime</span> <span class="p">=</span> <span class="m">1f</span><span class="p">;</span>
+
+   <span class="k">void</span> <span class="n">Update</span> <span class="p">()</span> <span class="p">{</span>
+       <span class="c1">//Lerp
+</span><span class="c1"></span>       <span class="c1">//使物体从start平滑移动至end
+</span><span class="c1"></span>       <span class="n">transform</span><span class="p">.</span><span class="n">position</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Vector3</span><span class="p">(</span>
+           <span class="n">Mathf</span><span class="p">.</span><span class="n">Lerp</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">Time</span><span class="p">.</span><span class="n">time</span> <span class="p">-</span> <span class="n">startTime</span><span class="p">),</span>
+           <span class="n">transform</span><span class="p">.</span><span class="n">position</span><span class="p">.</span><span class="n">y</span><span class="p">,</span>
+           <span class="n">transform</span><span class="p">.</span><span class="n">position</span><span class="p">.</span><span class="n">z</span><span class="p">);</span>
+       <span class="c1">//LerpAngel
+</span><span class="c1"></span>       <span class="c1">//使物体从start平滑旋转至end
+</span><span class="c1"></span>       <span class="kt">float</span> <span class="n">current</span> <span class="p">=</span> <span class="n">Mathf</span><span class="p">.</span><span class="n">LerpAngle</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">Time</span><span class="p">.</span><span class="n">time</span> <span class="p">-</span> <span class="n">startTime</span><span class="p">);</span>
+       <span class="n">transform</span><span class="p">.</span><span class="n">eulerAngles</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Vector3</span><span class="p">(</span>
+           <span class="n">transform</span><span class="p">.</span><span class="n">eulerAngles</span><span class="p">.</span><span class="n">x</span><span class="p">,</span>
+           <span class="n">current</span><span class="p">,</span>
+           <span class="n">transform</span><span class="p">.</span><span class="n">eulerAngles</span><span class="p">.</span><span class="n">z</span><span class="p">);</span>
+   <span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div></blockquote>
+
+<p>MoveTowards：改变一个当前值向目标靠近(<strong>定义速度</strong>)</p>
 
 <p>MoveTowardsAngle：改变一个当前值向目标角度靠近</p>
+
+<blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="k">public</span> <span class="kt">float</span> <span class="n">end</span> <span class="p">=</span> <span class="m">5f</span><span class="p">;</span>
+<span class="k">public</span> <span class="kt">float</span> <span class="n">speed</span> <span class="p">=</span> <span class="m">1f</span><span class="p">;</span>
+
+<span class="k">void</span> <span class="n">Update</span> <span class="p">()</span> <span class="p">{</span>
+   <span class="c1">//MoveTowards
+</span><span class="c1"></span>   <span class="c1">//使物体匀速移动至终点
+</span><span class="c1"></span>   <span class="n">transform</span><span class="p">.</span><span class="n">position</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Vector3</span><span class="p">(</span>
+          <span class="n">Mathf</span><span class="p">.</span><span class="n">MoveTowards</span><span class="p">(</span><span class="n">transform</span><span class="p">.</span><span class="n">position</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">Time</span><span class="p">.</span><span class="n">deltaTime</span> <span class="p">*</span> <span class="n">speed</span><span class="p">),</span>
+            <span class="n">transform</span><span class="p">.</span><span class="n">position</span><span class="p">.</span><span class="n">y</span><span class="p">,</span>
+            <span class="n">transform</span><span class="p">.</span><span class="n">position</span><span class="p">.</span><span class="n">z</span><span class="p">);</span>
+   <span class="c1">//MoveTowardsAngle
+</span><span class="c1"></span>   <span class="c1">//使物体匀速旋转至最终角度
+</span><span class="c1"></span>   <span class="kt">float</span> <span class="n">current</span> <span class="p">=</span> <span class="n">Mathf</span><span class="p">.</span><span class="n">MoveTowardsAngle</span><span class="p">(</span><span class="n">transform</span><span class="p">.</span><span class="n">eulerAngles</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">Time</span><span class="p">.</span><span class="n">deltaTime</span> <span class="p">*</span> <span class="n">speed</span><span class="p">);</span>
+   <span class="n">transform</span><span class="p">.</span><span class="n">eulerAngles</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Vector3</span><span class="p">(</span><span class="n">current</span><span class="p">,</span> <span class="n">transform</span><span class="p">.</span><span class="n">eulerAngles</span><span class="p">.</span><span class="n">y</span><span class="p">,</span> <span class="n">transform</span><span class="p">.</span><span class="n">eulerAngles</span><span class="p">.</span><span class="n">z</span><span class="p">);</span>
+   <span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div></blockquote>
 
 <p>SmoothStep：和lerp类似，在最小和最大值之间的插值，并在限制处渐入渐出</p>
 
@@ -865,15 +989,83 @@ var bodyBgSwitchIndex = 0;
 
 <p>Repeat：循环t值，从来不会比length大，并且从不会小于0，取值在0~length之间。</p>
 
-<p>GammaToLinearSpace：转换给定值从伽马到线性颜色空间。</p>
+<blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="kt">float</span> <span class="n">scale</span> <span class="p">=</span> <span class="n">Mathf</span><span class="p">.</span><span class="n">PingPong</span><span class="p">(</span><span class="n">Time</span><span class="p">.</span><span class="n">time</span><span class="p">,</span> <span class="m">2</span><span class="p">);</span><span class="c1">//往复运动
+</span><span class="c1"></span><span class="kt">float</span> <span class="n">scale</span> <span class="p">=</span> <span class="n">Mathf</span><span class="p">.</span><span class="n">Repeat</span><span class="p">(</span><span class="n">Time</span><span class="p">.</span><span class="n">time</span><span class="p">,</span><span class="m">2</span><span class="p">);</span><span class="c1">//重复运动
+</span><span class="c1"></span>
+<span class="n">transform</span><span class="p">.</span><span class="n">localScale</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Vector3</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="n">scale</span><span class="p">,</span> <span class="m">1</span><span class="p">);</span></code></pre></td></tr></table>
+</div>
+</div></blockquote>
 
-<p>LinearToGammaSpace：转换给定值从线性到伽马颜色空间。</p>
+<p>GammaToLinearSpace：转换给定值<strong>从伽马到线性</strong>颜色空间。</p>
+
+<p>LinearToGammaSpace：转换给定值<strong>从线性到伽马</strong>颜色空间。</p>
 
 <p>PerlinNoise：生成二维柏林噪波。</p>
+
+<blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"> <span class="k">public</span> <span class="n">Material</span> <span class="n">m</span><span class="p">;</span>
+ <span class="k">private</span> <span class="n">Vector3</span> <span class="n">colorSpace</span><span class="p">;</span>
+
+    <span class="k">void</span> <span class="n">Start</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="n">m</span> <span class="p">=</span> <span class="k">this</span><span class="p">.</span><span class="n">gameObject</span><span class="p">.</span><span class="n">GetComponent</span><span class="p">&lt;</span><span class="n">Renderer</span><span class="p">&gt;().</span><span class="n">material</span><span class="p">;</span>
+
+        <span class="n">colorSpace</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Vector3</span><span class="p">(</span>
+            <span class="n">Random</span><span class="p">.</span><span class="n">Range</span><span class="p">(</span><span class="m">0f</span><span class="p">,</span> <span class="m">10f</span><span class="p">),</span>
+            <span class="n">Random</span><span class="p">.</span><span class="n">Range</span><span class="p">(</span><span class="m">0f</span><span class="p">,</span> <span class="m">10f</span><span class="p">),</span>
+            <span class="n">Random</span><span class="p">.</span><span class="n">Range</span><span class="p">(</span><span class="m">0f</span><span class="p">,</span> <span class="m">10f</span><span class="p">)</span>
+            <span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">void</span> <span class="n">Update</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="kt">float</span> <span class="n">sX</span> <span class="p">=</span> <span class="n">Mathf</span><span class="p">.</span><span class="n">PerlinNoise</span><span class="p">(</span><span class="n">Time</span><span class="p">.</span><span class="n">time</span><span class="p">,</span> <span class="n">colorSpace</span><span class="p">.</span><span class="n">x</span><span class="p">);</span>
+        <span class="kt">float</span> <span class="n">sY</span> <span class="p">=</span> <span class="n">Mathf</span><span class="p">.</span><span class="n">PerlinNoise</span><span class="p">(</span><span class="n">Time</span><span class="p">.</span><span class="n">time</span><span class="p">,</span> <span class="n">colorSpace</span><span class="p">.</span><span class="n">y</span><span class="p">);</span>
+        <span class="kt">float</span> <span class="n">sZ</span> <span class="p">=</span> <span class="n">Mathf</span><span class="p">.</span><span class="n">PerlinNoise</span><span class="p">(</span><span class="n">Time</span><span class="p">.</span><span class="n">time</span><span class="p">,</span> <span class="n">colorSpace</span><span class="p">.</span><span class="n">z</span><span class="p">);</span>
+
+        <span class="n">m</span><span class="p">.</span><span class="n">color</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Color</span><span class="p">(</span><span class="n">sX</span><span class="p">,</span> <span class="n">sY</span><span class="p">,</span> <span class="n">sZ</span><span class="p">);</span>
+    <span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div></blockquote>
+
+<h3 id="3d-数学">3D 数学&nbsp;<a class="anchor" href="#3d-数学"><i class="small linkify icon"></i></a> </h3>
 
 			</article>
 		</section>
 		<section class="ui secondary attached segment dream-tags">
+<a class="ui label" href="/soghost.github.io/tags/c" title="c#">c#</a>
+
 <a class="ui label" href="/soghost.github.io/tags/notes" title="notes">notes</a>
 
 <a class="ui label" href="/soghost.github.io/tags/unity" title="unity">unity</a>

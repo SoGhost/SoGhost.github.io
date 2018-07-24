@@ -31,10 +31,10 @@
     
     <item>
       <title>Unity 注意事项</title>
-      <link>soghost.github.io/post/unity-notice/</link>
+      <link>soghost.github.io/post/unity-notes/</link>
       <pubDate>Sat, 21 Jul 2018 10:38:10 +0800</pubDate>
       
-      <guid>soghost.github.io/post/unity-notice/</guid>
+      <guid>soghost.github.io/post/unity-notes/</guid>
       <description> 疑难杂症——👇 一亿个注意: 1.Local和Global  Local是指的自身的坐标，Global指的是世界坐标。
 假如一个物体没有父物体（即这个物体不是某个物体的子物体），或者父物体的坐标为（0，0，0）。这时候Local和Global的坐标是一样的。
 假如有父物体，Local坐标是相对与父物体的坐标，而Global是指在空间中实际的坐标。
