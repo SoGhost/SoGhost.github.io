@@ -6,7 +6,7 @@ $(document).ready(function() {
   $("#tag-category-pop").click(function() {
     $(".hand.point.icon").toggleClass("active");
   });
-  
+
   $('.dream-flip-toggle').click(function () {
     var target = $('.pusher')
     if (bodyBgSwitchIndex === 0) {
