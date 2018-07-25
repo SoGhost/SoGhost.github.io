@@ -17,7 +17,7 @@ enableEmoji=true
 [params]
 	author = "So Serious"		#名字
 	description = "Do your best."	#描述
-	avatar = "/img/PY- Blog.ico"	#头像
+	avatar = "/img/avatar.png"	#头像
 	motto = "Do your best."		#座右铭
 	enableToc = true
 	enableShareCard = true
