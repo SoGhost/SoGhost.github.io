@@ -2,39 +2,39 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on PY-&gt; Blog</title>
-    <link>sofuck.top/categories/</link>
+    <link>/categories/</link>
     <description>Recent content in Categories on PY-&gt; Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>us-en</language>
     <lastBuildDate>Tue, 24 Jul 2018 07:43:47 +0800</lastBuildDate>
     
-	<atom:link href="sofuck.top/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>C#</title>
-      <link>sofuck.top/categories/c#/</link>
+      <link>/categories/c#/</link>
       <pubDate>Tue, 24 Jul 2018 07:43:47 +0800</pubDate>
       
-      <guid>sofuck.top/categories/c#/</guid>
+      <guid>/categories/c#/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Notes</title>
-      <link>sofuck.top/categories/notes/</link>
+      <link>/categories/notes/</link>
       <pubDate>Fri, 20 Jul 2018 15:14:20 +0800</pubDate>
       
-      <guid>sofuck.top/categories/notes/</guid>
+      <guid>/categories/notes/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Unity</title>
-      <link>sofuck.top/categories/unity/</link>
+      <link>/categories/unity/</link>
       <pubDate>Sat, 21 Jul 2018 15:26:16 +0800</pubDate>
       
-      <guid>sofuck.top/categories/unity/</guid>
+      <guid>/categories/unity/</guid>
       <description></description>
     </item>
     
