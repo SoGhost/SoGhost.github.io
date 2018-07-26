@@ -164,7 +164,7 @@ var bodyBgSwitchIndex = 0;
 
 <p>Py by <a href="https://gohugo.io/" target="_blank">Hugo</a> with <a href="https://github.com/UtkarshVerma/hugo-dream-plus" target="_blank">Dream Plus</a> theme.</p>
 
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=200 height=52 src="//music.163.com/outchain/player?type=0&id=65781201&auto=1&height=32"></iframe></section>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=200 height=52 src="//music.163.com/outchain/player?type=0&id=65781201&auto=0&height=32"></iframe></section>
 </div>
 <div class="pusher">
 		<div class="flipper">
@@ -283,7 +283,7 @@ var bodyBgSwitchIndex = 0;
 
 <p>Py by <a href="https://gohugo.io/" target="_blank">Hugo</a> with <a href="https://github.com/UtkarshVerma/hugo-dream-plus" target="_blank">Dream Plus</a> theme.</p>
 
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=200 height=52 src="//music.163.com/outchain/player?type=0&id=65781201&auto=1&height=32"></iframe></footer>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=200 height=52 src="//music.163.com/outchain/player?type=0&id=65781201&auto=0&height=32"></iframe></footer>
 	</div>
 </div></div>
 	<div class="sixteen wide mobile fifteen wide tablet twelve wide computer column post-list">
@@ -293,7 +293,7 @@ var bodyBgSwitchIndex = 0;
 			</h1>
 			<div class="sub header">
 					<div><span><i class="calendar outline icon"></i>Jul 24, 2018</span></div><div><span class="disqusComment"><i class="comment outline icon"></i><a href="soghost.github.io/post/c-sharp-notes/#disqus_thread" class="disqus-comment-count" data-disqus-identifier="373d03e16f1f8269b5c5b7ef0c19f68c"></a></span></div>
-					<div><span><i class="clock outline icon"></i>7 min read</span></div>
+					<div><span><i class="clock outline icon"></i>8 min read</span></div>
 					<div><span><i class="angle double up icon"></i>更新于 Jul 24, 2018</span></div>
 			</div>
 			<hr><div class="toc"><nav id="TableOfContents">
@@ -1011,7 +1011,7 @@ var bodyBgSwitchIndex = 0;
           <span class="p">}</span>
       <span class="p">}</span>
   <span class="p">}</span>
-  <span class="p">//</span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;{0},{1},{2}&#34;</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">);</span></code></pre></td></tr></table>
+  <span class="p">//</span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34; {0} {1} {2} &#34;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">);</span></code></pre></td></tr></table>
 </div>
 </div>
 <hr />
@@ -1381,11 +1381,61 @@ var bodyBgSwitchIndex = 0;
 <ul>
 <li><strong>值类型 - 引用类型</strong></li>
 </ul>
+
+<p><strong><font color=#008080>变量类型分为两大类:值类型和引用类型</strong></font></p>
+
+<blockquote>
+<p><font color=#008080>值类型：int, float, double, bool 等所有基本类型（不包括string）,以及struct结构体类型。</font></p>
+
+<p><font color=#8A2BE2>引用类型：string, 数组,以及所有自定义类型。除了值类型以外都是引用类型。</font></p>
+</blockquote>
+
+<p><font color=#8A2BE2><strong>关键区别：</strong></font></p>
+
+<pre><code>1. 引用类型变量，变量本身包含存储空间。
+2. 引用类型变量，变量本身只是一个引用，会指向（引用）实际的对象；&lt;u&gt;也可以指向null。&lt;/u&gt;
+3. 等号意义不同，值类型变量用等号直接复制内容，引用类型是修改引用。
+</code></pre>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-c#" data-lang="c#"></code></pre></td>
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-c#" data-lang="c#"></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="c1">//值类型  b不变
+</span><span class="c1"></span><span class="kt">int</span> <span class="n">a</span> <span class="p">=</span> <span class="m">10</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">b</span> <span class="p">=</span> <span class="n">a</span><span class="p">;</span>
+<span class="n">a</span> <span class="p">=</span> <span class="m">3</span><span class="p">;</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;b&#34;</span> <span class="p">+</span> <span class="n">b</span><span class="p">);</span><span class="c1">// b = 10
+</span><span class="c1"></span>
+<span class="c1">//引用类型
+</span><span class="c1"></span><span class="kt">int</span><span class="na">[]</span> <span class="n">l1</span> <span class="p">=</span> <span class="p">{</span> <span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">3</span> <span class="p">};</span>
+<span class="kt">int</span><span class="na">[]</span> <span class="n">l2</span> <span class="p">=</span> <span class="n">l1</span><span class="p">;</span>
+<span class="n">l1</span><span class="na">[0]</span> <span class="p">=</span> <span class="m">9</span><span class="p">;</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;l2[0]&#34;</span> <span class="p">+</span> <span class="n">l2</span><span class="na">[0]</span><span class="p">);</span><span class="c1">// l2[0] = {0, 2, 3}
+</span><span class="c1"></span>
+<span class="kt">string</span> <span class="n">s1</span> <span class="p">=</span> <span class="k">new</span> <span class="kt">string</span> <span class="s">&#34;小明&#34;</span><span class="err">；</span>
+<span class="kt">string</span> <span class="n">s2</span> <span class="p">=</span> <span class="n">s1</span><span class="p">;</span>
+<span class="n">s1</span> <span class="p">=</span> <span class="s">&#34;小强&#34;</span><span class="p">;</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;s2:&#34;</span> <span class="p">+</span> <span class="n">s2</span><span class="p">);</span><span class="c1">// s2 = 小强
+</span><span class="c1"></span>
+ </code></pre></td></tr></table>
 </div>
 </div>
 <hr />
