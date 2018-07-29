@@ -346,7 +346,7 @@ var bodyBgSwitchIndex = 0;
 			</h1>
 			<div class="sub header">
 					<div><span><i class="calendar outline icon"></i>Jul 27, 2018</span></div><div><span class="disqusComment"><i class="comment outline icon"></i><a href="/post/c-sharp-notes-02/#disqus_thread" class="disqus-comment-count" data-disqus-identifier="7e3e994e3a3b1ce6000c679152658a46"></a></span></div>
-					<div><span><i class="clock outline icon"></i>6 min read</span></div>
+					<div><span><i class="clock outline icon"></i>7 min read</span></div>
 					<div><span><i class="angle double up icon"></i>更新于 Jul 27, 2018</span></div>
 			</div>
 			<hr><div class="toc"><nav id="TableOfContents">
@@ -884,7 +884,7 @@ var bodyBgSwitchIndex = 0;
 <h1 id="逻辑语句">逻辑语句&nbsp;<a class="anchor" href="#逻辑语句"><i class="small linkify icon"></i></a> </h1>
 
 <blockquote>
-<p>如果 &amp;&amp; ||，&amp; |使用单个会前后都计算一遍，出错会抛出异常。</p>
+<p>如果 &amp;&amp; ||，&amp;    |使用单个会前后都计算一遍，出错会抛出异常。</p>
 </blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -1155,7 +1155,195 @@ var bodyBgSwitchIndex = 0;
 
 <h1 id="面向对象-封装">面向对象——封装&nbsp;<a class="anchor" href="#面向对象-封装"><i class="small linkify icon"></i></a> </h1>
 
+<blockquote>
+<p><strong>封装：</strong>把内容包括在一起控制访问权限，主要通过访问修饰符实现。</p>
+
+<p><strong>访问修饰符：</strong>public, private, internal, protected, internal protected</p>
+
+<p><strong><em>在一个程序集中可以有多个命名空间，引用时使用 using AnotherNameSpace; 即可。</em></strong></p>
+
+<p><strong>internal：</strong>在程序集内都能被调用(.exe或.dll)。</p>
+
+<p><strong>protected</strong>：本身或继承它的class中可见。</p>
+
+<p><strong>internal protected：</strong>程序集或继承类可见。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="c1">// private 不希望被外部修改，访问
+</span><span class="c1"></span><span class="k">private</span> <span class="kt">int</span> <span class="n">age</span><span class="p">;</span>
+<span class="c1">//通过方法，属性访问
+</span><span class="c1"></span><span class="k">public</span> <span class="kt">int</span> <span class="n">age</span>
+<span class="p">{</span>
+    <span class="k">get</span> <span class="p">{</span> <span class="k">return</span> <span class="n">age</span><span class="p">;}</span>
+    <span class="k">set</span> <span class="p">{</span> <span class="n">age</span> <span class="p">=</span> <span class="k">value</span><span class="p">;}</span>
+<span class="p">}</span>
+<span class="k">public</span> <span class="kt">int</span> <span class="n">GetAge</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="n">age</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">//简单重构和优化代码
+</span><span class="c1"></span><span class="k">public</span> <span class="kt">int</span> <span class="n">GetAge</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">CheckAge</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">age</span><span class="p">;</span>
+    <span class="k">return</span> <span class="p">-</span><span class="m">1</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">public</span> <span class="kt">bool</span> <span class="n">CheckAge</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">age</span> <span class="p">&lt;=</span> <span class="m">0</span><span class="p">)</span>
+        <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+    <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<hr />
+
 <h1 id="面向对象-继承">面向对象——继承&nbsp;<a class="anchor" href="#面向对象-继承"><i class="small linkify icon"></i></a> </h1>
+
+<blockquote>
+<p>重用旧class方法，也可以使用自己方法。（不能多重继承）</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="k">class</span> <span class="nc">Program</span>
+<span class="p">{</span>
+    <span class="k">static</span> <span class="k">void</span> <span class="n">Main</span><span class="p">(</span><span class="n">strin</span><span class="na">[]</span> <span class="n">args</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">Dog</span> <span class="n">dog</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dog</span><span class="p">();</span>
+        <span class="n">dog</span><span class="p">.</span><span class="n">Age</span> <span class="p">=</span> <span class="m">10</span><span class="p">;</span>
+        <span class="n">Dog</span><span class="p">.</span><span class="n">Bite</span><span class="p">();</span><span class="c1">//被重写,输出Dog Bite
+</span><span class="c1"></span>        <span class="n">dog</span><span class="p">.</span><span class="n">GetAge</span><span class="p">();</span><span class="c1">//输出10
+</span><span class="c1"></span>    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">class</span> <span class="nc">Animal</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="kt">int</span> <span class="n">age</span>
+    <span class="p">{</span>
+        <span class="k">get</span><span class="p">;</span>
+        <span class="k">set</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="k">public</span> <span class="k">virtual</span> <span class="k">void</span> <span class="n">Bite</span><span class="p">()</span><span class="c1">// virtual被继承中可重写
+</span><span class="c1"></span>    <span class="p">{</span>
+        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;Animal Bite&#34;</span><span class="p">);</span>
+    <span class="p">}</span>
+    
+    <span class="k">public</span> <span class="k">virtual</span> <span class="k">void</span> <span class="n">GetAge</span><span class="p">()</span><span class="c1">//子类不声明override也可以
+</span><span class="c1"></span>    <span class="p">{</span>
+        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">Age</span><span class="p">);</span>
+    <span class="p">}</span>
+    
+    <span class="k">public</span> <span class="k">void</span> <span class="n">BitMan</span><span class="p">()</span><span class="c1">//无virtual 也能被子类调用
+</span><span class="c1"></span>    <span class="p">{</span>
+        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;Bit Man&#34;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">sealed</span> <span class="k">class</span> <span class="nc">Dog</span><span class="p">{}</span><span class="c1">//类前有sealed，为不可被继承类
+</span><span class="c1"></span><span class="k">class</span> <span class="nc">Dog</span> <span class="p">:</span> <span class="n">Animal</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="n">Bite</span><span class="p">()</span><span class="c1">// override重写父类方法
+</span><span class="c1"></span>    <span class="p">{</span>
+        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;Dog Bite&#34;</span><span class="p">);</span><span class="c1">//被重写
+</span><span class="c1"></span>    <span class="p">}</span>
+    
+    <span class="k">public</span> <span class="k">new</span> <span class="k">void</span> <span class="n">BitMan</span><span class="p">()</span><span class="c1">//父类有重名，会警告，最好new
+</span><span class="c1"></span>    <span class="p">{</span>   <span class="c1">//父类方法在子类隐藏，可以写同名方法。
+</span><span class="c1"></span>        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;Bit Man&#34;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<hr />
+
+<p><strong>继承实例</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"></code></pre></td></tr></table>
+</div>
+</div>
+<hr />
 
 <h1 id="面向对象-多态">面向对象——多态&nbsp;<a class="anchor" href="#面向对象-多态"><i class="small linkify icon"></i></a> </h1>
 
