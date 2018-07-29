@@ -21,7 +21,7 @@ C# _语言基础
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<meta name="author" content="So Serious" />
-	<meta name="description" content="值类型  包括自定义struct类型，enum枚举类型。
+	<meta name="description" content="值类型  包括自定义struct类型，enum枚举类型。值类型存储在内存的栈上面，在堆上面存储具体值。
 值类型继承于System.ValueType，所有的类继承于System.Object。(Object是所有类型的基类)
 /// 注释——为解释方法，类，空间&amp;hellip;进行说明
   struct——类型   用于打包封装小的数据集，可以(像class)建方法、事件&amp;hellip;。
@@ -103,6 +103,8 @@ var bodyBgSwitchIndex = 0;
 
 <a class="ui label" href="/tags/word-book" title="word-book">word-book</a>
 
+<a class="ui label" href="/tags/%E6%8A%80%E5%B7%A7" title="技巧">技巧</a>
+
 </section>	
 	
 	<section class="ui attached inverted segment sidebar-dream-categories both flexbox">
@@ -161,6 +163,21 @@ var bodyBgSwitchIndex = 0;
 		<div>
 			<i class="cocktail icon"></i>
 			<p>Unity 注意事项</p>
+		</div>
+	</a>
+
+</div>
+
+<div class="title">
+	<i class="dropdown icon"></i>
+	<a class="link" href="/categories/windows">windows</a>
+</div>
+<div class="content">
+
+	<a class="item" href="/post/use-skill/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>使用软件突发小技巧</p>
 		</div>
 	</a>
 
@@ -233,6 +250,8 @@ var bodyBgSwitchIndex = 0;
 
 <a class="ui label" href="/tags/word-book" title="word-book">word-book</a>
 
+<a class="ui label" href="/tags/%E6%8A%80%E5%B7%A7" title="技巧">技巧</a>
+
 </section><section class="ui attached inverted segment dream-categories both flexbox">
 			<div class="inverted accordion">
 <div class="title">
@@ -293,6 +312,21 @@ var bodyBgSwitchIndex = 0;
 	</a>
 
 </div>
+
+<div class="title">
+	<i class="dropdown icon"></i>
+	<a class="link" href="/categories/windows">windows</a>
+</div>
+<div class="content">
+
+	<a class="item" href="/post/use-skill/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>使用软件突发小技巧</p>
+		</div>
+	</a>
+
+</div>
 </div>
 			</section></div>
 		<footer class="ui bottom attached center aligned inverted segment">
@@ -312,7 +346,7 @@ var bodyBgSwitchIndex = 0;
 			</h1>
 			<div class="sub header">
 					<div><span><i class="calendar outline icon"></i>Jul 27, 2018</span></div><div><span class="disqusComment"><i class="comment outline icon"></i><a href="/post/c-sharp-notes-02/#disqus_thread" class="disqus-comment-count" data-disqus-identifier="7e3e994e3a3b1ce6000c679152658a46"></a></span></div>
-					<div><span><i class="clock outline icon"></i>3 min read</span></div>
+					<div><span><i class="clock outline icon"></i>5 min read</span></div>
 					<div><span><i class="angle double up icon"></i>更新于 Jul 27, 2018</span></div>
 			</div>
 			<hr><div class="toc"><nav id="TableOfContents">
@@ -327,10 +361,15 @@ var bodyBgSwitchIndex = 0;
 <li><a href="#类型转换">类型转换</a>
 <ul>
 <li><a href="#隐式转换">隐式转换</a></li>
-<li><a href="#显示转换">显示转换</a></li>
+<li><a href="#显式转换">显式转换</a></li>
+<li><a href="#其它转换">其它转换</a></li>
+<li><a href="#装箱和拆箱">装箱和拆箱</a></li>
 </ul></li>
 <li><a href="#逻辑语句">逻辑语句</a></li>
-<li><a href="#集合类型">集合类型</a></li>
+<li><a href="#集合类型">集合类型</a>
+<ul>
+<li><a href="#数组">数组</a></li>
+</ul></li>
 <li><a href="#面向对象-封装">面向对象——封装</a></li>
 <li><a href="#面向对象-继承">面向对象——继承</a></li>
 <li><a href="#面向对象-多态">面向对象——多态</a></li>
@@ -344,7 +383,7 @@ var bodyBgSwitchIndex = 0;
 <h1 id="值类型">值类型&nbsp;<a class="anchor" href="#值类型"><i class="small linkify icon"></i></a> </h1>
 
 <blockquote>
-<p><font color=#008080>包括自定义struct类型，enum枚举类型。</font></p>
+<p><font color=#008080>包括自定义struct类型，enum枚举类型。值类型存储在内存的栈上面，在堆上面存储具体值。</font></p>
 
 <p>值类型继承于System.ValueType，所有的类继承于System.Object。(Object是所有类型的基类)</p>
 
@@ -427,7 +466,7 @@ var bodyBgSwitchIndex = 0;
 <h1 id="引用类型">引用类型&nbsp;<a class="anchor" href="#引用类型"><i class="small linkify icon"></i></a> </h1>
 
 <blockquote>
-<p>内置引用类型：object, string, dynamic</p>
+<p>内置引用类型：object, string, dynamic。</p>
 </blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -739,10 +778,12 @@ var bodyBgSwitchIndex = 0;
  <span class="p">{}</span></code></pre></td></tr></table>
 </div>
 </div>
-<h2 id="显示转换">显示转换&nbsp;<a class="anchor" href="#显示转换"><i class="small linkify icon"></i></a> </h2>
+<hr />
+
+<h2 id="显式转换">显式转换&nbsp;<a class="anchor" href="#显式转换"><i class="small linkify icon"></i></a> </h2>
 
 <blockquote>
-<p>会引起数据丢失</p>
+<p>会引起数据丢失，抛错。</p>
 </blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -768,9 +809,209 @@ var bodyBgSwitchIndex = 0;
 <span class="p">{}</span></code></pre></td></tr></table>
 </div>
 </div>
+<hr />
+
+<h2 id="其它转换">其它转换&nbsp;<a class="anchor" href="#其它转换"><i class="small linkify icon"></i></a> </h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="c1">//通过方法进行转换
+</span><span class="c1">// int ——&gt; string
+</span><span class="c1"></span><span class="kt">string</span> <span class="n">sFormI</span> <span class="p">=</span> <span class="n">i</span><span class="p">.</span><span class="n">ToString</span><span class="p">();</span><span class="c1">//ToString()继承于Object，所有类都有这个方法
+</span><span class="c1">//把int的值转换成为 字符串 
+</span><span class="c1"></span>
+<span class="c1">// string ——&gt; int
+</span><span class="c1"></span><span class="kt">int</span> <span class="n">iFromS1</span> <span class="p">=</span> <span class="n">Convert</span><span class="p">.</span><span class="n">ToInt32</span><span class="p">(</span><span class="s">&#34;100&#34;</span><span class="p">);</span><span class="c1">//格式必须为 int，否则报错
+</span><span class="c1"></span><span class="kt">int</span> <span class="n">iFromS2</span> <span class="p">=</span> <span class="n">Int32</span><span class="p">.</span><span class="n">Parse</span><span class="p">(</span><span class="s">&#34;101&#34;</span><span class="p">)</span><span class="err">；</span><span class="c1">//同样格式必须为 int，否则报错
+</span><span class="c1"></span><span class="kt">int</span> <span class="n">iFromS3</span><span class="p">;</span>
+<span class="kt">bool</span> <span class="n">succeed</span> <span class="p">=</span> <span class="n">Int32</span><span class="p">.</span><span class="n">TryParse</span><span class="p">(</span><span class="s">&#34;abc&#34;</span><span class="p">,</span> <span class="k">out</span> <span class="n">iFromS3</span><span class="p">);</span><span class="c1">//尝试取转换，不报错，返回bool
+</span><span class="c1"></span><span class="n">ConsoleWritLine</span><span class="p">(</span><span class="n">iFromS3</span><span class="p">);</span><span class="c1">//不会赋值,默认为整形0
+</span><span class="c1"></span><span class="p">//</span><span class="err">也可以用</span> <span class="err">接口、类，实现自己的；类型转换。</span></code></pre></td></tr></table>
+</div>
+</div>
+<hr />
+
+<h2 id="装箱和拆箱">装箱和拆箱&nbsp;<a class="anchor" href="#装箱和拆箱"><i class="small linkify icon"></i></a> </h2>
+
+<blockquote>
+<p>装箱：把<strong>值</strong>类型转换为<strong>引用</strong>类型。把值类型打包放到内存堆上，栈上只留一个引用。</p>
+
+<p>拆箱：把<strong>引用</strong>类型转换为<strong>值</strong>类型。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="c1">//装箱 把值类型打包放到内存堆上，栈上只留一个引用
+</span><span class="c1"></span><span class="kt">int</span> <span class="n">iBoxing</span> <span class="p">=</span> <span class="m">100</span><span class="p">;</span>
+<span class="kt">object</span> <span class="n">iBoxed</span> <span class="p">=</span> <span class="n">iToBoxing</span><span class="p">;</span><span class="c1">//装箱 就是一个隐式转换
+</span><span class="c1">//因为所有数据类型都是 bSystem.Object 子类
+</span><span class="c1"></span>
+<span class="c1">//拆箱 在内存开辟空间，把值放进去
+</span><span class="c1"></span><span class="kt">int</span> <span class="n">iUnBoxing</span> <span class="p">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">iBoxed</span><span class="p">;</span><span class="c1">//显式转换，可能会有数据丢失或出错
+</span><span class="c1"></span><span class="kt">object</span> <span class="n">nullObject</span> <span class="p">=</span> <span class="m">5</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">iNull</span> <span class="p">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">nullObject</span><span class="p">;</span>
+<span class="err">。。。。。。</span></code></pre></td></tr></table>
+</div>
+</div>
+<hr />
+
 <h1 id="逻辑语句">逻辑语句&nbsp;<a class="anchor" href="#逻辑语句"><i class="small linkify icon"></i></a> </h1>
 
+<blockquote>
+<p>如果 &amp;&amp; ||，&amp; |使用单个会前后都计算一遍，出错会抛出异常。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="c1">//条件语句
+</span><span class="c1"></span><span class="n">ten</span> <span class="p">=</span> <span class="m">101</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">ifelse</span> <span class="p">=</span> <span class="n">ten</span> <span class="p">&lt;</span> <span class="m">100</span> <span class="p">?</span> <span class="n">ten</span> <span class="p">:</span> <span class="m">99</span><span class="p">;</span><span class="c1">//输出99，if() else 简便写法
+</span><span class="c1"></span>
+<span class="c1">//循环语句
+</span><span class="c1"></span><span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="p">=</span> <span class="m">10</span><span class="p">;</span>
+<span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">,</span><span class="n">ConsoleWritLine</span><span class="p">(</span><span class="s">&#34;Start:{0}&#34;</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">j</span><span class="p">;</span>
+    <span class="n">i</span><span class="p">++,</span> <span class="n">j</span><span class="p">--,</span> <span class="n">ConsoleWritLine</span><span class="p">(</span><span class="s">&#34;i={0}, j={1}&#34;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">))</span>
+    <span class="c1">//初始化条件每次都执行，可以执行多个语句；判断条件；循环最后执行
+</span><span class="c1"></span><span class="p">{</span>
+    <span class="n">ConsoleWritLine</span><span class="p">(</span><span class="s">&#34;Body of the loop&#34;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">bool</span> <span class="n">stop</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+<span class="k">for</span><span class="p">(;</span> <span class="p">!</span><span class="n">stop</span><span class="p">;</span> <span class="p">)</span><span class="c1">//for(; ; ) 会无限循环
+</span><span class="c1"></span><span class="p">{</span>
+    <span class="n">stop</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+    <span class="n">ConsoleWritLine</span><span class="p">(</span><span class="s">&#34;停不下来！&#34;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">//使用foreach() 这个集合必须实现了IEnumerable接口
+</span><span class="c1"></span><span class="kt">var</span> <span class="n">listInt</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;()</span> <span class="p">{</span> <span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">3</span> <span class="p">};</span>
+<span class="k">foreach</span><span class="p">()</span> <span class="err">必须</span> <span class="p">(</span><span class="kt">var</span> <span class="n">intInlist</span> <span class="k">in</span> <span class="n">listInt</span><span class="p">)</span>
+    <span class="c1">//foreach每次循环提取一次listInt中一个元素，赋给int intInlist
+</span><span class="c1"></span><span class="p">{</span>
+    <span class="n">ConsoleWritLine</span><span class="p">(</span><span class="n">intInlist</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">//do while
+</span><span class="c1">//先执行一次，其中可以加break, continue 跳出
+</span><span class="c1"></span>
+<span class="err">#</span><span class="n">regiom</span><span class="c1">//收缩代码块
+</span><span class="c1"></span><span class="p">...</span><span class="err">代码</span>
+<span class="err">#</span><span class="n">endregiom</span><span class="p">//</span><span class="err">收缩代码块</span></code></pre></td></tr></table>
+</div>
+</div>
+<hr />
+
 <h1 id="集合类型">集合类型&nbsp;<a class="anchor" href="#集合类型"><i class="small linkify icon"></i></a> </h1>
+
+<h2 id="数组">数组&nbsp;<a class="anchor" href="#数组"><i class="small linkify icon"></i></a> </h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="c1">//System.Array
+</span><span class="c1">//二维数组
+</span><span class="c1"></span><span class="kt">string</span><span class="na">[,]</span> <span class="n">names</span> <span class="p">=</span> <span class="k">new</span> <span class="kt">string</span><span class="na">[5,4]</span><span class="p">;</span><span class="c1">//5*4矩形
+</span><span class="c1"></span>
+<span class="c1">//数组的数组
+</span><span class="c1"></span><span class="kt">byte</span><span class="na">[][]</span> <span class="n">score</span> <span class="p">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="na">[5][]</span><span class="p">;</span><span class="c1">//非矩形 长度不固定
+</span><span class="c1"></span>
+<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">score</span><span class="p">.</span><span class="n">Length</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span><span class="c1">//初始化
+</span><span class="c1"></span><span class="p">{</span>   <span class="c1">//给每一个维度附上一个数组
+</span><span class="c1"></span>    <span class="n">score</span><span class="na">[i]</span> <span class="p">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="na">[i + 3]</span><span class="p">;</span><span class="c1">//第一个维度赋给4维数组...
+</span><span class="c1"></span><span class="p">}</span>
+
+<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">score</span><span class="p">.</span><span class="n">Length</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
+<span class="p">{</span>
+    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;Length of row {0} is {1}&#34;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">score</span><span class="na">[i]</span><span class="p">.</span><span class="n">Length</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="c1">//Length of row 0 is 3
+</span><span class="c1">//Length of row 1 is 4
+</span><span class="c1">//Length of row 2 is 5
+</span><span class="c1">//Length of row 3 is 6
+</span><span class="c1"></span><span class="p">//</span><span class="n">Length</span> <span class="n">of</span> <span class="n">row</span> <span class="m">4</span> <span class="k">is</span> <span class="m">7</span></code></pre></td></tr></table>
+</div>
+</div>
+<hr />
 
 <h1 id="面向对象-封装">面向对象——封装&nbsp;<a class="anchor" href="#面向对象-封装"><i class="small linkify icon"></i></a> </h1>
 
@@ -786,6 +1027,8 @@ var bodyBgSwitchIndex = 0;
 <a class="ui label" href="/tags/unity" title="unity">unity</a>
 
 <a class="ui label" href="/tags/word-book" title="word-book">word-book</a>
+
+<a class="ui label" href="/tags/%E6%8A%80%E5%B7%A7" title="技巧">技巧</a>
 
 
 		</section><section class="ui secondary  attached segment share row box"><div class="author"><img class="avatar" src="/img/avatar.png">

@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/post/use-skill/</loc>
+    <lastmod>2018-07-29T16:55:57+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/post/c-sharp-notes-02/</loc>
     <lastmod>2018-07-27T08:18:12+08:00</lastmod>
   </url>
@@ -61,13 +66,13 @@
   
   <url>
     <loc>/</loc>
-    <lastmod>2018-07-27T08:18:12+08:00</lastmod>
+    <lastmod>2018-07-29T16:55:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/post/</loc>
-    <lastmod>2018-07-27T08:18:12+08:00</lastmod>
+    <lastmod>2018-07-29T16:55:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -90,8 +95,20 @@
   </url>
   
   <url>
+    <loc>/categories/windows/</loc>
+    <lastmod>2018-07-29T16:55:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/tags/word-book/</loc>
     <lastmod>2018-07-20T14:48:20+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/%E6%8A%80%E5%B7%A7/</loc>
+    <lastmod>2018-07-29T16:55:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   

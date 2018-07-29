@@ -17,7 +17,7 @@
       <pubDate>Fri, 27 Jul 2018 08:18:12 +0800</pubDate>
       
       <guid>/post/c-sharp-notes-02/</guid>
-      <description>值类型  包括自定义struct类型，enum枚举类型。
+      <description>值类型  包括自定义struct类型，enum枚举类型。值类型存储在内存的栈上面，在堆上面存储具体值。
 值类型继承于System.ValueType，所有的类继承于System.Object。(Object是所有类型的基类)
 /// 注释——为解释方法，类，空间&amp;hellip;进行说明
   struct——类型   用于打包封装小的数据集，可以(像class)建方法、事件&amp;hellip;。
