@@ -3,8 +3,8 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/post/use-skill/</loc>
-    <lastmod>2018-07-29T16:55:57+08:00</lastmod>
+    <loc>/post/monobehavior-%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/</loc>
+    <lastmod>2018-07-30T15:04:16+08:00</lastmod>
   </url>
   
   <url>
@@ -66,13 +66,13 @@
   
   <url>
     <loc>/</loc>
-    <lastmod>2018-07-29T16:55:57+08:00</lastmod>
+    <lastmod>2018-07-30T15:04:16+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/post/</loc>
-    <lastmod>2018-07-29T16:55:57+08:00</lastmod>
+    <lastmod>2018-07-30T15:04:16+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -84,31 +84,19 @@
   
   <url>
     <loc>/tags/unity/</loc>
-    <lastmod>2018-07-21T15:26:16+08:00</lastmod>
+    <lastmod>2018-07-30T15:04:16+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/categories/unity/</loc>
-    <lastmod>2018-07-21T15:26:16+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/categories/windows/</loc>
-    <lastmod>2018-07-29T16:55:57+08:00</lastmod>
+    <lastmod>2018-07-30T15:04:16+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/tags/word-book/</loc>
     <lastmod>2018-07-20T14:48:20+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/%E6%8A%80%E5%B7%A7/</loc>
-    <lastmod>2018-07-29T16:55:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
