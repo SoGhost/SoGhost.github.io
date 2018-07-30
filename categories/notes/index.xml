@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Notes on PY-&gt; Blog</title>
+    <link>/categories/notes/</link>
+    <description>Recent content in Notes on PY-&gt; Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>us-en</language>
+    <lastBuildDate>Fri, 20 Jul 2018 15:14:20 +0800</lastBuildDate>
+    
+	<atom:link href="/categories/notes/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Word Book</title>
+      <link>/post/words-notes/</link>
+      <pubDate>Fri, 20 Jul 2018 15:14:20 +0800</pubDate>
+      
+      <guid>/post/words-notes/</guid>
+      <description>Word Note edit 编辑
+assets 资源；资产
+enable 允许；可用；使能够
+disable 禁用/不可用
+inspector 检视窗口
+hierarchy 层级窗口
+component 组件
+variable 变量
+scene 场景
+analytics 分析
+project 工程窗口
+packages 包；封装；包装
+static 静态
+layer 层
+layouts 布局
+mesh 网格
+renderer 渲染器
+filter 过滤器
+shader 着色器
+collider 碰撞体
+rigidbody 刚体
+collider 碰撞体
+trigger 触发
+material 材质；材料
+collision 碰撞
+velocity 力；速度
+eulerAngles 欧拉角
+description 描述
+transform 改变
+translate 翻译；转化
+rotation 旋转
+position 位置；方位
+scale 缩放；比例；规模
+mass 质量</description>
+    </item>
+    
+  </channel>
+</rss>

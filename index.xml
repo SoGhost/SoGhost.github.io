@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>PY-&gt; Blog</title>
+    <link>/</link>
+    <description>Recent content on PY-&gt; Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>us-en</language>
+    <lastBuildDate>Mon, 30 Jul 2018 16:36:45 +0800</lastBuildDate>
+    
+	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>脚本的输入与控制</title>
+      <link>/post/script-input-and-control/</link>
+      <pubDate>Mon, 30 Jul 2018 16:36:45 +0800</pubDate>
+      
+      <guid>/post/script-input-and-control/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>MonoBehavior 常用方法</title>
+      <link>/post/monobehavior-common-method/</link>
+      <pubDate>Mon, 30 Jul 2018 15:04:16 +0800</pubDate>
+      
+      <guid>/post/monobehavior-common-method/</guid>
+      <description> 继承函数  继承自Object
+ Destroy：物体销毁
+ Instantiate：物体生成
+ CompareTag：物体辨认
+  继承自Component
+ SendMessage：消息推送   自身函数  Invoke：延迟执行程序 Coroutine：协同执行程序  </description>
+    </item>
+    
+    <item>
+      <title>C# _语言基础</title>
+      <link>/post/c-sharp-notes-02/</link>
+      <pubDate>Fri, 27 Jul 2018 08:18:12 +0800</pubDate>
+      
+      <guid>/post/c-sharp-notes-02/</guid>
+      <description>值类型  包括自定义struct类型，enum枚举类型。值类型存储在内存的栈上面，在堆上面存储具体值。
+值类型继承于System.ValueType，所有的类继承于System.Object。(Object是所有类型的基类)
+/// 注释——为解释方法，类，空间&amp;hellip;进行说明
+  struct——类型   用于打包封装小的数据集，可以(像class)建方法、事件&amp;hellip;。
+  enum——类型   用于限定变量可能性。
+ 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25  #namespace test { class Program { //角标从0开始，Mon=1，使强制从一开始  //enum Days : byte :short 转换类型  enum Days { Mon, Tues, Wenes, Thurs, Fri, Satur, Sun}//整数型  struct Perosn { public int age; private string name; internal string fname;//命名空间内可以访问  protected string lastName;//protected 只有继承于它，才能访问  } static void Main(string[] args) { Person perosn = new Perosn(); person.</description>
+    </item>
+    
+    <item>
+      <title>C# _基本操作</title>
+      <link>/post/c-sharp-notes-01/</link>
+      <pubDate>Tue, 24 Jul 2018 07:43:47 +0800</pubDate>
+      
+      <guid>/post/c-sharp-notes-01/</guid>
+      <description>1.定义变量 必须声明 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19  //&amp;amp;&amp;amp;逻辑和||逻辑或 class Program { static void (string[] args) { int a=3; int b=0; if(a==3) { b=4; } else if(a==4) { b=5; } Console.ReadKey();//获取按键 暂停  } }   2.if() 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40  //随机抽卡 Random random = new Random(); int r = random.</description>
+    </item>
+    
+    <item>
+      <title>Unity Script</title>
+      <link>/post/unity-script/</link>
+      <pubDate>Sat, 21 Jul 2018 15:26:16 +0800</pubDate>
+      
+      <guid>/post/unity-script/</guid>
+      <description>Monobehavior事件响应 启动与刷新函数 启动  Reset() Awake() Start  刷新  FixUpdate() Update() LateUpdate()  交互函数 1.物理 Physic OnTriggerEnter()  当Collider进入trigger时调用
+ OnTriggerStay()  当Collider停留trigger时每一帧被调用
+ OnTriggerExit()  当Collider离开trigger时调用
+ OnaCollisionEnter()  当collider/rigidbody触发另一个rigidbody/collider时被调用
+ OnCollisionStay()  当collider/rigidbody触发另一个rigidbody/collider时，将会在每一帧被调用
+ OnCollisionExit()  当collider/rigidbody停止触发另一个rigidbody/collider时被调用
+ 2.输入 Input 3.渲染 Rendering 4.对象与组件 OnEnable()  当对象变为可用或激活状态时此函数被调用
+ OnDisable()  当对象变为不可用或非激活状态时此函数被调用
+ OnDestroy()  当Monobehavior（脚本）被销毁时运行
+ Transform 场景物体的变换 1.坐标系 变量  Right—&amp;gt;X axis Up—&amp;gt;Y axis Forward—&amp;gt;Z axis worldTolocalMatrix localToworldMatrix  函数方法  TransformPoint()   变换位置从自身坐标到世界坐标</description>
+    </item>
+    
+    <item>
+      <title>Unity 注意事项</title>
+      <link>/post/unity-notes/</link>
+      <pubDate>Sat, 21 Jul 2018 10:38:10 +0800</pubDate>
+      
+      <guid>/post/unity-notes/</guid>
+      <description> 疑难杂症——👇 一亿个注意: 1.Local和Global  Local是指的自身的坐标，Global指的是世界坐标。
+假如一个物体没有父物体（即这个物体不是某个物体的子物体），或者父物体的坐标为（0，0，0）。这时候Local和Global的坐标是一样的。
+假如有父物体，Local坐标是相对与父物体的坐标，而Global是指在空间中实际的坐标。
+ 2.Awake()和Start()  Awake()在游戏开始时自动调用，无论是否激活脚本组件都能被调用，一般用来创建变量。
+Start()在Awake之后Update之前，一般用来初始化变量。
+ 3.Update()和FixUpdate()  Update()每一帧调用一次，一般用于非物理运动，如逻辑运算 。
+Fixupdate()每隔固定时间调用一次，通过Edit-&amp;gt;Project Settings-&amp;gt;Time 进行设置，默认为20毫秒 ，一般用于物理运动。
+ 4.transform01translate0  transform是Gameobject的位置属性，translate是一个动作属性。
+获取某个object的位置信息时就是transform，若是对其做动作，那就translate。
+ 5. </description>
+    </item>
+    
+    <item>
+      <title>Word Book</title>
+      <link>/post/words-notes/</link>
+      <pubDate>Fri, 20 Jul 2018 15:14:20 +0800</pubDate>
+      
+      <guid>/post/words-notes/</guid>
+      <description>Word Note edit 编辑
+assets 资源；资产
+enable 允许；可用；使能够
+disable 禁用/不可用
+inspector 检视窗口
+hierarchy 层级窗口
+component 组件
+variable 变量
+scene 场景
+analytics 分析
+project 工程窗口
+packages 包；封装；包装
+static 静态
+layer 层
+layouts 布局
+mesh 网格
+renderer 渲染器
+filter 过滤器
+shader 着色器
+collider 碰撞体
+rigidbody 刚体
+collider 碰撞体
+trigger 触发
+material 材质；材料
+collision 碰撞
+velocity 力；速度
+eulerAngles 欧拉角
+description 描述
+transform 改变
+translate 翻译；转化
+rotation 旋转
+position 位置；方位
+scale 缩放；比例；规模
+mass 质量</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/404/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/404/</guid>
+      <description>错误404：找不到页面 您尝试访问的页面似乎不存在。😟
+如果你确定它存在，很可能它已被移动到一个新的链接! 您可以在主页上搜索它.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/about/</guid>
+      <description>So, Who Am I?</description>
+    </item>
+    
+  </channel>
+</rss>
