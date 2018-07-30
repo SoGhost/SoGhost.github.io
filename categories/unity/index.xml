@@ -6,10 +6,19 @@
     <description>Recent content in Unity on PY-&gt; Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>us-en</language>
-    <lastBuildDate>Mon, 30 Jul 2018 15:04:16 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 30 Jul 2018 16:36:45 +0800</lastBuildDate>
     
 	<atom:link href="/categories/unity/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>脚本的输入与控制</title>
+      <link>/post/script-input-and-control/</link>
+      <pubDate>Mon, 30 Jul 2018 16:36:45 +0800</pubDate>
+      
+      <guid>/post/script-input-and-control/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>MonoBehavior 常用方法</title>
@@ -22,7 +31,7 @@
  Instantiate：物体生成
  CompareTag：物体辨认
   继承自Component
- SendMessage：消息推送   自身函数  Invoke：延迟执行程序 Coroutine：协同执行程序     ds sda ds     das das dsad   ad ad asd   asd sd a    </description>
+ SendMessage：消息推送   自身函数  Invoke：延迟执行程序 Coroutine：协同执行程序  </description>
     </item>
     
     <item>
