@@ -346,7 +346,7 @@ var bodyBgSwitchIndex = 0;
 			</h1>
 			<div class="sub header">
 					<div><span><i class="calendar outline icon"></i>Jul 27, 2018</span></div><div><span class="disqusComment"><i class="comment outline icon"></i><a href="/post/c-sharp-notes-02/#disqus_thread" class="disqus-comment-count" data-disqus-identifier="7e3e994e3a3b1ce6000c679152658a46"></a></span></div>
-					<div><span><i class="clock outline icon"></i>7 min read</span></div>
+					<div><span><i class="clock outline icon"></i>8 min read</span></div>
 					<div><span><i class="angle double up icon"></i>更新于 Jul 27, 2018</span></div>
 			</div>
 			<hr><div class="toc"><nav id="TableOfContents">
@@ -374,7 +374,11 @@ var bodyBgSwitchIndex = 0;
 </ul></li>
 <li><a href="#面向对象-封装">面向对象——封装</a></li>
 <li><a href="#面向对象-继承">面向对象——继承</a></li>
-<li><a href="#面向对象-多态">面向对象——多态</a></li>
+<li><a href="#面向对象-多态">面向对象——多态</a>
+<ul>
+<li><a href="#静态多态">静态多态</a></li>
+<li><a href="#动态多态">动态多态</a></li>
+</ul></li>
 </ul>
 </nav></div>
 			
@@ -1072,28 +1076,34 @@ var bodyBgSwitchIndex = 0;
 </span><span class="lnt">18
 </span><span class="lnt">19
 </span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-c#" data-lang="c#"><span class="c1">//System.Collection
-</span><span class="c1">//需要 using System.Collection
-</span><span class="c1"></span><span class="n">ArrayList</span> <span class="n">a1</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="p">();</span>
-<span class="n">a1</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="m">5</span><span class="p">);</span>
-<span class="n">a1</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="m">100</span><span class="p">);</span><span class="c1">//添加
-</span><span class="c1"></span><span class="n">a1</span><span class="p">.</span><span class="n">Remove</span><span class="p">(</span><span class="m">5</span><span class="p">);</span><span class="c1">//删除
-</span><span class="c1"></span><span class="n">a1</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&#34;string&#34;</span><span class="p">);</span>
-
-<span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">e</span> <span class="k">in</span> <span class="n">a1</span><span class="p">)</span>
+</span><span class="c1"></span><span class="k">using</span> <span class="nn">System.Collection</span><span class="c1">//需要使用System.Collection
+</span><span class="c1"></span><span class="k">class</span> <span class="nc">Program</span>
 <span class="p">{</span>
-    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">e</span><span class="p">);</span><span class="c1">//输出100，5被Remove
-</span><span class="c1"></span><span class="p">}</span>
-<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">a1</span><span class="na">[0]</span><span class="p">);</span><span class="c1">//通过索引访问，输出100
+    <span class="n">ArrayList</span> <span class="n">a1</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="p">();</span>
+    <span class="n">a1</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="m">5</span><span class="p">);</span>
+    <span class="n">a1</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="m">100</span><span class="p">);</span><span class="c1">//添加
+</span><span class="c1"></span>    <span class="n">a1</span><span class="p">.</span><span class="n">Remove</span><span class="p">(</span><span class="m">5</span><span class="p">);</span><span class="c1">//删除
+</span><span class="c1"></span>    <span class="n">a1</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&#34;string&#34;</span><span class="p">);</span>
+
+    <span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">e</span> <span class="k">in</span> <span class="n">a1</span><span class="p">)</span>
+    <span class="p">{</span>
+           <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">e</span><span class="p">);</span><span class="c1">//输出100，5被Remove
+</span><span class="c1"></span>    <span class="p">}</span>
+    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">a1</span><span class="na">[0]</span><span class="p">);</span><span class="c1">//通过索引访问，输出100
 </span><span class="c1"></span>
-<span class="kt">var</span> <span class="n">intList</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Last</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;();</span><span class="c1">//只能存储int
-</span><span class="c1"></span><span class="n">intList</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="m">50</span><span class="p">);</span>
-<span class="n">intList</span><span class="p">.</span><span class="n">AddRange</span><span class="p">(</span><span class="k">new</span> <span class="n">List</span><span class="na">[]</span> <span class="p">{</span><span class="m">501</span><span class="p">,</span> <span class="m">502</span><span class="p">});</span><span class="c1">//添加一串元素，类型实现IE接口的都能添加
-</span><span class="c1"></span><span class="n">intList</span><span class="p">.</span><span class="n">Contains</span><span class="p">(</span><span class="m">200</span><span class="p">);</span><span class="c1">//是否包含一个数值
-</span><span class="c1"></span><span class="n">intList</span><span class="p">.</span><span class="n">Remove</span><span class="p">(</span><span class="m">50</span><span class="p">);</span>
-<span class="n">intList</span><span class="p">.</span><span class="n">Insert</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">50</span><span class="p">);//</span><span class="err">位置插入</span></code></pre></td></tr></table>
+    <span class="kt">var</span> <span class="n">list</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;();</span><span class="c1">//只能存储int
+</span><span class="c1"></span>    <span class="n">list</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="m">50</span><span class="p">);</span>
+    <span class="n">list</span><span class="p">.</span><span class="n">AddRange</span><span class="p">(</span><span class="k">new</span> <span class="n">List</span><span class="na">[]</span> <span class="p">{</span><span class="m">501</span><span class="p">,</span> <span class="m">502</span><span class="p">});</span><span class="c1">//添加一串元素，类型实现IE接口的都能添加
+</span><span class="c1"></span>    <span class="n">list</span><span class="p">.</span><span class="n">Contains</span><span class="p">(</span><span class="m">200</span><span class="p">);</span><span class="c1">//是否包含一个数值
+</span><span class="c1"></span>    <span class="n">list</span><span class="p">.</span><span class="n">Remove</span><span class="p">(</span><span class="m">50</span><span class="p">);</span>
+    <span class="n">list</span><span class="p">.</span><span class="n">Insert</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">50</span><span class="p">);</span><span class="c1">//位置插入
+</span><span class="c1"></span><span class="p">}</span></code></pre></td></tr></table>
 </div>
 </div>
 <hr />
@@ -1282,6 +1292,8 @@ var bodyBgSwitchIndex = 0;
 </span><span class="lnt">45
 </span><span class="lnt">46
 </span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-c#" data-lang="c#"><span class="k">class</span> <span class="nc">Program</span>
@@ -1318,8 +1330,10 @@ var bodyBgSwitchIndex = 0;
         <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;Bit Man&#34;</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
-<span class="k">sealed</span> <span class="k">class</span> <span class="nc">Dog</span><span class="p">{}</span><span class="c1">//类前有sealed，为不可被继承类
-</span><span class="c1"></span><span class="k">class</span> <span class="nc">Dog</span> <span class="p">:</span> <span class="n">Animal</span>
+
+<span class="k">sealed</span> <span class="k">class</span> <span class="nc">Dog</span><span class="c1">//类前有sealed，为不可被继承类
+</span><span class="c1"></span>
+<span class="k">class</span> <span class="nc">Dog</span> <span class="p">:</span> <span class="n">Animal</span>
 <span class="p">{</span>
     <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="n">Bite</span><span class="p">()</span><span class="c1">// override重写父类方法
 </span><span class="c1"></span>    <span class="p">{</span>
@@ -1347,6 +1361,207 @@ var bodyBgSwitchIndex = 0;
 
 <h1 id="面向对象-多态">面向对象——多态&nbsp;<a class="anchor" href="#面向对象-多态"><i class="small linkify icon"></i></a> </h1>
 
+<h2 id="静态多态">静态多态&nbsp;<a class="anchor" href="#静态多态"><i class="small linkify icon"></i></a> </h2>
+
+<blockquote>
+<p>静态多态：编译时实现</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="k">class</span> <span class="nc">Program</span><span class="c1">//对方法的重载
+</span><span class="c1"></span><span class="p">{</span>
+    <span class="k">static</span> <span class="k">void</span> <span class="n">Main</span><span class="p">(</span><span class="kt">string</span><span class="na">[]</span> <span class="n">args</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">PrintHello</span><span class="p">();</span>
+        <span class="n">PrintHello</span><span class="p">(</span><span class="s">&#34;word&#34;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="n">PrintHello</span><span class="p">()</span><span class="c1">//同名参数不同
+</span><span class="c1"></span>    <span class="p">{</span>
+        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;Hello&#34;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="n">PrintHello</span><span class="p">(</span><span class="kt">string</span> <span class="n">toWho</span><span class="p">)</span><span class="c1">//同名参数不同
+</span><span class="c1"></span>    <span class="p">{</span>
+        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;Hello {}&#34;</span><span class="p">,</span> <span class="n">toWho</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<hr />
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="k">class</span> <span class="nc">Program</span><span class="c1">//对运算符的重载
+</span><span class="c1"></span><span class="p">{</span>
+    <span class="k">static</span> <span class="k">void</span> <span class="n">Main</span><span class="p">(</span><span class="kt">string</span><span class="na">[]</span> <span class="n">args</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="kt">var</span> <span class="n">c1</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Complex</span><span class="p">();</span>
+        <span class="kt">var</span> <span class="n">c2</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Complex</span><span class="p">();</span>
+        <span class="n">c1</span><span class="p">.</span><span class="n">Number</span> <span class="p">=</span> <span class="m">2</span><span class="p">;</span>
+        <span class="n">c2</span><span class="p">.</span><span class="n">Number</span> <span class="p">=</span> <span class="m">3</span><span class="p">;</span>
+        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">((</span><span class="n">c1</span> <span class="p">+</span> <span class="n">c2</span><span class="p">).</span><span class="n">Number</span><span class="p">);</span><span class="c1">//输出5
+</span><span class="c1"></span>    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">class</span> <span class="nc">Complex</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="kt">int</span> <span class="n">Number</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    
+    <span class="c1">//必须是static 返回值Complex 关键字operator(运算符) +运算符(变量A, 变量B)
+</span><span class="c1"></span>    <span class="k">public</span> <span class="k">static</span> <span class="n">Complex</span> <span class="k">operator</span> <span class="p">+(</span><span class="n">Complex</span> <span class="n">c1</span><span class="p">,</span> <span class="n">Complex</span> <span class="n">c2</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">Complex</span> <span class="n">c</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Complex</span><span class="p">();</span><span class="c1">//新建变量C
+</span><span class="c1"></span>        <span class="n">c</span><span class="p">.</span><span class="n">Number</span> <span class="p">=</span> <span class="n">c1</span><span class="p">.</span><span class="n">Number</span> <span class="p">+</span> <span class="n">c2</span><span class="p">.</span><span class="n">Number</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">c</span><span class="p">;</span><span class="c1">//返回C
+</span><span class="c1"></span>    <span class="p">}</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<hr />
+
+<h2 id="动态多态">动态多态&nbsp;<a class="anchor" href="#动态多态"><i class="small linkify icon"></i></a> </h2>
+
+<blockquote>
+<p>动态多态：运行时实现</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="k">class</span> <span class="nc">Program</span><span class="c1">//通过override实现多态
+</span><span class="c1"></span><span class="p">{</span>
+    <span class="k">static</span> <span class="k">void</span> <span class="n">Main</span><span class="p">(</span><span class="kt">string</span><span class="na">[]</span> <span class="n">args</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">Human</span> <span class="n">h1</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Man</span><span class="p">();</span>
+        <span class="n">Human</span> <span class="n">h2</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Woman</span><span class="p">();</span>
+        <span class="n">h1</span><span class="p">.</span><span class="n">CleanRoom</span><span class="p">();</span><span class="c1">// Man Clean Room Slowly
+</span><span class="c1"></span>        <span class="n">h2</span><span class="p">.</span><span class="n">CleanRoom</span><span class="p">();</span><span class="c1">// Woman Clean Room Quickly
+</span><span class="c1"></span>        <span class="n">h1</span><span class="p">.</span><span class="n">Number</span> <span class="p">=</span> <span class="m">3</span><span class="p">;</span>
+        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">h1</span><span class="p">);</span><span class="c1">//输出 3
+</span><span class="c1"></span>    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">class</span> <span class="nc">Human</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">virtual</span> <span class="k">void</span> <span class="n">CleanRoom</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;Human Clean Room&#34;</span><span class="p">);</span>
+    <span class="p">}</span>
+    
+    <span class="k">public</span> <span class="kt">int</span> <span class="n">Number</span><span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    
+    <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="n">ToString</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="n">Number</span><span class="p">.</span><span class="n">ToString</span><span class="p">();</span><span class="c1">//也可以重载方法
+</span><span class="c1"></span>    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">class</span> <span class="nc">Man</span> <span class="p">:</span> <span class="n">Human</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="n">CleanRoom</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;Man Clean Room Slowly&#34;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">class</span> <span class="nc">Woman</span> <span class="p">:</span> <span class="n">Human</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="n">CleanRoom</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;Woman Clean Room Quickly&#34;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
 			</article>
 		</section>
 		<section class="ui secondary attached segment dream-tags">
