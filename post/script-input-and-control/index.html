@@ -21,7 +21,14 @@ body, body.pushable {
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<meta name="author" content="So Serious" />
-	<meta name="description" content="" />
+	<meta name="description" content="鼠标输入 1.OnMouse方法  OnMouseEnter()：当鼠标进入GUIElement或Collider时调用。（只调用一次）
+OnMouseExit()：鼠标离开GUIElement或Collider时调用。
+OnMouseOver()：鼠标悬停在GUIElement或Collider上时调用每一帧。
+OnMouseDown()：鼠标在GUIElement或Collider上点击时调用。
+OnMouseIp()：释放鼠标按钮时调用。
+OnMouseDrag()：鼠标拖拽GUIElement或Collider时调用。
+OnMouseUpAsButton()：只有当鼠标在同一个GUIElement或Collider按下，释放时调用。
+ 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18  public class ObjectController : MonoBehaviour { private void OnMouseEnter()//当鼠标进入GUIElement或Collider时调用。（只调用一次）  { this.transform.localScale = new Vector3(1.3f, 1.3f, 1.3f);//物体放大1.3倍  } private void OnMouseExit()//鼠标离开  { this.transform.localScale = new Vector3(1f, 1f, 1f);//大小还原  this.transform.rotation = new Quaternion(0f,0f,0f,0f);//位置还原  } private void OnMouseOver()//鼠标悬停在GUIElement或Collider上时调用每一帧。  { this." />
 <meta name="generator" content="Hugo 0.44" />
 
 <link rel="shortcut icon" href="/img/Fav.gif">
@@ -335,13 +342,92 @@ var bodyBgSwitchIndex = 0;
 			</h1>
 			<div class="sub header">
 					<div><span><i class="calendar outline icon"></i>Jul 30, 2018</span></div><div><span class="disqusComment"><i class="comment outline icon"></i><a href="/post/script-input-and-control/#disqus_thread" class="disqus-comment-count" data-disqus-identifier="000ee88b0867f414cbfa7796036ba034"></a></span></div>
-					<div><span><i class="clock outline icon"></i>0 min read</span></div>
+					<div><span><i class="clock outline icon"></i>1 min read</span></div>
 					<div><span><i class="angle double up icon"></i>更新于 Jul 30, 2018</span></div>
 			</div>
-			<hr>
+			<hr><div class="toc"><nav id="TableOfContents">
+<ul>
+<li><a href="#鼠标输入">鼠标输入</a>
+<ul>
+<li><a href="#1-onmouse方法">1.OnMouse方法</a></li>
+<li><a href="#2-ray">2.Ray</a></li>
+</ul></li>
+<li><a href="#键盘输入">键盘输入</a></li>
+<li><a href="#触屏输入">触屏输入</a></li>
+</ul>
+</nav></div>
+			
 			
 			<article class="post-content twemoji">
 				
+
+<h1 id="鼠标输入">鼠标输入&nbsp;<a class="anchor" href="#鼠标输入"><i class="small linkify icon"></i></a> </h1>
+
+<h2 id="1-onmouse方法">1.OnMouse方法&nbsp;<a class="anchor" href="#1-onmouse方法"><i class="small linkify icon"></i></a> </h2>
+
+<blockquote>
+<p>OnMouseEnter()：当鼠标进入GUIElement或Collider时调用。（只调用一次）</p>
+
+<p>OnMouseExit()：鼠标离开GUIElement或Collider时调用。</p>
+
+<p>OnMouseOver()：鼠标悬停在GUIElement或Collider上时调用每一帧。</p>
+
+<p>OnMouseDown()：鼠标在GUIElement或Collider上点击时调用。</p>
+
+<p>OnMouseIp()：释放鼠标按钮时调用。</p>
+
+<p>OnMouseDrag()：鼠标拖拽GUIElement或Collider时调用。</p>
+
+<p>OnMouseUpAsButton()：只有当鼠标在同一个GUIElement或Collider按下，释放时调用。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="k">public</span> <span class="k">class</span> <span class="nc">ObjectController</span> <span class="p">:</span> <span class="n">MonoBehaviour</span> <span class="p">{</span>
+
+    <span class="k">private</span> <span class="k">void</span> <span class="n">OnMouseEnter</span><span class="p">()</span><span class="c1">//当鼠标进入GUIElement或Collider时调用。（只调用一次）
+</span><span class="c1"></span>    <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">localScale</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Vector3</span><span class="p">(</span><span class="m">1.3f</span><span class="p">,</span> <span class="m">1.3f</span><span class="p">,</span> <span class="m">1.3f</span><span class="p">);</span><span class="c1">//物体放大1.3倍
+</span><span class="c1"></span>    <span class="p">}</span>
+
+    <span class="k">private</span> <span class="k">void</span> <span class="n">OnMouseExit</span><span class="p">()</span><span class="c1">//鼠标离开
+</span><span class="c1"></span>    <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">localScale</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Vector3</span><span class="p">(</span><span class="m">1f</span><span class="p">,</span> <span class="m">1f</span><span class="p">,</span> <span class="m">1f</span><span class="p">);</span><span class="c1">//大小还原
+</span><span class="c1"></span>        <span class="k">this</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">rotation</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Quaternion</span><span class="p">(</span><span class="m">0f</span><span class="p">,</span><span class="m">0f</span><span class="p">,</span><span class="m">0f</span><span class="p">,</span><span class="m">0f</span><span class="p">);</span><span class="c1">//位置还原
+</span><span class="c1"></span>    <span class="p">}</span>
+
+    <span class="k">private</span> <span class="k">void</span> <span class="n">OnMouseOver</span><span class="p">()</span><span class="c1">//鼠标悬停在GUIElement或Collider上时调用每一帧。
+</span><span class="c1"></span>    <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">Rotate</span><span class="p">(</span><span class="n">Vector3</span><span class="p">.</span><span class="n">up</span><span class="p">,</span> <span class="m">45</span> <span class="p">*</span> <span class="n">Time</span><span class="p">.</span><span class="n">deltaTime</span><span class="p">,</span> <span class="n">Space</span><span class="p">.</span><span class="n">Self</span><span class="p">);</span><span class="c1">//随时间旋转
+</span><span class="c1"></span>    <span class="p">}</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="2-ray">2.Ray&nbsp;<a class="anchor" href="#2-ray"><i class="small linkify icon"></i></a> </h2>
+
+<h1 id="键盘输入">键盘输入&nbsp;<a class="anchor" href="#键盘输入"><i class="small linkify icon"></i></a> </h1>
+
+<h1 id="触屏输入">触屏输入&nbsp;<a class="anchor" href="#触屏输入"><i class="small linkify icon"></i></a> </h1>
+
 			</article>
 		</section>
 		<section class="ui secondary attached segment dream-tags">
