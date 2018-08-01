@@ -21,16 +21,18 @@ Unity Script
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<meta name="author" content="So Serious" />
-	<meta name="description" content="Monobehavior事件响应 启动与刷新函数 启动  Reset() Awake() Start  刷新  FixUpdate() Update() LateUpdate()  交互函数 1.物理 Physic OnTriggerEnter()  当Collider进入trigger时调用
+	<meta name="description" content="Monobehavior事件响应 启动与刷新函数 启动  Reset() Awake()   在游戏开始之前初始化任何变量或游戏状态。
+  Start   在任何Update方法之前，只调用一次。
+ 刷新  FixUpdate()   每个固定帧率帧都会调用此函数。 (用于物理效果)
+  Update()   则每帧调用更新。(用于处理逻辑)
+  LateUpdate()   每帧都会调用LateUpdate 。在调用所有Update函数后调用LateUpdate。
+ 交互函数 1.物理 Physic OnTriggerEnter()  当Collider进入trigger时调用
  OnTriggerStay()  当Collider停留trigger时每一帧被调用
  OnTriggerExit()  当Collider离开trigger时调用
  OnaCollisionEnter()  当collider/rigidbody触发另一个rigidbody/collider时被调用
  OnCollisionStay()  当collider/rigidbody触发另一个rigidbody/collider时，将会在每一帧被调用
  OnCollisionExit()  当collider/rigidbody停止触发另一个rigidbody/collider时被调用
- 2.输入 Input 3.渲染 Rendering 4.对象与组件 OnEnable()  当对象变为可用或激活状态时此函数被调用
- OnDisable()  当对象变为不可用或非激活状态时此函数被调用
- OnDestroy()  当Monobehavior（脚本）被销毁时运行
- Transform 场景物体的变换 1.坐标系 变量  Right—&amp;gt;X axis Up—&amp;gt;Y axis Forward—&amp;gt;Z axis worldTolocalMatrix localToworldMatrix  函数方法  TransformPoint()   变换位置从自身坐标到世界坐标" />
+ 2.输入 Input 3.渲染 Rendering 4.对象与组件 OnEnable()  当对象变为可用或激活状态时此函数被调用" />
 <meta name="generator" content="Hugo 0.44" />
 
 <link rel="shortcut icon" href="/img/Fav.gif">
@@ -427,16 +429,45 @@ var bodyBgSwitchIndex = 0;
 <ul>
 <li>Reset()</li>
 <li>Awake()</li>
+</ul>
+
+<blockquote>
+<p>在游戏开始之前初始化任何变量或游戏状态。</p>
+</blockquote>
+
+<ul>
 <li>Start</li>
 </ul>
+
+<blockquote>
+<p>在任何Update方法之前，只调用一次。</p>
+</blockquote>
 
 <h3 id="刷新">刷新&nbsp;<a class="anchor" href="#刷新"><i class="small linkify icon"></i></a> </h3>
 
 <ul>
 <li>FixUpdate()</li>
+</ul>
+
+<blockquote>
+<p>每个固定帧率帧都会调用此函数。 (用于物理效果)</p>
+</blockquote>
+
+<ul>
 <li>Update()</li>
+</ul>
+
+<blockquote>
+<p>则每帧调用更新。(用于处理逻辑)</p>
+</blockquote>
+
+<ul>
 <li>LateUpdate()</li>
 </ul>
+
+<blockquote>
+<p>每帧都会调用LateUpdate 。在调用所有Update函数后调用LateUpdate。</p>
+</blockquote>
 
 <h2 id="交互函数">交互函数&nbsp;<a class="anchor" href="#交互函数"><i class="small linkify icon"></i></a> </h2>
 
