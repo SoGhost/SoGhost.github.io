@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/post/%E7%AE%80%E5%8D%95ai%E9%80%BB%E8%BE%91/</loc>
+    <lastmod>2018-08-05T18:36:56+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/post/%E6%B8%B8%E6%88%8F%E5%B8%B8%E7%94%A8%E8%8B%B1%E6%96%87/</loc>
     <lastmod>2018-08-05T14:48:59+08:00</lastmod>
   </url>
@@ -66,6 +71,12 @@
   </url>
   
   <url>
+    <loc>/tags/ai/</loc>
+    <lastmod>2018-08-05T18:36:56+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/tags/audio/</loc>
     <lastmod>2018-08-05T09:39:51+08:00</lastmod>
     <priority>0</priority>
@@ -103,25 +114,19 @@
   
   <url>
     <loc>/</loc>
-    <lastmod>2018-08-05T14:48:59+08:00</lastmod>
+    <lastmod>2018-08-05T18:36:56+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/post/</loc>
-    <lastmod>2018-08-05T14:48:59+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/practice/</loc>
-    <lastmod>2018-08-05T12:02:12+08:00</lastmod>
+    <lastmod>2018-08-05T18:36:56+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/tags/</loc>
-    <lastmod>2018-08-05T09:39:51+08:00</lastmod>
+    <lastmod>2018-08-05T18:36:56+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -133,7 +138,7 @@
   
   <url>
     <loc>/categories/unity/</loc>
-    <lastmod>2018-08-05T14:48:37+08:00</lastmod>
+    <lastmod>2018-08-05T18:36:56+08:00</lastmod>
     <priority>0</priority>
   </url>
   
