@@ -33,12 +33,16 @@ OnMouseUpAsButton()：只有当鼠标在同一个GUIElement或Collider按下，�
       <pubDate>Mon, 30 Jul 2018 15:04:16 +0800</pubDate>
       
       <guid>/post/monobehavior-common-method/</guid>
-      <description> 继承函数  继承自Object
+      <description>继承函数  继承自Object
  Destroy：物体销毁
  Instantiate：物体生成
  CompareTag：物体辨认
   继承自Component
- SendMessage：消息推送   自身函数  Invoke：延迟执行程序 Coroutine：协同执行程序  </description>
+ SendMessage：消息推送   自身函数 1.Invoke：延迟执行程序
+ Invoke(string methodName, float time); InvokeRepeating(string methodName, float time, float repeatRate);   重复调用函数，重复间隔。
+  IsInvoking(string methodName);   检测是否在继续调用。
+  CanceInvoke();  CanceInvoke(string methodName);    清楚所有Invoke或针对某一函数。
+    2.Coroutine：协同执行程序</description>
     </item>
     
     <item>

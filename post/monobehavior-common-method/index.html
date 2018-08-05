@@ -21,12 +21,16 @@ MonoBehavior 常用方法
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<meta name="author" content="So Serious" />
-	<meta name="description" content=" 继承函数  继承自Object
+	<meta name="description" content="继承函数  继承自Object
  Destroy：物体销毁
  Instantiate：物体生成
  CompareTag：物体辨认
   继承自Component
- SendMessage：消息推送   自身函数  Invoke：延迟执行程序 Coroutine：协同执行程序  " />
+ SendMessage：消息推送   自身函数 1.Invoke：延迟执行程序
+ Invoke(string methodName, float time); InvokeRepeating(string methodName, float time, float repeatRate);   重复调用函数，重复间隔。
+  IsInvoking(string methodName);   检测是否在继续调用。
+  CanceInvoke();  CanceInvoke(string methodName);    清楚所有Invoke或针对某一函数。
+    2.Coroutine：协同执行程序" />
 <meta name="generator" content="Hugo 0.44" />
 
 <link rel="shortcut icon" href="/img/Fav.gif">
@@ -376,10 +380,46 @@ var bodyBgSwitchIndex = 0;
 
 <h1 id="自身函数">自身函数&nbsp;<a class="anchor" href="#自身函数"><i class="small linkify icon"></i></a> </h1>
 
+<p>1.Invoke：延迟执行程序</p>
+
 <ul>
-<li>Invoke：延迟执行程序</li>
-<li>Coroutine：协同执行程序</li>
+<li>Invoke(string methodName, float time);</li>
+<li>InvokeRepeating(string methodName, float time, float repeatRate);</li>
 </ul>
+
+<blockquote>
+<p>重复调用函数，重复间隔。</p>
+</blockquote>
+
+<ul>
+<li>IsInvoking(string methodName);</li>
+</ul>
+
+<blockquote>
+<p>检测是否在继续调用。</p>
+</blockquote>
+
+<ul>
+<li>CanceInvoke();
+
+<ul>
+<li>CanceInvoke(string methodName);</li>
+</ul></li>
+</ul>
+
+<blockquote>
+<p>清楚所有Invoke或针对某一函数。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"></code></pre></td></tr></table>
+</div>
+</div></blockquote>
+
+<hr />
+
+<p>2.Coroutine：协同执行程序</p>
 
 			</article>
 		</section>
