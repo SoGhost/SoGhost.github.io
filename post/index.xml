@@ -6,10 +6,64 @@
     <description>Recent content in Posts on PY-&gt; Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>us-en</language>
-    <lastBuildDate>Mon, 30 Jul 2018 16:36:45 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 05 Aug 2018 14:48:59 +0800</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>游戏常用英文</title>
+      <link>/post/%E6%B8%B8%E6%88%8F%E5%B8%B8%E7%94%A8%E8%8B%B1%E6%96%87/</link>
+      <pubDate>Sun, 05 Aug 2018 14:48:59 +0800</pubDate>
+      
+      <guid>/post/%E6%B8%B8%E6%88%8F%E5%B8%B8%E7%94%A8%E8%8B%B1%E6%96%87/</guid>
+      <description>常见单词 1.角色属性类：  角色 Character 力量 Strength 耐力 Stamina/Patience 智力 Intellect 免疫力 Immune/Immunity 生命力 Hit Point(HP) 魔法力 Magic Point(MP) 命中率 Accuracy 速度 speed 防御 Defense 敏锐 Subtlety 伤害 Damage 护甲 Armor 能量 power 危险 danger 安全 safety 经验点数 Experience Point 升级 Level Up
+ 2.技能效果类：  技能 skill 净化 Cleansing 复活 Reincarnate 石化 Petrify 灼烧 Cauterize 重击 Smite 伪装 Camouflage 致盲 Blind 背刺 Backstab 埋伏 Ambush 吸魔 Drain Mana 吸血 Drain Life 躲避 Miss 守护 Guard 隐形 Clock 祝福 Blessed 加血 add blood 持续时间 Duration</description>
+    </item>
+    
+    <item>
+      <title>FPS_视角和移动</title>
+      <link>/post/fps-%E8%A7%86%E8%A7%92%E5%92%8C%E7%A7%BB%E5%8A%A8/</link>
+      <pubDate>Sun, 05 Aug 2018 14:48:37 +0800</pubDate>
+      
+      <guid>/post/fps-%E8%A7%86%E8%A7%92%E5%92%8C%E7%A7%BB%E5%8A%A8/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>武器跟随镜头旋转</title>
+      <link>/post/%E6%AD%A6%E5%99%A8%E8%B7%9F%E9%9A%8F%E9%95%9C%E5%A4%B4%E6%97%8B%E8%BD%AC/</link>
+      <pubDate>Sun, 05 Aug 2018 12:02:12 +0800</pubDate>
+      
+      <guid>/post/%E6%AD%A6%E5%99%A8%E8%B7%9F%E9%9A%8F%E9%95%9C%E5%A4%B4%E6%97%8B%E8%BD%AC/</guid>
+      <description>  </description>
+    </item>
+    
+    <item>
+      <title>Unity Audio</title>
+      <link>/post/unity-audio%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/</link>
+      <pubDate>Sun, 05 Aug 2018 09:39:51 +0800</pubDate>
+      
+      <guid>/post/unity-audio%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/</guid>
+      <description> Audio Source  1.Audio Source
+ Audio Clip：音频剪辑
+ Output：输出
+ Audio Mixer Group：音频混音器组
+ Mute：静音
+ Bypass Effectes：绕过效果
+ Bypass Listener Effects：绕过监听器效果
+ Bypass Reverb Zones：绕过混响区
+ Play On Wake：开始时播放
+ Loop：循环
+ Priority：优先
+ Volume：音量
+ Pitch：
+ Stereo Pan：
+ Spatial Blend：空间混合
+ Reverb Zone Mix：
+  2.3D Sound Setting
+ Doppler Level：多普勒级别 Spread：传播 Volume Rolloff： Min Distance：最小距离 Max Distance：最大距离   </description>
+    </item>
     
     <item>
       <title>脚本的输入与控制</title>

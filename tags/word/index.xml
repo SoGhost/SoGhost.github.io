@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Notes on PY-&gt; Blog</title>
-    <link>/categories/notes/</link>
-    <description>Recent content in Notes on PY-&gt; Blog</description>
+    <title>Word on PY-&gt; Blog</title>
+    <link>/tags/word/</link>
+    <description>Recent content in Word on PY-&gt; Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>us-en</language>
     <lastBuildDate>Sun, 05 Aug 2018 14:48:59 +0800</lastBuildDate>
     
-	<atom:link href="/categories/notes/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/word/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -19,48 +19,6 @@
       <guid>/post/%E6%B8%B8%E6%88%8F%E5%B8%B8%E7%94%A8%E8%8B%B1%E6%96%87/</guid>
       <description>常见单词 1.角色属性类：  角色 Character 力量 Strength 耐力 Stamina/Patience 智力 Intellect 免疫力 Immune/Immunity 生命力 Hit Point(HP) 魔法力 Magic Point(MP) 命中率 Accuracy 速度 speed 防御 Defense 敏锐 Subtlety 伤害 Damage 护甲 Armor 能量 power 危险 danger 安全 safety 经验点数 Experience Point 升级 Level Up
  2.技能效果类：  技能 skill 净化 Cleansing 复活 Reincarnate 石化 Petrify 灼烧 Cauterize 重击 Smite 伪装 Camouflage 致盲 Blind 背刺 Backstab 埋伏 Ambush 吸魔 Drain Mana 吸血 Drain Life 躲避 Miss 守护 Guard 隐形 Clock 祝福 Blessed 加血 add blood 持续时间 Duration</description>
-    </item>
-    
-    <item>
-      <title>Word Book</title>
-      <link>/post/words-notes/</link>
-      <pubDate>Fri, 20 Jul 2018 15:14:20 +0800</pubDate>
-      
-      <guid>/post/words-notes/</guid>
-      <description>Word Note edit 编辑
-assets 资源；资产
-enable 允许；可用；使能够
-disable 禁用/不可用
-inspector 检视窗口
-hierarchy 层级窗口
-component 组件
-variable 变量
-scene 场景
-analytics 分析
-project 工程窗口
-packages 包；封装；包装
-static 静态
-layer 层
-layouts 布局
-mesh 网格
-renderer 渲染器
-filter 过滤器
-shader 着色器
-collider 碰撞体
-rigidbody 刚体
-collider 碰撞体
-trigger 触发
-material 材质；材料
-collision 碰撞
-velocity 力；速度
-eulerAngles 欧拉角
-description 描述
-transform 改变
-translate 翻译；转化
-rotation 旋转
-position 位置；方位
-scale 缩放；比例；规模
-mass 质量</description>
     </item>
     
   </channel>

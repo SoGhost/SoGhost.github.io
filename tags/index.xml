@@ -6,10 +6,19 @@
     <description>Recent content in Tags on PY-&gt; Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>us-en</language>
-    <lastBuildDate>Fri, 27 Jul 2018 08:18:12 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 05 Aug 2018 09:39:51 +0800</lastBuildDate>
     
 	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Audio</title>
+      <link>/tags/audio/</link>
+      <pubDate>Sun, 05 Aug 2018 09:39:51 +0800</pubDate>
+      
+      <guid>/tags/audio/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>C#</title>
@@ -21,11 +30,38 @@
     </item>
     
     <item>
+      <title>Fps</title>
+      <link>/tags/fps/</link>
+      <pubDate>Sun, 05 Aug 2018 14:48:37 +0800</pubDate>
+      
+      <guid>/tags/fps/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Practice</title>
+      <link>/tags/practice/</link>
+      <pubDate>Sun, 05 Aug 2018 12:02:12 +0800</pubDate>
+      
+      <guid>/tags/practice/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Unity</title>
       <link>/tags/unity/</link>
       <pubDate>Mon, 30 Jul 2018 16:36:45 +0800</pubDate>
       
       <guid>/tags/unity/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Word</title>
+      <link>/tags/word/</link>
+      <pubDate>Sun, 05 Aug 2018 14:48:59 +0800</pubDate>
+      
+      <guid>/tags/word/</guid>
       <description></description>
     </item>
     
