@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on PY-&gt; Blog</title>
+    <link>/tags/</link>
+    <description>Recent content in Tags on PY-&gt; Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>us-en</language>
+    <lastBuildDate>Sun, 05 Aug 2018 18:36:56 +0800</lastBuildDate>
+    
+	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Ai</title>
+      <link>/tags/ai/</link>
+      <pubDate>Sun, 05 Aug 2018 18:36:56 +0800</pubDate>
+      
+      <guid>/tags/ai/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Audio</title>
+      <link>/tags/audio/</link>
+      <pubDate>Sun, 05 Aug 2018 09:39:51 +0800</pubDate>
+      
+      <guid>/tags/audio/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>C#</title>
+      <link>/tags/c#/</link>
+      <pubDate>Fri, 27 Jul 2018 08:18:12 +0800</pubDate>
+      
+      <guid>/tags/c#/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Fps</title>
+      <link>/tags/fps/</link>
+      <pubDate>Sun, 05 Aug 2018 14:48:37 +0800</pubDate>
+      
+      <guid>/tags/fps/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Unity</title>
+      <link>/tags/unity/</link>
+      <pubDate>Mon, 30 Jul 2018 16:36:45 +0800</pubDate>
+      
+      <guid>/tags/unity/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Word</title>
+      <link>/tags/word/</link>
+      <pubDate>Sun, 05 Aug 2018 14:48:59 +0800</pubDate>
+      
+      <guid>/tags/word/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Word Book</title>
+      <link>/tags/word-book/</link>
+      <pubDate>Fri, 20 Jul 2018 15:14:20 +0800</pubDate>
+      
+      <guid>/tags/word-book/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Unity on PY-&gt; Blog</title>
+    <link>/tags/unity/</link>
+    <description>Recent content in Unity on PY-&gt; Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>us-en</language>
+    <lastBuildDate>Mon, 30 Jul 2018 16:36:45 +0800</lastBuildDate>
+    
+	<atom:link href="/tags/unity/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>脚本的输入与控制</title>
+      <link>/post/script-input-and-control/</link>
+      <pubDate>Mon, 30 Jul 2018 16:36:45 +0800</pubDate>
+      
+      <guid>/post/script-input-and-control/</guid>
+      <description>鼠标输入 1.OnMouse方法  OnMouseEnter()：当鼠标进入GUIElement或Collider时调用。（只调用一次）
+OnMouseExit()：鼠标离开GUIElement或Collider时调用。
+OnMouseOver()：鼠标悬停在GUIElement或Collider上时调用每一帧。
+OnMouseDown()：鼠标在GUIElement或Collider上点击时调用。
+OnMouseIp()：释放鼠标按钮时调用。
+OnMouseDrag()：鼠标拖拽GUIElement或Collider时调用。
+OnMouseUpAsButton()：只有当鼠标在同一个GUIElement或Collider按下，释放时调用。
+ 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18  public class ObjectController : MonoBehaviour { private void OnMouseEnter()//当鼠标进入GUIElement或Collider时调用。（只调用一次）  { this.transform.localScale = new Vector3(1.3f, 1.3f, 1.3f);//物体放大1.3倍  } private void OnMouseExit()//鼠标离开  { this.transform.localScale = new Vector3(1f, 1f, 1f);//大小还原  this.transform.rotation = new Quaternion(0f,0f,0f,0f);//位置还原  } private void OnMouseOver()//鼠标悬停在GUIElement或Collider上时调用每一帧。  { this.</description>
+    </item>
+    
+    <item>
+      <title>MonoBehavior 常用方法</title>
+      <link>/post/monobehavior-common-method/</link>
+      <pubDate>Mon, 30 Jul 2018 15:04:16 +0800</pubDate>
+      
+      <guid>/post/monobehavior-common-method/</guid>
+      <description>继承函数  继承自Object
+ Destroy：物体销毁
+ Instantiate：物体生成
+ CompareTag：物体辨认
+  继承自Component
+ SendMessage：消息推送   自身函数 1.Invoke：延迟执行程序
+ Invoke(string methodName, float time); InvokeRepeating(string methodName, float time, float repeatRate);   重复调用函数，重复间隔。
+  IsInvoking(string methodName);   检测是否在继续调用。
+  CanceInvoke();  CanceInvoke(string methodName);    清楚所有Invoke或针对某一函数。
+    2.Coroutine：协同执行程序</description>
+    </item>
+    
+    <item>
+      <title>Unity Script</title>
+      <link>/post/unity-script/</link>
+      <pubDate>Sat, 21 Jul 2018 15:26:16 +0800</pubDate>
+      
+      <guid>/post/unity-script/</guid>
+      <description>Monobehavior事件响应 启动与刷新函数 启动  Reset() Awake()   在游戏开始之前初始化任何变量或游戏状态。
+  Start   在任何Update方法之前，只调用一次。
+ 刷新  FixUpdate()   每个固定帧率帧都会调用此函数。 (用于物理效果)
+  Update()   则每帧调用更新。(用于处理逻辑)
+  LateUpdate()   每帧都会调用LateUpdate 。在调用所有Update函数后调用LateUpdate。
+ 交互函数 1.物理 Physic OnTriggerEnter()  当Collider进入trigger时调用
+ OnTriggerStay()  当Collider停留trigger时每一帧被调用
+ OnTriggerExit()  当Collider离开trigger时调用
+ OnaCollisionEnter()  当collider/rigidbody触发另一个rigidbody/collider时被调用
+ OnCollisionStay()  当collider/rigidbody触发另一个rigidbody/collider时，将会在每一帧被调用
+ OnCollisionExit()  当collider/rigidbody停止触发另一个rigidbody/collider时被调用
+ 2.输入 Input 3.渲染 Rendering 4.对象与组件 OnEnable()  当对象变为可用或激活状态时此函数被调用</description>
+    </item>
+    
+    <item>
+      <title>Unity 注意事项</title>
+      <link>/post/unity-notes/</link>
+      <pubDate>Sat, 21 Jul 2018 10:38:10 +0800</pubDate>
+      
+      <guid>/post/unity-notes/</guid>
+      <description> 疑难杂症——👇 一亿个注意: 1.Local和Global  Local是指的自身的坐标，Global指的是世界坐标。
+假如一个物体没有父物体（即这个物体不是某个物体的子物体），或者父物体的坐标为（0，0，0）。这时候Local和Global的坐标是一样的。
+假如有父物体，Local坐标是相对与父物体的坐标，而Global是指在空间中实际的坐标。
+ 2.Awake()和Start()  Awake()在游戏开始时自动调用，无论是否激活脚本组件都能被调用，一般用来创建变量。
+Start()在Awake之后Update之前，一般用来初始化变量。
+ 3.Update()和FixUpdate()  Update()每一帧调用一次，一般用于非物理运动，如逻辑运算 。
+Fixupdate()每隔固定时间调用一次，通过Edit-&amp;gt;Project Settings-&amp;gt;Time 进行设置，默认为20毫秒 ，一般用于物理运动。
+ 4.transform01translate0  transform是Gameobject的位置属性，translate是一个动作属性。
+获取某个object的位置信息时就是transform，若是对其做动作，那就translate。
+ 5. </description>
+    </item>
+    
+  </channel>
+</rss>
