@@ -94,10 +94,10 @@ OnMouseUpAsButton()：只有当鼠标在同一个GUIElement或Collider按下，�
     
     <item>
       <title>Unity Script</title>
-      <link>/post/unity-script-0/</link>
+      <link>/post/unity-script-01/</link>
       <pubDate>Sat, 21 Jul 2018 15:26:16 +0800</pubDate>
       
-      <guid>/post/unity-script-0/</guid>
+      <guid>/post/unity-script-01/</guid>
       <description>Monobehavior事件响应 启动与刷新函数 启动  Reset() Awake()   在游戏开始之前初始化任何变量或游戏状态。
   Start   在任何Update方法之前，只调用一次。
  刷新  FixUpdate()   每个固定帧率帧都会调用此函数。 (用于物理效果)

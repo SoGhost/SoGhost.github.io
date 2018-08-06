@@ -17,7 +17,7 @@
       <pubDate>Mon, 06 Aug 2018 07:42:20 +0800</pubDate>
       
       <guid>/post/json/</guid>
-      <description>JSON  JSON：是一种轻量级的数据交换格式。基于JavaScript的一个子集。JSON采用完全独立于语言的文本格式。Unity主要使用JSON进行服务器端和客户端数据传输。
+      <description>JSON简介  JSON：是一种轻量级的数据交换格式。基于JavaScript的一个子集。JSON采用完全独立于语言的文本格式。Unity主要使用JSON进行服务器端和客户端数据传输。
  JSON结构  通过对象、数组两种结构，就可以组成复杂的数据结构。
   JSON对象   对象：表示为 ‘ {} ’ 括起来的内容，数据结果为键值对的结构。
 { &amp;ldquo;name&amp;rdquo; : &amp;ldquo;Test Name&amp;rdquo; }

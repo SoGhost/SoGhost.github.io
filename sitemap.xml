@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/post/unity-animat-01/</loc>
+    <lastmod>2018-08-06T11:45:28+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/post/json/</loc>
     <lastmod>2018-08-06T07:42:20+08:00</lastmod>
   </url>
@@ -38,6 +43,11 @@
   </url>
   
   <url>
+    <loc>/post/use-skill/</loc>
+    <lastmod>2018-07-29T16:55:57+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/post/c-sharp-notes-02/</loc>
     <lastmod>2018-07-27T08:18:12+08:00</lastmod>
   </url>
@@ -48,7 +58,7 @@
   </url>
   
   <url>
-    <loc>/post/unity-script-0/</loc>
+    <loc>/post/unity-script-01/</loc>
     <lastmod>2018-07-21T15:26:16+08:00</lastmod>
   </url>
   
@@ -77,6 +87,18 @@
   </url>
   
   <url>
+    <loc>/tags/animator/</loc>
+    <lastmod>2018-08-06T11:45:28+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/animator/</loc>
+    <lastmod>2018-08-06T11:45:28+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/tags/audio/</loc>
     <lastmod>2018-08-05T09:39:51+08:00</lastmod>
     <priority>0</priority>
@@ -96,7 +118,7 @@
   
   <url>
     <loc>/categories/</loc>
-    <lastmod>2018-07-27T08:18:12+08:00</lastmod>
+    <lastmod>2018-08-06T11:45:28+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -114,13 +136,13 @@
   
   <url>
     <loc>/</loc>
-    <lastmod>2018-08-06T07:42:20+08:00</lastmod>
+    <lastmod>2018-08-06T11:45:28+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/post/</loc>
-    <lastmod>2018-08-06T07:42:20+08:00</lastmod>
+    <lastmod>2018-08-06T11:45:28+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -143,6 +165,12 @@
   </url>
   
   <url>
+    <loc>/categories/windows/</loc>
+    <lastmod>2018-07-29T16:55:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/tags/word/</loc>
     <lastmod>2018-08-05T14:48:59+08:00</lastmod>
     <priority>0</priority>
@@ -151,6 +179,12 @@
   <url>
     <loc>/tags/word-book/</loc>
     <lastmod>2018-07-20T14:48:20+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/%E6%8A%80%E5%B7%A7/</loc>
+    <lastmod>2018-07-29T16:55:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   

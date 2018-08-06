@@ -6,10 +6,25 @@
     <description>Recent content on PY-&gt; Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>us-en</language>
-    <lastBuildDate>Mon, 06 Aug 2018 07:42:20 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 06 Aug 2018 11:45:28 +0800</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Unity 动画系统(1)</title>
+      <link>/post/unity-animat-01/</link>
+      <pubDate>Mon, 06 Aug 2018 11:45:28 +0800</pubDate>
+      
+      <guid>/post/unity-animat-01/</guid>
+      <description>Mecanim——核心功能  内置动画状态机系统(Animator)      Controller 角色控制器     Avatar (骨骼替身) 替身骨骼   Apply Root Motion ( 应用根运动 )    Update Mode ( 刷新模式 )    Culling Mode (选择模式)       人物动画的重定向   更换符合逻辑的Avatar即可重复使用动画。
+1.在Model 选取界面，选择 RIG&amp;ndash;&amp;gt;Animation Type-&amp;gt;Humanoid(人形的)-&amp;gt;Apply
+2.然后可以配置人物骨骼Avatar。
+  动画的分解与混合   Blend Tree：混合树
+通过Blend Tree混合多个动画。
+通过遮罩体同时播放多个动画。
+  关节动画的 IK 逆向定位   IK用于实现角色始终看着一个物体、一个关节与物体绑定。</description>
+    </item>
     
     <item>
       <title>JSON格式</title>
@@ -17,7 +32,7 @@
       <pubDate>Mon, 06 Aug 2018 07:42:20 +0800</pubDate>
       
       <guid>/post/json/</guid>
-      <description>JSON  JSON：是一种轻量级的数据交换格式。基于JavaScript的一个子集。JSON采用完全独立于语言的文本格式。Unity主要使用JSON进行服务器端和客户端数据传输。
+      <description>JSON简介  JSON：是一种轻量级的数据交换格式。基于JavaScript的一个子集。JSON采用完全独立于语言的文本格式。Unity主要使用JSON进行服务器端和客户端数据传输。
  JSON结构  通过对象、数组两种结构，就可以组成复杂的数据结构。
   JSON对象   对象：表示为 ‘ {} ’ 括起来的内容，数据结果为键值对的结构。
 { &amp;ldquo;name&amp;rdquo; : &amp;ldquo;Test Name&amp;rdquo; }
@@ -118,6 +133,16 @@ OnMouseUpAsButton()：只有当鼠标在同一个GUIElement或Collider按下，�
     </item>
     
     <item>
+      <title>使用软件突发小技巧</title>
+      <link>/post/use-skill/</link>
+      <pubDate>Sun, 29 Jul 2018 16:55:57 +0800</pubDate>
+      
+      <guid>/post/use-skill/</guid>
+      <description> 按住 shift ，在准备复制文字（或其它）的一头按鼠标左键，在另一头按下左键，即可选中两头中的所有文字（或其它）。
+ </description>
+    </item>
+    
+    <item>
       <title>C# _语言基础</title>
       <link>/post/c-sharp-notes-02/</link>
       <pubDate>Fri, 27 Jul 2018 08:18:12 +0800</pubDate>
@@ -142,10 +167,10 @@ OnMouseUpAsButton()：只有当鼠标在同一个GUIElement或Collider按下，�
     
     <item>
       <title>Unity Script</title>
-      <link>/post/unity-script-0/</link>
+      <link>/post/unity-script-01/</link>
       <pubDate>Sat, 21 Jul 2018 15:26:16 +0800</pubDate>
       
-      <guid>/post/unity-script-0/</guid>
+      <guid>/post/unity-script-01/</guid>
       <description>Monobehavior事件响应 启动与刷新函数 启动  Reset() Awake()   在游戏开始之前初始化任何变量或游戏状态。
   Start   在任何Update方法之前，只调用一次。
  刷新  FixUpdate()   每个固定帧率帧都会调用此函数。 (用于物理效果)
