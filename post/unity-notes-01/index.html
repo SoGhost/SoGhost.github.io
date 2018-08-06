@@ -15,24 +15,26 @@ body, body.pushable {
 }
 
 </style><title>
-脚本的输入与控制
+Unity 注意事项
 </title><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<meta name="author" content="So Serious" />
-	<meta name="description" content="鼠标输入 1.OnMouse方法  OnMouseEnter()：当鼠标进入GUIElement或Collider时调用。（只调用一次）
-OnMouseExit()：鼠标离开GUIElement或Collider时调用。
-OnMouseOver()：鼠标悬停在GUIElement或Collider上时调用每一帧。
-OnMouseDown()：鼠标在GUIElement或Collider上点击时调用。
-OnMouseIp()：释放鼠标按钮时调用。
-OnMouseDrag()：鼠标拖拽GUIElement或Collider时调用。
-OnMouseUpAsButton()：只有当鼠标在同一个GUIElement或Collider按下，释放时调用。
- 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18  public class ObjectController : MonoBehaviour { private void OnMouseEnter()//当鼠标进入GUIElement或Collider时调用。（只调用一次）  { this.transform.localScale = new Vector3(1.3f, 1.3f, 1.3f);//物体放大1.3倍  } private void OnMouseExit()//鼠标离开  { this.transform.localScale = new Vector3(1f, 1f, 1f);//大小还原  this.transform.rotation = new Quaternion(0f,0f,0f,0f);//位置还原  } private void OnMouseOver()//鼠标悬停在GUIElement或Collider上时调用每一帧。  { this." />
+	<meta name="description" content=" 疑难杂症——👇 一亿个注意: 1.Local和Global  Local是指的自身的坐标，Global指的是世界坐标。
+假如一个物体没有父物体（即这个物体不是某个物体的子物体），或者父物体的坐标为（0，0，0）。这时候Local和Global的坐标是一样的。
+假如有父物体，Local坐标是相对与父物体的坐标，而Global是指在空间中实际的坐标。
+ 2.Awake()和Start()  Awake()在游戏开始时自动调用，无论是否激活脚本组件都能被调用，一般用来创建变量。
+Start()在Awake之后Update之前，一般用来初始化变量。
+ 3.Update()和FixUpdate()  Update()每一帧调用一次，一般用于非物理运动，如逻辑运算 。
+Fixupdate()每隔固定时间调用一次，通过Edit-&amp;gt;Project Settings-&amp;gt;Time 进行设置，默认为20毫秒 ，一般用于物理运动。
+ 4.transform01translate0  transform是Gameobject的位置属性，translate是一个动作属性。
+获取某个object的位置信息时就是transform，若是对其做动作，那就translate。
+ 5. " />
 <meta name="generator" content="Hugo 0.44" />
 
 <link rel="shortcut icon" href="/img/PY-Blog.ico">
 
-<link rel="canonical" href="/post/script-input-and-control/" />
+<link rel="canonical" href="/post/unity-notes-01/" />
 <link rel="alternative" href="/index.xml" title="PY-&gt; Blog" type="application/atom+xml"/>
 <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet"> 
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
@@ -116,6 +118,8 @@ var bodyBgSwitchIndex = 0;var gradients = [
 
 <a class="ui label" href="/tags/word-book" title="word-book">word-book</a>
 
+<a class="ui label" href="/tags/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93" title="数据传输">数据传输</a>
+
 </section>	
 	
 	<section class="ui attached inverted segment sidebar-dream-categories both flexbox">
@@ -148,7 +152,7 @@ var bodyBgSwitchIndex = 0;var gradients = [
 </div>
 <div class="content">
 
-	<a class="item" href="/post/%E6%B8%B8%E6%88%8F%E5%B8%B8%E7%94%A8%E8%8B%B1%E6%96%87/">
+	<a class="item" href="/post/game-words/">
 		<div>
 			<i class="cocktail icon"></i>
 			<p>游戏常用英文</p>
@@ -170,56 +174,49 @@ var bodyBgSwitchIndex = 0;var gradients = [
 </div>
 <div class="content">
 
-	<a class="item" href="/post/ai%E9%80%BB%E8%BE%91/">
+	<a class="item" href="/post/unity-ai-01/">
 		<div>
 			<i class="cocktail icon"></i>
 			<p>AI逻辑</p>
 		</div>
 	</a>
 
-	<a class="item" href="/post/fps-%E8%A7%86%E8%A7%92%E5%92%8C%E7%A7%BB%E5%8A%A8/">
+	<a class="item" href="/post/unity-fps-view_move/">
 		<div>
 			<i class="cocktail icon"></i>
 			<p>FPS_视角和移动</p>
 		</div>
 	</a>
 
-	<a class="item" href="/post/%E6%AD%A6%E5%99%A8%E8%B7%9F%E9%9A%8F%E9%95%9C%E5%A4%B4%E6%97%8B%E8%BD%AC/">
-		<div>
-			<i class="cocktail icon"></i>
-			<p>武器跟随镜头旋转</p>
-		</div>
-	</a>
-
-	<a class="item" href="/post/unity-audio%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/">
+	<a class="item" href="/post/unity-audio-01/">
 		<div>
 			<i class="cocktail icon"></i>
 			<p>Unity Audio</p>
 		</div>
 	</a>
 
-	<a class="item" href="/post/script-input-and-control/">
+	<a class="item" href="/post/script-input_control/">
 		<div>
 			<i class="cocktail icon"></i>
 			<p>脚本的输入与控制</p>
 		</div>
 	</a>
 
-	<a class="item" href="/post/monobehavior-common-method/">
+	<a class="item" href="/post/monobehavior-common_method-01/">
 		<div>
 			<i class="cocktail icon"></i>
 			<p>MonoBehavior 常用方法</p>
 		</div>
 	</a>
 
-	<a class="item" href="/post/unity-script/">
+	<a class="item" href="/post/unity-script-0/">
 		<div>
 			<i class="cocktail icon"></i>
 			<p>Unity Script</p>
 		</div>
 	</a>
 
-	<a class="item" href="/post/unity-notes/">
+	<a class="item" href="/post/unity-notes-01/">
 		<div>
 			<i class="cocktail icon"></i>
 			<p>Unity 注意事项</p>
@@ -303,6 +300,8 @@ var bodyBgSwitchIndex = 0;var gradients = [
 
 <a class="ui label" href="/tags/word-book" title="word-book">word-book</a>
 
+<a class="ui label" href="/tags/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93" title="数据传输">数据传输</a>
+
 </section><section class="ui attached inverted segment dream-categories both flexbox">
 			<div class="inverted accordion">
 <div class="title">
@@ -333,7 +332,7 @@ var bodyBgSwitchIndex = 0;var gradients = [
 </div>
 <div class="content">
 
-	<a class="item" href="/post/%E6%B8%B8%E6%88%8F%E5%B8%B8%E7%94%A8%E8%8B%B1%E6%96%87/">
+	<a class="item" href="/post/game-words/">
 		<div>
 			<i class="cocktail icon"></i>
 			<p>游戏常用英文</p>
@@ -355,56 +354,49 @@ var bodyBgSwitchIndex = 0;var gradients = [
 </div>
 <div class="content">
 
-	<a class="item" href="/post/ai%E9%80%BB%E8%BE%91/">
+	<a class="item" href="/post/unity-ai-01/">
 		<div>
 			<i class="cocktail icon"></i>
 			<p>AI逻辑</p>
 		</div>
 	</a>
 
-	<a class="item" href="/post/fps-%E8%A7%86%E8%A7%92%E5%92%8C%E7%A7%BB%E5%8A%A8/">
+	<a class="item" href="/post/unity-fps-view_move/">
 		<div>
 			<i class="cocktail icon"></i>
 			<p>FPS_视角和移动</p>
 		</div>
 	</a>
 
-	<a class="item" href="/post/%E6%AD%A6%E5%99%A8%E8%B7%9F%E9%9A%8F%E9%95%9C%E5%A4%B4%E6%97%8B%E8%BD%AC/">
-		<div>
-			<i class="cocktail icon"></i>
-			<p>武器跟随镜头旋转</p>
-		</div>
-	</a>
-
-	<a class="item" href="/post/unity-audio%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/">
+	<a class="item" href="/post/unity-audio-01/">
 		<div>
 			<i class="cocktail icon"></i>
 			<p>Unity Audio</p>
 		</div>
 	</a>
 
-	<a class="item" href="/post/script-input-and-control/">
+	<a class="item" href="/post/script-input_control/">
 		<div>
 			<i class="cocktail icon"></i>
 			<p>脚本的输入与控制</p>
 		</div>
 	</a>
 
-	<a class="item" href="/post/monobehavior-common-method/">
+	<a class="item" href="/post/monobehavior-common_method-01/">
 		<div>
 			<i class="cocktail icon"></i>
 			<p>MonoBehavior 常用方法</p>
 		</div>
 	</a>
 
-	<a class="item" href="/post/unity-script/">
+	<a class="item" href="/post/unity-script-0/">
 		<div>
 			<i class="cocktail icon"></i>
 			<p>Unity Script</p>
 		</div>
 	</a>
 
-	<a class="item" href="/post/unity-notes/">
+	<a class="item" href="/post/unity-notes-01/">
 		<div>
 			<i class="cocktail icon"></i>
 			<p>Unity 注意事项</p>
@@ -427,22 +419,26 @@ var bodyBgSwitchIndex = 0;var gradients = [
 	<div class="sixteen wide mobile fifteen wide tablet twelve wide computer column post-list">
 		<section class="ui secondary top attached black segment post-head">
 			<h1 class="post-title">
-				脚本的输入与控制
+				Unity 注意事项
 			</h1>
 			<div class="sub header">
-					<div><span><i class="calendar outline icon"></i>Jul 30, 2018</span></div><div><span class="disqusComment"><i class="comment outline icon"></i><a href="/post/script-input-and-control/#disqus_thread" class="disqus-comment-count" data-disqus-identifier="000ee88b0867f414cbfa7796036ba034"></a></span></div>
+					<div><span><i class="calendar outline icon"></i>Jul 21, 2018</span></div><div><span class="disqusComment"><i class="comment outline icon"></i><a href="/post/unity-notes-01/#disqus_thread" class="disqus-comment-count" data-disqus-identifier="ecdfe389a4a52e2ce385eaf6ab3ade97"></a></span></div>
 					<div><span><i class="clock outline icon"></i>1 min read</span></div>
-					<div><span><i class="angle double up icon"></i>更新于 Jul 30, 2018</span></div>
+					<div><span><i class="angle double up icon"></i>更新于 Jul 21, 2018</span></div>
 			</div>
 			<hr><div class="toc"><nav id="TableOfContents">
 <ul>
-<li><a href="#鼠标输入">鼠标输入</a>
+<li><a href="#疑难杂症">疑难杂症——👇</a>
 <ul>
-<li><a href="#1-onmouse方法">1.OnMouse方法</a></li>
-<li><a href="#2-ray">2.Ray</a></li>
+<li><a href="#一亿个注意">一亿个注意:</a>
+<ul>
+<li><a href="#1-local和global">1.Local和Global</a></li>
+<li><a href="#2-awake-和start">2.Awake()和Start()</a></li>
+<li><a href="#3-update-和fixupdate">3.Update()和FixUpdate()</a></li>
+<li><a href="#4-transform01translate0">4.transform01translate0</a></li>
+<li><a href="#5">5.</a></li>
 </ul></li>
-<li><a href="#键盘输入">键盘输入</a></li>
-<li><a href="#触屏输入">触屏输入</a></li>
+</ul></li>
 </ul>
 </nav></div>
 			
@@ -450,72 +446,45 @@ var bodyBgSwitchIndex = 0;var gradients = [
 			<article class="post-content twemoji">
 				
 
-<h1 id="鼠标输入">鼠标输入&nbsp;<a class="anchor" href="#鼠标输入"><i class="small linkify icon"></i></a> </h1>
+<h1 id="疑难杂症">疑难杂症——👇&nbsp;<a class="anchor" href="#疑难杂症"><i class="small linkify icon"></i></a> </h1>
 
-<h2 id="1-onmouse方法">1.OnMouse方法&nbsp;<a class="anchor" href="#1-onmouse方法"><i class="small linkify icon"></i></a> </h2>
+<h2 id="一亿个注意">一亿个注意:&nbsp;<a class="anchor" href="#一亿个注意"><i class="small linkify icon"></i></a> </h2>
+
+<h3 id="1-local和global">1.Local和Global&nbsp;<a class="anchor" href="#1-local和global"><i class="small linkify icon"></i></a> </h3>
 
 <blockquote>
-<p>OnMouseEnter()：当鼠标进入GUIElement或Collider时调用。（只调用一次）</p>
+<p><font color=#191970>Local是指的自身的坐标，Global指的是世界坐标。</p>
 
-<p>OnMouseExit()：鼠标离开GUIElement或Collider时调用。</p>
+<p>假如一个物体没有父物体（即这个物体不是某个物体的子物体），或者父物体的坐标为（0，0，0）。这时候Local和Global的坐标是一样的。</p>
 
-<p>OnMouseOver()：鼠标悬停在GUIElement或Collider上时调用每一帧。</p>
-
-<p>OnMouseDown()：鼠标在GUIElement或Collider上点击时调用。</p>
-
-<p>OnMouseIp()：释放鼠标按钮时调用。</p>
-
-<p>OnMouseDrag()：鼠标拖拽GUIElement或Collider时调用。</p>
-
-<p>OnMouseUpAsButton()：只有当鼠标在同一个GUIElement或Collider按下，释放时调用。</p>
+<p>假如有父物体，Local坐标是相对与父物体的坐标，而Global是指在空间中实际的坐标。</font></p>
 </blockquote>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="k">public</span> <span class="k">class</span> <span class="nc">ObjectController</span> <span class="p">:</span> <span class="n">MonoBehaviour</span> <span class="p">{</span>
 
-    <span class="k">private</span> <span class="k">void</span> <span class="n">OnMouseEnter</span><span class="p">()</span><span class="c1">//当鼠标进入GUIElement或Collider时调用。（只调用一次）
-</span><span class="c1"></span>    <span class="p">{</span>
-        <span class="k">this</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">localScale</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Vector3</span><span class="p">(</span><span class="m">1.3f</span><span class="p">,</span> <span class="m">1.3f</span><span class="p">,</span> <span class="m">1.3f</span><span class="p">);</span><span class="c1">//物体放大1.3倍
-</span><span class="c1"></span>    <span class="p">}</span>
+<h3 id="2-awake-和start">2.Awake()和Start()&nbsp;<a class="anchor" href="#2-awake-和start"><i class="small linkify icon"></i></a> </h3>
 
-    <span class="k">private</span> <span class="k">void</span> <span class="n">OnMouseExit</span><span class="p">()</span><span class="c1">//鼠标离开
-</span><span class="c1"></span>    <span class="p">{</span>
-        <span class="k">this</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">localScale</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Vector3</span><span class="p">(</span><span class="m">1f</span><span class="p">,</span> <span class="m">1f</span><span class="p">,</span> <span class="m">1f</span><span class="p">);</span><span class="c1">//大小还原
-</span><span class="c1"></span>        <span class="k">this</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">rotation</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Quaternion</span><span class="p">(</span><span class="m">0f</span><span class="p">,</span><span class="m">0f</span><span class="p">,</span><span class="m">0f</span><span class="p">,</span><span class="m">0f</span><span class="p">);</span><span class="c1">//位置还原
-</span><span class="c1"></span>    <span class="p">}</span>
+<blockquote>
+<p><font color=#008080>Awake()在游戏开始时自动调用，无论是否激活脚本组件都能被调用，一般用来创建变量。</p>
 
-    <span class="k">private</span> <span class="k">void</span> <span class="n">OnMouseOver</span><span class="p">()</span><span class="c1">//鼠标悬停在GUIElement或Collider上时调用每一帧。
-</span><span class="c1"></span>    <span class="p">{</span>
-        <span class="k">this</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">Rotate</span><span class="p">(</span><span class="n">Vector3</span><span class="p">.</span><span class="n">up</span><span class="p">,</span> <span class="m">45</span> <span class="p">*</span> <span class="n">Time</span><span class="p">.</span><span class="n">deltaTime</span><span class="p">,</span> <span class="n">Space</span><span class="p">.</span><span class="n">Self</span><span class="p">);</span><span class="c1">//随时间旋转
-</span><span class="c1"></span>    <span class="p">}</span>
-<span class="p">}</span></code></pre></td></tr></table>
-</div>
-</div>
-<h2 id="2-ray">2.Ray&nbsp;<a class="anchor" href="#2-ray"><i class="small linkify icon"></i></a> </h2>
+<p>Start()在Awake之后Update之前，一般用来初始化变量。</font></p>
+</blockquote>
 
-<h1 id="键盘输入">键盘输入&nbsp;<a class="anchor" href="#键盘输入"><i class="small linkify icon"></i></a> </h1>
+<h3 id="3-update-和fixupdate">3.Update()和FixUpdate()&nbsp;<a class="anchor" href="#3-update-和fixupdate"><i class="small linkify icon"></i></a> </h3>
 
-<h1 id="触屏输入">触屏输入&nbsp;<a class="anchor" href="#触屏输入"><i class="small linkify icon"></i></a> </h1>
+<blockquote>
+<p>Update()每一帧调用一次，一般用于非物理运动，如逻辑运算 。</p>
+
+<p>Fixupdate()每隔固定时间调用一次，通过Edit-&gt;Project Settings-&gt;Time 进行设置，默认为20毫秒 ，一般用于物理运动。</p>
+</blockquote>
+
+<h3 id="4-transform01translate0">4.transform01translate0&nbsp;<a class="anchor" href="#4-transform01translate0"><i class="small linkify icon"></i></a> </h3>
+
+<blockquote>
+<p>transform是Gameobject的位置属性，translate是一个动作属性。</p>
+
+<p>获取某个object的位置信息时就是transform，若是对其做动作，那就translate。</p>
+</blockquote>
+
+<h3 id="5">5.&nbsp;<a class="anchor" href="#5"><i class="small linkify icon"></i></a> </h3>
 
 			</article>
 		</section>
@@ -534,6 +503,8 @@ var bodyBgSwitchIndex = 0;var gradients = [
 
 <a class="ui label" href="/tags/word-book" title="word-book">word-book</a>
 
+<a class="ui label" href="/tags/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93" title="数据传输">数据传输</a>
+
 
 		</section><section class="ui secondary  attached segment share row box"><div class="author"><img class="avatar" src="/img/avatar.png">
 	
@@ -549,7 +520,7 @@ var bodyBgSwitchIndex = 0;var gradients = [
 			'width=626,height=436'); return false;">
 		<button class="ui facebook button"><i class="facebook icon"></i>Share</button>
 	</div>
-	<div class="twitter none flexbox" onclick="window.open('https://twitter.com/intent/tweet?text=Read &quot;脚本的输入与控制  \/post\/script-input-and-control\/','_self')">
+	<div class="twitter none flexbox" onclick="window.open('https://twitter.com/intent/tweet?text=Read &quot;Unity 注意事项  \/post\/unity-notes-01\/','_self')">
 		<button class="ui twitter button"><i class="twitter icon"></i>Tweet</button>
 	</div>
 </section></section>
@@ -559,8 +530,8 @@ var bodyBgSwitchIndex = 0;var gradients = [
 		<div class="ui secondary bottom attached stacked segment disqus"><div id="disqus_thread"></div>
 <script>
 	var disqus_config = function () {
-		this.page.url = '\/post\/script-input-and-control\/';
-		this.page.identifier = '000ee88b0867f414cbfa7796036ba034';
+		this.page.url = '\/post\/unity-notes-01\/';
+		this.page.identifier = 'ecdfe389a4a52e2ce385eaf6ab3ade97';
 	};
 	(function() {
    	var d = document, s = d.createElement('script');

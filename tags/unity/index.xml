@@ -13,10 +13,10 @@
     
     <item>
       <title>脚本的输入与控制</title>
-      <link>/post/script-input-and-control/</link>
+      <link>/post/script-input_control/</link>
       <pubDate>Mon, 30 Jul 2018 16:36:45 +0800</pubDate>
       
-      <guid>/post/script-input-and-control/</guid>
+      <guid>/post/script-input_control/</guid>
       <description>鼠标输入 1.OnMouse方法  OnMouseEnter()：当鼠标进入GUIElement或Collider时调用。（只调用一次）
 OnMouseExit()：鼠标离开GUIElement或Collider时调用。
 OnMouseOver()：鼠标悬停在GUIElement或Collider上时调用每一帧。
@@ -29,10 +29,10 @@ OnMouseUpAsButton()：只有当鼠标在同一个GUIElement或Collider按下，�
     
     <item>
       <title>MonoBehavior 常用方法</title>
-      <link>/post/monobehavior-common-method/</link>
+      <link>/post/monobehavior-common_method-01/</link>
       <pubDate>Mon, 30 Jul 2018 15:04:16 +0800</pubDate>
       
-      <guid>/post/monobehavior-common-method/</guid>
+      <guid>/post/monobehavior-common_method-01/</guid>
       <description>继承函数  继承自Object
  Destroy：物体销毁
  Instantiate：物体生成
@@ -47,10 +47,10 @@ OnMouseUpAsButton()：只有当鼠标在同一个GUIElement或Collider按下，�
     
     <item>
       <title>Unity Script</title>
-      <link>/post/unity-script/</link>
+      <link>/post/unity-script-0/</link>
       <pubDate>Sat, 21 Jul 2018 15:26:16 +0800</pubDate>
       
-      <guid>/post/unity-script/</guid>
+      <guid>/post/unity-script-0/</guid>
       <description>Monobehavior事件响应 启动与刷新函数 启动  Reset() Awake()   在游戏开始之前初始化任何变量或游戏状态。
   Start   在任何Update方法之前，只调用一次。
  刷新  FixUpdate()   每个固定帧率帧都会调用此函数。 (用于物理效果)
@@ -67,10 +67,10 @@ OnMouseUpAsButton()：只有当鼠标在同一个GUIElement或Collider按下，�
     
     <item>
       <title>Unity 注意事项</title>
-      <link>/post/unity-notes/</link>
+      <link>/post/unity-notes-01/</link>
       <pubDate>Sat, 21 Jul 2018 10:38:10 +0800</pubDate>
       
-      <guid>/post/unity-notes/</guid>
+      <guid>/post/unity-notes-01/</guid>
       <description> 疑难杂症——👇 一亿个注意: 1.Local和Global  Local是指的自身的坐标，Global指的是世界坐标。
 假如一个物体没有父物体（即这个物体不是某个物体的子物体），或者父物体的坐标为（0，0，0）。这时候Local和Global的坐标是一样的。
 假如有父物体，Local坐标是相对与父物体的坐标，而Global是指在空间中实际的坐标。

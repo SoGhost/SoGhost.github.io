@@ -15,34 +15,23 @@ body, body.pushable {
 }
 
 </style><title>
-Unity Audio
+JSON格式
 </title><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<meta name="author" content="So Serious" />
-	<meta name="description" content=" Audio Source  1.Audio Source
- Audio Clip：音频剪辑
- Output：输出
- Audio Mixer Group：音频混音器组
- Mute：静音
- Bypass Effectes：绕过效果
- Bypass Listener Effects：绕过监听器效果
- Bypass Reverb Zones：绕过混响区
- Play On Wake：开始时播放
- Loop：循环
- Priority：优先
- Volume：音量
- Pitch：
- Stereo Pan：
- Spatial Blend：空间混合
- Reverb Zone Mix：
-  2.3D Sound Setting
- Doppler Level：多普勒级别 Spread：传播 Volume Rolloff： Min Distance：最小距离 Max Distance：最大距离   " />
+	<meta name="description" content="JSON  JSON：是一种轻量级的数据交换格式。基于JavaScript的一个子集。JSON采用完全独立于语言的文本格式。Unity主要使用JSON进行服务器端和客户端数据传输。
+ JSON结构  通过对象、数组两种结构，就可以组成复杂的数据结构。
+  JSON对象   对象：表示为 ‘ {} ’ 括起来的内容，数据结果为键值对的结构。
+{ &amp;ldquo;name&amp;rdquo; : &amp;ldquo;Test Name&amp;rdquo; }
+属性可以为 数字、字符串、数组、对象。
+  JSON数组   数组：中括号 &amp;lsquo; [ ] &amp;lsquo; 括起来的内容，数据结构为 [ &amp;ldquo;C#&amp;rdquo;, &amp;ldquo;Unity&amp;rdquo;, &amp;hellip;] ，取值方式和所有语言一样，使用索引获取，字段值的类型可以是 数字、字符串、数组、对象。
+  JSON示例  1 2 3 4 5 6 7 8 9  //Json对象 { &amp;#34;name&amp;#34;:&amp;#34;Ted&amp;#34;, &amp;#34;Lv&amp;#34;:1, &amp;#34;Job&amp;#34;:&amp;#34;法师&amp;#34;, &amp;#34;Exp&amp;#34;:1.1 } //复杂Json对象 { &amp;#34;name&amp;#34;:&amp;#34;Jack&amp;#34;, &amp;#34;info&amp;#34;:{ &amp;#34;Lv&amp;#34;:2, &amp;#34;Job&amp;#34;:&amp;#34;战士&amp;#34;, &amp;#34;Exp&amp;#34;:2." />
 <meta name="generator" content="Hugo 0.44" />
 
 <link rel="shortcut icon" href="/img/PY-Blog.ico">
 
-<link rel="canonical" href="/post/unity-audio%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/" />
+<link rel="canonical" href="/post/json/" />
 <link rel="alternative" href="/index.xml" title="PY-&gt; Blog" type="application/atom+xml"/>
 <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet"> 
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
@@ -126,6 +115,8 @@ var bodyBgSwitchIndex = 0;var gradients = [
 
 <a class="ui label" href="/tags/word-book" title="word-book">word-book</a>
 
+<a class="ui label" href="/tags/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93" title="数据传输">数据传输</a>
+
 </section>	
 	
 	<section class="ui attached inverted segment sidebar-dream-categories both flexbox">
@@ -158,7 +149,7 @@ var bodyBgSwitchIndex = 0;var gradients = [
 </div>
 <div class="content">
 
-	<a class="item" href="/post/%E6%B8%B8%E6%88%8F%E5%B8%B8%E7%94%A8%E8%8B%B1%E6%96%87/">
+	<a class="item" href="/post/game-words/">
 		<div>
 			<i class="cocktail icon"></i>
 			<p>游戏常用英文</p>
@@ -180,56 +171,49 @@ var bodyBgSwitchIndex = 0;var gradients = [
 </div>
 <div class="content">
 
-	<a class="item" href="/post/ai%E9%80%BB%E8%BE%91/">
+	<a class="item" href="/post/unity-ai-01/">
 		<div>
 			<i class="cocktail icon"></i>
 			<p>AI逻辑</p>
 		</div>
 	</a>
 
-	<a class="item" href="/post/fps-%E8%A7%86%E8%A7%92%E5%92%8C%E7%A7%BB%E5%8A%A8/">
+	<a class="item" href="/post/unity-fps-view_move/">
 		<div>
 			<i class="cocktail icon"></i>
 			<p>FPS_视角和移动</p>
 		</div>
 	</a>
 
-	<a class="item" href="/post/%E6%AD%A6%E5%99%A8%E8%B7%9F%E9%9A%8F%E9%95%9C%E5%A4%B4%E6%97%8B%E8%BD%AC/">
-		<div>
-			<i class="cocktail icon"></i>
-			<p>武器跟随镜头旋转</p>
-		</div>
-	</a>
-
-	<a class="item" href="/post/unity-audio%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/">
+	<a class="item" href="/post/unity-audio-01/">
 		<div>
 			<i class="cocktail icon"></i>
 			<p>Unity Audio</p>
 		</div>
 	</a>
 
-	<a class="item" href="/post/script-input-and-control/">
+	<a class="item" href="/post/script-input_control/">
 		<div>
 			<i class="cocktail icon"></i>
 			<p>脚本的输入与控制</p>
 		</div>
 	</a>
 
-	<a class="item" href="/post/monobehavior-common-method/">
+	<a class="item" href="/post/monobehavior-common_method-01/">
 		<div>
 			<i class="cocktail icon"></i>
 			<p>MonoBehavior 常用方法</p>
 		</div>
 	</a>
 
-	<a class="item" href="/post/unity-script/">
+	<a class="item" href="/post/unity-script-0/">
 		<div>
 			<i class="cocktail icon"></i>
 			<p>Unity Script</p>
 		</div>
 	</a>
 
-	<a class="item" href="/post/unity-notes/">
+	<a class="item" href="/post/unity-notes-01/">
 		<div>
 			<i class="cocktail icon"></i>
 			<p>Unity 注意事项</p>
@@ -313,6 +297,8 @@ var bodyBgSwitchIndex = 0;var gradients = [
 
 <a class="ui label" href="/tags/word-book" title="word-book">word-book</a>
 
+<a class="ui label" href="/tags/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93" title="数据传输">数据传输</a>
+
 </section><section class="ui attached inverted segment dream-categories both flexbox">
 			<div class="inverted accordion">
 <div class="title">
@@ -343,7 +329,7 @@ var bodyBgSwitchIndex = 0;var gradients = [
 </div>
 <div class="content">
 
-	<a class="item" href="/post/%E6%B8%B8%E6%88%8F%E5%B8%B8%E7%94%A8%E8%8B%B1%E6%96%87/">
+	<a class="item" href="/post/game-words/">
 		<div>
 			<i class="cocktail icon"></i>
 			<p>游戏常用英文</p>
@@ -365,56 +351,49 @@ var bodyBgSwitchIndex = 0;var gradients = [
 </div>
 <div class="content">
 
-	<a class="item" href="/post/ai%E9%80%BB%E8%BE%91/">
+	<a class="item" href="/post/unity-ai-01/">
 		<div>
 			<i class="cocktail icon"></i>
 			<p>AI逻辑</p>
 		</div>
 	</a>
 
-	<a class="item" href="/post/fps-%E8%A7%86%E8%A7%92%E5%92%8C%E7%A7%BB%E5%8A%A8/">
+	<a class="item" href="/post/unity-fps-view_move/">
 		<div>
 			<i class="cocktail icon"></i>
 			<p>FPS_视角和移动</p>
 		</div>
 	</a>
 
-	<a class="item" href="/post/%E6%AD%A6%E5%99%A8%E8%B7%9F%E9%9A%8F%E9%95%9C%E5%A4%B4%E6%97%8B%E8%BD%AC/">
-		<div>
-			<i class="cocktail icon"></i>
-			<p>武器跟随镜头旋转</p>
-		</div>
-	</a>
-
-	<a class="item" href="/post/unity-audio%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/">
+	<a class="item" href="/post/unity-audio-01/">
 		<div>
 			<i class="cocktail icon"></i>
 			<p>Unity Audio</p>
 		</div>
 	</a>
 
-	<a class="item" href="/post/script-input-and-control/">
+	<a class="item" href="/post/script-input_control/">
 		<div>
 			<i class="cocktail icon"></i>
 			<p>脚本的输入与控制</p>
 		</div>
 	</a>
 
-	<a class="item" href="/post/monobehavior-common-method/">
+	<a class="item" href="/post/monobehavior-common_method-01/">
 		<div>
 			<i class="cocktail icon"></i>
 			<p>MonoBehavior 常用方法</p>
 		</div>
 	</a>
 
-	<a class="item" href="/post/unity-script/">
+	<a class="item" href="/post/unity-script-0/">
 		<div>
 			<i class="cocktail icon"></i>
 			<p>Unity Script</p>
 		</div>
 	</a>
 
-	<a class="item" href="/post/unity-notes/">
+	<a class="item" href="/post/unity-notes-01/">
 		<div>
 			<i class="cocktail icon"></i>
 			<p>Unity 注意事项</p>
@@ -437,16 +416,20 @@ var bodyBgSwitchIndex = 0;var gradients = [
 	<div class="sixteen wide mobile fifteen wide tablet twelve wide computer column post-list">
 		<section class="ui secondary top attached black segment post-head">
 			<h1 class="post-title">
-				Unity Audio
+				JSON格式
 			</h1>
 			<div class="sub header">
-					<div><span><i class="calendar outline icon"></i>Aug 5, 2018</span></div><div><span class="disqusComment"><i class="comment outline icon"></i><a href="/post/unity-audio%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/#disqus_thread" class="disqus-comment-count" data-disqus-identifier="23651d610a92aaeee77e7b38551619ff"></a></span></div>
+					<div><span><i class="calendar outline icon"></i>Aug 6, 2018</span></div><div><span class="disqusComment"><i class="comment outline icon"></i><a href="/post/json/#disqus_thread" class="disqus-comment-count" data-disqus-identifier="16d851bbafe1f8da23f843c822049392"></a></span></div>
 					<div><span><i class="clock outline icon"></i>1 min read</span></div>
-					<div><span><i class="angle double up icon"></i>更新于 Aug 5, 2018</span></div>
+					<div><span><i class="angle double up icon"></i>更新于 Aug 6, 2018</span></div>
 			</div>
 			<hr><div class="toc"><nav id="TableOfContents">
 <ul>
-<li><a href="#audio-source">Audio Source</a></li>
+<li><a href="#json">JSON</a>
+<ul>
+<li><a href="#json结构">JSON结构</a></li>
+<li><a href="#litjson工具">LitJSON工具</a></li>
+</ul></li>
 </ul>
 </nav></div>
 			
@@ -454,53 +437,70 @@ var bodyBgSwitchIndex = 0;var gradients = [
 			<article class="post-content twemoji">
 				
 
-<h1 id="audio-source">Audio Source&nbsp;<a class="anchor" href="#audio-source"><i class="small linkify icon"></i></a> </h1>
+<h1 id="json">JSON&nbsp;<a class="anchor" href="#json"><i class="small linkify icon"></i></a> </h1>
 
 <blockquote>
-<p>1.Audio Source</p>
-
-<ul>
-<li><p>Audio Clip：音频剪辑</p></li>
-
-<li><p>Output：输出</p></li>
-
-<li><p>Audio Mixer Group：音频混音器组</p></li>
-
-<li><p>Mute：静音</p></li>
-
-<li><p>Bypass Effectes：绕过效果</p></li>
-
-<li><p>Bypass Listener Effects：绕过监听器效果</p></li>
-
-<li><p>Bypass Reverb Zones：绕过混响区</p></li>
-
-<li><p>Play On Wake：开始时播放</p></li>
-
-<li><p>Loop：循环</p></li>
-
-<li><p>Priority：优先</p></li>
-
-<li><p>Volume：音量</p></li>
-
-<li><p>Pitch：</p></li>
-
-<li><p>Stereo Pan：</p></li>
-
-<li><p>Spatial Blend：空间混合</p></li>
-
-<li><p>Reverb Zone Mix：</p></li>
-</ul>
-
-<p>2.3D Sound Setting</p>
-
-<ul>
-<li>Doppler Level：多普勒级别</li>
-<li>Spread：传播</li>
-<li>Volume Rolloff：</li>
-<li>Min Distance：最小距离</li>
-<li>Max Distance：最大距离</li>
-</ul>
+<p>JSON：是一种轻量级的数据交换格式。基于JavaScript的一个子集。JSON采用完全独立于语言的文本格式。Unity主要使用JSON进行服务器端和客户端数据传输。</p>
 </blockquote>
+
+<h2 id="json结构">JSON结构&nbsp;<a class="anchor" href="#json结构"><i class="small linkify icon"></i></a> </h2>
+
+<blockquote>
+<p>通过对象、数组两种结构，就可以组成复杂的数据结构。</p>
+</blockquote>
+
+<ul>
+<li>JSON对象</li>
+</ul>
+
+<blockquote>
+<p>对象：表示为 ‘ {} ’ 括起来的内容，数据结果为键值对的结构。</p>
+
+<p>{ &ldquo;name&rdquo; : &ldquo;Test Name&rdquo; }</p>
+
+<p>属性可以为 数字、字符串、数组、对象。</p>
+</blockquote>
+
+<ul>
+<li>JSON数组</li>
+</ul>
+
+<blockquote>
+<p>数组：中括号 &lsquo; [ ] &lsquo; 括起来的内容，数据结构为 [ &ldquo;C#&rdquo;, &ldquo;Unity&rdquo;, &hellip;] ，取值方式和所有语言一样，使用索引获取，字段值的类型可以是 数字、字符串、数组、对象。</p>
+</blockquote>
+
+<hr />
+
+<ul>
+<li>JSON示例</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-json" data-lang="json"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-json" data-lang="json"><span class="err">//Json对象</span>
+<span class="p">{</span> <span class="nt">&#34;name&#34;</span><span class="p">:</span><span class="s2">&#34;Ted&#34;</span><span class="p">,</span> <span class="nt">&#34;Lv&#34;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="nt">&#34;Job&#34;</span><span class="p">:</span><span class="s2">&#34;法师&#34;</span><span class="p">,</span> <span class="nt">&#34;Exp&#34;</span><span class="p">:</span><span class="mf">1.1</span> <span class="p">}</span>
+<span class="err">//复杂Json对象</span>
+<span class="p">{</span> <span class="nt">&#34;name&#34;</span><span class="p">:</span><span class="s2">&#34;Jack&#34;</span><span class="p">,</span> <span class="nt">&#34;info&#34;</span><span class="p">:{</span> <span class="nt">&#34;Lv&#34;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="nt">&#34;Job&#34;</span><span class="p">:</span><span class="s2">&#34;战士&#34;</span><span class="p">,</span> <span class="nt">&#34;Exp&#34;</span><span class="p">:</span><span class="mf">2.2</span> <span class="p">}}</span>
+<span class="err">//Json数组</span>
+<span class="p">[</span>
+    <span class="p">{</span> <span class="nt">&#34;name&#34;</span><span class="p">:</span><span class="s2">&#34;Ted&#34;</span><span class="p">,</span> <span class="nt">&#34;Lv&#34;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="nt">&#34;Job&#34;</span><span class="p">:</span><span class="s2">&#34;法师&#34;</span><span class="p">,</span> <span class="nt">&#34;Exp&#34;</span><span class="p">:</span><span class="mf">1.1</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="nt">&#34;name&#34;</span><span class="p">:</span><span class="s2">&#34;Jack&#34;</span><span class="p">,</span> <span class="nt">&#34;Lv&#34;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="nt">&#34;Job&#34;</span><span class="p">:</span><span class="s2">&#34;战士&#34;</span><span class="p">,</span> <span class="nt">&#34;Exp&#34;</span><span class="p">:</span><span class="mf">2.2</span> <span class="p">}</span>
+<span class="p">]</span></code></pre></td></tr></table>
+</div>
+</div>
+<hr />
+
+<h2 id="litjson工具">LitJSON工具&nbsp;<a class="anchor" href="#litjson工具"><i class="small linkify icon"></i></a> </h2>
 
 			</article>
 		</section>
@@ -519,6 +519,8 @@ var bodyBgSwitchIndex = 0;var gradients = [
 
 <a class="ui label" href="/tags/word-book" title="word-book">word-book</a>
 
+<a class="ui label" href="/tags/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93" title="数据传输">数据传输</a>
+
 
 		</section><section class="ui secondary  attached segment share row box"><div class="author"><img class="avatar" src="/img/avatar.png">
 	
@@ -534,7 +536,7 @@ var bodyBgSwitchIndex = 0;var gradients = [
 			'width=626,height=436'); return false;">
 		<button class="ui facebook button"><i class="facebook icon"></i>Share</button>
 	</div>
-	<div class="twitter none flexbox" onclick="window.open('https://twitter.com/intent/tweet?text=Read &quot;Unity Audio  \/post\/unity-audio%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86\/','_self')">
+	<div class="twitter none flexbox" onclick="window.open('https://twitter.com/intent/tweet?text=Read &quot;JSON格式  \/post\/json\/','_self')">
 		<button class="ui twitter button"><i class="twitter icon"></i>Tweet</button>
 	</div>
 </section></section>
@@ -544,8 +546,8 @@ var bodyBgSwitchIndex = 0;var gradients = [
 		<div class="ui secondary bottom attached stacked segment disqus"><div id="disqus_thread"></div>
 <script>
 	var disqus_config = function () {
-		this.page.url = '\/post\/unity-audio%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86\/';
-		this.page.identifier = '23651d610a92aaeee77e7b38551619ff';
+		this.page.url = '\/post\/json\/';
+		this.page.identifier = '16d851bbafe1f8da23f843c822049392';
 	};
 	(function() {
    	var d = document, s = d.createElement('script');

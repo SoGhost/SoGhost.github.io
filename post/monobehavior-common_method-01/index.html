@@ -15,17 +15,26 @@ body, body.pushable {
 }
 
 </style><title>
-AI逻辑
+MonoBehavior 常用方法
 </title><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<meta name="author" content="So Serious" />
-	<meta name="description" content="" />
+	<meta name="description" content="继承函数  继承自Object
+ Destroy：物体销毁
+ Instantiate：物体生成
+ CompareTag：物体辨认
+  继承自Component
+ SendMessage：消息推送   自身函数 1.Invoke：延迟执行程序
+ Invoke(string methodName, float time); InvokeRepeating(string methodName, float time, float repeatRate);   重复调用函数，重复间隔。
+  IsInvoking(string methodName);   检测是否在继续调用。
+  CanceInvoke();  CanceInvoke(string methodName);    清楚所有Invoke或针对某一函数。
+    2.Coroutine：协同执行程序" />
 <meta name="generator" content="Hugo 0.44" />
 
 <link rel="shortcut icon" href="/img/PY-Blog.ico">
 
-<link rel="canonical" href="/post/ai%E9%80%BB%E8%BE%91/" />
+<link rel="canonical" href="/post/monobehavior-common_method-01/" />
 <link rel="alternative" href="/index.xml" title="PY-&gt; Blog" type="application/atom+xml"/>
 <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet"> 
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
@@ -109,6 +118,8 @@ var bodyBgSwitchIndex = 0;var gradients = [
 
 <a class="ui label" href="/tags/word-book" title="word-book">word-book</a>
 
+<a class="ui label" href="/tags/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93" title="数据传输">数据传输</a>
+
 </section>	
 	
 	<section class="ui attached inverted segment sidebar-dream-categories both flexbox">
@@ -141,7 +152,7 @@ var bodyBgSwitchIndex = 0;var gradients = [
 </div>
 <div class="content">
 
-	<a class="item" href="/post/%E6%B8%B8%E6%88%8F%E5%B8%B8%E7%94%A8%E8%8B%B1%E6%96%87/">
+	<a class="item" href="/post/game-words/">
 		<div>
 			<i class="cocktail icon"></i>
 			<p>游戏常用英文</p>
@@ -163,56 +174,49 @@ var bodyBgSwitchIndex = 0;var gradients = [
 </div>
 <div class="content">
 
-	<a class="item" href="/post/ai%E9%80%BB%E8%BE%91/">
+	<a class="item" href="/post/unity-ai-01/">
 		<div>
 			<i class="cocktail icon"></i>
 			<p>AI逻辑</p>
 		</div>
 	</a>
 
-	<a class="item" href="/post/fps-%E8%A7%86%E8%A7%92%E5%92%8C%E7%A7%BB%E5%8A%A8/">
+	<a class="item" href="/post/unity-fps-view_move/">
 		<div>
 			<i class="cocktail icon"></i>
 			<p>FPS_视角和移动</p>
 		</div>
 	</a>
 
-	<a class="item" href="/post/%E6%AD%A6%E5%99%A8%E8%B7%9F%E9%9A%8F%E9%95%9C%E5%A4%B4%E6%97%8B%E8%BD%AC/">
-		<div>
-			<i class="cocktail icon"></i>
-			<p>武器跟随镜头旋转</p>
-		</div>
-	</a>
-
-	<a class="item" href="/post/unity-audio%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/">
+	<a class="item" href="/post/unity-audio-01/">
 		<div>
 			<i class="cocktail icon"></i>
 			<p>Unity Audio</p>
 		</div>
 	</a>
 
-	<a class="item" href="/post/script-input-and-control/">
+	<a class="item" href="/post/script-input_control/">
 		<div>
 			<i class="cocktail icon"></i>
 			<p>脚本的输入与控制</p>
 		</div>
 	</a>
 
-	<a class="item" href="/post/monobehavior-common-method/">
+	<a class="item" href="/post/monobehavior-common_method-01/">
 		<div>
 			<i class="cocktail icon"></i>
 			<p>MonoBehavior 常用方法</p>
 		</div>
 	</a>
 
-	<a class="item" href="/post/unity-script/">
+	<a class="item" href="/post/unity-script-0/">
 		<div>
 			<i class="cocktail icon"></i>
 			<p>Unity Script</p>
 		</div>
 	</a>
 
-	<a class="item" href="/post/unity-notes/">
+	<a class="item" href="/post/unity-notes-01/">
 		<div>
 			<i class="cocktail icon"></i>
 			<p>Unity 注意事项</p>
@@ -296,6 +300,8 @@ var bodyBgSwitchIndex = 0;var gradients = [
 
 <a class="ui label" href="/tags/word-book" title="word-book">word-book</a>
 
+<a class="ui label" href="/tags/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93" title="数据传输">数据传输</a>
+
 </section><section class="ui attached inverted segment dream-categories both flexbox">
 			<div class="inverted accordion">
 <div class="title">
@@ -326,7 +332,7 @@ var bodyBgSwitchIndex = 0;var gradients = [
 </div>
 <div class="content">
 
-	<a class="item" href="/post/%E6%B8%B8%E6%88%8F%E5%B8%B8%E7%94%A8%E8%8B%B1%E6%96%87/">
+	<a class="item" href="/post/game-words/">
 		<div>
 			<i class="cocktail icon"></i>
 			<p>游戏常用英文</p>
@@ -348,56 +354,49 @@ var bodyBgSwitchIndex = 0;var gradients = [
 </div>
 <div class="content">
 
-	<a class="item" href="/post/ai%E9%80%BB%E8%BE%91/">
+	<a class="item" href="/post/unity-ai-01/">
 		<div>
 			<i class="cocktail icon"></i>
 			<p>AI逻辑</p>
 		</div>
 	</a>
 
-	<a class="item" href="/post/fps-%E8%A7%86%E8%A7%92%E5%92%8C%E7%A7%BB%E5%8A%A8/">
+	<a class="item" href="/post/unity-fps-view_move/">
 		<div>
 			<i class="cocktail icon"></i>
 			<p>FPS_视角和移动</p>
 		</div>
 	</a>
 
-	<a class="item" href="/post/%E6%AD%A6%E5%99%A8%E8%B7%9F%E9%9A%8F%E9%95%9C%E5%A4%B4%E6%97%8B%E8%BD%AC/">
-		<div>
-			<i class="cocktail icon"></i>
-			<p>武器跟随镜头旋转</p>
-		</div>
-	</a>
-
-	<a class="item" href="/post/unity-audio%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/">
+	<a class="item" href="/post/unity-audio-01/">
 		<div>
 			<i class="cocktail icon"></i>
 			<p>Unity Audio</p>
 		</div>
 	</a>
 
-	<a class="item" href="/post/script-input-and-control/">
+	<a class="item" href="/post/script-input_control/">
 		<div>
 			<i class="cocktail icon"></i>
 			<p>脚本的输入与控制</p>
 		</div>
 	</a>
 
-	<a class="item" href="/post/monobehavior-common-method/">
+	<a class="item" href="/post/monobehavior-common_method-01/">
 		<div>
 			<i class="cocktail icon"></i>
 			<p>MonoBehavior 常用方法</p>
 		</div>
 	</a>
 
-	<a class="item" href="/post/unity-script/">
+	<a class="item" href="/post/unity-script-0/">
 		<div>
 			<i class="cocktail icon"></i>
 			<p>Unity Script</p>
 		</div>
 	</a>
 
-	<a class="item" href="/post/unity-notes/">
+	<a class="item" href="/post/unity-notes-01/">
 		<div>
 			<i class="cocktail icon"></i>
 			<p>Unity 注意事项</p>
@@ -420,17 +419,87 @@ var bodyBgSwitchIndex = 0;var gradients = [
 	<div class="sixteen wide mobile fifteen wide tablet twelve wide computer column post-list">
 		<section class="ui secondary top attached black segment post-head">
 			<h1 class="post-title">
-				AI逻辑
+				MonoBehavior 常用方法
 			</h1>
 			<div class="sub header">
-					<div><span><i class="calendar outline icon"></i>Aug 5, 2018</span></div><div><span class="disqusComment"><i class="comment outline icon"></i><a href="/post/ai%E9%80%BB%E8%BE%91/#disqus_thread" class="disqus-comment-count" data-disqus-identifier="0aa343627eb1c1d1efbee86de7ef4dc4"></a></span></div>
-					<div><span><i class="clock outline icon"></i>0 min read</span></div>
-					<div><span><i class="angle double up icon"></i>更新于 Aug 5, 2018</span></div>
+					<div><span><i class="calendar outline icon"></i>Jul 30, 2018</span></div><div><span class="disqusComment"><i class="comment outline icon"></i><a href="/post/monobehavior-common_method-01/#disqus_thread" class="disqus-comment-count" data-disqus-identifier="3eee8a44a52c65769e8b0a465f80a509"></a></span></div>
+					<div><span><i class="clock outline icon"></i>1 min read</span></div>
+					<div><span><i class="angle double up icon"></i>更新于 Jul 30, 2018</span></div>
 			</div>
-			<hr>
+			<hr><div class="toc"><nav id="TableOfContents">
+<ul>
+<li><a href="#继承函数">继承函数</a></li>
+<li><a href="#自身函数">自身函数</a></li>
+</ul>
+</nav></div>
+			
 			
 			<article class="post-content twemoji">
 				
+
+<h1 id="继承函数">继承函数&nbsp;<a class="anchor" href="#继承函数"><i class="small linkify icon"></i></a> </h1>
+
+<ul>
+<li><p>继承自Object</p>
+
+<ul>
+<li><p>Destroy：物体销毁</p></li>
+
+<li><p>Instantiate：物体生成</p></li>
+
+<li><p>CompareTag：物体辨认</p></li>
+</ul></li>
+
+<li><p>继承自Component</p>
+
+<ul>
+<li>SendMessage：消息推送</li>
+</ul></li>
+</ul>
+
+<h1 id="自身函数">自身函数&nbsp;<a class="anchor" href="#自身函数"><i class="small linkify icon"></i></a> </h1>
+
+<p>1.Invoke：延迟执行程序</p>
+
+<ul>
+<li>Invoke(string methodName, float time);</li>
+<li>InvokeRepeating(string methodName, float time, float repeatRate);</li>
+</ul>
+
+<blockquote>
+<p>重复调用函数，重复间隔。</p>
+</blockquote>
+
+<ul>
+<li>IsInvoking(string methodName);</li>
+</ul>
+
+<blockquote>
+<p>检测是否在继续调用。</p>
+</blockquote>
+
+<ul>
+<li>CanceInvoke();
+
+<ul>
+<li>CanceInvoke(string methodName);</li>
+</ul></li>
+</ul>
+
+<blockquote>
+<p>清楚所有Invoke或针对某一函数。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"></code></pre></td></tr></table>
+</div>
+</div></blockquote>
+
+<hr />
+
+<p>2.Coroutine：协同执行程序</p>
+
 			</article>
 		</section>
 		<section class="ui secondary attached segment dream-tags">
@@ -448,6 +517,8 @@ var bodyBgSwitchIndex = 0;var gradients = [
 
 <a class="ui label" href="/tags/word-book" title="word-book">word-book</a>
 
+<a class="ui label" href="/tags/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93" title="数据传输">数据传输</a>
+
 
 		</section><section class="ui secondary  attached segment share row box"><div class="author"><img class="avatar" src="/img/avatar.png">
 	
@@ -463,7 +534,7 @@ var bodyBgSwitchIndex = 0;var gradients = [
 			'width=626,height=436'); return false;">
 		<button class="ui facebook button"><i class="facebook icon"></i>Share</button>
 	</div>
-	<div class="twitter none flexbox" onclick="window.open('https://twitter.com/intent/tweet?text=Read &quot;AI逻辑  \/post\/ai%E9%80%BB%E8%BE%91\/','_self')">
+	<div class="twitter none flexbox" onclick="window.open('https://twitter.com/intent/tweet?text=Read &quot;MonoBehavior 常用方法  \/post\/monobehavior-common_method-01\/','_self')">
 		<button class="ui twitter button"><i class="twitter icon"></i>Tweet</button>
 	</div>
 </section></section>
@@ -473,8 +544,8 @@ var bodyBgSwitchIndex = 0;var gradients = [
 		<div class="ui secondary bottom attached stacked segment disqus"><div id="disqus_thread"></div>
 <script>
 	var disqus_config = function () {
-		this.page.url = '\/post\/ai%E9%80%BB%E8%BE%91\/';
-		this.page.identifier = '0aa343627eb1c1d1efbee86de7ef4dc4';
+		this.page.url = '\/post\/monobehavior-common_method-01\/';
+		this.page.identifier = '3eee8a44a52c65769e8b0a465f80a509';
 	};
 	(function() {
    	var d = document, s = d.createElement('script');
