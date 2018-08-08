@@ -57,6 +57,24 @@
     </item>
     
     <item>
+      <title>Tag1</title>
+      <link>/tags/tag1/</link>
+      <pubDate>Wed, 08 Aug 2018 13:34:19 +0800</pubDate>
+      
+      <guid>/tags/tag1/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tag2</title>
+      <link>/tags/tag2/</link>
+      <pubDate>Wed, 08 Aug 2018 13:34:19 +0800</pubDate>
+      
+      <guid>/tags/tag2/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Unity</title>
       <link>/tags/unity/</link>
       <pubDate>Mon, 30 Jul 2018 16:36:45 +0800</pubDate>

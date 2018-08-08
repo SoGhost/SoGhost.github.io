@@ -21,6 +21,15 @@
     </item>
     
     <item>
+      <title>Category1</title>
+      <link>/categories/category1/</link>
+      <pubDate>Wed, 08 Aug 2018 13:34:19 +0800</pubDate>
+      
+      <guid>/categories/category1/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Notes</title>
       <link>/categories/notes/</link>
       <pubDate>Sun, 05 Aug 2018 14:48:59 +0800</pubDate>
