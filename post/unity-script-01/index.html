@@ -15,12 +15,12 @@ body, body.pushable {
 }
 
 </style><title>
-Unity Script
+Monobehavior事件响应（1）
 </title><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<meta name="author" content="So Serious" />
-	<meta name="description" content="Monobehavior事件响应 启动与刷新函数 启动  Reset() Awake()   在游戏开始之前初始化任何变量或游戏状态。
+	<meta name="description" content="启动与刷新函数 启动  Reset() Awake()   在游戏开始之前初始化任何变量或游戏状态。
   Start   在任何Update方法之前，只调用一次。
  刷新  FixUpdate()   每个固定帧率帧都会调用此函数。 (用于物理效果)
   Update()   则每帧调用更新。(用于处理逻辑)
@@ -183,7 +183,7 @@ var bodyBgSwitchIndex = 0;var gradients = [
 	<a class="item" href="/post/unity-animat-01/">
 		<div>
 			<i class="cocktail icon"></i>
-			<p>Unity 动画系统(1)</p>
+			<p>Unity 动画系统（1）</p>
 		</div>
 	</a>
 
@@ -225,7 +225,7 @@ var bodyBgSwitchIndex = 0;var gradients = [
 	<a class="item" href="/post/unity-script-01/">
 		<div>
 			<i class="cocktail icon"></i>
-			<p>Unity Script</p>
+			<p>Monobehavior事件响应（1）</p>
 		</div>
 	</a>
 
@@ -389,7 +389,7 @@ var bodyBgSwitchIndex = 0;var gradients = [
 	<a class="item" href="/post/unity-animat-01/">
 		<div>
 			<i class="cocktail icon"></i>
-			<p>Unity 动画系统(1)</p>
+			<p>Unity 动画系统（1）</p>
 		</div>
 	</a>
 
@@ -431,7 +431,7 @@ var bodyBgSwitchIndex = 0;var gradients = [
 	<a class="item" href="/post/unity-script-01/">
 		<div>
 			<i class="cocktail icon"></i>
-			<p>Unity Script</p>
+			<p>Monobehavior事件响应（1）</p>
 		</div>
 	</a>
 
@@ -473,16 +473,14 @@ var bodyBgSwitchIndex = 0;var gradients = [
 	<div class="sixteen wide mobile fifteen wide tablet twelve wide computer column post-list">
 		<section class="ui secondary top attached black segment post-head">
 			<h1 class="post-title">
-				Unity Script
+				Monobehavior事件响应（1）
 			</h1>
 			<div class="sub header">
 					<div><span><i class="calendar outline icon"></i>Jul 21, 2018</span></div><div><span class="disqusComment"><i class="comment outline icon"></i><a href="/post/unity-script-01/#disqus_thread" class="disqus-comment-count" data-disqus-identifier="22a86b2731bc2a75b310d2ceb83e7526"></a></span></div>
-					<div><span><i class="clock outline icon"></i>3 min read</span></div>
+					<div><span><i class="clock outline icon"></i>4 min read</span></div>
 					<div><span><i class="angle double up icon"></i>更新于 Jul 21, 2018</span></div>
 			</div>
 			<hr><div class="toc"><nav id="TableOfContents">
-<ul>
-<li><a href="#monobehavior事件响应">Monobehavior事件响应</a>
 <ul>
 <li><a href="#启动与刷新函数">启动与刷新函数</a>
 <ul>
@@ -493,6 +491,8 @@ var bodyBgSwitchIndex = 0;var gradients = [
 <ul>
 <li><a href="#1-物理-physic">1.物理 Physic</a>
 <ul>
+<li>
+<ul>
 <li><a href="#ontriggerenter">OnTriggerEnter()</a></li>
 <li><a href="#ontriggerstay">OnTriggerStay()</a></li>
 <li><a href="#ontriggerexit">OnTriggerExit()</a></li>
@@ -500,20 +500,27 @@ var bodyBgSwitchIndex = 0;var gradients = [
 <li><a href="#oncollisionstay">OnCollisionStay()</a></li>
 <li><a href="#oncollisionexit">OnCollisionExit()</a></li>
 </ul></li>
+</ul></li>
 <li><a href="#2-输入-input">2.输入 Input</a></li>
 <li><a href="#3-渲染-rendering">3.渲染 Rendering</a></li>
 <li><a href="#4-对象与组件">4.对象与组件</a>
+<ul>
+<li>
 <ul>
 <li><a href="#onenable">OnEnable()</a></li>
 <li><a href="#ondisable">OnDisable()</a></li>
 <li><a href="#ondestroy">OnDestroy()</a></li>
 </ul></li>
 </ul></li>
-<li><a href="#transform-场景物体的变换">Transform 场景物体的变换</a>
+</ul></li>
+<li><a href="#transform">Transform</a>
 <ul>
 <li><a href="#1-坐标系">1.坐标系</a>
 <ul>
+<li>
+<ul>
 <li><a href="#变量">变量</a></li>
+</ul></li>
 <li><a href="#函数方法">函数方法</a></li>
 </ul></li>
 <li><a href="#2-位移">2.位移</a>
@@ -541,7 +548,13 @@ var bodyBgSwitchIndex = 0;var gradients = [
 <li><a href="#mathf-数学运算">Mathf 数学运算</a>
 <ul>
 <li><a href="#基础数学">基础数学</a></li>
-<li><a href="#3d-数学">3D 数学</a></li>
+<li><a href="#3d-数学">3D 数学</a>
+<ul>
+<li>
+<ul>
+<li><a href="#点积-dot-product">点积(Dot Product)</a></li>
+<li><a href="#叉积-cross-product">叉积(Cross Product)</a></li>
+</ul></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -551,11 +564,9 @@ var bodyBgSwitchIndex = 0;var gradients = [
 			<article class="post-content twemoji">
 				
 
-<h1 id="monobehavior事件响应">Monobehavior事件响应&nbsp;<a class="anchor" href="#monobehavior事件响应"><i class="small linkify icon"></i></a> </h1>
+<h1 id="启动与刷新函数">启动与刷新函数&nbsp;<a class="anchor" href="#启动与刷新函数"><i class="small linkify icon"></i></a> </h1>
 
-<h2 id="启动与刷新函数">启动与刷新函数&nbsp;<a class="anchor" href="#启动与刷新函数"><i class="small linkify icon"></i></a> </h2>
-
-<h3 id="启动">启动&nbsp;<a class="anchor" href="#启动"><i class="small linkify icon"></i></a> </h3>
+<h2 id="启动">启动&nbsp;<a class="anchor" href="#启动"><i class="small linkify icon"></i></a> </h2>
 
 <ul>
 <li>Reset()</li>
@@ -574,7 +585,7 @@ var bodyBgSwitchIndex = 0;var gradients = [
 <p>在任何Update方法之前，只调用一次。</p>
 </blockquote>
 
-<h3 id="刷新">刷新&nbsp;<a class="anchor" href="#刷新"><i class="small linkify icon"></i></a> </h3>
+<h2 id="刷新">刷新&nbsp;<a class="anchor" href="#刷新"><i class="small linkify icon"></i></a> </h2>
 
 <ul>
 <li>FixUpdate()</li>
@@ -600,9 +611,9 @@ var bodyBgSwitchIndex = 0;var gradients = [
 <p>每帧都会调用LateUpdate 。在调用所有Update函数后调用LateUpdate。</p>
 </blockquote>
 
-<h2 id="交互函数">交互函数&nbsp;<a class="anchor" href="#交互函数"><i class="small linkify icon"></i></a> </h2>
+<h1 id="交互函数">交互函数&nbsp;<a class="anchor" href="#交互函数"><i class="small linkify icon"></i></a> </h1>
 
-<h3 id="1-物理-physic">1.物理 Physic&nbsp;<a class="anchor" href="#1-物理-physic"><i class="small linkify icon"></i></a> </h3>
+<h2 id="1-物理-physic">1.物理 Physic&nbsp;<a class="anchor" href="#1-物理-physic"><i class="small linkify icon"></i></a> </h2>
 
 <h4 id="ontriggerenter">OnTriggerEnter()&nbsp;<a class="anchor" href="#ontriggerenter"><i class="small linkify icon"></i></a> </h4>
 
@@ -640,11 +651,11 @@ var bodyBgSwitchIndex = 0;var gradients = [
 <p>当collider/rigidbody停止触发另一个rigidbody/collider时被调用</p>
 </blockquote>
 
-<h3 id="2-输入-input">2.输入 Input&nbsp;<a class="anchor" href="#2-输入-input"><i class="small linkify icon"></i></a> </h3>
+<h2 id="2-输入-input">2.输入 Input&nbsp;<a class="anchor" href="#2-输入-input"><i class="small linkify icon"></i></a> </h2>
 
-<h3 id="3-渲染-rendering">3.渲染 Rendering&nbsp;<a class="anchor" href="#3-渲染-rendering"><i class="small linkify icon"></i></a> </h3>
+<h2 id="3-渲染-rendering">3.渲染 Rendering&nbsp;<a class="anchor" href="#3-渲染-rendering"><i class="small linkify icon"></i></a> </h2>
 
-<h3 id="4-对象与组件">4.对象与组件&nbsp;<a class="anchor" href="#4-对象与组件"><i class="small linkify icon"></i></a> </h3>
+<h2 id="4-对象与组件">4.对象与组件&nbsp;<a class="anchor" href="#4-对象与组件"><i class="small linkify icon"></i></a> </h2>
 
 <h4 id="onenable">OnEnable()&nbsp;<a class="anchor" href="#onenable"><i class="small linkify icon"></i></a> </h4>
 
@@ -664,9 +675,9 @@ var bodyBgSwitchIndex = 0;var gradients = [
 <p>当Monobehavior（脚本）被销毁时运行</p>
 </blockquote>
 
-<h2 id="transform-场景物体的变换">Transform 场景物体的变换&nbsp;<a class="anchor" href="#transform-场景物体的变换"><i class="small linkify icon"></i></a> </h2>
+<h1 id="transform">Transform&nbsp;<a class="anchor" href="#transform"><i class="small linkify icon"></i></a> </h1>
 
-<h3 id="1-坐标系">1.坐标系&nbsp;<a class="anchor" href="#1-坐标系"><i class="small linkify icon"></i></a> </h3>
+<h2 id="1-坐标系">1.坐标系&nbsp;<a class="anchor" href="#1-坐标系"><i class="small linkify icon"></i></a> </h2>
 
 <h4 id="变量">变量&nbsp;<a class="anchor" href="#变量"><i class="small linkify icon"></i></a> </h4>
 
@@ -678,7 +689,7 @@ var bodyBgSwitchIndex = 0;var gradients = [
 <li>localToworldMatrix</li>
 </ul>
 
-<h4 id="函数方法">函数方法&nbsp;<a class="anchor" href="#函数方法"><i class="small linkify icon"></i></a> </h4>
+<h3 id="函数方法">函数方法&nbsp;<a class="anchor" href="#函数方法"><i class="small linkify icon"></i></a> </h3>
 
 <ul>
 <li>TransformPoint()</li>
@@ -712,16 +723,16 @@ var bodyBgSwitchIndex = 0;var gradients = [
 <p>变换方向从世界坐标到自身坐标</p>
 </blockquote>
 
-<h3 id="2-位移">2.位移&nbsp;<a class="anchor" href="#2-位移"><i class="small linkify icon"></i></a> </h3>
+<h2 id="2-位移">2.位移&nbsp;<a class="anchor" href="#2-位移"><i class="small linkify icon"></i></a> </h2>
 
-<h4 id="变量-1">变量&nbsp;<a class="anchor" href="#变量-1"><i class="small linkify icon"></i></a> </h4>
+<h3 id="变量-1">变量&nbsp;<a class="anchor" href="#变量-1"><i class="small linkify icon"></i></a> </h3>
 
 <ul>
 <li>Position = new Vector3…</li>
 <li>localPosition = new Vector3…</li>
 </ul>
 
-<h4 id="函数方法-1">函数方法&nbsp;<a class="anchor" href="#函数方法-1"><i class="small linkify icon"></i></a> </h4>
+<h3 id="函数方法-1">函数方法&nbsp;<a class="anchor" href="#函数方法-1"><i class="small linkify icon"></i></a> </h3>
 
 <ul>
 <li>Translate()</li>
@@ -733,9 +744,13 @@ var bodyBgSwitchIndex = 0;var gradients = [
 <p>transform.Translate(Vector3* Time.deltaTime, Space.World);</p>
 </blockquote>
 
-<h3 id="3-旋转">3.旋转&nbsp;<a class="anchor" href="#3-旋转"><i class="small linkify icon"></i></a> </h3>
+<h2 id="3-旋转">3.旋转&nbsp;<a class="anchor" href="#3-旋转"><i class="small linkify icon"></i></a> </h2>
 
-<h4 id="变量-2">变量&nbsp;<a class="anchor" href="#变量-2"><i class="small linkify icon"></i></a> </h4>
+<ol>
+<li><strong>基本旋转 Rotate</strong></li>
+</ol>
+
+<h3 id="变量-2">变量&nbsp;<a class="anchor" href="#变量-2"><i class="small linkify icon"></i></a> </h3>
 
 <ul>
 <li>eulerAngles = new Vector3…</li>
@@ -744,7 +759,7 @@ var bodyBgSwitchIndex = 0;var gradients = [
 <li>localRotation = new Quaternion…</li>
 </ul>
 
-<h4 id="函数方法-2">函数方法&nbsp;<a class="anchor" href="#函数方法-2"><i class="small linkify icon"></i></a> </h4>
+<h3 id="函数方法-2">函数方法&nbsp;<a class="anchor" href="#函数方法-2"><i class="small linkify icon"></i></a> </h3>
 
 <ul>
 <li>Rotate()</li>
@@ -763,9 +778,165 @@ var bodyBgSwitchIndex = 0;var gradients = [
 <p>实时看着物体</p>
 </blockquote>
 
-<h3 id="4-缩放">4.缩放&nbsp;<a class="anchor" href="#4-缩放"><i class="small linkify icon"></i></a> </h3>
+<ol>
+<li><strong>四元数 Quaternion</strong></li>
+</ol>
 
-<h4 id="变量-3">变量&nbsp;<a class="anchor" href="#变量-3"><i class="small linkify icon"></i></a> </h4>
+<blockquote>
+<p>Quaternion：四元数用于表示旋转。</p>
+
+<p>它们结构紧凑，不受<strong><u>万向节死锁</u></strong>(Gimbal Lock)定的影响，可以轻松插补。Unity内部使用四元数来表示所有旋转。
+大多数情况下，只需要采用现有的rotation（例如从Transform）并使用它们来构造新的rotation（例如，在两次rotations之间平滑插值）。99％的时间使用的Quaternion函数是：Quaternion.LookRotation，Quaternion.Angle， Quaternion.Euler，Quaternion.Slerp，Quaternion.FromToRotation和Quaternion.identity。</p>
+
+<p>可以使用Quaternion.operator *将一个rotation旋转到另一个rotation，或通过rotation旋转矢量。</p>
+
+<ul>
+<li>属性
+
+<ol>
+<li>eulerAngles： 返回旋转的euler角度。</li>
+<li>normalized：</li>
+</ol></li>
+</ul>
+</blockquote>
+
+<ul>
+<li>Quaternion.RotateTowards(Quaternion from， Quaternion to，float maxDegreesDelta)</li>
+</ul>
+
+<blockquote>
+<p>from 向着 to 旋转，旋转速度。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="p">&gt;</span><span class="k">public</span> <span class="k">class</span> <span class="nc">ExampleClass</span> <span class="p">:</span> <span class="n">MonoBehaviour</span> <span class="p">{</span>
+<span class="p">&gt;</span>    <span class="k">public</span> <span class="n">Transform</span> <span class="n">target</span><span class="p">;</span>
+<span class="p">&gt;</span>    <span class="k">public</span> <span class="kt">float</span> <span class="n">speed</span><span class="p">;</span>
+<span class="p">&gt;</span>    
+<span class="p">&gt;</span>    <span class="k">void</span> <span class="n">Update</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">&gt;</span>    <span class="kt">float</span> <span class="n">step</span> <span class="p">=</span> <span class="n">speed</span> <span class="p">*</span> <span class="n">Time</span><span class="p">.</span><span class="n">deltaTime</span><span class="p">;</span>
+<span class="p">&gt;</span>    <span class="n">transform</span><span class="p">.</span><span class="n">rotation</span> <span class="p">=</span> <span class="n">Quaternion</span><span class="p">.</span><span class="n">RotateTowards</span><span class="p">(</span><span class="n">transform</span><span class="p">.</span><span class="n">rotation</span><span class="p">,</span> 
+<span class="p">&gt;</span>                                               <span class="n">target</span><span class="p">.</span><span class="n">rotation</span><span class="p">,</span><span class="n">step</span><span class="p">);</span>
+<span class="p">&gt;</span>    <span class="p">}</span>
+<span class="p">&gt;}</span>
+<span class="p">&gt;</span><span class="err">```</span>
+
+<span class="p">-</span> <span class="n">Quaternion</span><span class="p">.</span><span class="n">LookRotation</span><span class="p">(</span><span class="n">Vector3</span> <span class="n">forward</span><span class="p">,</span>  <span class="n">Vector3</span> <span class="n">upwards</span> <span class="p">=</span> <span class="n">Vector3</span><span class="p">.</span><span class="n">up</span><span class="p">)</span>
+
+<span class="p">&gt;</span><span class="err">始终看着方向</span> <span class="n">forward</span> <span class="err">旋转</span><span class="p">,</span> <span class="err">定义向上的向量</span><span class="p">(</span><span class="err">默认</span><span class="n">up</span><span class="p">)</span><span class="err">。</span>
+<span class="p">&gt;</span>
+<span class="p">&gt;</span><span class="err">```</span><span class="n">c</span><span class="err">#</span>
+<span class="p">&gt;</span><span class="k">public</span> <span class="k">class</span> <span class="nc">ExampleClass</span> <span class="p">:</span> <span class="n">MonoBehaviour</span> <span class="p">{</span>
+<span class="p">&gt;</span>    <span class="k">public</span> <span class="n">Transform</span> <span class="n">target</span><span class="p">;</span>
+<span class="p">&gt;</span>    
+<span class="p">&gt;</span>    <span class="k">void</span> <span class="n">Update</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">&gt;</span>        <span class="n">Vector3</span> <span class="n">relativePos</span> <span class="p">=</span> <span class="n">target</span><span class="p">.</span><span class="n">position</span> <span class="p">-</span> <span class="n">transform</span><span class="p">.</span><span class="n">position</span><span class="p">;</span>
+<span class="p">&gt;</span>        <span class="n">Quaternion</span> <span class="n">rotation</span> <span class="p">=</span> <span class="n">Quaternion</span><span class="p">.</span><span class="n">LookRotation</span><span class="p">(</span><span class="n">relativePos</span><span class="p">);</span>
+<span class="p">&gt;</span>        <span class="n">transform</span><span class="p">.</span><span class="n">rotation</span> <span class="p">=</span> <span class="n">rotation</span><span class="p">;</span>
+<span class="p">&gt;</span>    <span class="p">}</span>
+<span class="p">&gt;}</span>
+<span class="p">&gt;</span><span class="err">```</span>
+
+<span class="err">```</span><span class="n">c</span><span class="err">#</span>
+<span class="c1">//物体匀速旋转后朝向特定点
+</span><span class="c1"></span><span class="k">public</span> <span class="n">GameObject</span> <span class="n">target</span><span class="p">;</span>
+<span class="n">Vector3</span> <span class="n">currentPosition</span>
+
+<span class="k">void</span> <span class="n">Start</span><span class="p">(){</span>
+    <span class="n">Vector3</span> <span class="n">currentPosition</span> <span class="p">=</span> <span class="n">transform</span><span class="p">.</span><span class="n">position</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">void</span> <span class="n">Update</span><span class="p">(){</span>
+    <span class="n">RoateToTarget</span><span class="p">(</span><span class="n">target</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">position</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">void</span> <span class="n">RoateToTarget</span><span class="p">(</span><span class="n">Vector3</span> <span class="n">targetPosition</span><span class="p">){</span>
+    <span class="n">Quaternion</span> <span class="n">currentRoation</span> <span class="p">=</span> <span class="n">transform</span><span class="p">.</span><span class="n">rotation</span><span class="p">;</span><span class="c1">//rotation返回Quaternion
+</span><span class="c1"></span>    <span class="n">Vector3</span> <span class="n">direction</span> <span class="p">=</span> <span class="p">(</span><span class="n">targetPosition</span> <span class="p">-</span> <span class="n">currentPosition</span><span class="p">).</span><span class="n">normalized</span><span class="p">;</span>
+    <span class="n">Quaternion</span> <span class="n">targetRotation</span> <span class="p">=</span> <span class="n">Quaternion</span><span class="p">.</span><span class="n">LookRotation</span><span class="p">(</span><span class="n">direction</span><span class="p">);</span>
+    <span class="n">Quaternion</span><span class="p">.</span><span class="n">RotateTowards</span><span class="p">(</span><span class="n">currentRoation</span><span class="p">,</span><span class="n">targetPosition</span><span class="p">,</span>
+                            <span class="m">45</span><span class="p">*</span><span class="n">Time</span><span class="p">.</span><span class="n">deltaTime</span><span class="p">);</span><span class="c1">//每秒旋转45°
+</span><span class="c1"></span><span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div></blockquote>
+
+<ul>
+<li>Quaternion.FromToRotation(Vector3 fromDirection, Vector3 toDirection)</li>
+</ul>
+
+<blockquote>
+<p>求出从fromDirection到toDirection的插值，转为rotation。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="k">public</span> <span class="k">class</span> <span class="nc">ExampleClass</span><span class="err">：</span><span class="n">MonoBehaviour</span> <span class="p">{</span>
+    <span class="k">void</span> <span class="n">Example</span><span class="err">（）</span><span class="p">{</span>
+        <span class="n">transform</span><span class="p">.</span><span class="n">rotation</span> <span class="p">=</span> <span class="n">Quaternion</span><span class="p">.</span><span class="n">FromToRotation</span><span class="err">（</span><span class="n">Vector3</span><span class="p">.</span><span class="n">up</span><span class="err">，</span><span class="n">transform</span><span class="p">.</span><span class="n">forward</span><span class="err">）</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<hr />
+
+<h2 id="4-缩放">4.缩放&nbsp;<a class="anchor" href="#4-缩放"><i class="small linkify icon"></i></a> </h2>
+
+<h3 id="变量-3">变量&nbsp;<a class="anchor" href="#变量-3"><i class="small linkify icon"></i></a> </h3>
 
 <ul>
 <li>lossyScale—&gt;Read Only</li>
@@ -804,9 +975,9 @@ var bodyBgSwitchIndex = 0;var gradients = [
 <span class="p">}</span></code></pre></td></tr></table>
 </div>
 </div>
-<h3 id="hierarchy-位置关系">Hierarchy 位置关系&nbsp;<a class="anchor" href="#hierarchy-位置关系"><i class="small linkify icon"></i></a> </h3>
+<h2 id="hierarchy-位置关系">Hierarchy 位置关系&nbsp;<a class="anchor" href="#hierarchy-位置关系"><i class="small linkify icon"></i></a> </h2>
 
-<h4 id="变量-4">变量&nbsp;<a class="anchor" href="#变量-4"><i class="small linkify icon"></i></a> </h4>
+<h3 id="变量-4">变量&nbsp;<a class="anchor" href="#变量-4"><i class="small linkify icon"></i></a> </h3>
 
 <ul>
 <li>parent</li>
@@ -843,7 +1014,7 @@ var bodyBgSwitchIndex = 0;var gradients = [
      <span class="p">}</span></code></pre></td></tr></table>
 </div>
 </div>
-<h4 id="函数方法-3">函数方法&nbsp;<a class="anchor" href="#函数方法-3"><i class="small linkify icon"></i></a> </h4>
+<h3 id="函数方法-3">函数方法&nbsp;<a class="anchor" href="#函数方法-3"><i class="small linkify icon"></i></a> </h3>
 
 <ul>
 <li>Find()</li>
@@ -863,7 +1034,7 @@ var bodyBgSwitchIndex = 0;var gradients = [
 <li>SetSiblingIndex()</li>
 </ul>
 
-<h2 id="time-时间体系">Time 时间体系&nbsp;<a class="anchor" href="#time-时间体系"><i class="small linkify icon"></i></a> </h2>
+<h1 id="time-时间体系">Time 时间体系&nbsp;<a class="anchor" href="#time-时间体系"><i class="small linkify icon"></i></a> </h1>
 
 <ul>
 <li>time</li>
@@ -969,7 +1140,7 @@ var bodyBgSwitchIndex = 0;var gradients = [
 <p>游戏开始到现在所用的时间（不计算Timescale）</p>
 </blockquote>
 
-<h2 id="random-随机数">Random 随机数&nbsp;<a class="anchor" href="#random-随机数"><i class="small linkify icon"></i></a> </h2>
+<h1 id="random-随机数">Random 随机数&nbsp;<a class="anchor" href="#random-随机数"><i class="small linkify icon"></i></a> </h1>
 
 <ul>
 <li>seed</li>
@@ -1082,9 +1253,9 @@ var bodyBgSwitchIndex = 0;var gradients = [
 <p>返回一个随机float/int数，在min和max之间</p>
 </blockquote>
 
-<h2 id="mathf-数学运算">Mathf 数学运算&nbsp;<a class="anchor" href="#mathf-数学运算"><i class="small linkify icon"></i></a> </h2>
+<h1 id="mathf-数学运算">Mathf 数学运算&nbsp;<a class="anchor" href="#mathf-数学运算"><i class="small linkify icon"></i></a> </h1>
 
-<h3 id="基础数学">基础数学&nbsp;<a class="anchor" href="#基础数学"><i class="small linkify icon"></i></a> </h3>
+<h2 id="基础数学">基础数学&nbsp;<a class="anchor" href="#基础数学"><i class="small linkify icon"></i></a> </h2>
 
 <p>Ceil：返回大于或等于f的最小整数。 </p>
 
@@ -1272,7 +1443,42 @@ var bodyBgSwitchIndex = 0;var gradients = [
 </div>
 </div></blockquote>
 
-<h3 id="3d-数学">3D 数学&nbsp;<a class="anchor" href="#3d-数学"><i class="small linkify icon"></i></a> </h3>
+<hr />
+
+<h2 id="3d-数学">3D 数学&nbsp;<a class="anchor" href="#3d-数学"><i class="small linkify icon"></i></a> </h2>
+
+<h4 id="点积-dot-product">点积(Dot Product)&nbsp;<a class="anchor" href="#点积-dot-product"><i class="small linkify icon"></i></a> </h4>
+
+<blockquote>
+<ul>
+<li>二维</li>
+</ul>
+
+<p>向量点积：a • b = a~x~ × b~x~ + a~y~ × b~y~ = |a| × |b| × cos(θ) = |a| × cos(θ) × |b|</p>
+
+<p><strong><em><u>|a| × |b| × cos(90°) = 0</u></em></strong></p>
+
+<ul>
+<li>三维</li>
+</ul>
+
+<p>Vector A (x,y,z)    Vector B (x,y,z)</p>
+
+<p>(A~x~ * B~x~) + (A~y~ * B~y~) + (A~z~ * B~z~) = Dot Product</p>
+
+<blockquote>
+<p>Vector3.Dot(Vector A, Vector B)</p>
+
+<p>直接返回一个点积 float。</p>
+</blockquote>
+</blockquote>
+
+<h4 id="叉积-cross-product">叉积(Cross Product)&nbsp;<a class="anchor" href="#叉积-cross-product"><i class="small linkify icon"></i></a> </h4>
+
+<blockquote>
+<p>A ^ B = C
+<img src="https://sofuck.top/images/CrossProduct.png" alt="" /></p>
+</blockquote>
 
 			</article>
 		</section>
@@ -1312,7 +1518,7 @@ var bodyBgSwitchIndex = 0;var gradients = [
 			'width=626,height=436'); return false;">
 		<button class="ui facebook button"><i class="facebook icon"></i>Share</button>
 	</div>
-	<div class="twitter none flexbox" onclick="window.open('https://twitter.com/intent/tweet?text=Read &quot;Unity Script  \/post\/unity-script-01\/','_self')">
+	<div class="twitter none flexbox" onclick="window.open('https://twitter.com/intent/tweet?text=Read &quot;Monobehavior事件响应（1）  \/post\/unity-script-01\/','_self')">
 		<button class="ui twitter button"><i class="twitter icon"></i>Tweet</button>
 	</div>
 </section></section>

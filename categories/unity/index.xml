@@ -12,7 +12,7 @@
     
     
     <item>
-      <title>Unity 动画系统(1)</title>
+      <title>Unity 动画系统（1）</title>
       <link>/post/unity-animat-01/</link>
       <pubDate>Mon, 06 Aug 2018 11:45:28 +0800</pubDate>
       
@@ -108,12 +108,12 @@ OnMouseUpAsButton()：只有当鼠标在同一个GUIElement或Collider按下，�
     </item>
     
     <item>
-      <title>Unity Script</title>
+      <title>Monobehavior事件响应（1）</title>
       <link>/post/unity-script-01/</link>
       <pubDate>Sat, 21 Jul 2018 15:26:16 +0800</pubDate>
       
       <guid>/post/unity-script-01/</guid>
-      <description>Monobehavior事件响应 启动与刷新函数 启动  Reset() Awake()   在游戏开始之前初始化任何变量或游戏状态。
+      <description>启动与刷新函数 启动  Reset() Awake()   在游戏开始之前初始化任何变量或游戏状态。
   Start   在任何Update方法之前，只调用一次。
  刷新  FixUpdate()   每个固定帧率帧都会调用此函数。 (用于物理效果)
   Update()   则每帧调用更新。(用于处理逻辑)
