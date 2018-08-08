@@ -17,7 +17,7 @@
       <pubDate>Mon, 06 Aug 2018 11:45:28 +0800</pubDate>
       
       <guid>/post/unity-animat-01/</guid>
-      <description>Mecanim——核心功能  内置动画状态机系统(Animator)      Controller 角色控制器     Avatar (骨骼替身) 替身骨骼   Apply Root Motion ( 应用根运动 )    Update Mode ( 刷新模式 )    Culling Mode (选择模式)       人物动画的重定向   更换符合逻辑的Avatar即可重复使用动画。
+      <description>Mecanim——核心功能  内置动画状态机系统(Animator)      Controller 角色控制器     Avatar (骨骼替身) 替身骨骼   Apply Root Motion ( 应用根运动 )    Update Mode ( 刷新模式 )    Culling Mode (选择模式)       人物动画的重定向   更换的Avatar即可重复使用动画。
 1.在Model 选取界面，选择 RIG&amp;ndash;&amp;gt;Animation Type-&amp;gt;Humanoid(人形的)-&amp;gt;Apply
 2.然后可以配置人物骨骼Avatar。
   动画的分解与混合   Blend Tree：混合树
