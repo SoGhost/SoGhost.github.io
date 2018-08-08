@@ -6,10 +6,19 @@
     <description>Recent content on PY-&gt; Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>us-en</language>
-    <lastBuildDate>Wed, 08 Aug 2018 13:34:19 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 08 Aug 2018 20:19:02 +0800</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Unity 动画系统（2）</title>
+      <link>/post/unity-animation-system-02/</link>
+      <pubDate>Wed, 08 Aug 2018 20:19:02 +0800</pubDate>
+      
+      <guid>/post/unity-animation-system-02/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>UGUI</title>
@@ -31,7 +40,7 @@
 2.然后可以配置人物骨骼Avatar。
   动画的分解与混合   Blend Tree：混合树
 通过Blend Tree混合多个动画。
-通过遮罩体同时播放多个动画。
+通过添加其他动画同时播放多个动画。
   关节动画的 IK 逆向定位   IK用于实现角色始终看着一个物体、一个关节与物体绑定。</description>
     </item>
     

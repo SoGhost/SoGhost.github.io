@@ -15,23 +15,17 @@ body, body.pushable {
 }
 
 </style><title>
-JSON格式
+Unity 动画系统（2）
 </title><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<meta name="author" content="So Serious" />
-	<meta name="description" content="JSON简介  JSON：是一种轻量级的数据交换格式。基于JavaScript的一个子集。JSON采用完全独立于语言的文本格式。Unity主要使用JSON进行服务器端和客户端数据传输。
- JSON结构  通过对象、数组两种结构，就可以组成复杂的数据结构。
-  JSON对象   对象：表示为 ‘ {} ’ 括起来的内容，数据结果为键值对的结构。
-{ &amp;ldquo;name&amp;rdquo; : &amp;ldquo;Test Name&amp;rdquo; }
-属性可以为 数字、字符串、数组、对象。
-  JSON数组   数组：中括号 &amp;lsquo; [ ] &amp;lsquo; 括起来的内容，数据结构为 [ &amp;ldquo;C#&amp;rdquo;, &amp;ldquo;Unity&amp;rdquo;, &amp;hellip;] ，取值方式和所有语言一样，使用索引获取，字段值的类型可以是 数字、字符串、数组、对象。
-  JSON示例  1 2 3 4 5 6 7 8 9  //Json对象 { &amp;#34;name&amp;#34;:&amp;#34;Ted&amp;#34;, &amp;#34;Lv&amp;#34;:1, &amp;#34;Job&amp;#34;:&amp;#34;法师&amp;#34;, &amp;#34;Exp&amp;#34;:1.1 } //复杂Json对象 { &amp;#34;name&amp;#34;:&amp;#34;Jack&amp;#34;, &amp;#34;info&amp;#34;:{ &amp;#34;Lv&amp;#34;:2, &amp;#34;Job&amp;#34;:&amp;#34;战士&amp;#34;, &amp;#34;Exp&amp;#34;:2." />
+	<meta name="description" content="" />
 <meta name="generator" content="Hugo 0.44" />
 
 <link rel="shortcut icon" href="/img/PY-Blog.ico">
 
-<link rel="canonical" href="/post/json/" />
+<link rel="canonical" href="/post/unity-animation-system-02/" />
 <link rel="alternative" href="/index.xml" title="PY-&gt; Blog" type="application/atom+xml"/>
 <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet"> 
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
@@ -536,93 +530,17 @@ var bodyBgSwitchIndex = 0;var gradients = [
 	<div class="sixteen wide mobile fifteen wide tablet twelve wide computer column post-list">
 		<section class="ui secondary top attached black segment post-head">
 			<h1 class="post-title">
-				JSON格式
+				Unity 动画系统（2）
 			</h1>
 			<div class="sub header">
-					<div><span><i class="calendar outline icon"></i>Aug 6, 2018</span></div><div><span class="disqusComment"><i class="comment outline icon"></i><a href="/post/json/#disqus_thread" class="disqus-comment-count" data-disqus-identifier="16d851bbafe1f8da23f843c822049392"></a></span></div>
-					<div><span><i class="clock outline icon"></i>1 min read</span></div>
-					<div><span><i class="angle double up icon"></i>更新于 Aug 6, 2018</span></div>
+					<div><span><i class="calendar outline icon"></i>Aug 8, 2018</span></div><div><span class="disqusComment"><i class="comment outline icon"></i><a href="/post/unity-animation-system-02/#disqus_thread" class="disqus-comment-count" data-disqus-identifier="8733db1218451dc62e5a2822b404bb92"></a></span></div>
+					<div><span><i class="clock outline icon"></i>0 min read</span></div>
+					<div><span><i class="angle double up icon"></i>更新于 Aug 8, 2018</span></div>
 			</div>
-			<hr><div class="toc"><nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#json简介">JSON简介</a></li>
-<li><a href="#json结构">JSON结构</a></li>
-<li><a href="#litjson工具">LitJson工具</a></li>
-</ul></li>
-</ul>
-</nav></div>
-			
+			<hr>
 			
 			<article class="post-content twemoji">
 				
-
-<h2 id="json简介">JSON简介&nbsp;<a class="anchor" href="#json简介"><i class="small linkify icon"></i></a> </h2>
-
-<blockquote>
-<p>JSON：是一种轻量级的数据交换格式。基于JavaScript的一个子集。JSON采用完全独立于语言的文本格式。Unity主要使用JSON进行服务器端和客户端数据传输。</p>
-</blockquote>
-
-<h2 id="json结构">JSON结构&nbsp;<a class="anchor" href="#json结构"><i class="small linkify icon"></i></a> </h2>
-
-<blockquote>
-<p>通过对象、数组两种结构，就可以组成复杂的数据结构。</p>
-</blockquote>
-
-<ul>
-<li>JSON对象</li>
-</ul>
-
-<blockquote>
-<p>对象：表示为 ‘ {} ’ 括起来的内容，数据结果为键值对的结构。</p>
-
-<p>{ &ldquo;name&rdquo; : &ldquo;Test Name&rdquo; }</p>
-
-<p>属性可以为 数字、字符串、数组、对象。</p>
-</blockquote>
-
-<ul>
-<li>JSON数组</li>
-</ul>
-
-<blockquote>
-<p>数组：中括号 &lsquo; [ ] &lsquo; 括起来的内容，数据结构为 [ &ldquo;C#&rdquo;, &ldquo;Unity&rdquo;, &hellip;] ，取值方式和所有语言一样，使用索引获取，字段值的类型可以是 数字、字符串、数组、对象。</p>
-</blockquote>
-
-<hr />
-
-<ul>
-<li>JSON示例</li>
-</ul>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-json" data-lang="json"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span><span class="lnt">9
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-json" data-lang="json"><span class="err">//Json对象</span>
-<span class="p">{</span> <span class="nt">&#34;name&#34;</span><span class="p">:</span><span class="s2">&#34;Ted&#34;</span><span class="p">,</span> <span class="nt">&#34;Lv&#34;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="nt">&#34;Job&#34;</span><span class="p">:</span><span class="s2">&#34;法师&#34;</span><span class="p">,</span> <span class="nt">&#34;Exp&#34;</span><span class="p">:</span><span class="mf">1.1</span> <span class="p">}</span>
-<span class="err">//复杂Json对象</span>
-<span class="p">{</span> <span class="nt">&#34;name&#34;</span><span class="p">:</span><span class="s2">&#34;Jack&#34;</span><span class="p">,</span> <span class="nt">&#34;info&#34;</span><span class="p">:{</span> <span class="nt">&#34;Lv&#34;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="nt">&#34;Job&#34;</span><span class="p">:</span><span class="s2">&#34;战士&#34;</span><span class="p">,</span> <span class="nt">&#34;Exp&#34;</span><span class="p">:</span><span class="mf">2.2</span> <span class="p">}}</span>
-<span class="err">//Json数组</span>
-<span class="p">[</span>
-    <span class="p">{</span> <span class="nt">&#34;name&#34;</span><span class="p">:</span><span class="s2">&#34;Ted&#34;</span><span class="p">,</span> <span class="nt">&#34;Lv&#34;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="nt">&#34;Job&#34;</span><span class="p">:</span><span class="s2">&#34;法师&#34;</span><span class="p">,</span> <span class="nt">&#34;Exp&#34;</span><span class="p">:</span><span class="mf">1.1</span> <span class="p">},</span>
-    <span class="p">{</span> <span class="nt">&#34;name&#34;</span><span class="p">:</span><span class="s2">&#34;Jack&#34;</span><span class="p">,</span> <span class="nt">&#34;Lv&#34;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="nt">&#34;Job&#34;</span><span class="p">:</span><span class="s2">&#34;战士&#34;</span><span class="p">,</span> <span class="nt">&#34;Exp&#34;</span><span class="p">:</span><span class="mf">2.2</span> <span class="p">}</span>
-<span class="p">]</span></code></pre></td></tr></table>
-</div>
-</div>
-<hr />
-
-<h2 id="litjson工具">LitJson工具&nbsp;<a class="anchor" href="#litjson工具"><i class="small linkify icon"></i></a> </h2>
-
 			</article>
 		</section>
 		<section class="ui secondary attached segment dream-tags">
@@ -665,7 +583,7 @@ var bodyBgSwitchIndex = 0;var gradients = [
 			'width=626,height=436'); return false;">
 		<button class="ui facebook button"><i class="facebook icon"></i>Share</button>
 	</div>
-	<div class="twitter none flexbox" onclick="window.open('https://twitter.com/intent/tweet?text=Read &quot;JSON格式  \/post\/json\/','_self')">
+	<div class="twitter none flexbox" onclick="window.open('https://twitter.com/intent/tweet?text=Read &quot;Unity 动画系统（2）  \/post\/unity-animation-system-02\/','_self')">
 		<button class="ui twitter button"><i class="twitter icon"></i>Tweet</button>
 	</div>
 </section></section>
@@ -675,8 +593,8 @@ var bodyBgSwitchIndex = 0;var gradients = [
 		<div class="ui secondary bottom attached stacked segment disqus"><div id="disqus_thread"></div>
 <script>
 	var disqus_config = function () {
-		this.page.url = '\/post\/json\/';
-		this.page.identifier = '16d851bbafe1f8da23f843c822049392';
+		this.page.url = '\/post\/unity-animation-system-02\/';
+		this.page.identifier = '8733db1218451dc62e5a2822b404bb92';
 	};
 	(function() {
    	var d = document, s = d.createElement('script');

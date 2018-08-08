@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/post/unity-animation-system-02/</loc>
+    <lastmod>2018-08-08T20:19:02+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/post/ugui/</loc>
     <lastmod>2018-08-08T13:34:19+08:00</lastmod>
   </url>
@@ -93,7 +98,7 @@
   
   <url>
     <loc>/tags/animator/</loc>
-    <lastmod>2018-08-06T11:45:28+08:00</lastmod>
+    <lastmod>2018-08-08T20:19:02+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -141,13 +146,13 @@
   
   <url>
     <loc>/</loc>
-    <lastmod>2018-08-08T13:34:19+08:00</lastmod>
+    <lastmod>2018-08-08T20:19:02+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/post/</loc>
-    <lastmod>2018-08-08T13:34:19+08:00</lastmod>
+    <lastmod>2018-08-08T20:19:02+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -177,7 +182,13 @@
   
   <url>
     <loc>/categories/unity/</loc>
-    <lastmod>2018-08-06T11:45:28+08:00</lastmod>
+    <lastmod>2018-08-05T18:36:56+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/unity-animator/</loc>
+    <lastmod>2018-08-08T20:19:02+08:00</lastmod>
     <priority>0</priority>
   </url>
   

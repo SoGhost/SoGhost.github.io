@@ -6,25 +6,10 @@
     <description>Recent content in Unity on PY-&gt; Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>us-en</language>
-    <lastBuildDate>Mon, 06 Aug 2018 11:45:28 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 05 Aug 2018 18:36:56 +0800</lastBuildDate>
     
 	<atom:link href="/categories/unity/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Unity 动画系统（1）</title>
-      <link>/post/unity-animation-system-01/</link>
-      <pubDate>Mon, 06 Aug 2018 11:45:28 +0800</pubDate>
-      
-      <guid>/post/unity-animation-system-01/</guid>
-      <description>Mecanim——核心功能  内置动画状态机系统(Animator)      Controller 角色控制器     Avatar (骨骼替身) 替身骨骼   Apply Root Motion ( 应用根运动 )    Update Mode ( 刷新模式 )    Culling Mode (选择模式)       人物动画的重定向   更换的Avatar即可重复使用动画。
-1.在Model 选取界面，选择 RIG&amp;ndash;&amp;gt;Animation Type-&amp;gt;Humanoid(人形的)-&amp;gt;Apply
-2.然后可以配置人物骨骼Avatar。
-  动画的分解与混合   Blend Tree：混合树
-通过Blend Tree混合多个动画。
-通过遮罩体同时播放多个动画。
-  关节动画的 IK 逆向定位   IK用于实现角色始终看着一个物体、一个关节与物体绑定。</description>
-    </item>
     
     <item>
       <title>AI逻辑</title>
