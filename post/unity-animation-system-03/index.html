@@ -15,19 +15,21 @@ body, body.pushable {
 }
 
 </style><title>
-
-Tag | tag1
-
+Unity 动画系统（3）
 </title><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<meta name="author" content="So Serious" />
-	<meta name="description" content="Do your best." />
+	<meta name="description" content="Animation View  Animation View可以修改的类型：Float, Color, Vector2, Vector3, Vector4, Quaternion, Boolean.
+ Add Key:添加特征点 Add Event:添加事件系统    Add Property：增加动画变换属性   可以给给所有物体添加动画。（制作摄像机抖动）
+  Root Motion   选中后该物体会相对于（目标）物体坐标移动，否则相对于世界坐标移动。    Animation Event &amp;gt;方便实现角色着陆音效与运动镜头抖动。
+ 可执行函数 &amp;gt;1. 必须为Public &amp;gt; &amp;gt;2. 函数返回为Void &amp;gt; &amp;gt;3. 只有一个参数 &amp;gt; &amp;gt;4. 输入参数类型包括：int, float, string, Object &amp;gt; &amp;gt; ```c# &amp;gt; public class testAnimationEvent : MonoBehaviour{
+public void testPrintLog(float msg){ Debug.Log(&amp;ldquo;Animation Event: &amp;ldquo; &#43; msg." />
 <meta name="generator" content="Hugo 0.44" />
 
 <link rel="shortcut icon" href="/img/PY-Blog.ico">
 
-<link rel="canonical" href="/tags/tag1/" />
+<link rel="canonical" href="/post/unity-animation-system-03/" />
 <link rel="alternative" href="/index.xml" title="PY-&gt; Blog" type="application/atom+xml"/>
 <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet"> 
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
@@ -107,9 +109,9 @@ var bodyBgSwitchIndex = 0;var gradients = [
 
 <a class="ui label" href="/tags/fps" title="fps">fps</a>
 
-<a class="ui label" href="/tags/tag1" title="tag1">tag1</a>
+<a class="ui label" href="/tags/ugui" title="ugui">ugui</a>
 
-<a class="ui label" href="/tags/tag2" title="tag2">tag2</a>
+<a class="ui label" href="/tags/ui" title="ui">ui</a>
 
 <a class="ui label" href="/tags/unity" title="unity">unity</a>
 
@@ -142,21 +144,6 @@ var bodyBgSwitchIndex = 0;var gradients = [
 		<div>
 			<i class="cocktail icon"></i>
 			<p>C# _基本操作</p>
-		</div>
-	</a>
-
-</div>
-
-<div class="title">
-	<i class="dropdown icon"></i>
-	<a class="link" href="/categories/category1">category1</a>
-</div>
-<div class="content">
-
-	<a class="item" href="/post/ugui/">
-		<div>
-			<i class="cocktail icon"></i>
-			<p>UGUI</p>
 		</div>
 	</a>
 
@@ -247,6 +234,20 @@ var bodyBgSwitchIndex = 0;var gradients = [
 </div>
 <div class="content">
 
+	<a class="item" href="/post/unity-animation-system-04/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>Unity 动画系统（4）</p>
+		</div>
+	</a>
+
+	<a class="item" href="/post/unity-animation-system-03/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>Unity 动画系统（3）</p>
+		</div>
+	</a>
+
 	<a class="item" href="/post/unity-animation-system-02/">
 		<div>
 			<i class="cocktail icon"></i>
@@ -258,6 +259,21 @@ var bodyBgSwitchIndex = 0;var gradients = [
 		<div>
 			<i class="cocktail icon"></i>
 			<p>Unity 动画系统（1）</p>
+		</div>
+	</a>
+
+</div>
+
+<div class="title">
+	<i class="dropdown icon"></i>
+	<a class="link" href="/categories/unity-ui">unity-ui</a>
+</div>
+<div class="content">
+
+	<a class="item" href="/post/ugui-01/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>uGUI</p>
 		</div>
 	</a>
 
@@ -316,22 +332,16 @@ var bodyBgSwitchIndex = 0;var gradients = [
 			<i class="inverted big link cubes icon" title="所有类别"></i>
 		</a>
     </div>
-	
-	<div class="item">
-		
-		<i class="disabled inverted big chevron circle left icon" title="前一页"></i>
-  	
-  </div>
-	<div class="item">	
-		<i class="disabled inverted big chevron circle right icon" title="后一页"></i>
-		
+	<div class="ui container tablet computer only grid">
+		<div class="item" onClick="$('.ui.sidebar').sidebar('setting', 'transition', 'overlay').sidebar('toggle');">
+			<i class="inverted big link sidebar icon" title="Show Sidebar"></i>
+		</div>
 	</div>
 	
 </nav>
 
 <div class="ui centered grid">
-	<div class="fifteen wide mobile fifteen wide tablet four wide computer column">
-		<div class="ui inverted accordion">
+	<div class="sixteen wide mobile only column"><div class="ui inverted accordion">
 	<div id="header" class="ui inverted segment column box">
 		<header id="author" class="ui top attached center aligned inverted segment"><div class="ui small circular image">
 	<img src="/img/avatar.png">
@@ -341,10 +351,10 @@ var bodyBgSwitchIndex = 0;var gradients = [
 </h3>
 
 </header>
-		<div class="active title header-title"><div id="tag-category-pop" class="ui red right corner label">		
-				<i class="hand point icon up"title="点击弹出标签和分类"></i>		
+		<div class=" title header-title"><div id="tag-category-pop" class="ui red right corner label">		
+				<i class="hand point icon down"title="点击弹出标签和分类"></i>		
 			</div></div>
-		<div id="tag-category" class="active content"><section class="ui attached center aligned inverted segment dream-tags none flexbox">
+		<div id="tag-category" class=" content"><section class="ui attached center aligned inverted segment dream-tags none flexbox">
 <a class="ui label" href="/tags/ai" title="ai">ai</a>
 
 <a class="ui label" href="/tags/animator" title="animator">animator</a>
@@ -355,9 +365,9 @@ var bodyBgSwitchIndex = 0;var gradients = [
 
 <a class="ui label" href="/tags/fps" title="fps">fps</a>
 
-<a class="ui label" href="/tags/tag1" title="tag1">tag1</a>
+<a class="ui label" href="/tags/ugui" title="ugui">ugui</a>
 
-<a class="ui label" href="/tags/tag2" title="tag2">tag2</a>
+<a class="ui label" href="/tags/ui" title="ui">ui</a>
 
 <a class="ui label" href="/tags/unity" title="unity">unity</a>
 
@@ -388,21 +398,6 @@ var bodyBgSwitchIndex = 0;var gradients = [
 		<div>
 			<i class="cocktail icon"></i>
 			<p>C# _基本操作</p>
-		</div>
-	</a>
-
-</div>
-
-<div class="title">
-	<i class="dropdown icon"></i>
-	<a class="link" href="/categories/category1">category1</a>
-</div>
-<div class="content">
-
-	<a class="item" href="/post/ugui/">
-		<div>
-			<i class="cocktail icon"></i>
-			<p>UGUI</p>
 		</div>
 	</a>
 
@@ -493,6 +488,20 @@ var bodyBgSwitchIndex = 0;var gradients = [
 </div>
 <div class="content">
 
+	<a class="item" href="/post/unity-animation-system-04/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>Unity 动画系统（4）</p>
+		</div>
+	</a>
+
+	<a class="item" href="/post/unity-animation-system-03/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>Unity 动画系统（3）</p>
+		</div>
+	</a>
+
 	<a class="item" href="/post/unity-animation-system-02/">
 		<div>
 			<i class="cocktail icon"></i>
@@ -504,6 +513,21 @@ var bodyBgSwitchIndex = 0;var gradients = [
 		<div>
 			<i class="cocktail icon"></i>
 			<p>Unity 动画系统（1）</p>
+		</div>
+	</a>
+
+</div>
+
+<div class="title">
+	<i class="dropdown icon"></i>
+	<a class="link" href="/categories/unity-ui">unity-ui</a>
+</div>
+<div class="content">
+
+	<a class="item" href="/post/ugui-01/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>uGUI</p>
 		</div>
 	</a>
 
@@ -534,33 +558,149 @@ var bodyBgSwitchIndex = 0;var gradients = [
 
 <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=200 height=52 src="//music.163.com/outchain/player?type=0&id=65781201&auto=0&height=32"></iframe></footer>
 	</div>
-</div>
-	</div>
-	<div class="fifteen wide mobile fifteen wide tablet eleven wide computer column post-list">
-		<div class="cards row box">
+</div></div>
+	<div class="sixteen wide mobile fifteen wide tablet twelve wide computer column post-list">
+		<section class="ui secondary top attached black segment post-head">
+			<h1 class="post-title">
+				Unity 动画系统（3）
+			</h1>
+			<div class="sub header">
+					<div><span><i class="calendar outline icon"></i>Aug 9, 2018</span></div><div><span class="disqusComment"><i class="comment outline icon"></i><a href="/post/unity-animation-system-03/#disqus_thread" class="disqus-comment-count" data-disqus-identifier="8dc241b979cd98b383be9561d7a252fd"></a></span></div>
+					<div><span><i class="clock outline icon"></i>1 min read</span></div>
+					<div><span><i class="angle double up icon"></i>更新于 Aug 9, 2018</span></div>
+			</div>
+			<hr><div class="toc"><nav id="TableOfContents">
+<ul>
+<li><a href="#animation-view">Animation View</a></li>
+</ul>
+</nav></div>
 			
-	<article class="blog-card none flexbox" style="background-image: url(/images/default10.jpg)">
-<img class="image" src="/images/default10.jpg"></img>
-<div class="title-content twemoji">
-	<h3><a class="title" href=/post/ugui/>UGUI</a></h3>
-	<div class="intro twemoji"></div>
-</div>
-<div class="utility-info">
-	<ul class="utility-list">
-		
-		<div><i class="comment icon"></i><span class="disqus-comment-count" data-disqus-identifier="267c1e8978de38bb3bb94316d126bf41"></span></div>
-		
-		<div><span><i class="calendar icon"></i>Aug 8, 2018</span></div>
-		<div><span><i class="clock icon"></i>0 min read</span></div>
-	</ul>
-</div>
-<div class="color-overlay"></div>
-</article>
+			
+			<article class="post-content twemoji">
+				
 
+<h1 id="animation-view">Animation View&nbsp;<a class="anchor" href="#animation-view"><i class="small linkify icon"></i></a> </h1>
+
+<blockquote>
+<p>Animation View可以修改的类型：Float, Color, Vector2, Vector3, Vector4, Quaternion, Boolean.</p>
+
+<ul>
+<li>Add Key:添加特征点</li>
+<li>Add Event:添加事件系统</li>
+</ul>
+</blockquote>
+
+<ul>
+<li>Add Property：增加动画变换属性</li>
+</ul>
+
+<blockquote>
+<p>可以给给所有物体添加动画。（制作摄像机抖动）</p>
+</blockquote>
+
+<ul>
+<li>Root Motion</li>
+</ul>
+
+<blockquote>
+<ul class="task-list">
+<li><label><input type="checkbox" checked disabled class="task-list-item"> 选中后该物体会相对于（目标）物体坐标移动，否则相对于世界坐标移动。</label></li>
+</ul>
+</blockquote>
+
+<ul>
+<li><p>Animation Event
+&gt;方便实现<strong>角色着陆音效</strong>与<strong>运动镜头抖动</strong>。</p>
+
+<ul>
+<li><p>可执行函数
+&gt;1. 必须为<strong>Public</strong>
+&gt;
+&gt;2. 函数返回为<strong>Void</strong>
+&gt;
+&gt;3. 只有<strong>一个参数</strong>
+&gt;
+&gt;4. 输入参数类型包括：<strong>int, float, string, Object</strong>
+&gt;
+&gt;   ```c#
+&gt;   public class testAnimationEvent : MonoBehaviour{</p>
+
+<p>public void testPrintLog(float msg){
+  Debug.Log(&ldquo;Animation Event: &ldquo; + msg.ToString());
+  }
+}
+&gt;   ```
+&gt;回到Animation View，编辑Event，传参。
+&gt;如果在某个动画中实现Event，则需在模型的Animation View中点Event去添加事件。</p></li>
+</ul></li>
+</ul>
+
+			</article>
+		</section>
+		<section class="ui secondary attached segment dream-tags">
+<a class="ui label" href="/tags/ai" title="ai">ai</a>
+
+<a class="ui label" href="/tags/animator" title="animator">animator</a>
+
+<a class="ui label" href="/tags/audio" title="audio">audio</a>
+
+<a class="ui label" href="/tags/c" title="c#">c#</a>
+
+<a class="ui label" href="/tags/fps" title="fps">fps</a>
+
+<a class="ui label" href="/tags/ugui" title="ugui">ugui</a>
+
+<a class="ui label" href="/tags/ui" title="ui">ui</a>
+
+<a class="ui label" href="/tags/unity" title="unity">unity</a>
+
+<a class="ui label" href="/tags/word" title="word">word</a>
+
+<a class="ui label" href="/tags/word-book" title="word-book">word-book</a>
+
+<a class="ui label" href="/tags/%E6%8A%80%E5%B7%A7" title="技巧">技巧</a>
+
+<a class="ui label" href="/tags/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93" title="数据传输">数据传输</a>
+
+
+		</section><section class="ui secondary  attached segment share row box"><div class="author"><img class="avatar" src="/img/avatar.png">
 	
+</div>
+<div class="info grow flexbox">
+	<p class="name">So Serious</p>
+	<p class="desc">Do your best.</p>		
+</div>
+<section class="buttons row box">
+	<div class="facebook none flexbox" href="#" onclick="window.open(
+			'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),
+			'facebook-share-dialog',
+			'width=626,height=436'); return false;">
+		<button class="ui facebook button"><i class="facebook icon"></i>Share</button>
+	</div>
+	<div class="twitter none flexbox" onclick="window.open('https://twitter.com/intent/tweet?text=Read &quot;Unity 动画系统（3）  \/post\/unity-animation-system-03\/','_self')">
+		<button class="ui twitter button"><i class="twitter icon"></i>Tweet</button>
+	</div>
+</section></section>
+		<section class="ui secondary attached segment copyright">
+			
+		</section>
+		<div class="ui secondary bottom attached stacked segment disqus"><div id="disqus_thread"></div>
+<script>
+	var disqus_config = function () {
+		this.page.url = '\/post\/unity-animation-system-03\/';
+		this.page.identifier = '8dc241b979cd98b383be9561d7a252fd';
+	};
+	(function() {
+   	var d = document, s = d.createElement('script');
+   	s.src = 'https://' + 'So Serious' + '.disqus.com/embed.js';
+   	s.setAttribute('data-timestamp', +new Date());
+   	(d.head || d.body).appendChild(s);
+	})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
-
-		</div>
+</div>
+		
 	</div>
 </div>
 

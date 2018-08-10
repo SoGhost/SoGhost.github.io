@@ -3,12 +3,22 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/post/unity-animation-system-04/</loc>
+    <lastmod>2018-08-09T14:57:50+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/unity-animation-system-03/</loc>
+    <lastmod>2018-08-09T12:47:45+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/post/unity-animation-system-02/</loc>
     <lastmod>2018-08-08T20:19:02+08:00</lastmod>
   </url>
   
   <url>
-    <loc>/post/ugui/</loc>
+    <loc>/post/ugui-01/</loc>
     <lastmod>2018-08-08T13:34:19+08:00</lastmod>
   </url>
   
@@ -98,7 +108,7 @@
   
   <url>
     <loc>/tags/animator/</loc>
-    <lastmod>2018-08-08T20:19:02+08:00</lastmod>
+    <lastmod>2018-08-09T14:57:50+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -127,12 +137,6 @@
   </url>
   
   <url>
-    <loc>/categories/category1/</loc>
-    <lastmod>2018-08-08T13:34:19+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>/tags/fps/</loc>
     <lastmod>2018-08-05T14:48:37+08:00</lastmod>
     <priority>0</priority>
@@ -146,31 +150,31 @@
   
   <url>
     <loc>/</loc>
-    <lastmod>2018-08-08T20:19:02+08:00</lastmod>
+    <lastmod>2018-08-09T14:57:50+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/post/</loc>
-    <lastmod>2018-08-08T20:19:02+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/tag1/</loc>
-    <lastmod>2018-08-08T13:34:19+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/tag2/</loc>
-    <lastmod>2018-08-08T13:34:19+08:00</lastmod>
+    <lastmod>2018-08-09T14:57:50+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/tags/</loc>
     <lastmod>2018-08-05T18:36:56+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/ugui/</loc>
+    <lastmod>2018-08-08T13:34:19+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/ui/</loc>
+    <lastmod>2018-08-08T13:34:19+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -188,7 +192,13 @@
   
   <url>
     <loc>/categories/unity-animator/</loc>
-    <lastmod>2018-08-08T20:19:02+08:00</lastmod>
+    <lastmod>2018-08-09T14:57:50+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/unity-ui/</loc>
+    <lastmod>2018-08-08T13:34:19+08:00</lastmod>
     <priority>0</priority>
   </url>
   

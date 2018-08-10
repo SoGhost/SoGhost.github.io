@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Category1 on PY-&gt; Blog</title>
-    <link>/categories/category1/</link>
-    <description>Recent content in Category1 on PY-&gt; Blog</description>
+    <title>Ui on PY-&gt; Blog</title>
+    <link>/tags/ui/</link>
+    <description>Recent content in Ui on PY-&gt; Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>us-en</language>
     <lastBuildDate>Wed, 08 Aug 2018 13:34:19 +0800</lastBuildDate>
     
-	<atom:link href="/categories/category1/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/ui/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>UGUI</title>
-      <link>/post/ugui/</link>
+      <title>uGUI</title>
+      <link>/post/ugui-01/</link>
       <pubDate>Wed, 08 Aug 2018 13:34:19 +0800</pubDate>
       
-      <guid>/post/ugui/</guid>
+      <guid>/post/ugui-01/</guid>
       <description></description>
     </item>
     
