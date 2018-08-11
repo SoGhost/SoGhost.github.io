@@ -6,10 +6,19 @@
     <description>Recent content on PY-&gt; Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>us-en</language>
-    <lastBuildDate>Sat, 11 Aug 2018 15:08:23 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 11 Aug 2018 17:14:14 +0800</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>网络知识——P2P</title>
+      <link>/post/computer-illiteracy-p2p/</link>
+      <pubDate>Sat, 11 Aug 2018 17:14:14 +0800</pubDate>
+      
+      <guid>/post/computer-illiteracy-p2p/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>痛苦学习Unity笔记——简单项目之像素鸟</title>
@@ -17,7 +26,9 @@
       <pubDate>Sat, 11 Aug 2018 15:08:23 +0800</pubDate>
       
       <guid>/post/pain-to-learn-unity-notes-01/</guid>
-      <description>下载.Zip</description>
+      <description>下载.Zip
+ 创建button图片，按住shift——等比缩放
+ </description>
     </item>
     
     <item>
