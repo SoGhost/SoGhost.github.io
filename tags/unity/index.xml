@@ -6,10 +6,19 @@
     <description>Recent content in Unity on PY-&gt; Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>us-en</language>
-    <lastBuildDate>Mon, 30 Jul 2018 16:36:45 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 11 Aug 2018 15:08:23 +0800</lastBuildDate>
     
 	<atom:link href="/tags/unity/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>痛苦学习Unity笔记——简单项目之像素鸟</title>
+      <link>/post/pain-to-learn-unity-notes-01/</link>
+      <pubDate>Sat, 11 Aug 2018 15:08:23 +0800</pubDate>
+      
+      <guid>/post/pain-to-learn-unity-notes-01/</guid>
+      <description>下载.Zip</description>
+    </item>
     
     <item>
       <title>脚本的输入与控制</title>
