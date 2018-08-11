@@ -20,9 +20,13 @@ body, body.pushable {
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<meta name="author" content="So Serious" />
-	<meta name="description" content="下载.Zip
- 创建button图片，按住shift——等比缩放
- " />
+	<meta name="description" content=" 下载.Zip
+下载.unitypacke
+创建UI界面 创建开始菜单界面   创建button的图片，按住shift——等比缩放，再加入button组件。
+ 创建静音Toggle，背景图设为启动音量图片，前景设为斜线（静音），删除无用文字，关闭Toggle的Is On，即可实现初始不显示前景，点击后显示前景图片。
+   添加点击事件  首先把菜单所有元素（除了背景）放到一个空物体上，控制空物体Enable达到切换场景目的。
+ 然后调整一下UI元素锚点（Anchor Presets）的大致位置。（锚点用于自动适配分辨率，自动调整UI位置）
+    ra   " />
 <meta name="generator" content="Hugo 0.44" />
 
 <link rel="shortcut icon" href="/img/PY-Blog.ico">
@@ -631,13 +635,48 @@ var bodyBgSwitchIndex = 0;var gradients = [
 					<div><span><i class="clock outline icon"></i>1 min read</span></div>
 					<div><span><i class="angle double up icon"></i>更新于 Aug 11, 2018</span></div>
 			</div>
-			<hr>
+			<hr><div class="toc"><nav id="TableOfContents">
+<ul>
+<li><a href="#创建ui界面">创建UI界面</a>
+<ul>
+<li><a href="#创建开始菜单界面">创建开始菜单界面</a></li>
+<li><a href="#添加点击事件">添加点击事件</a></li>
+</ul></li>
+</ul>
+</nav></div>
+			
 			
 			<article class="post-content twemoji">
-				<p><button type="button" class="primary"  style="background-color: #7ED321;width: 80px;height: 40px;color: #FFFFFF">下载.Zip</button></p>
+				
+
+<p><button type="button" class="primary"  style="background-color: #7ED321;width: 90px;height: 40px;color: #FFFFFF">下载.Zip</button></p>
+
+<p><button type="button" class="primary"  style="background-color: #7ED321;width: 135px;height: 40px;color: #FFFFFF">下载.unitypacke</button></p>
+
+<h1 id="创建ui界面">创建UI界面&nbsp;<a class="anchor" href="#创建ui界面"><i class="small linkify icon"></i></a> </h1>
+
+<h2 id="创建开始菜单界面">创建开始菜单界面&nbsp;<a class="anchor" href="#创建开始菜单界面"><i class="small linkify icon"></i></a> </h2>
 
 <blockquote>
-<p>创建button图片，按住shift——等比缩放</p>
+<ol>
+<li><p>创建button的图片，<strong>按住shift——等比缩放</strong>，再加入button组件。</p></li>
+
+<li><p>创建静音Toggle，背景图设为启动音量图片，前景设为斜线（静音），删除无用文字，关闭Toggle的<strong>Is On</strong>，即可实现初始不显示前景，点击后显示前景图片。</p></li>
+</ol>
+</blockquote>
+
+<h2 id="添加点击事件">添加点击事件&nbsp;<a class="anchor" href="#添加点击事件"><i class="small linkify icon"></i></a> </h2>
+
+<ul>
+<li><p>首先把菜单所有元素（除了背景）放到一个空物体上，控制空物体Enable达到切换场景目的。</p></li>
+
+<li><p>然后调整一下UI元素锚点（Anchor Presets）的大致位置。（锚点用于自动适配分辨率，自动调整UI位置）</p></li>
+</ul>
+
+<blockquote>
+<ol>
+<li>ra</li>
+</ol>
 </blockquote>
 
 			</article>
