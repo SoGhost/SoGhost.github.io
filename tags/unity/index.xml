@@ -6,25 +6,10 @@
     <description>Recent content in Unity on PY-&gt; Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>us-en</language>
-    <lastBuildDate>Sat, 11 Aug 2018 15:08:23 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 30 Jul 2018 16:36:45 +0800</lastBuildDate>
     
 	<atom:link href="/tags/unity/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>痛苦学习Unity笔记——简单项目之像素鸟</title>
-      <link>/post/pain-to-learn-unity-notes-01/</link>
-      <pubDate>Sat, 11 Aug 2018 15:08:23 +0800</pubDate>
-      
-      <guid>/post/pain-to-learn-unity-notes-01/</guid>
-      <description> 下载.Zip
-下载.unitypacke
-创建UI界面 创建开始菜单界面   创建button的图片，按住shift——等比缩放，再加入button组件。
- 创建静音Toggle，背景图设为启动音量图片，前景设为斜线（静音），删除无用文字，关闭Toggle的Is On，即可实现初始不显示前景，点击后显示前景图片。
-   添加点击事件  首先把菜单所有元素（除了背景）放到一个空物体上，控制空物体Enable达到切换场景目的。
- 然后调整一下UI元素锚点（Anchor Presets）的大致位置。（锚点用于自动适配分辨率，自动调整UI位置）
-    ra   </description>
-    </item>
     
     <item>
       <title>脚本的输入与控制</title>
