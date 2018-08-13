@@ -15,26 +15,19 @@ body, body.pushable {
 }
 
 </style><title>
-MonoBehavior 常用方法
+
+Tag | rpg
+
 </title><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<meta name="author" content="So Serious" />
-	<meta name="description" content="继承函数  继承自Object
- Destroy：物体销毁
- Instantiate：物体生成
- CompareTag：物体辨认
-  继承自Component
- SendMessage：消息推送   自身函数 1.Invoke：延迟执行程序
- Invoke(string methodName, float time); InvokeRepeating(string methodName, float time, float repeatRate);   重复调用函数，重复间隔。
-  IsInvoking(string methodName);   检测是否在继续调用。
-  CanceInvoke();  CanceInvoke(string methodName);    清楚所有Invoke或针对某一函数。
-    2.Coroutine：协同执行程序" />
+	<meta name="description" content="Do your best." />
 <meta name="generator" content="Hugo 0.44" />
 
 <link rel="shortcut icon" href="/img/PY-Blog.ico">
 
-<link rel="canonical" href="/post/monobehavior-common_method-01/" />
+<link rel="canonical" href="/tags/rpg/" />
 <link rel="alternative" href="/index.xml" title="PY-&gt; Blog" type="application/atom+xml"/>
 <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet"> 
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
@@ -432,16 +425,22 @@ var bodyBgSwitchIndex = 0;var gradients = [
 			<i class="inverted big link cubes icon" title="所有类别"></i>
 		</a>
     </div>
-	<div class="ui container tablet computer only grid">
-		<div class="item" onClick="$('.ui.sidebar').sidebar('setting', 'transition', 'overlay').sidebar('toggle');">
-			<i class="inverted big link sidebar icon" title="Show Sidebar"></i>
-		</div>
+	
+	<div class="item">
+		
+		<i class="disabled inverted big chevron circle left icon" title="前一页"></i>
+  	
+  </div>
+	<div class="item">	
+		<i class="disabled inverted big chevron circle right icon" title="后一页"></i>
+		
 	</div>
 	
 </nav>
 
 <div class="ui centered grid">
-	<div class="sixteen wide mobile only column"><div class="ui inverted accordion">
+	<div class="fifteen wide mobile fifteen wide tablet four wide computer column">
+		<div class="ui inverted accordion">
 	<div id="header" class="ui inverted segment column box">
 		<header id="author" class="ui top attached center aligned inverted segment"><div class="ui small circular image">
 	<img src="/img/avatar.png">
@@ -451,10 +450,10 @@ var bodyBgSwitchIndex = 0;var gradients = [
 </h3>
 
 </header>
-		<div class=" title header-title"><div id="tag-category-pop" class="ui red right corner label">		
-				<i class="hand point icon down"title="点击弹出标签和分类"></i>		
+		<div class="active title header-title"><div id="tag-category-pop" class="ui red right corner label">		
+				<i class="hand point icon up"title="点击弹出标签和分类"></i>		
 			</div></div>
-		<div id="tag-category" class=" content"><section class="ui attached center aligned inverted segment dream-tags none flexbox">
+		<div id="tag-category" class="active content"><section class="ui attached center aligned inverted segment dream-tags none flexbox">
 <a class="ui label" href="/tags/2d" title="2d">2d</a>
 
 <a class="ui label" href="/tags/ae" title="ae">ae</a>
@@ -753,171 +752,33 @@ var bodyBgSwitchIndex = 0;var gradients = [
 
 <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=200 height=52 src="//music.163.com/outchain/player?type=0&id=65781201&auto=0&height=32"></iframe></footer>
 	</div>
-</div></div>
-	<div class="sixteen wide mobile fifteen wide tablet twelve wide computer column post-list">
-		<section class="ui secondary top attached black segment post-head">
-			<h1 class="post-title">
-				MonoBehavior 常用方法
-			</h1>
-			<div class="sub header">
-					<div><span><i class="calendar outline icon"></i>Jul 30, 2018</span></div><div><span class="disqusComment"><i class="comment outline icon"></i><a href="/post/monobehavior-common_method-01/#disqus_thread" class="disqus-comment-count" data-disqus-identifier="3eee8a44a52c65769e8b0a465f80a509"></a></span></div>
-					<div><span><i class="clock outline icon"></i>1 min read</span></div>
-					<div><span><i class="angle double up icon"></i>更新于 Jul 30, 2018</span></div>
-			</div>
-			<hr><div class="toc"><nav id="TableOfContents">
-<ul>
-<li><a href="#继承函数">继承函数</a></li>
-<li><a href="#自身函数">自身函数</a></li>
-</ul>
-</nav></div>
-			
-			
-			<article class="post-content twemoji">
-				
-
-<h1 id="继承函数">继承函数&nbsp;<a class="anchor" href="#继承函数"><i class="small linkify icon"></i></a> </h1>
-
-<ul>
-<li><p>继承自Object</p>
-
-<ul>
-<li><p>Destroy：物体销毁</p></li>
-
-<li><p>Instantiate：物体生成</p></li>
-
-<li><p>CompareTag：物体辨认</p></li>
-</ul></li>
-
-<li><p>继承自Component</p>
-
-<ul>
-<li>SendMessage：消息推送</li>
-</ul></li>
-</ul>
-
-<h1 id="自身函数">自身函数&nbsp;<a class="anchor" href="#自身函数"><i class="small linkify icon"></i></a> </h1>
-
-<p>1.Invoke：延迟执行程序</p>
-
-<ul>
-<li>Invoke(string methodName, float time);</li>
-<li>InvokeRepeating(string methodName, float time, float repeatRate);</li>
-</ul>
-
-<blockquote>
-<p>重复调用函数，重复间隔。</p>
-</blockquote>
-
-<ul>
-<li>IsInvoking(string methodName);</li>
-</ul>
-
-<blockquote>
-<p>检测是否在继续调用。</p>
-</blockquote>
-
-<ul>
-<li>CanceInvoke();
-
-<ul>
-<li>CanceInvoke(string methodName);</li>
-</ul></li>
-</ul>
-
-<blockquote>
-<p>清楚所有Invoke或针对某一函数。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-c#" data-lang="c#"></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-c#" data-lang="c#"></code></pre></td></tr></table>
 </div>
-</div></blockquote>
-
-<hr />
-
-<p>2.Coroutine：协同执行程序</p>
-
-			</article>
-		</section>
-		<section class="ui secondary attached segment dream-tags">
-<a class="ui label" href="/tags/2d" title="2d">2d</a>
-
-<a class="ui label" href="/tags/ae" title="ae">ae</a>
-
-<a class="ui label" href="/tags/ai" title="ai">ai</a>
-
-<a class="ui label" href="/tags/animator" title="animator">animator</a>
-
-<a class="ui label" href="/tags/audio" title="audio">audio</a>
-
-<a class="ui label" href="/tags/c" title="c#">c#</a>
-
-<a class="ui label" href="/tags/effect" title="effect">effect</a>
-
-<a class="ui label" href="/tags/fps" title="fps">fps</a>
-
-<a class="ui label" href="/tags/knowledge" title="knowledge">knowledge</a>
-
-<a class="ui label" href="/tags/notes" title="notes">notes</a>
-
-<a class="ui label" href="/tags/rpg" title="rpg">rpg</a>
-
-<a class="ui label" href="/tags/tilemap" title="tilemap">tilemap</a>
-
-<a class="ui label" href="/tags/ugui" title="ugui">ugui</a>
-
-<a class="ui label" href="/tags/ui" title="ui">ui</a>
-
-<a class="ui label" href="/tags/unity" title="unity">unity</a>
-
-<a class="ui label" href="/tags/word" title="word">word</a>
-
-<a class="ui label" href="/tags/word-book" title="word-book">word-book</a>
-
-<a class="ui label" href="/tags/%E6%8A%80%E5%B7%A7" title="技巧">技巧</a>
-
-<a class="ui label" href="/tags/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93" title="数据传输">数据传输</a>
-
-
-		</section><section class="ui secondary  attached segment share row box"><div class="author"><img class="avatar" src="/img/avatar.png">
-	
-</div>
-<div class="info grow flexbox">
-	<p class="name">So Serious</p>
-	<p class="desc">Do your best.</p>		
-</div>
-<section class="buttons row box">
-	<div class="facebook none flexbox" href="#" onclick="window.open(
-			'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),
-			'facebook-share-dialog',
-			'width=626,height=436'); return false;">
-		<button class="ui facebook button"><i class="facebook icon"></i>Share</button>
 	</div>
-	<div class="twitter none flexbox" onclick="window.open('https://twitter.com/intent/tweet?text=Read &quot;MonoBehavior 常用方法  \/post\/monobehavior-common_method-01\/','_self')">
-		<button class="ui twitter button"><i class="twitter icon"></i>Tweet</button>
-	</div>
-</section></section>
-		<section class="ui secondary attached segment copyright">
+	<div class="fifteen wide mobile fifteen wide tablet eleven wide computer column post-list">
+		<div class="cards row box">
 			
-		</section>
-		<div class="ui secondary bottom attached stacked segment disqus"><div id="disqus_thread"></div>
-<script>
-	var disqus_config = function () {
-		this.page.url = '\/post\/monobehavior-common_method-01\/';
-		this.page.identifier = '3eee8a44a52c65769e8b0a465f80a509';
-	};
-	(function() {
-   	var d = document, s = d.createElement('script');
-   	s.src = 'https://' + 'So Serious' + '.disqus.com/embed.js';
-   	s.setAttribute('data-timestamp', +new Date());
-   	(d.head || d.body).appendChild(s);
-	})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-
+	<article class="blog-card none flexbox" style="background-image: url(/images/default2.png)">
+<img class="image" src="/images/default2.png"></img>
+<div class="title-content twemoji">
+	<h3><a class="title" href=/post/rpg-game-frame-01/>设计原则——RPG游戏框架-01</a></h3>
+	<div class="intro twemoji"></div>
 </div>
+<div class="utility-info">
+	<ul class="utility-list">
 		
+		<div><i class="comment icon"></i><span class="disqus-comment-count" data-disqus-identifier="cb5394fe7f5315ce4821e336f3d23457"></span></div>
+		
+		<div><span><i class="calendar icon"></i>Aug 13, 2018</span></div>
+		<div><span><i class="clock icon"></i>1 min read</span></div>
+	</ul>
+</div>
+<div class="color-overlay"></div>
+</article>
+
+	
+
+
+		</div>
 	</div>
 </div>
 

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Rpg on PY-&gt; Blog</title>
+    <link>/tags/rpg/</link>
+    <description>Recent content in Rpg on PY-&gt; Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>us-en</language>
+    <lastBuildDate>Mon, 13 Aug 2018 21:05:01 +0800</lastBuildDate>
+    
+	<atom:link href="/tags/rpg/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>设计原则——RPG游戏框架-01</title>
+      <link>/post/rpg-game-frame-01/</link>
+      <pubDate>Mon, 13 Aug 2018 21:05:01 +0800</pubDate>
+      
+      <guid>/post/rpg-game-frame-01/</guid>
+      <description> 设计原则     注意    适应变化（有层次感；有变更，代码改动小） 提高代码重用率（封装调用） 可维护性（） 可扩展性    框架   总结把所有类型游戏共用方法封装，随时调用。
+涉及 图形学 opengl，工程学，算法。
+  原则   单一原则：模块化
+开闭原则：不要直接修改属性，用get{}set{}或者public 方法。
+1 2 3 4 5 6 7 8 9 10 11 12 13 14  public class program(){ age = 10; public intAge { get{} set{} } //或者  public void GetAge(Int tempAge) { this.age = tempAge; } }   </description>
+    </item>
+    
+  </channel>
+</rss>

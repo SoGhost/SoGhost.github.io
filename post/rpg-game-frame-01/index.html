@@ -15,26 +15,21 @@ body, body.pushable {
 }
 
 </style><title>
-MonoBehavior 常用方法
+设计原则——RPG游戏框架-01
 </title><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<meta name="author" content="So Serious" />
-	<meta name="description" content="继承函数  继承自Object
- Destroy：物体销毁
- Instantiate：物体生成
- CompareTag：物体辨认
-  继承自Component
- SendMessage：消息推送   自身函数 1.Invoke：延迟执行程序
- Invoke(string methodName, float time); InvokeRepeating(string methodName, float time, float repeatRate);   重复调用函数，重复间隔。
-  IsInvoking(string methodName);   检测是否在继续调用。
-  CanceInvoke();  CanceInvoke(string methodName);    清楚所有Invoke或针对某一函数。
-    2.Coroutine：协同执行程序" />
+	<meta name="description" content=" 设计原则     注意    适应变化（有层次感；有变更，代码改动小） 提高代码重用率（封装调用） 可维护性（） 可扩展性    框架   总结把所有类型游戏共用方法封装，随时调用。
+涉及 图形学 opengl，工程学，算法。
+  原则   单一原则：模块化
+开闭原则：不要直接修改属性，用get{}set{}或者public 方法。
+1 2 3 4 5 6 7 8 9 10 11 12 13 14  public class program(){ age = 10; public intAge { get{} set{} } //或者  public void GetAge(Int tempAge) { this.age = tempAge; } }   " />
 <meta name="generator" content="Hugo 0.44" />
 
 <link rel="shortcut icon" href="/img/PY-Blog.ico">
 
-<link rel="canonical" href="/post/monobehavior-common_method-01/" />
+<link rel="canonical" href="/post/rpg-game-frame-01/" />
 <link rel="alternative" href="/index.xml" title="PY-&gt; Blog" type="application/atom+xml"/>
 <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet"> 
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
@@ -757,86 +752,88 @@ var bodyBgSwitchIndex = 0;var gradients = [
 	<div class="sixteen wide mobile fifteen wide tablet twelve wide computer column post-list">
 		<section class="ui secondary top attached black segment post-head">
 			<h1 class="post-title">
-				MonoBehavior 常用方法
+				设计原则——RPG游戏框架-01
 			</h1>
 			<div class="sub header">
-					<div><span><i class="calendar outline icon"></i>Jul 30, 2018</span></div><div><span class="disqusComment"><i class="comment outline icon"></i><a href="/post/monobehavior-common_method-01/#disqus_thread" class="disqus-comment-count" data-disqus-identifier="3eee8a44a52c65769e8b0a465f80a509"></a></span></div>
+					<div><span><i class="calendar outline icon"></i>Aug 13, 2018</span></div><div><span class="disqusComment"><i class="comment outline icon"></i><a href="/post/rpg-game-frame-01/#disqus_thread" class="disqus-comment-count" data-disqus-identifier="cb5394fe7f5315ce4821e336f3d23457"></a></span></div>
 					<div><span><i class="clock outline icon"></i>1 min read</span></div>
-					<div><span><i class="angle double up icon"></i>更新于 Jul 30, 2018</span></div>
+					<div><span><i class="angle double up icon"></i>更新于 Aug 13, 2018</span></div>
 			</div>
-			<hr><div class="toc"><nav id="TableOfContents">
-<ul>
-<li><a href="#继承函数">继承函数</a></li>
-<li><a href="#自身函数">自身函数</a></li>
-</ul>
-</nav></div>
-			
+			<hr>
 			
 			<article class="post-content twemoji">
-				
-
-<h1 id="继承函数">继承函数&nbsp;<a class="anchor" href="#继承函数"><i class="small linkify icon"></i></a> </h1>
-
-<ul>
-<li><p>继承自Object</p>
-
-<ul>
-<li><p>Destroy：物体销毁</p></li>
-
-<li><p>Instantiate：物体生成</p></li>
-
-<li><p>CompareTag：物体辨认</p></li>
-</ul></li>
-
-<li><p>继承自Component</p>
-
-<ul>
-<li>SendMessage：消息推送</li>
-</ul></li>
-</ul>
-
-<h1 id="自身函数">自身函数&nbsp;<a class="anchor" href="#自身函数"><i class="small linkify icon"></i></a> </h1>
-
-<p>1.Invoke：延迟执行程序</p>
-
-<ul>
-<li>Invoke(string methodName, float time);</li>
-<li>InvokeRepeating(string methodName, float time, float repeatRate);</li>
+				<ul>
+<li>设计原则</li>
 </ul>
 
 <blockquote>
-<p>重复调用函数，重复间隔。</p>
 </blockquote>
 
 <ul>
-<li>IsInvoking(string methodName);</li>
+<li>注意</li>
 </ul>
 
 <blockquote>
-<p>检测是否在继续调用。</p>
+<ol>
+<li>适应变化（有层次感；有变更，代码改动小）</li>
+<li>提高代码重用率（封装调用）</li>
+<li>可维护性（）</li>
+<li>可扩展性</li>
+</ol>
 </blockquote>
 
 <ul>
-<li>CanceInvoke();
-
-<ul>
-<li>CanceInvoke(string methodName);</li>
-</ul></li>
+<li>框架</li>
 </ul>
 
 <blockquote>
-<p>清楚所有Invoke或针对某一函数。</p>
+<p>总结把所有类型游戏共用方法封装，随时调用。</p>
+
+<p>涉及 图形学 opengl，工程学，算法。</p>
+</blockquote>
+
+<ul>
+<li>原则</li>
+</ul>
+
+<blockquote>
+<p>单一原则：模块化</p>
+
+<p>开闭原则：不要直接修改属性，用get{}set{}或者public 方法。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-c#" data-lang="c#"></code></pre></td>
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-c#" data-lang="c#"></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="k">public</span> <span class="k">class</span> <span class="nc">program</span><span class="p">(){</span>
+<span class="n">age</span> <span class="p">=</span> <span class="m">10</span><span class="p">;</span>
+   
+   <span class="k">public</span> <span class="n">intAge</span>
+   <span class="p">{</span>
+    <span class="k">get</span><span class="p">{}</span>
+    <span class="k">set</span><span class="p">{}</span>
+   <span class="p">}</span>
+   <span class="c1">//或者
+</span><span class="c1"></span>   <span class="k">public</span> <span class="k">void</span> <span class="n">GetAge</span><span class="p">(</span><span class="n">Int</span> <span class="n">tempAge</span><span class="p">)</span>
+   <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="n">age</span> <span class="p">=</span> <span class="n">tempAge</span><span class="p">;</span>
+   <span class="p">}</span>
+<span class="p">}</span></code></pre></td></tr></table>
 </div>
 </div></blockquote>
-
-<hr />
-
-<p>2.Coroutine：协同执行程序</p>
 
 			</article>
 		</section>
@@ -894,7 +891,7 @@ var bodyBgSwitchIndex = 0;var gradients = [
 			'width=626,height=436'); return false;">
 		<button class="ui facebook button"><i class="facebook icon"></i>Share</button>
 	</div>
-	<div class="twitter none flexbox" onclick="window.open('https://twitter.com/intent/tweet?text=Read &quot;MonoBehavior 常用方法  \/post\/monobehavior-common_method-01\/','_self')">
+	<div class="twitter none flexbox" onclick="window.open('https://twitter.com/intent/tweet?text=Read &quot;设计原则——RPG游戏框架-01  \/post\/rpg-game-frame-01\/','_self')">
 		<button class="ui twitter button"><i class="twitter icon"></i>Tweet</button>
 	</div>
 </section></section>
@@ -904,8 +901,8 @@ var bodyBgSwitchIndex = 0;var gradients = [
 		<div class="ui secondary bottom attached stacked segment disqus"><div id="disqus_thread"></div>
 <script>
 	var disqus_config = function () {
-		this.page.url = '\/post\/monobehavior-common_method-01\/';
-		this.page.identifier = '3eee8a44a52c65769e8b0a465f80a509';
+		this.page.url = '\/post\/rpg-game-frame-01\/';
+		this.page.identifier = 'cb5394fe7f5315ce4821e336f3d23457';
 	};
 	(function() {
    	var d = document, s = d.createElement('script');
