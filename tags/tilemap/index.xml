@@ -17,7 +17,18 @@
       <pubDate>Mon, 13 Aug 2018 08:47:21 +0800</pubDate>
       
       <guid>/post/unity-tilemap_mod/</guid>
-      <description></description>
+      <description>TileMap(瓦片地图)： &amp;gt;可以快速构建关卡，也可以通过相关API代码生成。
+ 相关组件
+  Grid:格子相关属性，TileMap是它子，也是一种画布（Canvas）。
+  TileMap:接收绘制好瓦片的地方，类似PS图层。
+  TileMap Renderer:控制瓦片渲染效果的组件，比如渲染顺序、遮罩、材质等。
+  Tile Palette:控制瓦片中间层，这里选择需要的瓦片。
+  Tile:瓦片，里面存储一个Sprite的引用和一个颜色值和碰撞类型。
+  2D - extras:TileMap的2D官方拓展包，有拓展笔刷和瓦片
+https://github.com/Unity-Technologies/2d-extras
+    使用TileMap快速构建关卡
+ 使用RuleTile
+  3.Cinemachine在2D中使用方法</description>
     </item>
     
   </channel>

@@ -12,7 +12,7 @@
     
     
     <item>
-      <title>【Pain To Learn Unity】——简单项目之像素鸟</title>
+      <title>【Pain To Learn Unity】——案例之像素鸟</title>
       <link>/post/pain-to-learn-unity-notes-01/</link>
       <pubDate>Sat, 11 Aug 2018 15:08:23 +0800</pubDate>
       
@@ -24,6 +24,15 @@
    添加点击事件  首先把菜单所有元素（除了背景）放到一个空物体上，控制空物体Enable达到切换场景目的。
  然后调整一下UI元素锚点（Anchor Presets）的大致位置。（锚点用于自动适配分辨率，自动调整UI位置）
     ra   </description>
+    </item>
+    
+    <item>
+      <title>【Pain To Learn Unity】——案例之吃豆人</title>
+      <link>/post/pain-to-learn-unity-notes-02/</link>
+      <pubDate>Sat, 11 Aug 2018 15:08:23 +0800</pubDate>
+      
+      <guid>/post/pain-to-learn-unity-notes-02/</guid>
+      <description></description>
     </item>
     
   </channel>

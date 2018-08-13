@@ -20,7 +20,18 @@ Unity Tilemap模块
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<meta name="author" content="So Serious" />
-	<meta name="description" content="" />
+	<meta name="description" content="TileMap(瓦片地图)： &amp;gt;可以快速构建关卡，也可以通过相关API代码生成。
+ 相关组件
+  Grid:格子相关属性，TileMap是它子，也是一种画布（Canvas）。
+  TileMap:接收绘制好瓦片的地方，类似PS图层。
+  TileMap Renderer:控制瓦片渲染效果的组件，比如渲染顺序、遮罩、材质等。
+  Tile Palette:控制瓦片中间层，这里选择需要的瓦片。
+  Tile:瓦片，里面存储一个Sprite的引用和一个颜色值和碰撞类型。
+  2D - extras:TileMap的2D官方拓展包，有拓展笔刷和瓦片
+https://github.com/Unity-Technologies/2d-extras
+    使用TileMap快速构建关卡
+ 使用RuleTile
+  3.Cinemachine在2D中使用方法" />
 <meta name="generator" content="Hugo 0.44" />
 
 <link rel="shortcut icon" href="/img/PY-Blog.ico">
@@ -97,6 +108,8 @@ var bodyBgSwitchIndex = 0;var gradients = [
 </section><section class="ui attached center aligned inverted segment sidebar-dream-tags">
 <a class="ui label" href="/tags/2d" title="2d">2d</a>
 
+<a class="ui label" href="/tags/ae" title="ae">ae</a>
+
 <a class="ui label" href="/tags/ai" title="ai">ai</a>
 
 <a class="ui label" href="/tags/animator" title="animator">animator</a>
@@ -104,6 +117,8 @@ var bodyBgSwitchIndex = 0;var gradients = [
 <a class="ui label" href="/tags/audio" title="audio">audio</a>
 
 <a class="ui label" href="/tags/c" title="c#">c#</a>
+
+<a class="ui label" href="/tags/effect" title="effect">effect</a>
 
 <a class="ui label" href="/tags/fps" title="fps">fps</a>
 
@@ -131,6 +146,21 @@ var bodyBgSwitchIndex = 0;var gradients = [
 	
 	<section class="ui attached inverted segment sidebar-dream-categories both flexbox">
 		<div class="ui inverted accordion">
+<div class="title">
+	<i class="dropdown icon"></i>
+	<a class="link" href="/categories/ae">ae</a>
+</div>
+<div class="content">
+
+	<a class="item" href="/post/ui-effects-01/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>UI 特效制作</p>
+		</div>
+	</a>
+
+</div>
+
 <div class="title">
 	<i class="dropdown icon"></i>
 	<a class="link" href="/categories/c">c#</a>
@@ -184,7 +214,14 @@ var bodyBgSwitchIndex = 0;var gradients = [
 	<a class="item" href="/post/pain-to-learn-unity-notes-01/">
 		<div>
 			<i class="cocktail icon"></i>
-			<p>【Pain To Learn Unity】——简单项目之像素鸟</p>
+			<p>【Pain To Learn Unity】——案例之像素鸟</p>
+		</div>
+	</a>
+
+	<a class="item" href="/post/pain-to-learn-unity-notes-02/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>【Pain To Learn Unity】——案例之吃豆人</p>
 		</div>
 	</a>
 
@@ -195,6 +232,13 @@ var bodyBgSwitchIndex = 0;var gradients = [
 	<a class="link" href="/categories/unity">unity</a>
 </div>
 <div class="content">
+
+	<a class="item" href="/post/ui-effects-01/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>UI 特效制作</p>
+		</div>
+	</a>
 
 	<a class="item" href="/post/unity-tilemap_mod/">
 		<div>
@@ -398,6 +442,8 @@ var bodyBgSwitchIndex = 0;var gradients = [
 		<div id="tag-category" class=" content"><section class="ui attached center aligned inverted segment dream-tags none flexbox">
 <a class="ui label" href="/tags/2d" title="2d">2d</a>
 
+<a class="ui label" href="/tags/ae" title="ae">ae</a>
+
 <a class="ui label" href="/tags/ai" title="ai">ai</a>
 
 <a class="ui label" href="/tags/animator" title="animator">animator</a>
@@ -405,6 +451,8 @@ var bodyBgSwitchIndex = 0;var gradients = [
 <a class="ui label" href="/tags/audio" title="audio">audio</a>
 
 <a class="ui label" href="/tags/c" title="c#">c#</a>
+
+<a class="ui label" href="/tags/effect" title="effect">effect</a>
 
 <a class="ui label" href="/tags/fps" title="fps">fps</a>
 
@@ -430,6 +478,21 @@ var bodyBgSwitchIndex = 0;var gradients = [
 
 </section><section class="ui attached inverted segment dream-categories both flexbox">
 			<div class="inverted accordion">
+<div class="title">
+	<i class="dropdown icon"></i>
+	<a class="link" href="/categories/ae">ae</a>
+</div>
+<div class="content">
+
+	<a class="item" href="/post/ui-effects-01/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>UI 特效制作</p>
+		</div>
+	</a>
+
+</div>
+
 <div class="title">
 	<i class="dropdown icon"></i>
 	<a class="link" href="/categories/c">c#</a>
@@ -483,7 +546,14 @@ var bodyBgSwitchIndex = 0;var gradients = [
 	<a class="item" href="/post/pain-to-learn-unity-notes-01/">
 		<div>
 			<i class="cocktail icon"></i>
-			<p>【Pain To Learn Unity】——简单项目之像素鸟</p>
+			<p>【Pain To Learn Unity】——案例之像素鸟</p>
+		</div>
+	</a>
+
+	<a class="item" href="/post/pain-to-learn-unity-notes-02/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>【Pain To Learn Unity】——案例之吃豆人</p>
 		</div>
 	</a>
 
@@ -494,6 +564,13 @@ var bodyBgSwitchIndex = 0;var gradients = [
 	<a class="link" href="/categories/unity">unity</a>
 </div>
 <div class="content">
+
+	<a class="item" href="/post/ui-effects-01/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>UI 特效制作</p>
+		</div>
+	</a>
 
 	<a class="item" href="/post/unity-tilemap_mod/">
 		<div>
@@ -652,17 +729,61 @@ var bodyBgSwitchIndex = 0;var gradients = [
 			</h1>
 			<div class="sub header">
 					<div><span><i class="calendar outline icon"></i>Aug 13, 2018</span></div><div><span class="disqusComment"><i class="comment outline icon"></i><a href="/post/unity-tilemap_mod/#disqus_thread" class="disqus-comment-count" data-disqus-identifier="fe01c34276323e2c8e3230593c3d21e9"></a></span></div>
-					<div><span><i class="clock outline icon"></i>0 min read</span></div>
+					<div><span><i class="clock outline icon"></i>1 min read</span></div>
 					<div><span><i class="angle double up icon"></i>更新于 Aug 13, 2018</span></div>
 			</div>
 			<hr>
 			
 			<article class="post-content twemoji">
-				
+				<ul>
+<li><p>TileMap(瓦片地图)：
+&gt;可以快速构建关卡，也可以通过相关API代码生成。</p></li>
+
+<li><p>相关组件</p>
+
+<ol>
+<li><blockquote>
+<p>Grid:格子相关属性，TileMap是它子，也是一种画布（Canvas）。</p>
+</blockquote></li>
+
+<li><blockquote>
+<p>TileMap:接收绘制好瓦片的地方，类似PS图层。</p>
+</blockquote></li>
+
+<li><blockquote>
+<p>TileMap Renderer:控制瓦片渲染效果的组件，比如渲染顺序、遮罩、材质等。</p>
+</blockquote></li>
+
+<li><blockquote>
+<p>Tile Palette:控制瓦片中间层，这里选择需要的瓦片。</p>
+</blockquote></li>
+
+<li><blockquote>
+<p>Tile:瓦片，里面存储一个Sprite的引用和一个颜色值和碰撞类型。</p>
+</blockquote></li>
+
+<li><blockquote>
+<p>2D - extras:TileMap的2D官方拓展包，有拓展笔刷和瓦片</p>
+
+<p><a href="https://github.com/Unity-Technologies/2d-extras">https://github.com/Unity-Technologies/2d-extras</a></p>
+</blockquote></li>
+</ol></li>
+</ul>
+
+<ol>
+<li><p>使用TileMap快速构建关卡</p></li>
+
+<li><p>使用RuleTile</p></li>
+</ol>
+
+<p>3.Cinemachine在2D中使用方法</p>
+
 			</article>
 		</section>
 		<section class="ui secondary attached segment dream-tags">
 <a class="ui label" href="/tags/2d" title="2d">2d</a>
+
+<a class="ui label" href="/tags/ae" title="ae">ae</a>
 
 <a class="ui label" href="/tags/ai" title="ai">ai</a>
 
@@ -671,6 +792,8 @@ var bodyBgSwitchIndex = 0;var gradients = [
 <a class="ui label" href="/tags/audio" title="audio">audio</a>
 
 <a class="ui label" href="/tags/c" title="c#">c#</a>
+
+<a class="ui label" href="/tags/effect" title="effect">effect</a>
 
 <a class="ui label" href="/tags/fps" title="fps">fps</a>
 

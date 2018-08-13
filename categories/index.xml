@@ -6,10 +6,19 @@
     <description>Recent content in Categories on PY-&gt; Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>us-en</language>
-    <lastBuildDate>Fri, 27 Jul 2018 08:18:12 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 13 Aug 2018 19:05:36 +0800</lastBuildDate>
     
 	<atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Ae</title>
+      <link>/categories/ae/</link>
+      <pubDate>Mon, 13 Aug 2018 19:05:36 +0800</pubDate>
+      
+      <guid>/categories/ae/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>C#</title>
@@ -41,7 +50,7 @@
     <item>
       <title>Unity</title>
       <link>/categories/unity/</link>
-      <pubDate>Mon, 13 Aug 2018 08:47:21 +0800</pubDate>
+      <pubDate>Mon, 13 Aug 2018 19:05:36 +0800</pubDate>
       
       <guid>/categories/unity/</guid>
       <description></description>
