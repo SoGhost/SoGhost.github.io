@@ -20,11 +20,12 @@ body, body.pushable {
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<meta name="author" content="So Serious" />
-	<meta name="description" content=" 设计原则     注意    适应变化（有层次感；有变更，代码改动小） 提高代码重用率（封装调用） 可维护性（） 可扩展性    框架   总结把所有类型游戏共用方法封装，随时调用。
+	<meta name="description" content="设计原则   注意   适应变化（有层次感；有变更，代码改动小） 提高代码重用率（封装调用） 可维护性（） 可扩展性   框架  总结把所有类型游戏共用方法封装，随时调用。
 涉及 图形学 opengl，工程学，算法。
-  原则   单一原则：模块化
-开闭原则：不要直接修改属性，用get{}set{}或者public 方法。
-1 2 3 4 5 6 7 8 9 10 11 12 13 14  public class program(){ age = 10; public intAge { get{} set{} } //或者  public void GetAge(Int tempAge) { this.age = tempAge; } }   " />
+ 原则   单一原则：就负责一件事，模块化，分开，提高效率
+ 开闭原则：一个实体（类，函数，模块等）应该对外扩展开放，对内修改关闭。
+  每次发生变化，通过添加新的代码来增强现有类型的行为，而不是修改原有代码。
+1 2 3 4 5 6 7 8 9 10 11 12 13 14  public class program(){ age = 10; public intAge { get{} set{} } //或者  public void GetAge(Int tempAge) { this.age = tempAge; } }    依赖倒置原则：指的是抽象不应依赖于细节，也就是提出“面向接口编程，而不是面向实现编程”，可以降低客户与具体实现的耦合 1." />
 <meta name="generator" content="Hugo 0.44" />
 
 <link rel="shortcut icon" href="/img/PY-Blog.ico">
@@ -759,19 +760,25 @@ var bodyBgSwitchIndex = 0;var gradients = [
 					<div><span><i class="clock outline icon"></i>1 min read</span></div>
 					<div><span><i class="angle double up icon"></i>更新于 Aug 13, 2018</span></div>
 			</div>
-			<hr>
+			<hr><div class="toc"><nav id="TableOfContents">
+<ul>
+<li><a href="#设计原则">设计原则</a></li>
+<li><a href="#注意">注意</a></li>
+<li><a href="#框架">框架</a></li>
+<li><a href="#原则">原则</a></li>
+</ul>
+</nav></div>
+			
 			
 			<article class="post-content twemoji">
-				<ul>
-<li>设计原则</li>
-</ul>
+				
+
+<h1 id="设计原则">设计原则&nbsp;<a class="anchor" href="#设计原则"><i class="small linkify icon"></i></a> </h1>
 
 <blockquote>
 </blockquote>
 
-<ul>
-<li>注意</li>
-</ul>
+<h1 id="注意">注意&nbsp;<a class="anchor" href="#注意"><i class="small linkify icon"></i></a> </h1>
 
 <blockquote>
 <ol>
@@ -782,9 +789,7 @@ var bodyBgSwitchIndex = 0;var gradients = [
 </ol>
 </blockquote>
 
-<ul>
-<li>框架</li>
-</ul>
+<h1 id="框架">框架&nbsp;<a class="anchor" href="#框架"><i class="small linkify icon"></i></a> </h1>
 
 <blockquote>
 <p>总结把所有类型游戏共用方法封装，随时调用。</p>
@@ -792,14 +797,16 @@ var bodyBgSwitchIndex = 0;var gradients = [
 <p>涉及 图形学 opengl，工程学，算法。</p>
 </blockquote>
 
-<ul>
-<li>原则</li>
-</ul>
+<h1 id="原则">原则&nbsp;<a class="anchor" href="#原则"><i class="small linkify icon"></i></a> </h1>
 
 <blockquote>
-<p>单一原则：模块化</p>
+<ol>
+<li><p><strong>单一原则：</strong>就负责一件事，模块化，分开，提高效率</p></li>
 
-<p>开闭原则：不要直接修改属性，用get{}set{}或者public 方法。</p>
+<li><p><strong>开闭原则：</strong>一个实体（类，函数，模块等）应该对外扩展开放，对内修改关闭。</p></li>
+</ol>
+
+<p>每次发生变化，通过添加新的代码来增强现有类型的行为，而不是修改原有代码。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-c#" data-lang="c#"><span class="lnt"> 1
@@ -823,17 +830,43 @@ var bodyBgSwitchIndex = 0;var gradients = [
    
    <span class="k">public</span> <span class="n">intAge</span>
    <span class="p">{</span>
-    <span class="k">get</span><span class="p">{}</span>
-    <span class="k">set</span><span class="p">{}</span>
+<span class="k">get</span><span class="p">{}</span>
+<span class="k">set</span><span class="p">{}</span>
    <span class="p">}</span>
    <span class="c1">//或者
 </span><span class="c1"></span>   <span class="k">public</span> <span class="k">void</span> <span class="n">GetAge</span><span class="p">(</span><span class="n">Int</span> <span class="n">tempAge</span><span class="p">)</span>
    <span class="p">{</span>
-    <span class="k">this</span><span class="p">.</span><span class="n">age</span> <span class="p">=</span> <span class="n">tempAge</span><span class="p">;</span>
+      <span class="k">this</span><span class="p">.</span><span class="n">age</span> <span class="p">=</span> <span class="n">tempAge</span><span class="p">;</span>
    <span class="p">}</span>
 <span class="p">}</span></code></pre></td></tr></table>
 </div>
-</div></blockquote>
+</div>
+<ol>
+<li><strong>依赖倒置原则：</strong>指的是抽象不应依赖于细节，也就是提出<strong>“面向接口编程，而不是面向实现编程”</strong>，可以降低客户与具体实现的耦合
+<strong>1.先了解需求</strong>，<strong>2.在画图</strong>，<strong>3.变成代码</strong></li>
+</ol>
+
+<p><u><strong>里氏原则：不修改别人代码，重写父类代码。</strong></u></p>
+
+<p><strong><em>多态：父类的指针指向子类，而调用子类的方法。</em></strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#">  <span class="n">Parent</span> <span class="n">tempParent</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Son</span><span class="p">();</span>
+  <span class="n">tempParent</span><span class="p">.</span><span class="n">showMe</span><span class="p">();//</span><span class="err">调用为子类方法</span></code></pre></td></tr></table>
+</div>
+</div>
+<ol>
+<li><p><strong>接口隔离原则：</strong>（接口里的单一原则，实现优化，减少执行代码）指的是使用多个专门的接口比使用单一的接口要好。不要让单一接口承担过多指责，而应该把每个职责分离到多个专门的接口中，进行接口分离。过于臃肿的接口是对接口的一种污染。</p></li>
+
+<li><p><strong>合成复用原则：</strong>能用现有的类，就不要重新创建新的类。</p></li>
+
+<li><p>迪米特法则(Law of Demeter,  LoD)<strong>又叫最少知识原则</strong>（Least Knowledge Principle, LKP）：指的是一个对象应当对其他对象有尽可能少的了解。也就是，一个模块或对象应尽量少的与其他实体之间发生相互作用，使系统功能模块相对独立，这样一个模块修改时，影响到模块就会越少，拓展起来更加容易。</p></li>
+</ol>
+</blockquote>
 
 			</article>
 		</section>

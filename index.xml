@@ -17,11 +17,12 @@
       <pubDate>Mon, 13 Aug 2018 21:05:01 +0800</pubDate>
       
       <guid>/post/rpg-game-frame-01/</guid>
-      <description> 设计原则     注意    适应变化（有层次感；有变更，代码改动小） 提高代码重用率（封装调用） 可维护性（） 可扩展性    框架   总结把所有类型游戏共用方法封装，随时调用。
+      <description>设计原则   注意   适应变化（有层次感；有变更，代码改动小） 提高代码重用率（封装调用） 可维护性（） 可扩展性   框架  总结把所有类型游戏共用方法封装，随时调用。
 涉及 图形学 opengl，工程学，算法。
-  原则   单一原则：模块化
-开闭原则：不要直接修改属性，用get{}set{}或者public 方法。
-1 2 3 4 5 6 7 8 9 10 11 12 13 14  public class program(){ age = 10; public intAge { get{} set{} } //或者  public void GetAge(Int tempAge) { this.age = tempAge; } }   </description>
+ 原则   单一原则：就负责一件事，模块化，分开，提高效率
+ 开闭原则：一个实体（类，函数，模块等）应该对外扩展开放，对内修改关闭。
+  每次发生变化，通过添加新的代码来增强现有类型的行为，而不是修改原有代码。
+1 2 3 4 5 6 7 8 9 10 11 12 13 14  public class program(){ age = 10; public intAge { get{} set{} } //或者  public void GetAge(Int tempAge) { this.age = tempAge; } }    依赖倒置原则：指的是抽象不应依赖于细节，也就是提出“面向接口编程，而不是面向实现编程”，可以降低客户与具体实现的耦合 1.</description>
     </item>
     
     <item>
