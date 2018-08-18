@@ -12,7 +12,7 @@
     
     
     <item>
-      <title>设计原则——RPG游戏框架-01</title>
+      <title>设计——RPG游戏框架-01</title>
       <link>/post/rpg-game-frame-01/</link>
       <pubDate>Mon, 13 Aug 2018 21:05:01 +0800</pubDate>
       
@@ -22,7 +22,7 @@
  原则   单一原则：就负责一件事，模块化，分开，提高效率
  开闭原则：一个实体（类，函数，模块等）应该对外扩展开放，对内修改关闭。
   每次发生变化，通过添加新的代码来增强现有类型的行为，而不是修改原有代码。
-1 2 3 4 5 6 7 8 9 10 11 12 13 14  public class program(){ age = 10; public intAge { get{} set{} } //或者  public void GetAge(Int tempAge) { this.age = tempAge; } }    依赖倒置原则：指的是抽象不应依赖于细节，也就是提出“面向接口编程，而不是面向实现编程”，可以降低客户与具体实现的耦合 1.</description>
+1 2 3 4 5 6 7 8 9 10 11 12 13 14  public class program(){ age = 10; public intAge { get{} set{} } //或者  public void GetAge(Int tempAge) { this.age = tempAge; } }    依赖倒置原则：指的是抽象不应依赖于细节，也就是提出“面向接口编程，而不是面向实现编程”，可以降低客户与具体实现的耦合  1.</description>
     </item>
     
   </channel>

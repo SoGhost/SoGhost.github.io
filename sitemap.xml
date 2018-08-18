@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/post/english-sentence-01/</loc>
+    <lastmod>2018-08-14T08:35:36+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/post/rpg-game-frame-01/</loc>
     <lastmod>2018-08-13T21:05:01+08:00</lastmod>
   </url>
@@ -191,6 +196,18 @@
   </url>
   
   <url>
+    <loc>/tags/english/</loc>
+    <lastmod>2018-08-14T08:35:36+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/english/</loc>
+    <lastmod>2018-08-14T08:35:36+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/tags/fps/</loc>
     <lastmod>2018-08-05T14:48:37+08:00</lastmod>
     <priority>0</priority>
@@ -216,7 +233,7 @@
   
   <url>
     <loc>/</loc>
-    <lastmod>2018-08-13T21:05:01+08:00</lastmod>
+    <lastmod>2018-08-14T08:35:36+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -228,7 +245,7 @@
   
   <url>
     <loc>/post/</loc>
-    <lastmod>2018-08-13T21:05:01+08:00</lastmod>
+    <lastmod>2018-08-14T08:35:36+08:00</lastmod>
     <priority>0</priority>
   </url>
   
