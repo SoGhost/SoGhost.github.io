@@ -15,22 +15,19 @@ body, body.pushable {
 }
 
 </style><title>
-设计——RPG游戏框架-01
+
+Category | game-frame
+
 </title><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<meta name="author" content="So Serious" />
-	<meta name="description" content="设计原则   注意   适应变化（有层次感；有变更，代码改动小） 提高代码重用率（封装调用） 可维护性（） 可扩展性   框架  总结把所有类型游戏共用方法封装，随时调用。
-涉及 图形学 opengl，工程学，算法。
- 原则   单一原则：就负责一件事，模块化，分开，提高效率
- 开闭原则：一个实体（类，函数，模块等）应该对外扩展开放，对内修改关闭。
-  每次发生变化，通过添加新的代码来增强现有类型的行为，而不是修改原有代码。
-1 2 3 4 5 6 7 8 9 10 11 12 13 14  public class program(){ age = 10; public intAge { get{} set{} } //或者  public void GetAge(Int tempAge) { this.age = tempAge; } }    依赖倒置原则：指的是抽象不应依赖于细节，也就是提出“面向接口编程，而不是面向实现编程”，可以降低客户与具体实现的耦合  1." />
+	<meta name="description" content="Do your best." />
 <meta name="generator" content="Hugo 0.44" />
 
 <link rel="shortcut icon" href="/img/PY-Blog.ico">
 
-<link rel="canonical" href="/post/rpg-game-frame-01/" />
+<link rel="canonical" href="/categories/game-frame/" />
 <link rel="alternative" href="/index.xml" title="PY-&gt; Blog" type="application/atom+xml"/>
 <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet"> 
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
@@ -198,6 +195,28 @@ var bodyBgSwitchIndex = 0;var gradients = [
 
 <div class="title">
 	<i class="dropdown icon"></i>
+	<a class="link" href="/categories/game-frame">game-frame</a>
+</div>
+<div class="content">
+
+	<a class="item" href="/post/game-frame-02/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>设计模式——游戏框架-01</p>
+		</div>
+	</a>
+
+	<a class="item" href="/post/game-frame-01/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>设计原则——游戏框架-01</p>
+		</div>
+	</a>
+
+</div>
+
+<div class="title">
+	<i class="dropdown icon"></i>
 	<a class="link" href="/categories/notes">notes</a>
 </div>
 <div class="content">
@@ -235,21 +254,6 @@ var bodyBgSwitchIndex = 0;var gradients = [
 		<div>
 			<i class="cocktail icon"></i>
 			<p>【Pain To Learn Unity】——案例之吃豆人</p>
-		</div>
-	</a>
-
-</div>
-
-<div class="title">
-	<i class="dropdown icon"></i>
-	<a class="link" href="/categories/rps-frame">rps-frame</a>
-</div>
-<div class="content">
-
-	<a class="item" href="/post/rpg-game-frame-01/">
-		<div>
-			<i class="cocktail icon"></i>
-			<p>设计——RPG游戏框架-01</p>
 		</div>
 	</a>
 
@@ -445,16 +449,22 @@ var bodyBgSwitchIndex = 0;var gradients = [
 			<i class="inverted big link cubes icon" title="所有类别"></i>
 		</a>
     </div>
-	<div class="ui container tablet computer only grid">
-		<div class="item" onClick="$('.ui.sidebar').sidebar('setting', 'transition', 'overlay').sidebar('toggle');">
-			<i class="inverted big link sidebar icon" title="Show Sidebar"></i>
-		</div>
+	
+	<div class="item">
+		
+		<i class="disabled inverted big chevron circle left icon" title="前一页"></i>
+  	
+  </div>
+	<div class="item">	
+		<i class="disabled inverted big chevron circle right icon" title="后一页"></i>
+		
 	</div>
 	
 </nav>
 
 <div class="ui centered grid">
-	<div class="sixteen wide mobile only column"><div class="ui inverted accordion">
+	<div class="fifteen wide mobile fifteen wide tablet four wide computer column">
+		<div class="ui inverted accordion">
 	<div id="header" class="ui inverted segment column box">
 		<header id="author" class="ui top attached center aligned inverted segment"><div class="ui small circular image">
 	<img src="/img/avatar.png">
@@ -464,10 +474,10 @@ var bodyBgSwitchIndex = 0;var gradients = [
 </h3>
 
 </header>
-		<div class=" title header-title"><div id="tag-category-pop" class="ui red right corner label">		
-				<i class="hand point icon down"title="点击弹出标签和分类"></i>		
+		<div class="active title header-title"><div id="tag-category-pop" class="ui red right corner label">		
+				<i class="hand point icon up"title="点击弹出标签和分类"></i>		
 			</div></div>
-		<div id="tag-category" class=" content"><section class="ui attached center aligned inverted segment dream-tags none flexbox">
+		<div id="tag-category" class="active content"><section class="ui attached center aligned inverted segment dream-tags none flexbox">
 <a class="ui label" href="/tags/2d" title="2d">2d</a>
 
 <a class="ui label" href="/tags/ae" title="ae">ae</a>
@@ -564,6 +574,28 @@ var bodyBgSwitchIndex = 0;var gradients = [
 
 <div class="title">
 	<i class="dropdown icon"></i>
+	<a class="link" href="/categories/game-frame">game-frame</a>
+</div>
+<div class="content">
+
+	<a class="item" href="/post/game-frame-02/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>设计模式——游戏框架-01</p>
+		</div>
+	</a>
+
+	<a class="item" href="/post/game-frame-01/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>设计原则——游戏框架-01</p>
+		</div>
+	</a>
+
+</div>
+
+<div class="title">
+	<i class="dropdown icon"></i>
 	<a class="link" href="/categories/notes">notes</a>
 </div>
 <div class="content">
@@ -601,21 +633,6 @@ var bodyBgSwitchIndex = 0;var gradients = [
 		<div>
 			<i class="cocktail icon"></i>
 			<p>【Pain To Learn Unity】——案例之吃豆人</p>
-		</div>
-	</a>
-
-</div>
-
-<div class="title">
-	<i class="dropdown icon"></i>
-	<a class="link" href="/categories/rps-frame">rps-frame</a>
-</div>
-<div class="content">
-
-	<a class="item" href="/post/rpg-game-frame-01/">
-		<div>
-			<i class="cocktail icon"></i>
-			<p>设计——RPG游戏框架-01</p>
 		</div>
 	</a>
 
@@ -783,310 +800,52 @@ var bodyBgSwitchIndex = 0;var gradients = [
 
 <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=200 height=52 src="//music.163.com/outchain/player?type=0&id=65781201&auto=0&height=32"></iframe></footer>
 	</div>
-</div></div>
-	<div class="sixteen wide mobile fifteen wide tablet twelve wide computer column post-list">
-		<section class="ui secondary top attached black segment post-head">
-			<h1 class="post-title">
-				设计——RPG游戏框架-01
-			</h1>
-			<div class="sub header">
-					<div><span><i class="calendar outline icon"></i>Aug 13, 2018</span></div><div><span class="disqusComment"><i class="comment outline icon"></i><a href="/post/rpg-game-frame-01/#disqus_thread" class="disqus-comment-count" data-disqus-identifier="cb5394fe7f5315ce4821e336f3d23457"></a></span></div>
-					<div><span><i class="clock outline icon"></i>1 min read</span></div>
-					<div><span><i class="angle double up icon"></i>更新于 Aug 13, 2018</span></div>
-			</div>
-			<hr><div class="toc"><nav id="TableOfContents">
-<ul>
-<li><a href="#设计原则">设计原则</a>
-<ul>
-<li><a href="#注意">注意</a></li>
-<li><a href="#框架">框架</a></li>
-<li><a href="#原则">原则</a></li>
-</ul></li>
-<li><a href="#设计模式">设计模式</a>
-<ul>
-<li><a href="#单例模式">单例模式</a></li>
-<li><a href="#观察者模式">观察者模式</a></li>
-</ul></li>
-</ul>
-</nav></div>
-			
-			
-			<article class="post-content twemoji">
-				
-
-<h1 id="设计原则">设计原则&nbsp;<a class="anchor" href="#设计原则"><i class="small linkify icon"></i></a> </h1>
-
-<blockquote>
-</blockquote>
-
-<h2 id="注意">注意&nbsp;<a class="anchor" href="#注意"><i class="small linkify icon"></i></a> </h2>
-
-<blockquote>
-<ol>
-<li>适应变化（有层次感；有变更，代码改动小）</li>
-<li>提高代码重用率（封装调用）</li>
-<li>可维护性（）</li>
-<li>可扩展性</li>
-</ol>
-</blockquote>
-
-<h2 id="框架">框架&nbsp;<a class="anchor" href="#框架"><i class="small linkify icon"></i></a> </h2>
-
-<blockquote>
-<p>总结把所有类型游戏共用方法封装，随时调用。</p>
-
-<p>涉及 图形学 opengl，工程学，算法。</p>
-</blockquote>
-
-<h2 id="原则">原则&nbsp;<a class="anchor" href="#原则"><i class="small linkify icon"></i></a> </h2>
-
-<blockquote>
-<ol>
-<li><p><strong>单一原则：</strong>就负责一件事，模块化，分开，提高效率</p></li>
-
-<li><p><strong>开闭原则：</strong>一个实体（类，函数，模块等）应该对外扩展开放，对内修改关闭。</p></li>
-</ol>
-
-<p>每次发生变化，通过添加新的代码来增强现有类型的行为，而不是修改原有代码。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="k">public</span> <span class="k">class</span> <span class="nc">program</span><span class="p">(){</span>
-<span class="n">age</span> <span class="p">=</span> <span class="m">10</span><span class="p">;</span>
-   
-   <span class="k">public</span> <span class="n">intAge</span>
-   <span class="p">{</span>
-<span class="k">get</span><span class="p">{}</span>
-<span class="k">set</span><span class="p">{}</span>
-   <span class="p">}</span>
-   <span class="c1">//或者
-</span><span class="c1"></span>   <span class="k">public</span> <span class="k">void</span> <span class="n">GetAge</span><span class="p">(</span><span class="n">Int</span> <span class="n">tempAge</span><span class="p">)</span>
-   <span class="p">{</span>
-      <span class="k">this</span><span class="p">.</span><span class="n">age</span> <span class="p">=</span> <span class="n">tempAge</span><span class="p">;</span>
-   <span class="p">}</span>
-<span class="p">}</span></code></pre></td></tr></table>
 </div>
-</div>
-<hr />
-
-<ol>
-<li><strong>依赖倒置原则：</strong>指的是抽象不应依赖于细节，也就是提出<strong>“面向接口编程，而不是面向实现编程”</strong>，可以降低客户与具体实现的耦合</li>
-</ol>
-
-<p><strong>1.先了解需求</strong>，<strong>2.在画图</strong>，<strong>3.变成代码</strong></p>
-
-<p><u><strong>里氏原则：不修改别人代码，重写父类代码。</strong></u></p>
-
-<p><strong><em>多态：父类的指针指向子类，而调用子类的方法。</em></strong></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="n">Parent</span> <span class="n">tempParent</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Son</span><span class="p">();</span>
-<span class="n">tempParent</span><span class="p">.</span><span class="n">showMe</span><span class="p">();//</span><span class="err">调用为子类方法</span></code></pre></td></tr></table>
-</div>
-</div>
-<ol>
-<li><p><strong>接口隔离原则：</strong>（接口里的单一原则，实现优化，减少执行代码）指的是使用多个专门的接口比使用单一的接口要好。不要让单一接口承担过多指责，而应该把每个职责分离到多个专门的接口中，进行接口分离。过于臃肿的接口是对接口的一种污染。</p></li>
-
-<li><p><strong>合成复用原则：</strong>能用现有的类，就不要重新创建新的类。</p></li>
-
-<li><p>迪米特法则(Law of Demeter,  LoD)<strong>又叫最少知识原则</strong>（Least Knowledge Principle, LKP）：指的是一个对象应当对其他对象有尽可能少的了解。也就是，一个模块或对象应尽量少的与其他实体之间发生相互作用，使系统功能模块相对独立，这样一个模块修改时，影响到模块就会越少，拓展起来更加容易。。</p></li>
-</ol>
-</blockquote>
-
-<hr />
-
-<h1 id="设计模式">设计模式&nbsp;<a class="anchor" href="#设计模式"><i class="small linkify icon"></i></a> </h1>
-
-<h2 id="单例模式">单例模式&nbsp;<a class="anchor" href="#单例模式"><i class="small linkify icon"></i></a> </h2>
-
-<blockquote>
-<p>单例模式：在软件生命周期，有且只有一个实例（不占内存空间）。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span><span class="lnt">9
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="c1">//class 抽象概念
-</span><span class="c1">//每new一个（实例化）就会占用一块内存
-</span><span class="c1">//相互没有关联
-</span><span class="c1"></span>
-<span class="c1">//如果是单例，就可以省去麻烦
-</span><span class="c1"></span><span class="k">public</span> <span class="k">static</span> <span class="n">Instance</span><span class="p">;</span>
-
-<span class="c1">//以static const修饰为全局变量,只会实例化一次
-</span><span class="c1"></span><span class="k">static</span> <span class="k">const</span> <span class="n">_Instance</span><span class="p">;</span></code></pre></td></tr></table>
-</div>
-</div>
-<ul>
-<li><p>有两种方式：</p>
-
-<ol>
-<li>继承MonoBehaviour：拖拽挂载脚本相当于new，<strong><em>一般用在组织框架(模块)的管理器上。</em></strong></li>
-<li>非继承：</li>
-</ol></li>
-</ul>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-c#" data-lang="c#"> <span class="c1">//非继承MonoBehaviour通用写法
-</span><span class="c1"></span> <span class="k">public</span> <span class="k">class</span> <span class="nc">TestSingl</span>
- <span class="p">{</span>
-     <span class="k">private</span> <span class="k">static</span> <span class="n">TestSingl</span> <span class="n">instance</span><span class="p">;</span>
-     
-     <span class="k">public</span> <span class="k">static</span> <span class="n">TestSingl</span> <span class="n">Instance</span>
-  <span class="p">{</span>
-         <span class="k">get</span>
-      <span class="p">{</span>
-             <span class="k">if</span><span class="p">(</span><span class="n">instamce</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
-                 <span class="n">instamce</span> <span class="p">=</span> <span class="k">new</span> <span class="n">TestSingl</span><span class="p">();</span>
-             
-             <span class="k">return</span> <span class="n">instance</span><span class="p">;</span>
-      <span class="p">}</span>
- 
-    <span class="k">public</span> <span class="k">void</span> <span class="n">Meathods</span><span class="p">()</span>
-  <span class="p">{</span>
-        
-  <span class="p">}</span>
-  <span class="p">}</span>
- <span class="p">}</span></code></pre></td></tr></table>
-</div>
-</div></blockquote>
-
-<hr />
-
-<h2 id="观察者模式">观察者模式&nbsp;<a class="anchor" href="#观察者模式"><i class="small linkify icon"></i></a> </h2>
-
-			</article>
-		</section>
-		<section class="ui secondary attached segment dream-tags">
-<a class="ui label" href="/tags/2d" title="2d">2d</a>
-
-<a class="ui label" href="/tags/ae" title="ae">ae</a>
-
-<a class="ui label" href="/tags/ai" title="ai">ai</a>
-
-<a class="ui label" href="/tags/animator" title="animator">animator</a>
-
-<a class="ui label" href="/tags/audio" title="audio">audio</a>
-
-<a class="ui label" href="/tags/c" title="c#">c#</a>
-
-<a class="ui label" href="/tags/effect" title="effect">effect</a>
-
-<a class="ui label" href="/tags/english" title="english">english</a>
-
-<a class="ui label" href="/tags/fps" title="fps">fps</a>
-
-<a class="ui label" href="/tags/knowledge" title="knowledge">knowledge</a>
-
-<a class="ui label" href="/tags/notes" title="notes">notes</a>
-
-<a class="ui label" href="/tags/rpg" title="rpg">rpg</a>
-
-<a class="ui label" href="/tags/tilemap" title="tilemap">tilemap</a>
-
-<a class="ui label" href="/tags/ugui" title="ugui">ugui</a>
-
-<a class="ui label" href="/tags/ui" title="ui">ui</a>
-
-<a class="ui label" href="/tags/unity" title="unity">unity</a>
-
-<a class="ui label" href="/tags/word" title="word">word</a>
-
-<a class="ui label" href="/tags/word-book" title="word-book">word-book</a>
-
-<a class="ui label" href="/tags/%E6%8A%80%E5%B7%A7" title="技巧">技巧</a>
-
-<a class="ui label" href="/tags/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93" title="数据传输">数据传输</a>
-
-
-		</section><section class="ui secondary  attached segment share row box"><div class="author"><img class="avatar" src="/img/avatar.png">
-	
-</div>
-<div class="info grow flexbox">
-	<p class="name">So Serious</p>
-	<p class="desc">Do your best.</p>		
-</div>
-<section class="buttons row box">
-	<div class="facebook none flexbox" href="#" onclick="window.open(
-			'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),
-			'facebook-share-dialog',
-			'width=626,height=436'); return false;">
-		<button class="ui facebook button"><i class="facebook icon"></i>Share</button>
 	</div>
-	<div class="twitter none flexbox" onclick="window.open('https://twitter.com/intent/tweet?text=Read &quot;设计——RPG游戏框架-01  \/post\/rpg-game-frame-01\/','_self')">
-		<button class="ui twitter button"><i class="twitter icon"></i>Tweet</button>
-	</div>
-</section></section>
-		<section class="ui secondary attached segment copyright">
+	<div class="fifteen wide mobile fifteen wide tablet eleven wide computer column post-list">
+		<div class="cards row box">
 			
-		</section>
-		<div class="ui secondary bottom attached stacked segment disqus"><div id="disqus_thread"></div>
-<script>
-	var disqus_config = function () {
-		this.page.url = '\/post\/rpg-game-frame-01\/';
-		this.page.identifier = 'cb5394fe7f5315ce4821e336f3d23457';
-	};
-	(function() {
-   	var d = document, s = d.createElement('script');
-   	s.src = 'https://' + 'So Serious' + '.disqus.com/embed.js';
-   	s.setAttribute('data-timestamp', +new Date());
-   	(d.head || d.body).appendChild(s);
-	})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-
+	<article class="blog-card none flexbox" style="background-image: url(/images/default3.png)">
+<img class="image" src="/images/default3.png"></img>
+<div class="title-content twemoji">
+	<h3><a class="title" href=/post/game-frame-02/>设计模式——游戏框架-01</a></h3>
+	<div class="intro twemoji">设计模式</div>
 </div>
+<div class="utility-info">
+	<ul class="utility-list">
 		
+		<div><i class="comment icon"></i><span class="disqus-comment-count" data-disqus-identifier="91e4a5fb8501dc5ccbc39ac9471a0e6f"></span></div>
+		
+		<div><span><i class="calendar icon"></i>Aug 22, 2018</span></div>
+		<div><span><i class="clock icon"></i>0 min read</span></div>
+	</ul>
+</div>
+<div class="color-overlay"></div>
+</article>
+
+	
+<article class="blog-card none flexbox" style="background-image: url(/images/default2.png)">
+<img class="image" src="/images/default2.png"></img>
+<div class="title-content twemoji">
+	<h3><a class="title" href=/post/game-frame-01/>设计原则——游戏框架-01</a></h3>
+	<div class="intro twemoji">设计原则和设计模式</div>
+</div>
+<div class="utility-info">
+	<ul class="utility-list">
+		
+		<div><i class="comment icon"></i><span class="disqus-comment-count" data-disqus-identifier="403f69db5a81dd0f75e2937a1a27b97e"></span></div>
+		
+		<div><span><i class="calendar icon"></i>Aug 13, 2018</span></div>
+		<div><span><i class="clock icon"></i>1 min read</span></div>
+	</ul>
+</div>
+<div class="color-overlay"></div>
+</article>
+
+	
+
+
+		</div>
 	</div>
 </div>
 
