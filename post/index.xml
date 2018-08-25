@@ -12,12 +12,14 @@
     
     
     <item>
-      <title>设计模式——游戏框架-01</title>
+      <title>常用设计模式——游戏框架-02</title>
       <link>/post/game-frame-02/</link>
       <pubDate>Wed, 22 Aug 2018 14:25:14 +0800</pubDate>
       
       <guid>/post/game-frame-02/</guid>
-      <description></description>
+      <description> 设计模式 单例模式  单例模式：在软件生命周期，有且只有一个实例（不占内存空间）。
+1 2 3 4 5 6 7 8 9  //class 抽象概念 //每new一个（实例化）就会占用一块内存 //相互没有关联  //如果是单例，就可以省去麻烦 public static Instance; //以static const修饰为全局变量,只会实例化一次 static const _Instance;    有两种方式：
+ 继承MonoBehaviour：拖拽挂载脚本相当于new，一般用在组织框架(模块)的管理器上。 非继承：   1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19  //非继承MonoBehaviour通用写法  public class TestSingl { private static TestSingl instance; public static TestSingl Instance { get { if(instamce == null) instamce = new TestSingl(); return instance; } public void Meathods() {} } }   观察者模式 </description>
     </item>
     
     <item>
