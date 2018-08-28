@@ -22,7 +22,7 @@ body, body.pushable {
 	<meta name="author" content="So Serious" />
 	<meta name="description" content="设计模式 单例模式  单例模式：在软件生命周期，有且只有一个实例（不占内存空间）。
 1 2 3 4 5 6 7 8 9  //class 抽象概念 //每new一个（实例化）就会占用一块内存 //相互没有关联  //如果是单例，就可以省去麻烦 public static Instance; //以static const修饰为全局变量,只会实例化一次 static const _Instance;    有两种方式：
- 继承MonoBehaviour：拖拽挂载脚本相当于new，一般用在组织框架（模块）的管理器上。 非继承：   1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16  //非继承MonoBehaviour通用写法  public class TestSingl { private static TestSingl instance; public static TestSingl Instance { get { if(instamce == null) instamce = new TestSingl(); return instance; } } }   工厂模式  交给工厂一个任务，就会产出一个产品，无需关心生产过程" />
+ 继承MonoBehaviour：拖拽挂载脚本相当于new，一般用在组织框架（模块）的管理器上。 非继承：   1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16  //非继承MonoBehaviour通用写法  public class TestSingl { private static TestSingl instance; public static TestSingl Instance { get { if(instamce == null) instamce = new TestSingl(); return instance; } } }   工厂模式  工厂模式：交给工厂一个任务，就会产出一个产品，无需关心生产过程。" />
 <meta name="generator" content="Hugo 0.44" />
 
 <link rel="shortcut icon" href="/img/PY-Blog.ico">
@@ -802,7 +802,7 @@ var bodyBgSwitchIndex = 0;var gradients = [
 			</h1>
 			<div class="sub header">
 					<div><span><i class="calendar outline icon"></i>Aug 22, 2018</span></div><div><span class="disqusComment"><i class="comment outline icon"></i><a href="/post/game-frame-02/#disqus_thread" class="disqus-comment-count" data-disqus-identifier="91e4a5fb8501dc5ccbc39ac9471a0e6f"></a></span></div>
-					<div><span><i class="clock outline icon"></i>2 min read</span></div>
+					<div><span><i class="clock outline icon"></i>3 min read</span></div>
 					<div><span><i class="angle double up icon"></i>更新于 Aug 22, 2018</span></div>
 			</div>
 			<hr><div class="toc"><nav id="TableOfContents">
@@ -811,6 +811,8 @@ var bodyBgSwitchIndex = 0;var gradients = [
 <ul>
 <li><a href="#单例模式">单例模式</a></li>
 <li><a href="#工厂模式">工厂模式</a></li>
+<li><a href="#观察者模式">观察者模式</a></li>
+<li><a href="#代理模式">代理模式</a></li>
 </ul></li>
 </ul>
 </nav></div>
@@ -901,7 +903,7 @@ var bodyBgSwitchIndex = 0;var gradients = [
 <h2 id="工厂模式">工厂模式&nbsp;<a class="anchor" href="#工厂模式"><i class="small linkify icon"></i></a> </h2>
 
 <blockquote>
-<p>交给工厂一个任务，就会产出一个产品，无需关心生产过程</p>
+<p>工厂模式：交给工厂一个任务，就会产出一个产品，无需关心生产过程。</p>
 
 <p>作用：用于new一些新的对象（生产金币、野怪&hellip;）</p>
 <div class="highlight"><div class="chroma">
@@ -1110,9 +1112,238 @@ var bodyBgSwitchIndex = 0;var gradients = [
         <span class="p">{</span>
             <span class="n">mufactory</span><span class="p">.</span><span class="n">CreateImage</span><span class="p">(</span><span class="n">tmpCount</span><span class="p">,</span> <span class="n">Vector3</span><span class="p">.</span><span class="n">right</span> <span class="p">*</span> <span class="n">tmpCount</span> <span class="p">*</span> <span class="m">60</span><span class="p">);</span>
 
-            <span class="n">tmpCount</span><span class="p">++;</span><span class="c1">//没生产一次，就+1
+            <span class="n">tmpCount</span><span class="p">++;</span><span class="c1">//每生产一次，就+1
 </span><span class="c1"></span>        <span class="p">}</span>
     <span class="p">}</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div></blockquote>
+
+<hr />
+
+<h2 id="观察者模式">观察者模式&nbsp;<a class="anchor" href="#观察者模式"><i class="small linkify icon"></i></a> </h2>
+
+<blockquote>
+<ol>
+<li><p>不断地询问</p></li>
+
+<li><p>游戏开发中：</p>
+
+<ul>
+<li>在动画播放0.5s后，播放一个音效（特效）。</li>
+</ul>
+
+<p>都是计时操作，Time累加</p></li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#">   </code></pre></td></tr></table>
+</div>
+</div></blockquote>
+
+<hr />
+
+<h2 id="代理模式">代理模式&nbsp;<a class="anchor" href="#代理模式"><i class="small linkify icon"></i></a> </h2>
+
+<blockquote>
+<p>由于观察者模式不断地访问（Update）过于消耗性能，对应有代理模式。</p>
+
+<p>代理模式：指向方法的指针。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="k">using</span> <span class="nn">UnityEngine</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">UnityEngine.UI</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">UnityEngine.Events</span><span class="p">;</span>
+
+<span class="c1">//代理模式
+</span><span class="c1"></span><span class="k">public</span> <span class="k">class</span> <span class="nc">Delegate</span> <span class="p">:</span> <span class="n">MonoBehaviour</span> <span class="p">{</span>
+
+    <span class="n">Button</span> <span class="n">btn</span><span class="p">;</span>
+
+    <span class="k">void</span> <span class="n">Start</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">//绑定按钮事件响应
+</span><span class="c1"></span>        <span class="n">btn</span> <span class="p">=</span> <span class="n">transform</span><span class="p">.</span><span class="n">GetComponent</span><span class="p">&lt;</span><span class="n">Button</span><span class="p">&gt;();</span>
+
+        <span class="c1">//AddListener添加点击方法
+</span><span class="c1"></span>        <span class="c1">//AddListener(OnClick)：分配空间在栈上   
+</span><span class="c1"></span>        <span class="c1">//AddListener(new UnityAction(OnClick))：分配空间在堆上（定义指针，直接指向方法）
+</span><span class="c1"></span>        <span class="c1">//UnityAction：delegate代理
+</span><span class="c1"></span>        <span class="n">btn</span><span class="p">.</span><span class="n">onClick</span><span class="p">.</span><span class="n">AddListener</span><span class="p">(</span><span class="k">new</span> <span class="n">UnityAction</span><span class="p">(</span><span class="n">OnClick</span><span class="p">));</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">void</span> <span class="n">OnClick</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="s">&#34;on click&#34;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<hr />
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="c1">//代理模式
+</span><span class="c1"></span>
+<span class="k">public</span> <span class="k">class</span> <span class="nc">HusBand</span><span class="p">{</span>
+   
+   <span class="n">Wife</span> <span class="n">myWife</span><span class="p">;</span>    <span class="c1">//声明Wife类，Wife才能调用里面方法。
+</span><span class="c1"></span>
+   <span class="k">public</span> <span class="k">void</span> <span class="n">AddMoney</span><span class="p">()</span>
+   <span class="p">{</span>
+       <span class="n">myWife</span><span class="p">.</span><span class="n">LeadMoney</span><span class="p">();</span>
+   <span class="p">}</span>
+
+   <span class="k">public</span> <span class="k">void</span> <span class="n">NoticeOne</span><span class="p">()</span>
+   <span class="p">{</span>
+       <span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="s">&#34;myWife mom say bad word One!&#34;</span><span class="p">);</span>
+   <span class="p">}</span>
+
+   <span class="k">public</span> <span class="k">void</span> <span class="n">NoticeTwo</span><span class="p">()</span>
+   <span class="p">{</span>
+       <span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="s">&#34;myWife mom say bad word Two!!&#34;</span><span class="p">);</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">Wife</span><span class="p">{</span>
+   
+   <span class="k">public</span> <span class="k">delegate</span> <span class="k">void</span> <span class="n">WifeSister</span><span class="p">();</span>
+
+   <span class="k">public</span> <span class="n">WifeSister</span> <span class="n">wifeSister</span><span class="p">;</span>   <span class="c1">//wifeSister指向一个方法
+</span><span class="c1"></span>
+   <span class="k">public</span> <span class="k">void</span> <span class="n">LeadMoney</span><span class="p">()</span>
+   <span class="p">{</span>
+
+   <span class="p">}</span>
+
+   <span class="k">public</span> <span class="k">void</span> <span class="n">SayBadWord</span><span class="p">()</span>
+   <span class="p">{</span>
+       <span class="n">wifeSister</span><span class="p">();</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">TestDelegate</span> <span class="p">:</span> <span class="n">MonoBehaviour</span><span class="p">{</span>
+
+   <span class="k">void</span> <span class="n">Start</span><span class="p">()</span>
+   <span class="p">{</span>
+       <span class="c1">//HusBand类 直接调用 Wife类方法
+</span><span class="c1"></span>       <span class="n">HusBand</span> <span class="n">tmpHusband</span> <span class="p">=</span> <span class="k">new</span> <span class="n">HusBand</span><span class="p">();</span>
+
+       <span class="n">tmpHusband</span><span class="p">.</span><span class="n">AddMoney</span><span class="p">();</span>
+
+       <span class="c1">//Wife类 直接调用 HusBand类方法
+</span><span class="c1"></span>       <span class="n">Wife</span> <span class="n">tmpWife</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Wife</span><span class="p">();</span>
+
+       <span class="c1">// 多播 = 只调用一个方法
+</span><span class="c1"></span>       <span class="n">tmpWife</span><span class="p">.</span><span class="n">wifeSister</span> <span class="p">=</span> <span class="n">tmpHusband</span><span class="p">.</span><span class="n">NoticeOne</span><span class="p">;</span>
+
+       <span class="c1">// 多播 += 调用多个方法（指针可以指向多个方法）
+</span><span class="c1"></span>       <span class="n">tmpWife</span><span class="p">.</span><span class="n">wifeSister</span> <span class="p">+=</span> <span class="n">tmpHusband</span><span class="p">.</span><span class="n">NoticeOne</span><span class="p">;</span>
+       <span class="n">tmpWife</span><span class="p">.</span><span class="n">wifeSister</span> <span class="p">+=</span> <span class="n">tmpHusband</span><span class="p">.</span><span class="n">NoticeTwo</span><span class="p">;</span>
+
+       <span class="c1">//不引用HusBand 调用其中方法
+</span><span class="c1"></span>       <span class="c1">//若要引用其他类方法，要么声明，要么使用 delegate。
+</span><span class="c1"></span>       <span class="c1">//上方调用一个其他类方法时，则调用几次 SayBadWord()方法（也就是其中的指针）。
+</span><span class="c1"></span>       <span class="c1">//通过本类 delegate（代理）的指针，实现访问其他类方法（但其他类中要声明本类）。
+</span><span class="c1"></span>       <span class="n">tmpWife</span><span class="p">.</span><span class="n">SayBadWord</span><span class="p">();</span>   <span class="c1">//调用wifeSister()指针
+</span><span class="c1"></span>   <span class="p">}</span>
 <span class="p">}</span></code></pre></td></tr></table>
 </div>
 </div></blockquote>
