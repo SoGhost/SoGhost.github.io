@@ -121,6 +121,10 @@ var bodyBgSwitchIndex = 0;var gradients = [
 
 <a class="ui label" href="/tags/rpg" title="rpg">rpg</a>
 
+<a class="ui label" href="/tags/tag1" title="tag1">tag1</a>
+
+<a class="ui label" href="/tags/tag2" title="tag2">tag2</a>
+
 <a class="ui label" href="/tags/tilemap" title="tilemap">tilemap</a>
 
 <a class="ui label" href="/tags/ugui" title="ugui">ugui</a>
@@ -173,6 +177,21 @@ var bodyBgSwitchIndex = 0;var gradients = [
 		<div>
 			<i class="cocktail icon"></i>
 			<p>C# _基本操作</p>
+		</div>
+	</a>
+
+</div>
+
+<div class="title">
+	<i class="dropdown icon"></i>
+	<a class="link" href="/categories/category1">category1</a>
+</div>
+<div class="content">
+
+	<a class="item" href="/post/game-frame-03/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>模块封装——游戏框架-02</p>
 		</div>
 	</a>
 
@@ -496,6 +515,10 @@ var bodyBgSwitchIndex = 0;var gradients = [
 
 <a class="ui label" href="/tags/rpg" title="rpg">rpg</a>
 
+<a class="ui label" href="/tags/tag1" title="tag1">tag1</a>
+
+<a class="ui label" href="/tags/tag2" title="tag2">tag2</a>
+
 <a class="ui label" href="/tags/tilemap" title="tilemap">tilemap</a>
 
 <a class="ui label" href="/tags/ugui" title="ugui">ugui</a>
@@ -546,6 +569,21 @@ var bodyBgSwitchIndex = 0;var gradients = [
 		<div>
 			<i class="cocktail icon"></i>
 			<p>C# _基本操作</p>
+		</div>
+	</a>
+
+</div>
+
+<div class="title">
+	<i class="dropdown icon"></i>
+	<a class="link" href="/categories/category1">category1</a>
+</div>
+<div class="content">
+
+	<a class="item" href="/post/game-frame-03/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>模块封装——游戏框架-02</p>
 		</div>
 	</a>
 
@@ -802,7 +840,7 @@ var bodyBgSwitchIndex = 0;var gradients = [
 			</h1>
 			<div class="sub header">
 					<div><span><i class="calendar outline icon"></i>Aug 22, 2018</span></div><div><span class="disqusComment"><i class="comment outline icon"></i><a href="/post/game-frame-02/#disqus_thread" class="disqus-comment-count" data-disqus-identifier="91e4a5fb8501dc5ccbc39ac9471a0e6f"></a></span></div>
-					<div><span><i class="clock outline icon"></i>3 min read</span></div>
+					<div><span><i class="clock outline icon"></i>7 min read</span></div>
 					<div><span><i class="angle double up icon"></i>更新于 Aug 22, 2018</span></div>
 			</div>
 			<hr><div class="toc"><nav id="TableOfContents">
@@ -813,6 +851,12 @@ var bodyBgSwitchIndex = 0;var gradients = [
 <li><a href="#工厂模式">工厂模式</a></li>
 <li><a href="#观察者模式">观察者模式</a></li>
 <li><a href="#代理模式">代理模式</a></li>
+<li><a href="#策略者模式">策略者模式</a></li>
+<li><a href="#建造者模式">建造者模式</a></li>
+<li><a href="#中介者模式">中介者模式</a></li>
+<li><a href="#门面模式">门面模式</a></li>
+<li><a href="#组合模式">组合模式</a></li>
+<li><a href="#状态者模式">状态者模式</a></li>
 </ul></li>
 </ul>
 </nav></div>
@@ -1124,23 +1168,93 @@ var bodyBgSwitchIndex = 0;var gradients = [
 <h2 id="观察者模式">观察者模式&nbsp;<a class="anchor" href="#观察者模式"><i class="small linkify icon"></i></a> </h2>
 
 <blockquote>
-<ol>
-<li><p>不断地询问</p></li>
+<p>观察者模式：就是在不断地询问</p>
 
-<li><p>游戏开发中：</p>
+<p>当在游戏开发中：</p>
 
 <ul>
 <li>在动画播放0.5s后，播放一个音效（特效）。</li>
 </ul>
 
-<p>都是计时操作，Time累加</p></li>
-</ol>
+<p>都是计时操作，Time累加</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="lnt">1
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-c#" data-lang="c#">   </code></pre></td></tr></table>
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="k">using</span> <span class="nn">UnityEngine</span><span class="p">;</span>
+
+<span class="c1">//观察者模式
+</span><span class="c1"></span><span class="k">public</span> <span class="k">class</span> <span class="nc">Obstor</span> <span class="p">:</span> <span class="n">MonoBehaviour</span><span class="p">{</span>
+
+    <span class="k">public</span> <span class="n">Animation</span> <span class="n">_animation</span><span class="p">;</span>
+
+    <span class="k">private</span> <span class="kt">float</span> <span class="n">timeCount</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span><span class="c1">//计时器
+</span><span class="c1"></span>
+    <span class="k">void</span> <span class="n">Start</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">_animation</span> <span class="p">=</span> <span class="n">GetComponent</span><span class="p">&lt;</span><span class="n">Animation</span><span class="p">&gt;();</span>
+    <span class="p">}</span>
+
+    <span class="k">void</span> <span class="n">Update</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">timeCount</span> <span class="p">+=</span> <span class="n">Time</span><span class="p">.</span><span class="n">deltaTime</span><span class="p">;</span><span class="c1">//timeCount每秒加1
+</span><span class="c1"></span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">timeCount</span> <span class="p">&gt;</span> <span class="m">0.5f</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">timeCount</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+
+            <span class="c1">//do something
+</span><span class="c1"></span>            <span class="n">BigAttackTime</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">/// &lt;summary&gt;
+</span><span class="c1"></span>    <span class="c1">/// 通常封装方法
+</span><span class="c1"></span>    <span class="c1">/// &lt;/summary&gt;
+</span><span class="c1"></span>    <span class="k">public</span> <span class="k">void</span> <span class="n">BigAttackTime</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">_animation</span><span class="p">.</span><span class="n">Play</span><span class="p">(</span><span class="s">&#34;attack&#34;</span><span class="p">);</span>
+        
+        <span class="n">timeCount</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></td></tr></table>
 </div>
 </div></blockquote>
 
@@ -1196,9 +1310,9 @@ var bodyBgSwitchIndex = 0;var gradients = [
         <span class="c1">//绑定按钮事件响应
 </span><span class="c1"></span>        <span class="n">btn</span> <span class="p">=</span> <span class="n">transform</span><span class="p">.</span><span class="n">GetComponent</span><span class="p">&lt;</span><span class="n">Button</span><span class="p">&gt;();</span>
 
-        <span class="c1">//AddListener添加点击方法
-</span><span class="c1"></span>        <span class="c1">//AddListener(OnClick)：分配空间在栈上   
-</span><span class="c1"></span>        <span class="c1">//AddListener(new UnityAction(OnClick))：分配空间在堆上（定义指针，直接指向方法）
+        <span class="c1">//AddListener 给Button添加监听
+</span><span class="c1"></span>        <span class="c1">//AddListener(OnClick)：分配空间在栈上（栈 占用的空间小，电脑缓存大，速度越快，空间有限，尽量少用）
+</span><span class="c1"></span>        <span class="c1">//AddListener(new UnityAction(OnClick))：分配空间在堆上（堆 占用的空间大）（定义指针，直接指向方法）
 </span><span class="c1"></span>        <span class="c1">//UnityAction：delegate代理
 </span><span class="c1"></span>        <span class="n">btn</span><span class="p">.</span><span class="n">onClick</span><span class="p">.</span><span class="n">AddListener</span><span class="p">(</span><span class="k">new</span> <span class="n">UnityAction</span><span class="p">(</span><span class="n">OnClick</span><span class="p">));</span>
     <span class="p">}</span>
@@ -1348,6 +1462,562 @@ var bodyBgSwitchIndex = 0;var gradients = [
 </div>
 </div></blockquote>
 
+<hr />
+
+<h2 id="策略者模式">策略者模式&nbsp;<a class="anchor" href="#策略者模式"><i class="small linkify icon"></i></a> </h2>
+
+<blockquote>
+<p>策略者模式：根据不同的输入，能够得到不同的结果（多态实现）。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="k">using</span> <span class="nn">UnityEngine</span><span class="p">;</span>
+
+<span class="c1">//Abstrator的基类
+</span><span class="c1"></span><span class="k">public</span> <span class="k">class</span> <span class="nc">AbsBase</span>
+<span class="p">{</span>
+   <span class="k">public</span> <span class="kt">float</span> <span class="n">payMoney</span><span class="p">;</span>
+
+   <span class="c1">//计算税务
+</span><span class="c1"></span>   <span class="k">public</span> <span class="k">virtual</span> <span class="k">void</span> <span class="n">CaculateTax</span><span class="p">()</span>
+   <span class="p">{</span>
+
+   <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">AbsPerson</span> <span class="p">:</span> <span class="n">AbsBase</span>
+<span class="p">{</span>
+   <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="n">CaculateTax</span><span class="p">()</span>
+   <span class="p">{</span>
+       <span class="n">payMoney</span> <span class="p">*=</span> <span class="m">0.08f</span><span class="p">;</span><span class="c1">//计算个人税
+</span><span class="c1"></span>   <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">AbsCompany</span> <span class="p">:</span> <span class="n">AbsBase</span>
+<span class="p">{</span>
+   <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="n">CaculateTax</span><span class="p">()</span>
+   <span class="p">{</span>
+       <span class="n">payMoney</span> <span class="p">*=</span> <span class="m">0.12f</span><span class="p">;</span><span class="c1">//计算公司税
+</span><span class="c1"></span>   <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">TestAbstrator</span> <span class="p">:</span> <span class="n">MonoBehaviour</span> <span class="p">{</span>
+
+   <span class="c1">//会计
+</span><span class="c1"></span>   <span class="k">public</span> <span class="k">void</span> <span class="n">CaculateTax</span><span class="p">(</span><span class="n">AbsBase</span> <span class="n">tmpBase</span><span class="p">)</span><span class="c1">//参数不同调用不同方法
+</span><span class="c1"></span>   <span class="p">{</span>
+       <span class="n">tmpBase</span><span class="p">.</span><span class="n">CaculateTax</span><span class="p">();</span>
+   <span class="p">}</span>
+
+   <span class="k">private</span> <span class="k">void</span> <span class="n">Start</span><span class="p">()</span>
+   <span class="p">{</span>
+       <span class="n">AbsPerson</span> <span class="n">tmpPerson</span> <span class="p">=</span> <span class="k">new</span> <span class="n">AbsPerson</span><span class="p">();</span>
+
+       <span class="n">CaculateTax</span><span class="p">(</span><span class="n">tmpPerson</span><span class="p">);</span><span class="c1">//多态,父类的指针(tmpBase)指向子类的方法
+</span><span class="c1"></span>
+       <span class="n">AbsCompany</span> <span class="n">tmpCompany</span> <span class="p">=</span> <span class="k">new</span> <span class="n">AbsCompany</span><span class="p">();</span>
+
+       <span class="n">CaculateTax</span><span class="p">(</span><span class="n">tmpCompany</span><span class="p">);</span>
+   <span class="p">}</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div></blockquote>
+
+<hr />
+
+<h2 id="建造者模式">建造者模式&nbsp;<a class="anchor" href="#建造者模式"><i class="small linkify icon"></i></a> </h2>
+
+<blockquote>
+<p>建造者模式：（分树状图）分层一层层往上建。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"></code></pre></td></tr></table>
+</div>
+</div></blockquote>
+
+<hr />
+
+<h2 id="中介者模式">中介者模式&nbsp;<a class="anchor" href="#中介者模式"><i class="small linkify icon"></i></a> </h2>
+
+<blockquote>
+<p>中介者模式：少引用，使用中介，减少影响（遵守最少知识原则）。</p>
+
+<ul>
+<li>攻击判断</li>
+</ul>
+
+<blockquote>
+<p>Pos1 - Pos2 &gt; r1 + r2 相离</p>
+
+<p>Pos1 - Pos2 = r1 + r2 相切</p>
+
+<p>Pos1 - Pos2 &lt; r1 + r2 相交</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#">  <span class="k">using</span> <span class="nn">UnityEngine</span><span class="p">;</span>
+  
+  <span class="c1">//MiddleBase父类，写共有方法；子类写特有方法
+</span><span class="c1"></span>  <span class="k">public</span> <span class="k">class</span> <span class="nc">MiddleBase</span>
+  <span class="p">{</span>
+      <span class="c1">//角色位置
+</span><span class="c1"></span>      <span class="k">public</span> <span class="n">Transform</span> <span class="n">ower</span><span class="p">;</span>
+  
+      <span class="k">public</span> <span class="kt">float</span> <span class="n">hp</span><span class="p">;</span>
+  
+      <span class="k">public</span> <span class="k">virtual</span> <span class="k">void</span> <span class="n">ReduceHp</span><span class="p">(</span><span class="kt">float</span> <span class="n">_Hp</span><span class="p">)</span>
+      <span class="p">{</span>
+          <span class="n">hp</span> <span class="p">-=</span> <span class="n">_Hp</span><span class="p">;</span>
+      <span class="p">}</span>
+  <span class="p">}</span>
+  
+  <span class="k">public</span> <span class="k">class</span> <span class="nc">MiddleNPC</span> <span class="p">:</span> <span class="n">MiddleBase</span>
+  <span class="p">{</span>
+      <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="n">ReduceHp</span><span class="p">(</span><span class="kt">float</span> <span class="n">_Hp</span><span class="p">)</span>
+      <span class="p">{</span>
+          <span class="n">hp</span> <span class="p">-=</span> <span class="n">_Hp</span> <span class="p">*</span> <span class="m">2</span><span class="p">;</span>
+      <span class="p">}</span>
+  <span class="p">}</span>
+  
+  <span class="k">public</span> <span class="k">class</span> <span class="nc">MiddlePlayer</span> <span class="p">:</span> <span class="n">MiddleBase</span>
+  <span class="p">{</span>
+  
+  <span class="p">}</span>
+  
+  <span class="c1">// TestMiddle 第三方中介者
+</span><span class="c1"></span>  <span class="k">public</span> <span class="k">class</span> <span class="nc">TestMiddle</span> <span class="p">:</span> <span class="n">MonoBehaviour</span><span class="p">{</span>
+  
+      <span class="c1">//攻击者 被攻击者
+</span><span class="c1"></span>      <span class="k">public</span> <span class="k">void</span> <span class="n">CaculateHp</span><span class="p">(</span><span class="n">MiddleBase</span> <span class="n">attacker</span><span class="p">,</span> <span class="n">MiddleBase</span> <span class="n">attacked</span><span class="p">)</span>
+      <span class="p">{</span>
+          <span class="c1">// deltaPos 攻击者与被攻击者距离
+</span><span class="c1"></span>          <span class="c1">// 1. Vector3 deltaPos = attacker.ower.position - attacked.ower.position;
+</span><span class="c1"></span>          <span class="c1">// 2. Vector3.Distance();
+</span><span class="c1"></span>          <span class="k">if</span> <span class="p">(</span><span class="n">Vector3</span><span class="p">.</span><span class="n">Distance</span><span class="p">(</span><span class="n">attacker</span><span class="p">.</span><span class="n">ower</span><span class="p">.</span><span class="n">position</span><span class="p">,</span> <span class="n">attacked</span><span class="p">.</span><span class="n">ower</span><span class="p">.</span><span class="n">position</span><span class="p">)</span> <span class="p">&lt;</span> <span class="m">10</span><span class="p">)</span>
+          <span class="p">{</span>
+              <span class="c1">//小于攻击范围，被攻击者掉血
+</span><span class="c1"></span>              <span class="n">attacked</span><span class="p">.</span><span class="n">ReduceHp</span><span class="p">(</span><span class="m">10</span><span class="p">);</span>
+          <span class="p">}</span>
+      <span class="p">}</span>
+  
+      <span class="k">void</span> <span class="n">Start</span><span class="p">()</span>
+      <span class="p">{</span>
+          <span class="n">MiddleNPC</span> <span class="n">tmpNpc</span> <span class="p">=</span> <span class="k">new</span> <span class="n">MiddleNPC</span><span class="p">();</span>
+  
+          <span class="n">MiddlePlayer</span> <span class="n">tmpPlayer</span> <span class="p">=</span> <span class="k">new</span> <span class="n">MiddlePlayer</span><span class="p">();</span>
+  
+          <span class="n">CaculateHp</span><span class="p">(</span><span class="n">tmpNpc</span><span class="p">,</span> <span class="n">tmpPlayer</span><span class="p">);</span><span class="c1">//NPC攻击玩家
+</span><span class="c1"></span>  
+          <span class="n">CaculateHp</span><span class="p">(</span><span class="n">tmpPlayer</span><span class="p">,</span> <span class="n">tmpNpc</span><span class="p">);</span><span class="c1">//玩家攻击NPC
+</span><span class="c1"></span>      <span class="p">}</span>
+  <span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div></blockquote>
+
+<hr />
+
+<h2 id="门面模式">门面模式&nbsp;<a class="anchor" href="#门面模式"><i class="small linkify icon"></i></a> </h2>
+
+<blockquote>
+<p>门面模式（外观模式）：将不同类型的东西放在一起，形成特定功能。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="k">using</span> <span class="nn">UnityEngine</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">UnityEngine.UI</span><span class="p">;</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">TestShop</span> <span class="p">:</span> <span class="n">MonoBehaviour</span><span class="p">{</span>
+
+   <span class="k">public</span> <span class="n">GameObject</span> <span class="n">redObj</span><span class="p">;</span>
+   <span class="k">public</span> <span class="n">GameObject</span> <span class="n">greenObj</span><span class="p">;</span>
+
+   <span class="kt">bool</span> <span class="n">isRed</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+
+   <span class="k">public</span> <span class="k">void</span> <span class="n">ShowRedLighting</span><span class="p">()</span>
+   <span class="p">{</span>
+       <span class="n">redObj</span><span class="p">.</span><span class="n">SetActive</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
+       <span class="n">greenObj</span><span class="p">.</span><span class="n">SetActive</span><span class="p">(</span><span class="k">false</span><span class="p">);</span>
+   <span class="p">}</span>
+
+   <span class="k">public</span> <span class="k">void</span> <span class="n">ShowGreenLighting</span><span class="p">()</span>
+   <span class="p">{</span>
+       <span class="n">greenObj</span><span class="p">.</span><span class="n">SetActive</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
+       <span class="n">redObj</span><span class="p">.</span><span class="n">SetActive</span><span class="p">(</span><span class="k">false</span><span class="p">);</span>
+   <span class="p">}</span>
+
+   <span class="k">public</span> <span class="k">void</span> <span class="n">OnClick</span><span class="p">()</span>
+   <span class="p">{</span>
+       <span class="n">isRed</span> <span class="p">=</span> <span class="p">!</span><span class="n">isRed</span><span class="p">;</span>
+
+       <span class="k">if</span> <span class="p">(</span><span class="n">isRed</span><span class="p">)</span>
+       <span class="p">{</span>
+           <span class="n">ShowRedLighting</span><span class="p">();</span>
+       <span class="p">}</span>
+       <span class="k">else</span>
+       <span class="p">{</span>
+           <span class="n">ShowGreenLighting</span><span class="p">();</span>
+       <span class="p">}</span>
+   <span class="p">}</span>
+
+   <span class="k">void</span> <span class="n">Start</span><span class="p">(){</span>
+
+       <span class="n">Button</span> <span class="n">btn</span> <span class="p">=</span> <span class="n">GetComponent</span><span class="p">&lt;</span><span class="n">Button</span><span class="p">&gt;();</span>
+
+       <span class="n">btn</span><span class="p">.</span><span class="n">onClick</span><span class="p">.</span><span class="n">AddListener</span><span class="p">(</span><span class="n">OnClick</span><span class="p">);</span>
+   <span class="p">}</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div></blockquote>
+
+<hr />
+
+<h2 id="组合模式">组合模式&nbsp;<a class="anchor" href="#组合模式"><i class="small linkify icon"></i></a> </h2>
+
+<blockquote>
+<p>组合模式：将相同类型的东西放在一起，形成特定功能。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span><span class="lnt">82
+</span><span class="lnt">83
+</span><span class="lnt">84
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">UnityEngine</span><span class="p">;</span>
+
+<span class="c1">/// &lt;summary&gt;
+</span><span class="c1">/// 1. 坦克
+</span><span class="c1">/// 2. 炮台
+</span><span class="c1">/// 3. 车身
+</span><span class="c1">/// 4. 轮子
+</span><span class="c1">/// 5. 发动机
+</span><span class="c1">/// &lt;/summary&gt;
+</span><span class="c1"></span>
+<span class="c1">//tank基类，装载各个部位
+</span><span class="c1"></span><span class="k">public</span> <span class="k">class</span> <span class="nc">TankBase</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">virtual</span> <span class="k">void</span> <span class="n">WalkFront</span><span class="p">(){}</span>
+    <span class="k">public</span> <span class="k">virtual</span> <span class="k">void</span> <span class="n">WalkBack</span><span class="p">(){}</span>
+<span class="p">}</span>
+
+<span class="c1">//子弹
+</span><span class="c1"></span><span class="k">public</span> <span class="k">class</span> <span class="nc">Bullet</span> <span class="p">:</span> <span class="n">TankBase</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="n">WalkFront</span><span class="p">(){}</span>
+    <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="n">WalkBack</span><span class="p">(){}</span>
+<span class="p">}</span>
+
+<span class="c1">//轮子
+</span><span class="c1"></span><span class="k">public</span> <span class="k">class</span> <span class="nc">TankWheel</span> <span class="p">:</span> <span class="n">TankBase</span>
+<span class="p">{</span>
+    <span class="c1">//旋转
+</span><span class="c1"></span>    <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="n">WalkFront</span><span class="p">(){}</span>
+    <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="n">WalkBack</span><span class="p">(){}</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">TankEngine</span> <span class="p">:</span> <span class="n">TankBase</span>
+<span class="p">{</span>
+    <span class="c1">//旋转
+</span><span class="c1"></span>    <span class="c1">//播放声音
+</span><span class="c1"></span>    <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="n">WalkFront</span><span class="p">(){}</span>
+    <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="n">WalkBack</span><span class="p">(){}</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">TestCombine</span> <span class="p">:</span> <span class="n">MonoBehaviour</span><span class="p">{</span>
+
+    <span class="c1">//统领所有部件运动（可用List、数组）
+</span><span class="c1"></span>    <span class="n">List</span><span class="p">&lt;</span><span class="n">TankBase</span><span class="p">&gt;</span> <span class="n">tank</span><span class="p">;</span>
+
+   
+    <span class="k">void</span> <span class="n">Start</span><span class="p">(){</span>
+
+        <span class="c1">// tank装载各个部位
+</span><span class="c1"></span>        <span class="n">tank</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">TankBase</span><span class="p">&gt;();</span>
+
+        <span class="n">Bullet</span> <span class="n">bullet</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Bullet</span><span class="p">();</span>
+
+        <span class="n">tank</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">bullet</span><span class="p">);</span>
+
+        <span class="n">TankEngine</span> <span class="n">engine</span> <span class="p">=</span> <span class="k">new</span> <span class="n">TankEngine</span><span class="p">();</span>
+
+        <span class="n">tank</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">engine</span><span class="p">);</span>
+
+        <span class="n">TankWheel</span> <span class="n">wheel</span> <span class="p">=</span> <span class="k">new</span> <span class="n">TankWheel</span><span class="p">();</span>
+
+        <span class="n">tank</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">wheel</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">void</span> <span class="n">Update</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">Input</span><span class="p">.</span><span class="n">GetKeyDown</span><span class="p">(</span><span class="n">KeyCode</span><span class="p">.</span><span class="n">W</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">tank</span><span class="p">.</span><span class="n">Count</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
+            <span class="p">{</span>
+                <span class="n">tank</span><span class="na">[i]</span><span class="p">.</span><span class="n">WalkFront</span><span class="p">();</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">Input</span><span class="p">.</span><span class="n">GetKeyDown</span><span class="p">(</span><span class="n">KeyCode</span><span class="p">.</span><span class="n">S</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">tank</span><span class="p">.</span><span class="n">Count</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
+            <span class="p">{</span>
+                <span class="n">tank</span><span class="na">[i]</span><span class="p">.</span><span class="n">WalkBack</span><span class="p">();</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div></blockquote>
+
+<hr />
+
+<h2 id="状态者模式">状态者模式&nbsp;<a class="anchor" href="#状态者模式"><i class="small linkify icon"></i></a> </h2>
+
+<blockquote>
+<p>状态者模式（命令者模式）：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"></code></pre></td></tr></table>
+</div>
+</div></blockquote>
+
 			</article>
 		</section>
 		<section class="ui secondary attached segment dream-tags">
@@ -1374,6 +2044,10 @@ var bodyBgSwitchIndex = 0;var gradients = [
 <a class="ui label" href="/tags/notes" title="notes">notes</a>
 
 <a class="ui label" href="/tags/rpg" title="rpg">rpg</a>
+
+<a class="ui label" href="/tags/tag1" title="tag1">tag1</a>
+
+<a class="ui label" href="/tags/tag2" title="tag2">tag2</a>
 
 <a class="ui label" href="/tags/tilemap" title="tilemap">tilemap</a>
 

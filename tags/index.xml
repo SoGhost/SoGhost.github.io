@@ -120,6 +120,24 @@
     </item>
     
     <item>
+      <title>Tag1</title>
+      <link>/tags/tag1/</link>
+      <pubDate>Wed, 29 Aug 2018 15:15:31 +0800</pubDate>
+      
+      <guid>/tags/tag1/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tag2</title>
+      <link>/tags/tag2/</link>
+      <pubDate>Wed, 29 Aug 2018 15:15:31 +0800</pubDate>
+      
+      <guid>/tags/tag2/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Tilemap</title>
       <link>/tags/tilemap/</link>
       <pubDate>Mon, 13 Aug 2018 08:47:21 +0800</pubDate>
