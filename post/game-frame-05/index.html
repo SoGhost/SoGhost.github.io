@@ -15,18 +15,24 @@ body, body.pushable {
 }
 
 </style><title>
-使用软件突发小技巧
+
 </title><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<meta name="author" content="So Serious" />
-	<meta name="description" content=" 按住 shift ，在准备复制文字（或其它）的一头按鼠标左键，在另一头按下左键，即可选中两头中的所有文字（或其它）。
- " />
+	<meta name="description" content="title: UI模块封装——游戏框架-05 date: 2018-08-31T17:52:54&#43;08:00 lastmod: 2018-08-31T17:52:54&#43;08:00 cover: &amp;ldquo;/images/default1.jpg&amp;rdquo; draft: false categories: [&amp;ldquo;GAME-FRAME&amp;rdquo;] tags: [&amp;ldquo;RPG&amp;rdquo;] description: UI模块封装
+UI模块  UI 流程：
+ 拼出大致UI效果图
+ UI小图片 &amp;mdash;&amp;gt; TexturePacker打包图集 （.png有A通道，.jpg没有） &amp;mdash;&amp;gt; Unity下载TexturePacker的导入插件
+ 拼UI：新建Canves &amp;mdash;&amp;gt; 新建Panel （背景设为效果图，照着图拼UI，以Panel为单位，一个Panel一个界面） &amp;mdash;&amp;gt; 划分UI层级
+ 写代码：↓
+       MVC模式（Model–view–controller）     模型（Model） 数据模型（数据结构，username、password）。用于封装与应用程序的业务逻辑相关的数据以及对数据的处理方法。   视图（View） 能够实现数据有目的的显示（理论上，这不是必需的）。   控制器（Controller） 逻辑控制层。起到不同层面间的组织作用，用于控制应用程序的流程。它处理事件并作出响应。“事件”包括用户的行为和数据 Model 上的改变。     控制器（Controller）：由UIManager管理所有Panel，由PanelManager管理所有子控件。
+ 1. 子控件发生事件应让子控件主动’上报‘，所以给需要的控件添加**UIBehaviour**脚本。 2." />
 <meta name="generator" content="Hugo 0.44" />
 
 <link rel="shortcut icon" href="/img/PY-Blog.ico">
 
-<link rel="canonical" href="/post/use-skill/" />
+<link rel="canonical" href="/post/game-frame-05/" />
 <link rel="alternative" href="/index.xml" title="PY-&gt; Blog" type="application/atom+xml"/>
 <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet"> 
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
@@ -825,64 +831,91 @@ var bodyBgSwitchIndex = 0;var gradients = [
 	<div class="sixteen wide mobile fifteen wide tablet twelve wide computer column post-list">
 		<section class="ui secondary top attached black segment post-head">
 			<h1 class="post-title">
-				使用软件突发小技巧
+				
 			</h1>
 			<div class="sub header">
-					<div><span><i class="calendar outline icon"></i>Jul 29, 2018</span></div><div><span class="disqusComment"><i class="comment outline icon"></i><a href="/post/use-skill/#disqus_thread" class="disqus-comment-count" data-disqus-identifier="63edb2bba79e67258c46abb810160f76"></a></span></div>
+					<div><span><i class="calendar outline icon"></i>Jan 1, 0001</span></div><div><span class="disqusComment"><i class="comment outline icon"></i><a href="/post/game-frame-05/#disqus_thread" class="disqus-comment-count" data-disqus-identifier="434613a9d28e4352d1668078daf0a921"></a></span></div>
 					<div><span><i class="clock outline icon"></i>1 min read</span></div>
-					<div><span><i class="angle double up icon"></i>更新于 Jul 29, 2018</span></div>
+					<div><span><i class="angle double up icon"></i>更新于 Jan 1, 0001</span></div>
 			</div>
-			<hr>
+			<hr><div class="toc"><nav id="TableOfContents">
+<ul>
+<li><a href="#ui模块">UI模块</a></li>
+</ul>
+</nav></div>
+			
 			
 			<article class="post-content twemoji">
-				<blockquote>
-<p>按住 shift ，在准备复制文字（或其它）的一头按鼠标左键，在另一头按下左键，即可选中两头中的所有文字（或其它）。</p>
+				
+
+<p>title: UI模块封装——游戏框架-05
+date: 2018-08-31T17:52:54+08:00
+lastmod: 2018-08-31T17:52:54+08:00
+cover: &ldquo;/images/default1.jpg&rdquo;
+draft: false
+categories: [&ldquo;GAME-FRAME&rdquo;]
+tags: [&ldquo;RPG&rdquo;]
+description: UI模块封装</p>
+
+<h1 id="ui模块">UI模块&nbsp;<a class="anchor" href="#ui模块"><i class="small linkify icon"></i></a> </h1>
+
+<blockquote>
+<p><strong>UI 流程：</strong></p>
+
+<ul>
+<li><p><font color=#00000><strong>拼出大致UI效果图</strong></p></li>
+
+<li><p>UI小图片 <strong>&mdash;&gt;</strong> TexturePacker<strong>打包图集</strong> <strong>（.png有A通道，.jpg没有）</strong>  <strong>&mdash;&gt;</strong>  Unity下载TexturePacker的导入插件</p></li>
+
+<li><p><strong>拼UI：</strong><em>新建Canves</em> <strong>&mdash;&gt;</strong>  <em>新建Panel</em> （背景设为效果图，照着图拼UI，以Panel为单位，一个Panel一个界面） <strong>&mdash;&gt;</strong> <em>划分UI层级</em></p></li>
+
+<li><p><strong>写代码：</font></strong><font color=#008B8B>↓</font></p></li>
+</ul>
+</blockquote>
+
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="left"><strong><font color=#00000>MVC模式</strong>（Model–view–controller）</font></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center"><strong><font color=#DB7093>模型（Model）</font></strong></td>
+<td align="left"><font color=#DB7093>数据模型（数据结构，username、password）。用于封装与应用程序的业务逻辑相关的数据以及对数据的处理方法。</font></td>
+</tr>
+
+<tr>
+<td align="center"><strong><font color=#9400D3>视图（View）</font></strong></td>
+<td align="left"><font color=#9400D3>能够实现数据有目的的显示（理论上，这不是必需的）。</font></td>
+</tr>
+
+<tr>
+<td align="center"><strong><font color=#4169E1>控制器（Controller）</font></strong></td>
+<td align="left"><font color=#4169E1>逻辑控制层。起到不同层面间的组织作用，用于控制应用程序的流程。它<strong>处理事件并作出响应</strong>。<strong>“事件”包括用户的行为和数据 Model 上的改变</strong>。</font></td>
+</tr>
+</tbody>
+</table>
+
+<blockquote>
+<p><strong>控制器（Controller）：</strong>由<strong>UIManager</strong>管理所有Panel，由<strong>PanelManager</strong>管理所有子控件。</p>
+
+<pre><code> 1. 子控件发生事件应让子控件主动’上报‘，所以给需要的控件添加**UIBehaviour**脚本。
+ 2. **UIBehaviour**会将自己注册到**UIManager**。
+
+
+
+**UIManager：**保存注册到UIManager里的子控件。
+</code></pre>
 </blockquote>
 
 			</article>
 		</section>
 		<section class="ui secondary attached segment dream-tags">
-<a class="ui label" href="/tags/2d" title="2d">2d</a>
-
-<a class="ui label" href="/tags/ae" title="ae">ae</a>
-
-<a class="ui label" href="/tags/ai" title="ai">ai</a>
-
-<a class="ui label" href="/tags/animator" title="animator">animator</a>
-
-<a class="ui label" href="/tags/audio" title="audio">audio</a>
-
-<a class="ui label" href="/tags/c" title="c#">c#</a>
-
-<a class="ui label" href="/tags/effect" title="effect">effect</a>
-
-<a class="ui label" href="/tags/english" title="english">english</a>
-
-<a class="ui label" href="/tags/fps" title="fps">fps</a>
-
-<a class="ui label" href="/tags/knowledge" title="knowledge">knowledge</a>
-
-<a class="ui label" href="/tags/notes" title="notes">notes</a>
-
-<a class="ui label" href="/tags/rpg" title="rpg">rpg</a>
-
-<a class="ui label" href="/tags/tilemap" title="tilemap">tilemap</a>
-
-<a class="ui label" href="/tags/ugui" title="ugui">ugui</a>
-
-<a class="ui label" href="/tags/ui" title="ui">ui</a>
-
-<a class="ui label" href="/tags/unity" title="unity">unity</a>
-
-<a class="ui label" href="/tags/word" title="word">word</a>
-
-<a class="ui label" href="/tags/word-book" title="word-book">word-book</a>
-
-<a class="ui label" href="/tags/%E6%8A%80%E5%B7%A7" title="技巧">技巧</a>
-
-<a class="ui label" href="/tags/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93" title="数据传输">数据传输</a>
-
-
+			<span>暂无标签</span>
+			
 		</section><section class="ui secondary  attached segment share row box"><div class="author"><img class="avatar" src="/img/avatar.png">
 	
 </div>
@@ -897,7 +930,7 @@ var bodyBgSwitchIndex = 0;var gradients = [
 			'width=626,height=436'); return false;">
 		<button class="ui facebook button"><i class="facebook icon"></i>Share</button>
 	</div>
-	<div class="twitter none flexbox" onclick="window.open('https://twitter.com/intent/tweet?text=Read &quot;使用软件突发小技巧  \/post\/use-skill\/','_self')">
+	<div class="twitter none flexbox" onclick="window.open('https://twitter.com/intent/tweet?text=Read &quot;  \/post\/game-frame-05\/','_self')">
 		<button class="ui twitter button"><i class="twitter icon"></i>Tweet</button>
 	</div>
 </section></section>
@@ -907,8 +940,8 @@ var bodyBgSwitchIndex = 0;var gradients = [
 		<div class="ui secondary bottom attached stacked segment disqus"><div id="disqus_thread"></div>
 <script>
 	var disqus_config = function () {
-		this.page.url = '\/post\/use-skill\/';
-		this.page.identifier = '63edb2bba79e67258c46abb810160f76';
+		this.page.url = '\/post\/game-frame-05\/';
+		this.page.identifier = '434613a9d28e4352d1668078daf0a921';
 	};
 	(function() {
    	var d = document, s = d.createElement('script');

@@ -6,10 +6,20 @@
     <description>Recent content on PY-&gt; Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>us-en</language>
-    <lastBuildDate>Wed, 29 Aug 2018 15:15:31 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 30 Aug 2018 07:19:04 +0800</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>音效模块封装——游戏框架-03</title>
+      <link>/post/game-frame-04/</link>
+      <pubDate>Thu, 30 Aug 2018 07:19:04 +0800</pubDate>
+      
+      <guid>/post/game-frame-04/</guid>
+      <description>音效模块  Audio Manager（音效管理）管理Source Manager和Clips Manager，Source Manager管理多个AudioSource，Clips Manager管理多个AudioClips。
+   抽象AudioSource： 抽象AudioClips：     1. 能够从所有的AudioSource中拿出一个空闲的AudioSource 1. 根据名字找出对应的Clips   2. 释放多余的（空闲的）AudioSource 2. 通过配置文件读取名字   3. 播放一个音效 3. 加载到内存   4. 停止播放     1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125 126 127 128 129 130 131 132 133 134 135 136 137 138 139 140 141 142 143 144 145 146 147 148 149 150 151 152 153 154 155 156 157 158 159 160 161 162 163 164 165 166 167 168 169 170 171 172 173 174 175 176 177 178 179 180 181 182 183 184 185 186 187 188 189 190 191 192 193 194 195 196 197 198 199 200 201 202 203 204 205 206 207 208 209 210 211 212 213 214 215 216 217 218 219 220 221 222 223 224 225 226 227 228 229 230 231 232 233 234 235 236 237 238 239 240 241 242 243 244 245 246 247 248 249 250 251 252 253 254 255 256 257 258 259 260 261 262 263 264 265 266 267 268 269 270 271 272 273 274 275 276 277 278 279 280 281 282 283 284 285 286 287 288 289 290 291 292 293 294 295 296 297 298  using System.</description>
+    </item>
     
     <item>
       <title>http WWW封装——游戏框架-03</title>
@@ -417,6 +427,22 @@ mass 质量</description>
       
       <guid>/about/</guid>
       <description>So, Who Am I?</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/post/game-frame-05/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/post/game-frame-05/</guid>
+      <description>title: UI模块封装——游戏框架-05 date: 2018-08-31T17:52:54+08:00 lastmod: 2018-08-31T17:52:54+08:00 cover: &amp;ldquo;/images/default1.jpg&amp;rdquo; draft: false categories: [&amp;ldquo;GAME-FRAME&amp;rdquo;] tags: [&amp;ldquo;RPG&amp;rdquo;] description: UI模块封装
+UI模块  UI 流程：
+ 拼出大致UI效果图
+ UI小图片 &amp;mdash;&amp;gt; TexturePacker打包图集 （.png有A通道，.jpg没有） &amp;mdash;&amp;gt; Unity下载TexturePacker的导入插件
+ 拼UI：新建Canves &amp;mdash;&amp;gt; 新建Panel （背景设为效果图，照着图拼UI，以Panel为单位，一个Panel一个界面） &amp;mdash;&amp;gt; 划分UI层级
+ 写代码：↓
+       MVC模式（Model–view–controller）     模型（Model） 数据模型（数据结构，username、password）。用于封装与应用程序的业务逻辑相关的数据以及对数据的处理方法。   视图（View） 能够实现数据有目的的显示（理论上，这不是必需的）。   控制器（Controller） 逻辑控制层。起到不同层面间的组织作用，用于控制应用程序的流程。它处理事件并作出响应。“事件”包括用户的行为和数据 Model 上的改变。     控制器（Controller）：由UIManager管理所有Panel，由PanelManager管理所有子控件。
+ 1. 子控件发生事件应让子控件主动’上报‘，所以给需要的控件添加**UIBehaviour**脚本。 2.</description>
     </item>
     
   </channel>
