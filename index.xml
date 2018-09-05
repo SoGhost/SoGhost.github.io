@@ -436,13 +436,8 @@ mass 质量</description>
       
       <guid>/post/game-frame-05/</guid>
       <description>title: UI模块封装——游戏框架-05 date: 2018-08-31T17:52:54+08:00 lastmod: 2018-08-31T17:52:54+08:00 cover: &amp;ldquo;/images/default1.jpg&amp;rdquo; draft: false categories: [&amp;ldquo;GAME-FRAME&amp;rdquo;] tags: [&amp;ldquo;RPG&amp;rdquo;] description: UI模块封装
-UI模块  UI 流程：
- 拼出大致UI效果图
- UI小图片 &amp;mdash;&amp;gt; TexturePacker打包图集 （.png有A通道，.jpg没有） &amp;mdash;&amp;gt; Unity下载TexturePacker的导入插件
- 拼UI：新建Canves &amp;mdash;&amp;gt; 新建Panel （背景设为效果图，照着图拼UI，以Panel为单位，一个Panel一个界面） &amp;mdash;&amp;gt; 划分UI层级
- 写代码：↓
-       MVC模式（Model–view–controller）     模型（Model） 数据模型（数据结构，username、password）。用于封装与应用程序的业务逻辑相关的数据以及对数据的处理方法。   视图（View） 能够实现数据有目的的显示（理论上，这不是必需的）。   控制器（Controller） 逻辑控制层。起到不同层面间的组织作用，用于控制应用程序的流程。它处理事件并作出响应。“事件”包括用户的行为和数据 Model 上的改变。     控制器（Controller）：由UIManager管理所有Panel，由PanelManager管理所有子控件。
- 1. 子控件发生事件应让子控件主动’上报‘，所以给需要的控件添加**UIBehaviour**脚本。 2.</description>
+UI模块  UI 流程：  拼出大致UI效果图 UI小图片 &amp;mdash;&amp;gt; TexturePacker打包图集 （.png有A通道，.jpg没有） &amp;mdash;&amp;gt; Unity下载TexturePacker的导入插件 拼UI：新建Canves &amp;mdash;&amp;gt; 新建Panel （背景设为效果图，照着图拼UI，以Panel为单位，一个Panel一个界面） &amp;mdash;&amp;gt; 划分UI层级 写代码：↓       MVC模式（Model–view–controller）     模型（Model） 数据模型（数据结构，username、password）。用于封装与应用程序的业务逻辑相关的数据以及对数据的处理方法。   视图（View） 能够实现数据有目的的显示（理论上，这不是必需的）。   控制器（Controller） 逻辑控制层。起到不同层面间的组织作用，用于控制应用程序的流程。它处理事件并作出响应。“事件”包括用户的行为和数据 Model 上的改变。     控制器（Controller）：由UIManager管理所有Panel，由PanelManager管理所有子控件。
+ 1. 子控件发生事件应让子控件主动’上报‘，所以给需要的控件添加**UIBehaviour**脚本。 2. **UIBehaviour**会将自己注册到**UIManager**。 **UIManager：**保存注册到UIManager里的子控件。    ## 注意事项：</description>
     </item>
     
   </channel>
