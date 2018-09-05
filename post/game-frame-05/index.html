@@ -15,14 +15,16 @@ body, body.pushable {
 }
 
 </style><title>
-
+UI模块封装——游戏框架-05
 </title><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<meta name="author" content="So Serious" />
-	<meta name="description" content="title: UI模块封装——游戏框架-05 date: 2018-08-31T17:52:54&#43;08:00 lastmod: 2018-08-31T17:52:54&#43;08:00 cover: &amp;ldquo;/images/default1.jpg&amp;rdquo; draft: false categories: [&amp;ldquo;GAME-FRAME&amp;rdquo;] tags: [&amp;ldquo;RPG&amp;rdquo;] description: UI模块封装
-UI模块  UI 流程：  拼出大致UI效果图 UI小图片 &amp;mdash;&amp;gt; TexturePacker打包图集 （.png有A通道，.jpg没有） &amp;mdash;&amp;gt; Unity下载TexturePacker的导入插件 拼UI：新建Canves &amp;mdash;&amp;gt; 新建Panel （背景设为效果图，照着图拼UI，以Panel为单位，一个Panel一个界面） &amp;mdash;&amp;gt; 划分UI层级 写代码：↓       MVC模式（Model–view–controller）     模型（Model） 数据模型（数据结构，username、password）。用于封装与应用程序的业务逻辑相关的数据以及对数据的处理方法。   视图（View） 能够实现数据有目的的显示（理论上，这不是必需的）。   控制器（Controller） 逻辑控制层。起到不同层面间的组织作用，用于控制应用程序的流程。它处理事件并作出响应。“事件”包括用户的行为和数据 Model 上的改变。     控制器（Controller）：由UIManager管理所有Panel，由PanelManager管理所有子控件。
- 1. 子控件发生事件应让子控件主动’上报‘，所以给需要的控件添加**UIBehaviour**脚本。 2. **UIBehaviour**会将自己注册到**UIManager**。 **UIManager：**保存注册到UIManager里的子控件。    ## 注意事项：" />
+	<meta name="description" content="UI模块  UI 流程：  拼出大致UI效果图 UI小图片 &amp;mdash;&amp;gt; TexturePacker打包图集 （.png有A通道，.jpg没有） &amp;mdash;&amp;gt; Unity下载TexturePacker的导入插件 拼UI： 新建Canves &amp;mdash;&amp;gt; 新建Panel （背景设为UI效果图，照着拼，以Panel为单位，一个Panel一个界面） &amp;mdash;&amp;gt; 划分UI层级 写代码： ↓↓↓↓       MVC模式（Model–view–controller）     模型（Model） 数据模型（数据结构，username、password）。用于封装与应用程序的业务逻辑相关的数据以及对数据的处理方法。   视图（View） 能够实现数据有目的的显示（理论上，这不是必需的）。   控制器（Controller） 逻辑控制层。起到不同层面间的组织作用，用于控制应用程序的流程。它处理事件并作出响应。“事件”包括用户的行为和数据 Model 上的改变。     控制器（Controller）：由UIManager管理所有Panel，由PanelManager管理所有子控件。
+  子控件发生事件让其主动’上报‘，所以给需要的控件添加UIBehaviour脚本。 UIBehaviour会将自己注册到UIManager。    UIManager：保存注册到UIManager里的子控件。
+销毁：
+ 将后面还用到的界面隐藏（背包界面，菜单界面） 将后面用不到的界面Destory（登录界面）  资源的加载：
+ Loading界面 还会加载后面要用的资源到内存（Resources.Load），不实例化。用到时GameObject.Instantiate将内存中资源实例化到场景中。 进入二级Loading界面会将前面的资源卸载，加载后面的资源。   注意事项：   在同一个Panel里要使用的控件的名字不能一样！" />
 <meta name="generator" content="Hugo 0.44" />
 
 <link rel="shortcut icon" href="/img/PY-Blog.ico">
@@ -199,10 +201,17 @@ var bodyBgSwitchIndex = 0;var gradients = [
 </div>
 <div class="content">
 
+	<a class="item" href="/post/game-frame-05/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>UI模块封装——游戏框架-05</p>
+		</div>
+	</a>
+
 	<a class="item" href="/post/game-frame-04/">
 		<div>
 			<i class="cocktail icon"></i>
-			<p>音效模块封装——游戏框架-03</p>
+			<p>音效模块封装——游戏框架-04</p>
 		</div>
 	</a>
 
@@ -586,10 +595,17 @@ var bodyBgSwitchIndex = 0;var gradients = [
 </div>
 <div class="content">
 
+	<a class="item" href="/post/game-frame-05/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>UI模块封装——游戏框架-05</p>
+		</div>
+	</a>
+
 	<a class="item" href="/post/game-frame-04/">
 		<div>
 			<i class="cocktail icon"></i>
-			<p>音效模块封装——游戏框架-03</p>
+			<p>音效模块封装——游戏框架-04</p>
 		</div>
 	</a>
 
@@ -826,19 +842,21 @@ var bodyBgSwitchIndex = 0;var gradients = [
 	<div class="sixteen wide mobile fifteen wide tablet twelve wide computer column post-list">
 		<section class="ui secondary top attached black segment post-head">
 			<h1 class="post-title">
-				
+				UI模块封装——游戏框架-05
 			</h1>
 			<div class="sub header">
-					<div><span><i class="calendar outline icon"></i>Jan 1, 0001</span></div><div><span class="disqusComment"><i class="comment outline icon"></i><a href="/post/game-frame-05/#disqus_thread" class="disqus-comment-count" data-disqus-identifier="434613a9d28e4352d1668078daf0a921"></a></span></div>
-					<div><span><i class="clock outline icon"></i>5 min read</span></div>
-					<div><span><i class="angle double up icon"></i>更新于 Jan 1, 0001</span></div>
+					<div><span><i class="calendar outline icon"></i>Aug 31, 2018</span></div><div><span class="disqusComment"><i class="comment outline icon"></i><a href="/post/game-frame-05/#disqus_thread" class="disqus-comment-count" data-disqus-identifier="434613a9d28e4352d1668078daf0a921"></a></span></div>
+					<div><span><i class="clock outline icon"></i>6 min read</span></div>
+					<div><span><i class="angle double up icon"></i>更新于 Aug 31, 2018</span></div>
 			</div>
 			<hr><div class="toc"><nav id="TableOfContents">
 <ul>
 <li><a href="#ui模块">UI模块</a>
 <ul>
 <li><a href="#ui-流程">UI 流程：</a></li>
-<li><a href="#ui-mvc演示">UI MVC演示</a></li>
+<li><a href="#注意事项">注意事项：</a></li>
+<li><a href="#ui-mvc架构演示">UI MVC架构演示</a></li>
+<li><a href="#背包ui结构">背包UI结构</a></li>
 </ul></li>
 </ul>
 </nav></div>
@@ -846,15 +864,6 @@ var bodyBgSwitchIndex = 0;var gradients = [
 			
 			<article class="post-content twemoji">
 				
-
-<p>title: UI模块封装——游戏框架-05
-date: 2018-08-31T17:52:54+08:00
-lastmod: 2018-08-31T17:52:54+08:00
-cover: &ldquo;/images/default1.jpg&rdquo;
-draft: false
-categories: [&ldquo;GAME-FRAME&rdquo;]
-tags: [&ldquo;RPG&rdquo;]
-description: UI模块封装</p>
 
 <h1 id="ui模块">UI模块&nbsp;<a class="anchor" href="#ui模块"><i class="small linkify icon"></i></a> </h1>
 
@@ -864,8 +873,8 @@ description: UI模块封装</p>
 <ul>
 <li><font color=#00000><strong>拼出大致UI效果图</strong></li>
 <li>UI小图片 <strong>&mdash;&gt;</strong> TexturePacker<strong>打包图集</strong> <strong>（.png有A通道，.jpg没有）</strong>  <strong>&mdash;&gt;</strong>  Unity下载TexturePacker的导入插件</li>
-<li><strong>拼UI：</strong><em>新建Canves</em> <strong>&mdash;&gt;</strong>  <em>新建Panel</em> （背景设为效果图，照着图拼UI，以Panel为单位，一个Panel一个界面） <strong>&mdash;&gt;</strong> <em>划分UI层级</em></li>
-<li><strong>写代码：</font></strong><font color=#008B8B>↓</font></li>
+<li><strong>拼UI：</strong> 新建Canves <strong>&mdash;&gt;</strong>  <em>新建Panel</em> （背景设为UI效果图，照着拼，以Panel为单位，一个Panel一个界面） <strong>&mdash;&gt;</strong> <em>划分UI层级</em></li>
+<li><strong>写代码：</strong> <strong>↓↓↓↓</strong></font></li>
 </ul>
 </blockquote>
 
@@ -900,20 +909,37 @@ description: UI模块封装</p>
 <blockquote>
 <p><strong>控制器（Controller）：</strong>由<strong>UIManager</strong>管理所有Panel，由<strong>PanelManager</strong>管理所有子控件。</p>
 
-<pre><code> 1. 子控件发生事件应让子控件主动’上报‘，所以给需要的控件添加**UIBehaviour**脚本。
- 2. **UIBehaviour**会将自己注册到**UIManager**。
+<blockquote>
+<ol>
+<li>子控件发生事件让其主动’上报‘，所以给需要的控件添加UIBehaviour脚本。</li>
+<li>UIBehaviour会将自己注册到UIManager。
 
+<br /></li>
+</ol>
+</blockquote>
 
+<p><strong>UIManager：</strong>保存注册到UIManager里的子控件。</p>
 
-**UIManager：**保存注册到UIManager里的子控件。
-</code></pre>
+<p><strong>销毁：</strong></p>
+
+<ol>
+<li>将后面还<u>用到</u>的界面<strong>隐藏</strong>（背包界面，菜单界面）</li>
+<li>将后面<u>用不到</u>的界面<strong>Destory</strong>（登录界面）</li>
+</ol>
+
+<p><strong>资源的加载：</strong></p>
+
+<ol>
+<li>Loading界面 还会加载后面要用的资源到内存（Resources.Load），不实例化。用到时GameObject.Instantiate将内存中资源实例化到场景中。</li>
+<li>进入二级Loading界面会将前面的资源卸载，加载后面的资源。</li>
+</ol>
 </blockquote>
 
 <hr />
 
-<blockquote>
-<p>## 注意事项：</p>
+<h2 id="注意事项">注意事项：&nbsp;<a class="anchor" href="#注意事项"><i class="small linkify icon"></i></a> </h2>
 
+<blockquote>
 <ul>
 <li><p><strong>在同一个Panel里要使用的控件的名字不能一样！</strong></p></li>
 
@@ -933,7 +959,7 @@ description: UI模块封装</p>
 
 <hr />
 
-<h2 id="ui-mvc演示">UI MVC演示&nbsp;<a class="anchor" href="#ui-mvc演示"><i class="small linkify icon"></i></a> </h2>
+<h2 id="ui-mvc架构演示">UI MVC架构演示&nbsp;<a class="anchor" href="#ui-mvc架构演示"><i class="small linkify icon"></i></a> </h2>
 
 <blockquote>
 <div class="highlight"><div class="chroma">
@@ -1227,6 +1253,115 @@ description: UI模块封装</p>
 </span><span class="lnt">287
 </span><span class="lnt">288
 </span><span class="lnt">289
+</span><span class="lnt">290
+</span><span class="lnt">291
+</span><span class="lnt">292
+</span><span class="lnt">293
+</span><span class="lnt">294
+</span><span class="lnt">295
+</span><span class="lnt">296
+</span><span class="lnt">297
+</span><span class="lnt">298
+</span><span class="lnt">299
+</span><span class="lnt">300
+</span><span class="lnt">301
+</span><span class="lnt">302
+</span><span class="lnt">303
+</span><span class="lnt">304
+</span><span class="lnt">305
+</span><span class="lnt">306
+</span><span class="lnt">307
+</span><span class="lnt">308
+</span><span class="lnt">309
+</span><span class="lnt">310
+</span><span class="lnt">311
+</span><span class="lnt">312
+</span><span class="lnt">313
+</span><span class="lnt">314
+</span><span class="lnt">315
+</span><span class="lnt">316
+</span><span class="lnt">317
+</span><span class="lnt">318
+</span><span class="lnt">319
+</span><span class="lnt">320
+</span><span class="lnt">321
+</span><span class="lnt">322
+</span><span class="lnt">323
+</span><span class="lnt">324
+</span><span class="lnt">325
+</span><span class="lnt">326
+</span><span class="lnt">327
+</span><span class="lnt">328
+</span><span class="lnt">329
+</span><span class="lnt">330
+</span><span class="lnt">331
+</span><span class="lnt">332
+</span><span class="lnt">333
+</span><span class="lnt">334
+</span><span class="lnt">335
+</span><span class="lnt">336
+</span><span class="lnt">337
+</span><span class="lnt">338
+</span><span class="lnt">339
+</span><span class="lnt">340
+</span><span class="lnt">341
+</span><span class="lnt">342
+</span><span class="lnt">343
+</span><span class="lnt">344
+</span><span class="lnt">345
+</span><span class="lnt">346
+</span><span class="lnt">347
+</span><span class="lnt">348
+</span><span class="lnt">349
+</span><span class="lnt">350
+</span><span class="lnt">351
+</span><span class="lnt">352
+</span><span class="lnt">353
+</span><span class="lnt">354
+</span><span class="lnt">355
+</span><span class="lnt">356
+</span><span class="lnt">357
+</span><span class="lnt">358
+</span><span class="lnt">359
+</span><span class="lnt">360
+</span><span class="lnt">361
+</span><span class="lnt">362
+</span><span class="lnt">363
+</span><span class="lnt">364
+</span><span class="lnt">365
+</span><span class="lnt">366
+</span><span class="lnt">367
+</span><span class="lnt">368
+</span><span class="lnt">369
+</span><span class="lnt">370
+</span><span class="lnt">371
+</span><span class="lnt">372
+</span><span class="lnt">373
+</span><span class="lnt">374
+</span><span class="lnt">375
+</span><span class="lnt">376
+</span><span class="lnt">377
+</span><span class="lnt">378
+</span><span class="lnt">379
+</span><span class="lnt">380
+</span><span class="lnt">381
+</span><span class="lnt">382
+</span><span class="lnt">383
+</span><span class="lnt">384
+</span><span class="lnt">385
+</span><span class="lnt">386
+</span><span class="lnt">387
+</span><span class="lnt">388
+</span><span class="lnt">389
+</span><span class="lnt">390
+</span><span class="lnt">391
+</span><span class="lnt">392
+</span><span class="lnt">393
+</span><span class="lnt">394
+</span><span class="lnt">395
+</span><span class="lnt">396
+</span><span class="lnt">397
+</span><span class="lnt">398
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-c#" data-lang="c#"><span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
@@ -1242,48 +1377,77 @@ description: UI模块封装</p>
    <span class="k">public</span> <span class="k">static</span> <span class="n">UIManager</span> <span class="n">instance</span><span class="p">;</span>
 
    <span class="c1">/// &lt;summary&gt;
-</span><span class="c1"></span>   <span class="c1">/// 1. allWedingate 所有控件
+</span><span class="c1"></span>   <span class="c1">/// 1. allWidget 所有控件
 </span><span class="c1"></span>   <span class="c1">/// 2. Manager管理多个Panel，Panel又管理多个控件（二维树形结构），Panel是个容器。
 </span><span class="c1"></span>   <span class="c1">/// 3. 第一个string表示Panel的名字，第二个string表示控件的名字。
 </span><span class="c1"></span>   <span class="c1">/// &lt;/summary&gt;
-</span><span class="c1"></span>   <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="n">GameObject</span><span class="p">&gt;&gt;</span> <span class="n">allWedingate</span><span class="p">;</span>
+</span><span class="c1"></span>   <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="n">GameObject</span><span class="p">&gt;&gt;</span> <span class="n">allWidget</span><span class="p">;</span>
 
    <span class="c1">//注册控件
-</span><span class="c1"></span>   <span class="k">public</span> <span class="k">void</span> <span class="n">RegistGameObject</span><span class="p">(</span><span class="kt">string</span> <span class="n">panelName</span><span class="p">,</span> <span class="kt">string</span> <span class="n">wedingateName</span><span class="p">,</span> <span class="n">GameObject</span> <span class="n">obj</span><span class="p">)</span>
+</span><span class="c1"></span>   <span class="k">public</span> <span class="k">void</span> <span class="n">RegistGameObject</span><span class="p">(</span><span class="kt">string</span> <span class="n">panelName</span><span class="p">,</span> <span class="kt">string</span> <span class="n">widgetName</span><span class="p">,</span> <span class="n">GameObject</span> <span class="n">obj</span><span class="p">)</span>
    <span class="p">{</span>
-       <span class="c1">// 1. 判断allWedingate 里面是否包含 Dictionary&lt;string, GameObject&gt;
+       <span class="c1">// 1. 判断allWidget 里面是否包含 Dictionary&lt;string, GameObject&gt;
 </span><span class="c1"></span>       <span class="c1">// 2. 不包含则Dictionary&lt;string, GameObject&gt; 没有实例化，则进行实例化
-</span><span class="c1"></span>       <span class="k">if</span> <span class="p">(</span><span class="n">allWedingate</span><span class="p">.</span><span class="n">ContainsKey</span><span class="p">(</span><span class="n">panelName</span><span class="p">))</span>
+</span><span class="c1"></span>       <span class="k">if</span> <span class="p">(</span><span class="n">allWidget</span><span class="p">.</span><span class="n">ContainsKey</span><span class="p">(</span><span class="n">panelName</span><span class="p">))</span>
        <span class="p">{</span>
-           <span class="n">allWedingate</span><span class="na">[panelName]</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="n">GameObject</span><span class="p">&gt;();</span>
+           <span class="n">allWidget</span><span class="na">[panelName]</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="n">GameObject</span><span class="p">&gt;();</span>
        <span class="p">}</span>
 
-       <span class="n">allWedingate</span><span class="na">[panelName]</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">wedingateName</span><span class="p">,</span> <span class="n">obj</span><span class="p">);</span>
+       <span class="n">allWidget</span><span class="na">[panelName]</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">widgetName</span><span class="p">,</span> <span class="n">obj</span><span class="p">);</span>
    <span class="p">}</span>
 
    <span class="k">void</span> <span class="n">Awake</span><span class="p">()</span>
    <span class="p">{</span>
        <span class="n">instance</span> <span class="p">=</span> <span class="k">this</span><span class="p">;</span>
 
-       <span class="n">allWedingate</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="n">GameObject</span><span class="p">&gt;&gt;();</span>
+       <span class="n">allWidget</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="n">GameObject</span><span class="p">&gt;&gt;();</span>
    <span class="p">}</span>
 
    <span class="c1">/// &lt;summary&gt;
 </span><span class="c1"></span>   <span class="c1">/// 获取某一个Panel下的子控件
 </span><span class="c1"></span>   <span class="c1">/// &lt;/summary&gt;
 </span><span class="c1"></span>   <span class="c1">/// &lt;param name=&#34;panelName&#34;&gt;&lt;/param&gt;
-</span><span class="c1"></span>   <span class="c1">/// &lt;param name=&#34;wedagdteName&#34;&gt;&lt;/param&gt;
+</span><span class="c1"></span>   <span class="c1">/// &lt;param name=&#34;widgetName&#34;&gt;&lt;/param&gt;
 </span><span class="c1"></span>   <span class="c1">/// &lt;returns&gt;&lt;/returns&gt;
-</span><span class="c1"></span>   <span class="k">public</span> <span class="n">GameObject</span> <span class="n">GetGameObject</span><span class="p">(</span><span class="kt">string</span> <span class="n">panelName</span><span class="p">,</span> <span class="kt">string</span> <span class="n">wedagdteName</span><span class="p">)</span>
+</span><span class="c1"></span>   <span class="k">public</span> <span class="n">GameObject</span> <span class="n">GetGameObject</span><span class="p">(</span><span class="kt">string</span> <span class="n">panelName</span><span class="p">,</span> <span class="kt">string</span> <span class="n">widgetName</span><span class="p">)</span>
    <span class="p">{</span>
-       <span class="k">if</span> <span class="p">(</span><span class="n">allWedingate</span><span class="p">.</span><span class="n">ContainsKey</span><span class="p">(</span><span class="n">panelName</span><span class="p">))</span>
+       <span class="k">if</span> <span class="p">(</span><span class="n">allWidget</span><span class="p">.</span><span class="n">ContainsKey</span><span class="p">(</span><span class="n">panelName</span><span class="p">))</span>
        <span class="p">{</span>
-           <span class="k">return</span> <span class="n">allWedingate</span><span class="na">[panelName][wedagdteName]</span><span class="p">;</span>
+           <span class="k">return</span> <span class="n">allWidget</span><span class="na">[panelName][widgetName]</span><span class="p">;</span>
        <span class="p">}</span>
 
        <span class="k">return</span> <span class="k">null</span><span class="p">;</span>
    <span class="p">}</span>
+   
+   
+   
+<span class="c1">/// &lt;summary&gt;
+</span><span class="c1">/// 销毁 Dictionary 不用的
+</span><span class="c1">/// &lt;/summary&gt;
+</span><span class="c1"></span><span class="cp">#region Destory
+</span><span class="cp"></span>
+<span class="c1">//只能删除一个子控件
+</span><span class="c1"></span><span class="k">public</span> <span class="k">void</span> <span class="n">UnRegistGameObject</span><span class="p">(</span><span class="kt">string</span> <span class="n">panelName</span><span class="p">,</span> <span class="kt">string</span> <span class="n">widgetName</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="c1">//将子控件从allWidget删除
+</span><span class="c1"></span>   <span class="k">if</span> <span class="p">(</span><span class="n">allWidget</span><span class="p">.</span><span class="n">ContainsKey</span><span class="p">(</span><span class="n">panelName</span><span class="p">))</span>
+   <span class="p">{</span>
+       <span class="k">if</span> <span class="p">(</span><span class="n">allWidget</span><span class="na">[panelName]</span><span class="p">.</span><span class="n">ContainsKey</span><span class="p">(</span><span class="n">widgetName</span><span class="p">))</span>
+           <span class="n">allWidget</span><span class="na">[panelName]</span><span class="p">.</span><span class="n">Remove</span><span class="p">(</span><span class="n">widgetName</span><span class="p">);</span>
+   <span class="p">}</span>
 <span class="p">}</span>
+
+<span class="c1">//删除Panel（删除所有子控件）
+</span><span class="c1"></span><span class="k">public</span> <span class="k">void</span> <span class="n">UnRegistPanel</span><span class="p">(</span><span class="kt">string</span> <span class="n">panelName</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="k">if</span> <span class="p">(</span><span class="n">allWidget</span><span class="p">.</span><span class="n">ContainsKey</span><span class="p">(</span><span class="n">panelName</span><span class="p">))</span>
+   <span class="p">{</span>
+       <span class="n">allWidget</span><span class="na">[panelName]</span><span class="p">.</span><span class="n">Clear</span><span class="p">();</span>
+       <span class="n">allWidget</span><span class="na">[panelName]</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+<span class="cp">#endregion
+</span><span class="cp"></span><span class="p">}</span>
 
 <span class="c1">/// &lt;summary&gt;
 </span><span class="c1">/// 1. MVC C层（Controller）
@@ -1309,14 +1473,14 @@ description: UI模块封装</p>
        <span class="p">}</span>
    <span class="p">}</span>
 
-   <span class="k">public</span> <span class="n">GameObject</span> <span class="n">GetWedagte</span><span class="p">(</span><span class="kt">string</span> <span class="n">wedagdteName</span><span class="p">)</span>
+   <span class="k">public</span> <span class="n">GameObject</span> <span class="n">GetWidget</span><span class="p">(</span><span class="kt">string</span> <span class="n">widgetName</span><span class="p">)</span>
    <span class="p">{</span>
-       <span class="k">return</span>  <span class="n">UIManager</span><span class="p">.</span><span class="n">instance</span><span class="p">.</span><span class="n">GetGameObject</span><span class="p">(</span><span class="n">transform</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="n">wedagdteName</span><span class="p">);</span>
+       <span class="k">return</span>  <span class="n">UIManager</span><span class="p">.</span><span class="n">instance</span><span class="p">.</span><span class="n">GetGameObject</span><span class="p">(</span><span class="n">transform</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="n">widgetName</span><span class="p">);</span>
    <span class="p">}</span>
 
-   <span class="k">public</span> <span class="n">UIBehaviour</span> <span class="n">GetBehaviour</span><span class="p">(</span><span class="kt">string</span> <span class="n">wedagdteName</span><span class="p">)</span>
+   <span class="k">public</span> <span class="n">UIBehaviour</span> <span class="n">GetBehaviour</span><span class="p">(</span><span class="kt">string</span> <span class="n">widgetName</span><span class="p">)</span>
    <span class="p">{</span>
-       <span class="n">GameObject</span> <span class="n">tmpObj</span> <span class="p">=</span> <span class="n">GetWedagte</span><span class="p">(</span><span class="n">wedagdteName</span><span class="p">);</span>
+       <span class="n">GameObject</span> <span class="n">tmpObj</span> <span class="p">=</span> <span class="n">GetWedagte</span><span class="p">(</span><span class="n">widgetName</span><span class="p">);</span>
 
        <span class="k">if</span> <span class="p">(</span><span class="n">tmpObj</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
        <span class="p">{</span>
@@ -1327,9 +1491,9 @@ description: UI模块封装</p>
    <span class="p">}</span>
 
    <span class="c1">//添加Button事件
-</span><span class="c1"></span>   <span class="k">public</span> <span class="k">void</span> <span class="n">AddButtonListener</span><span class="p">(</span><span class="kt">string</span> <span class="n">wigageName</span><span class="p">,</span> <span class="n">UnityAction</span> <span class="n">action</span><span class="p">)</span>
+</span><span class="c1"></span>   <span class="k">public</span> <span class="k">void</span> <span class="n">AddButtonListener</span><span class="p">(</span><span class="kt">string</span> <span class="n">widgetName</span><span class="p">,</span> <span class="n">UnityAction</span> <span class="n">action</span><span class="p">)</span>
    <span class="p">{</span>
-       <span class="n">UIBehaviour</span> <span class="n">tmpBehaviour</span> <span class="p">=</span> <span class="n">GetBehaviour</span><span class="p">(</span><span class="n">wigageName</span><span class="p">);</span>
+       <span class="n">UIBehaviour</span> <span class="n">tmpBehaviour</span> <span class="p">=</span> <span class="n">GetBehaviour</span><span class="p">(</span><span class="n">widgetName</span><span class="p">);</span>
 
        <span class="k">if</span> <span class="p">(</span><span class="n">tmpBehaviour</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
        <span class="p">{</span>
@@ -1340,12 +1504,18 @@ description: UI模块封装</p>
    <span class="c1">//改变Text显示的文字
 </span><span class="c1"></span>   <span class="k">public</span> <span class="k">void</span> <span class="n">ChangeTextContent</span><span class="p">(</span><span class="kt">string</span> <span class="n">wigageName</span><span class="p">,</span> <span class="kt">string</span> <span class="n">content</span><span class="p">)</span>
    <span class="p">{</span>
-       <span class="n">UIBehaviour</span> <span class="n">tmpBehaviour</span> <span class="p">=</span> <span class="n">GetBehaviour</span><span class="p">(</span><span class="n">wigageName</span><span class="p">);</span>
+       <span class="n">UIBehaviour</span> <span class="n">tmpBehaviour</span> <span class="p">=</span> <span class="n">GetBehaviour</span><span class="p">(</span><span class="n">widgetName</span><span class="p">);</span>
 
        <span class="k">if</span> <span class="p">(</span><span class="n">tmpBehaviour</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
        <span class="p">{</span>
            <span class="n">tmpBehaviour</span><span class="p">.</span><span class="n">ChangeTextContent</span><span class="p">(</span><span class="n">content</span><span class="p">);</span>
        <span class="p">}</span>
+   <span class="p">}</span>
+   
+   <span class="c1">//销毁Panel
+</span><span class="c1"></span>   <span class="k">void</span> <span class="n">OnDestroy</span><span class="p">()</span>
+   <span class="p">{</span>
+       <span class="n">UIManager</span><span class="p">.</span><span class="n">instance</span><span class="p">.</span><span class="n">UnRegistPanel</span><span class="p">(</span><span class="n">transform</span><span class="p">.</span><span class="n">name</span><span class="p">);</span>
    <span class="p">}</span>
 <span class="p">}</span>
 
@@ -1359,7 +1529,7 @@ description: UI模块封装</p>
        <span class="c1">//获取Panel名字
 </span><span class="c1"></span>        <span class="n">UIBase</span> <span class="n">tmpBase</span> <span class="p">=</span> <span class="n">transform</span><span class="p">.</span><span class="n">GetComponentInParent</span><span class="p">&lt;</span><span class="n">UIBase</span><span class="p">&gt;();</span>
 
-       <span class="c1">//Panel名字、transform.name控件名字、gameObject表示自己
+       <span class="c1">//tmpBase.name可以直接获取Panel物体的名字、transform.name控件名字、gameObject表示自己
 </span><span class="c1"></span>       <span class="n">UIManager</span><span class="p">.</span><span class="n">instance</span><span class="p">.</span><span class="n">RegistGameObject</span><span class="p">(</span><span class="n">tmpBase</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="n">transform</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="n">gameObject</span><span class="p">);</span>
    <span class="p">}</span>
 
@@ -1446,6 +1616,80 @@ description: UI模块封装</p>
            <span class="n">tmpImage</span><span class="p">.</span><span class="n">sprite</span> <span class="p">=</span> <span class="n">spriteName</span><span class="p">;</span>
        <span class="p">}</span>
    <span class="p">}</span>
+   
+   <span class="c1">/// &lt;summary&gt;
+</span><span class="c1"></span>   <span class="c1">/// 创建接口--&gt;添加拖拽处理事件
+</span><span class="c1"></span>   <span class="c1">/// &lt;/summary&gt;
+</span><span class="c1"></span>   <span class="c1">/// &lt;param name=&#34;action&#34;&gt;&lt;/param&gt;
+</span><span class="c1"></span>   <span class="k">public</span> <span class="k">void</span> <span class="n">AddDragHandler</span><span class="p">(</span><span class="n">UnityAction</span><span class="p">&lt;</span><span class="n">BaseEventData</span><span class="p">&gt;</span> <span class="n">action</span><span class="p">)</span>
+   <span class="p">{</span>
+       <span class="c1">//获取事件系统
+</span><span class="c1"></span>       <span class="n">EventTrigger</span> <span class="n">trigger</span> <span class="p">=</span> <span class="n">gameObject</span><span class="p">.</span><span class="n">GetComponent</span><span class="p">&lt;</span><span class="n">EventTrigger</span><span class="p">&gt;();</span>
+
+       <span class="c1">//如果Event事件不存在 动态添加
+</span><span class="c1"></span>       <span class="k">if</span> <span class="p">(</span><span class="n">trigger</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+           <span class="n">trigger</span> <span class="p">=</span> <span class="n">gameObject</span><span class="p">.</span><span class="n">AddComponent</span><span class="p">&lt;</span><span class="n">EventTrigger</span><span class="p">&gt;();</span>
+
+       <span class="c1">//事件实体（到底是哪个事件）
+</span><span class="c1"></span>       <span class="n">EventTrigger</span><span class="p">.</span><span class="n">Entry</span> <span class="n">entry</span> <span class="p">=</span> <span class="k">new</span> <span class="n">EventTrigger</span><span class="p">.</span><span class="n">Entry</span><span class="p">();</span>
+
+       <span class="c1">//事件类型
+</span><span class="c1"></span>       <span class="c1">// 1. Drag 拖拽
+</span><span class="c1"></span>       <span class="n">entry</span><span class="p">.</span><span class="n">eventID</span> <span class="p">=</span> <span class="n">EventTriggerType</span><span class="p">.</span><span class="n">Drag</span><span class="p">;</span>
+
+       <span class="c1">//事件回调
+</span><span class="c1"></span>       <span class="n">entry</span><span class="p">.</span><span class="n">callback</span> <span class="p">=</span> <span class="k">new</span> <span class="n">EventTrigger</span><span class="p">.</span><span class="n">TriggerEvent</span><span class="p">();</span>
+
+       <span class="c1">//添加回调函数
+</span><span class="c1"></span>       <span class="n">entry</span><span class="p">.</span><span class="n">callback</span><span class="p">.</span><span class="n">AddListener</span><span class="p">(</span><span class="n">action</span><span class="p">);</span>
+
+       <span class="c1">//监听事件
+</span><span class="c1"></span>       <span class="n">trigger</span><span class="p">.</span><span class="n">triggers</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">entry</span><span class="p">);</span>
+   <span class="p">}</span>
+
+   <span class="c1">/// &lt;summary&gt;
+</span><span class="c1"></span>   <span class="c1">/// 开始拖拽事件
+</span><span class="c1"></span>   <span class="c1">/// &lt;/summary&gt;
+</span><span class="c1"></span>   <span class="c1">/// &lt;param name=&#34;action&#34;&gt;&lt;/param&gt;
+</span><span class="c1"></span>   <span class="k">public</span> <span class="k">void</span> <span class="n">AddOnBeginDrag</span><span class="p">(</span><span class="n">UnityAction</span><span class="p">&lt;</span><span class="n">BaseEventData</span><span class="p">&gt;</span> <span class="n">action</span><span class="p">)</span>
+   <span class="p">{</span>
+       <span class="n">EventTrigger</span> <span class="n">trigger</span> <span class="p">=</span> <span class="n">gameObject</span><span class="p">.</span><span class="n">GetComponent</span><span class="p">&lt;</span><span class="n">EventTrigger</span><span class="p">&gt;();</span>
+
+       <span class="k">if</span> <span class="p">(</span><span class="n">trigger</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+           <span class="n">trigger</span> <span class="p">=</span> <span class="n">gameObject</span><span class="p">.</span><span class="n">AddComponent</span><span class="p">&lt;</span><span class="n">EventTrigger</span><span class="p">&gt;();</span>
+
+       <span class="n">EventTrigger</span><span class="p">.</span><span class="n">Entry</span> <span class="n">entry</span> <span class="p">=</span> <span class="k">new</span> <span class="n">EventTrigger</span><span class="p">.</span><span class="n">Entry</span><span class="p">();</span>
+
+       <span class="n">entry</span><span class="p">.</span><span class="n">eventID</span> <span class="p">=</span> <span class="n">EventTriggerType</span><span class="p">.</span><span class="n">BeginDrag</span><span class="p">;</span>
+
+       <span class="n">entry</span><span class="p">.</span><span class="n">callback</span> <span class="p">=</span> <span class="k">new</span> <span class="n">EventTrigger</span><span class="p">.</span><span class="n">TriggerEvent</span><span class="p">();</span>
+
+       <span class="n">entry</span><span class="p">.</span><span class="n">callback</span><span class="p">.</span><span class="n">AddListener</span><span class="p">(</span><span class="n">action</span><span class="p">);</span>
+       
+       <span class="n">trigger</span><span class="p">.</span><span class="n">triggers</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">entry</span><span class="p">);</span>
+   <span class="p">}</span>
+
+   <span class="c1">/// &lt;summary&gt;
+</span><span class="c1"></span>   <span class="c1">/// 单击事件
+</span><span class="c1"></span>   <span class="c1">/// &lt;/summary&gt;
+</span><span class="c1"></span>   <span class="c1">/// &lt;param name=&#34;action&#34;&gt;&lt;/param&gt;
+</span><span class="c1"></span>   <span class="k">public</span> <span class="k">void</span> <span class="n">AddPointerClick</span><span class="p">(</span><span class="n">UnityAction</span><span class="p">&lt;</span><span class="n">BaseEventData</span><span class="p">&gt;</span> <span class="n">action</span><span class="p">)</span>
+   <span class="p">{</span>
+       <span class="n">EventTrigger</span> <span class="n">trigger</span> <span class="p">=</span> <span class="n">gameObject</span><span class="p">.</span><span class="n">GetComponent</span><span class="p">&lt;</span><span class="n">EventTrigger</span><span class="p">&gt;();</span>
+
+       <span class="k">if</span> <span class="p">(</span><span class="n">trigger</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+           <span class="n">trigger</span> <span class="p">=</span> <span class="n">gameObject</span><span class="p">.</span><span class="n">AddComponent</span><span class="p">&lt;</span><span class="n">EventTrigger</span><span class="p">&gt;();</span>
+
+       <span class="n">EventTrigger</span><span class="p">.</span><span class="n">Entry</span> <span class="n">entry</span> <span class="p">=</span> <span class="k">new</span> <span class="n">EventTrigger</span><span class="p">.</span><span class="n">Entry</span><span class="p">();</span>
+
+       <span class="n">entry</span><span class="p">.</span><span class="n">eventID</span> <span class="p">=</span> <span class="n">EventTriggerType</span><span class="p">.</span><span class="n">PointerClick</span><span class="p">;</span>
+
+       <span class="n">entry</span><span class="p">.</span><span class="n">callback</span> <span class="p">=</span> <span class="k">new</span> <span class="n">EventTrigger</span><span class="p">.</span><span class="n">TriggerEvent</span><span class="p">();</span>
+
+       <span class="n">entry</span><span class="p">.</span><span class="n">callback</span><span class="p">.</span><span class="n">AddListener</span><span class="p">(</span><span class="n">action</span><span class="p">);</span>
+
+       <span class="n">trigger</span><span class="p">.</span><span class="n">triggers</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">entry</span><span class="p">);</span>
+   <span class="p">}</span>
 <span class="p">}</span>
 
 <span class="cm">/************************ Loading ********************************/</span>
@@ -1521,11 +1765,57 @@ description: UI模块封装</p>
 </div>
 </div></blockquote>
 
+<hr />
+
+<h2 id="背包ui结构">背包UI结构&nbsp;<a class="anchor" href="#背包ui结构"><i class="small linkify icon"></i></a> </h2>
+
+<blockquote>
+</blockquote>
+
 			</article>
 		</section>
 		<section class="ui secondary attached segment dream-tags">
-			<span>暂无标签</span>
-			
+<a class="ui label" href="/tags/2d" title="2d">2d</a>
+
+<a class="ui label" href="/tags/ae" title="ae">ae</a>
+
+<a class="ui label" href="/tags/ai" title="ai">ai</a>
+
+<a class="ui label" href="/tags/animator" title="animator">animator</a>
+
+<a class="ui label" href="/tags/audio" title="audio">audio</a>
+
+<a class="ui label" href="/tags/c" title="c#">c#</a>
+
+<a class="ui label" href="/tags/effect" title="effect">effect</a>
+
+<a class="ui label" href="/tags/english" title="english">english</a>
+
+<a class="ui label" href="/tags/fps" title="fps">fps</a>
+
+<a class="ui label" href="/tags/knowledge" title="knowledge">knowledge</a>
+
+<a class="ui label" href="/tags/notes" title="notes">notes</a>
+
+<a class="ui label" href="/tags/rpg" title="rpg">rpg</a>
+
+<a class="ui label" href="/tags/tilemap" title="tilemap">tilemap</a>
+
+<a class="ui label" href="/tags/ugui" title="ugui">ugui</a>
+
+<a class="ui label" href="/tags/ui" title="ui">ui</a>
+
+<a class="ui label" href="/tags/unity" title="unity">unity</a>
+
+<a class="ui label" href="/tags/word" title="word">word</a>
+
+<a class="ui label" href="/tags/word-book" title="word-book">word-book</a>
+
+<a class="ui label" href="/tags/%E6%8A%80%E5%B7%A7" title="技巧">技巧</a>
+
+<a class="ui label" href="/tags/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93" title="数据传输">数据传输</a>
+
+
 		</section><section class="ui secondary  attached segment share row box"><div class="author"><img class="avatar" src="/img/avatar.png">
 	
 </div>
@@ -1540,7 +1830,7 @@ description: UI模块封装</p>
 			'width=626,height=436'); return false;">
 		<button class="ui facebook button"><i class="facebook icon"></i>Share</button>
 	</div>
-	<div class="twitter none flexbox" onclick="window.open('https://twitter.com/intent/tweet?text=Read &quot;  \/post\/game-frame-05\/','_self')">
+	<div class="twitter none flexbox" onclick="window.open('https://twitter.com/intent/tweet?text=Read &quot;UI模块封装——游戏框架-05  \/post\/game-frame-05\/','_self')">
 		<button class="ui twitter button"><i class="twitter icon"></i>Tweet</button>
 	</div>
 </section></section>
