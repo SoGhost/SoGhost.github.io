@@ -1477,6 +1477,10 @@ var bodyBgSwitchIndex = 0;var gradients = [
 </span><span class="lnt">508
 </span><span class="lnt">509
 </span><span class="lnt">510
+</span><span class="lnt">511
+</span><span class="lnt">512
+</span><span class="lnt">513
+</span><span class="lnt">514
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-c#" data-lang="c#"><span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
@@ -1611,7 +1615,8 @@ var bodyBgSwitchIndex = 0;var gradients = [
    <span class="c1">// 给二级子控件添加按钮监听：
 </span><span class="c1"></span>   <span class="c1">// 1. widgetName：一级子控件的名字
 </span><span class="c1"></span>   <span class="c1">// 2. secondaryWidgetName：二级子控件的名字
-</span><span class="c1"></span>   <span class="k">public</span> <span class="k">void</span> <span class="n">AddSubButtonListener</span><span class="p">(</span><span class="kt">string</span> <span class="n">widgetName</span><span class="p">,</span> <span class="kt">string</span> <span class="n">secondaryWidgetName</span><span class="p">,</span> <span class="n">UnityAction</span> <span class="n">action</span><span class="p">)</span>
+</span><span class="c1"></span>   <span class="c1">// 3. AddSubButtonListener改为AddButtonListener同名API自动重载，减少API数量，优化代码
+</span><span class="c1"></span>   <span class="k">public</span> <span class="k">void</span> <span class="n">AddButtonListener</span><span class="p">(</span><span class="kt">string</span> <span class="n">widgetName</span><span class="p">,</span> <span class="kt">string</span> <span class="n">secondaryWidgetName</span><span class="p">,</span> <span class="n">UnityAction</span> <span class="n">action</span><span class="p">)</span>
    <span class="p">{</span>
        <span class="n">UISubManager</span> <span class="n">tmpSub</span> <span class="p">=</span> <span class="n">GetSubManager</span><span class="p">(</span><span class="n">widgetName</span><span class="p">);</span>
 
@@ -1884,11 +1889,14 @@ var bodyBgSwitchIndex = 0;var gradients = [
        <span class="n">ChangeTextContent</span><span class="p">(</span><span class="s">&#34;_NText&#34;</span><span class="p">,</span> <span class="s">&#34;更改文字成功!!&#34;</span><span class="p">);</span>
        
        <span class="n">AddDragHandler</span><span class="p">(</span><span class="s">&#34;_NImage&#34;</span><span class="p">,</span> <span class="n">DragHandler</span><span class="p">);</span>
+       
+       <span class="n">AddButtonListener</span><span class="p">(</span><span class="s">&#34;_CWidget-1&#34;</span><span class="p">,</span> <span class="s">&#34;_NCSecondWidget&#34;</span><span class="p">,</span> <span class="n">OnClick</span><span class="p">);</span>
+       <span class="n">AddButtonListener</span><span class="p">(</span><span class="s">&#34;_CWidget-2&#34;</span><span class="p">,</span> <span class="s">&#34;_NCSecondWidget&#34;</span><span class="p">,</span> <span class="n">OnClick</span><span class="p">);</span>
    <span class="p">}</span>
 
    <span class="k">public</span> <span class="k">void</span> <span class="n">OnClick</span><span class="p">()</span>
    <span class="p">{</span>
-       <span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="s">&#34;LoadingButton is click!!&#34;</span><span class="p">);</span>
+       <span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="s">&#34;Button is click!!&#34;</span><span class="p">);</span>
    <span class="p">}</span>
    
    <span class="k">public</span> <span class="k">void</span> <span class="n">DragHandler</span><span class="p">(</span><span class="n">BaseEventData</span> <span class="n">eventData</span><span class="p">)</span>
