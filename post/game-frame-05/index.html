@@ -846,7 +846,7 @@ var bodyBgSwitchIndex = 0;var gradients = [
 			</h1>
 			<div class="sub header">
 					<div><span><i class="calendar outline icon"></i>Aug 31, 2018</span></div><div><span class="disqusComment"><i class="comment outline icon"></i><a href="/post/game-frame-05/#disqus_thread" class="disqus-comment-count" data-disqus-identifier="434613a9d28e4352d1668078daf0a921"></a></span></div>
-					<div><span><i class="clock outline icon"></i>6 min read</span></div>
+					<div><span><i class="clock outline icon"></i>8 min read</span></div>
 					<div><span><i class="angle double up icon"></i>更新于 Aug 31, 2018</span></div>
 			</div>
 			<hr><div class="toc"><nav id="TableOfContents">
@@ -856,7 +856,6 @@ var bodyBgSwitchIndex = 0;var gradients = [
 <li><a href="#ui-流程">UI 流程：</a></li>
 <li><a href="#注意事项">注意事项：</a></li>
 <li><a href="#ui-mvc架构演示">UI MVC架构演示</a></li>
-<li><a href="#背包ui结构">背包UI结构</a></li>
 </ul></li>
 </ul>
 </nav></div>
@@ -945,15 +944,19 @@ var bodyBgSwitchIndex = 0;var gradients = [
 
 <li><p><strong>Panel名字也不能一样</strong>，不同Panel的子控件可以同名。</p></li>
 
-<li><p>解决Scoller Ciew下面cell子单元格（子控件的子控件）名字重复</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-c#" data-lang="c#">     </code></pre></td></tr></table>
-</div>
-</div></li>
+<li><p>解决子控件下面的子控件名字重复</p>
+
+<blockquote>
+<p>UISubManager（二级管理）：</p>
+
+<ol>
+<li><p>由此情况的控件绑定UISubManager，并注册到UIManager</p></li>
+
+<li><p>管理子控件 Dictionary<string, GameObject></p></li>
+
+<li><p>UIManager管理UISubManager</p></li>
+</ol>
+</blockquote></li>
 </ul>
 </blockquote>
 
@@ -1362,6 +1365,118 @@ var bodyBgSwitchIndex = 0;var gradients = [
 </span><span class="lnt">396
 </span><span class="lnt">397
 </span><span class="lnt">398
+</span><span class="lnt">399
+</span><span class="lnt">400
+</span><span class="lnt">401
+</span><span class="lnt">402
+</span><span class="lnt">403
+</span><span class="lnt">404
+</span><span class="lnt">405
+</span><span class="lnt">406
+</span><span class="lnt">407
+</span><span class="lnt">408
+</span><span class="lnt">409
+</span><span class="lnt">410
+</span><span class="lnt">411
+</span><span class="lnt">412
+</span><span class="lnt">413
+</span><span class="lnt">414
+</span><span class="lnt">415
+</span><span class="lnt">416
+</span><span class="lnt">417
+</span><span class="lnt">418
+</span><span class="lnt">419
+</span><span class="lnt">420
+</span><span class="lnt">421
+</span><span class="lnt">422
+</span><span class="lnt">423
+</span><span class="lnt">424
+</span><span class="lnt">425
+</span><span class="lnt">426
+</span><span class="lnt">427
+</span><span class="lnt">428
+</span><span class="lnt">429
+</span><span class="lnt">430
+</span><span class="lnt">431
+</span><span class="lnt">432
+</span><span class="lnt">433
+</span><span class="lnt">434
+</span><span class="lnt">435
+</span><span class="lnt">436
+</span><span class="lnt">437
+</span><span class="lnt">438
+</span><span class="lnt">439
+</span><span class="lnt">440
+</span><span class="lnt">441
+</span><span class="lnt">442
+</span><span class="lnt">443
+</span><span class="lnt">444
+</span><span class="lnt">445
+</span><span class="lnt">446
+</span><span class="lnt">447
+</span><span class="lnt">448
+</span><span class="lnt">449
+</span><span class="lnt">450
+</span><span class="lnt">451
+</span><span class="lnt">452
+</span><span class="lnt">453
+</span><span class="lnt">454
+</span><span class="lnt">455
+</span><span class="lnt">456
+</span><span class="lnt">457
+</span><span class="lnt">458
+</span><span class="lnt">459
+</span><span class="lnt">460
+</span><span class="lnt">461
+</span><span class="lnt">462
+</span><span class="lnt">463
+</span><span class="lnt">464
+</span><span class="lnt">465
+</span><span class="lnt">466
+</span><span class="lnt">467
+</span><span class="lnt">468
+</span><span class="lnt">469
+</span><span class="lnt">470
+</span><span class="lnt">471
+</span><span class="lnt">472
+</span><span class="lnt">473
+</span><span class="lnt">474
+</span><span class="lnt">475
+</span><span class="lnt">476
+</span><span class="lnt">477
+</span><span class="lnt">478
+</span><span class="lnt">479
+</span><span class="lnt">480
+</span><span class="lnt">481
+</span><span class="lnt">482
+</span><span class="lnt">483
+</span><span class="lnt">484
+</span><span class="lnt">485
+</span><span class="lnt">486
+</span><span class="lnt">487
+</span><span class="lnt">488
+</span><span class="lnt">489
+</span><span class="lnt">490
+</span><span class="lnt">491
+</span><span class="lnt">492
+</span><span class="lnt">493
+</span><span class="lnt">494
+</span><span class="lnt">495
+</span><span class="lnt">496
+</span><span class="lnt">497
+</span><span class="lnt">498
+</span><span class="lnt">499
+</span><span class="lnt">500
+</span><span class="lnt">501
+</span><span class="lnt">502
+</span><span class="lnt">503
+</span><span class="lnt">504
+</span><span class="lnt">505
+</span><span class="lnt">506
+</span><span class="lnt">507
+</span><span class="lnt">508
+</span><span class="lnt">509
+</span><span class="lnt">510
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-c#" data-lang="c#"><span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
@@ -1370,7 +1485,7 @@ var bodyBgSwitchIndex = 0;var gradients = [
 <span class="k">using</span> <span class="nn">UnityEngine.Events</span><span class="p">;</span>
 
 <span class="c1">/// &lt;summary&gt;
-</span><span class="c1">/// UI管理器
+</span><span class="c1">/// UIManager --- UI管理器
 </span><span class="c1">/// &lt;/summary&gt;
 </span><span class="c1"></span><span class="k">public</span> <span class="k">class</span> <span class="nc">UIManager</span> <span class="p">:</span> <span class="n">MonoBehaviour</span>
 <span class="p">{</span>
@@ -1419,7 +1534,19 @@ var bodyBgSwitchIndex = 0;var gradients = [
        <span class="k">return</span> <span class="k">null</span><span class="p">;</span>
    <span class="p">}</span>
    
-   
+   <span class="c1">//给二级子控件添加按钮监听
+</span><span class="c1"></span>   <span class="k">public</span> <span class="k">void</span> <span class="n">AddButtonListener</span><span class="p">(</span><span class="kt">string</span> <span class="n">widgetName</span><span class="p">,</span> <span class="n">UnityAction</span> <span class="n">action</span><span class="p">)</span>
+   <span class="p">{</span>
+       <span class="c1">//根据名字找到子控件的transform
+</span><span class="c1"></span>       <span class="n">Transform</span> <span class="n">tmpTransform</span> <span class="p">=</span> <span class="n">GetChildTransform</span><span class="p">(</span><span class="n">widgetName</span><span class="p">);</span>
+       <span class="p">;</span>
+       <span class="n">Button</span> <span class="n">tmpBtn</span> <span class="p">=</span> <span class="n">tmpTransform</span><span class="p">.</span><span class="n">GetComponent</span><span class="p">&lt;</span><span class="n">Button</span><span class="p">&gt;();</span>
+
+       <span class="k">if</span> <span class="p">(</span><span class="n">tmpBtn</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+       <span class="p">{</span>
+           <span class="n">tmpBtn</span><span class="p">.</span><span class="n">onClick</span><span class="p">.</span><span class="n">AddListener</span><span class="p">(</span><span class="n">action</span><span class="p">);</span>
+       <span class="p">}</span>
+   <span class="p">}</span>
    
 <span class="c1">/// &lt;summary&gt;
 </span><span class="c1">/// 销毁 Dictionary 不用的
@@ -1450,6 +1577,7 @@ var bodyBgSwitchIndex = 0;var gradients = [
 </span><span class="cp"></span><span class="p">}</span>
 
 <span class="c1">/// &lt;summary&gt;
+</span><span class="c1">/// UIBase：
 </span><span class="c1">/// 1. MVC C层（Controller）
 </span><span class="c1">/// 2. C层共同的行为
 </span><span class="c1">/// &lt;/summary&gt;
@@ -1470,15 +1598,51 @@ var bodyBgSwitchIndex = 0;var gradients = [
                <span class="c1">//给有特殊开头的物体，添加 UIBehaviour 脚本
 </span><span class="c1"></span>               <span class="n">allChildren</span><span class="na">[i]</span><span class="p">.</span><span class="n">gameObject</span><span class="p">.</span><span class="n">AddComponent</span><span class="p">&lt;</span><span class="n">UIBehaviour</span><span class="p">&gt;();</span>
            <span class="p">}</span>
+           
+           <span class="c1">//判断一级控件是否有&#39;_C&#39;开头
+</span><span class="c1"></span>           <span class="k">if</span> <span class="p">(</span><span class="n">allChildren</span><span class="na">[i]</span><span class="p">.</span><span class="n">name</span><span class="p">.</span><span class="n">StartsWith</span><span class="p">(</span><span class="s">&#34;_C&#34;</span><span class="p">))</span>
+           <span class="p">{</span>
+               <span class="c1">//给有特殊开头的物体，添加 UISubBehaviour 脚本
+</span><span class="c1"></span>              <span class="n">allChildren</span><span class="na">[i]</span><span class="p">.</span><span class="n">gameObject</span><span class="p">.</span><span class="n">AddComponent</span><span class="p">&lt;</span><span class="n">UISubBehaviour</span><span class="p">&gt;();</span>
+           <span class="p">}</span>
+       <span class="p">}</span>
+   <span class="p">}</span>
+   
+   <span class="c1">// 给二级子控件添加按钮监听：
+</span><span class="c1"></span>   <span class="c1">// 1. widgetName：一级子控件的名字
+</span><span class="c1"></span>   <span class="c1">// 2. secondaryWidgetName：二级子控件的名字
+</span><span class="c1"></span>   <span class="k">public</span> <span class="k">void</span> <span class="n">AddSubButtonListener</span><span class="p">(</span><span class="kt">string</span> <span class="n">widgetName</span><span class="p">,</span> <span class="kt">string</span> <span class="n">secondaryWidgetName</span><span class="p">,</span> <span class="n">UnityAction</span> <span class="n">action</span><span class="p">)</span>
+   <span class="p">{</span>
+       <span class="n">UISubManager</span> <span class="n">tmpSub</span> <span class="p">=</span> <span class="n">GetSubManager</span><span class="p">(</span><span class="n">widgetName</span><span class="p">);</span>
+
+       <span class="k">if</span> <span class="p">(</span><span class="n">tmpSub</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+       <span class="p">{</span>
+           <span class="n">tmpSub</span><span class="p">.</span><span class="n">AddButtonListener</span><span class="p">(</span><span class="n">widgetName</span><span class="p">,</span> <span class="n">action</span><span class="p">);</span>
        <span class="p">}</span>
    <span class="p">}</span>
 
-   <span class="k">public</span> <span class="n">GameObject</span> <span class="n">GetWidget</span><span class="p">(</span><span class="kt">string</span> <span class="n">widgetName</span><span class="p">)</span>
+   <span class="c1">//获得SubManager
+</span><span class="c1"></span>   <span class="k">public</span> <span class="n">UISubManager</span> <span class="n">GetSubManager</span><span class="p">(</span><span class="kt">string</span> <span class="n">widgetName</span><span class="p">)</span>
+   <span class="p">{</span>
+       <span class="c1">//如果注册了，在UIManager能找到
+</span><span class="c1"></span>       <span class="n">GameObject</span> <span class="n">tmpObj</span> <span class="p">=</span> <span class="n">GetWidget</span><span class="p">(</span><span class="n">widgetName</span><span class="p">);</span>
+
+       <span class="k">if</span> <span class="p">(</span><span class="n">tmpObj</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+       <span class="p">{</span>
+           <span class="k">return</span> <span class="n">tmpObj</span><span class="p">.</span><span class="n">GetComponent</span><span class="p">&lt;</span><span class="n">UISubManager</span><span class="p">&gt;();</span>
+       <span class="p">}</span>
+
+       <span class="k">return</span> <span class="k">null</span><span class="p">;</span>
+   <span class="p">}</span>
+  
+  <span class="c1">//获得控件物体
+</span><span class="c1"></span>   <span class="k">public</span> <span class="n">GameObject</span> <span class="n">GetWidget</span><span class="p">(</span><span class="kt">string</span> <span class="n">widgetName</span><span class="p">)</span>
    <span class="p">{</span>
        <span class="k">return</span>  <span class="n">UIManager</span><span class="p">.</span><span class="n">instance</span><span class="p">.</span><span class="n">GetGameObject</span><span class="p">(</span><span class="n">transform</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="n">widgetName</span><span class="p">);</span>
    <span class="p">}</span>
-
-   <span class="k">public</span> <span class="n">UIBehaviour</span> <span class="n">GetBehaviour</span><span class="p">(</span><span class="kt">string</span> <span class="n">widgetName</span><span class="p">)</span>
+  
+  <span class="c1">//获得控件上的UIBehaviour
+</span><span class="c1"></span>   <span class="k">public</span> <span class="n">UIBehaviour</span> <span class="n">GetBehaviour</span><span class="p">(</span><span class="kt">string</span> <span class="n">widgetName</span><span class="p">)</span>
    <span class="p">{</span>
        <span class="n">GameObject</span> <span class="n">tmpObj</span> <span class="p">=</span> <span class="n">GetWedagte</span><span class="p">(</span><span class="n">widgetName</span><span class="p">);</span>
 
@@ -1517,10 +1681,21 @@ var bodyBgSwitchIndex = 0;var gradients = [
    <span class="p">{</span>
        <span class="n">UIManager</span><span class="p">.</span><span class="n">instance</span><span class="p">.</span><span class="n">UnRegistPanel</span><span class="p">(</span><span class="n">transform</span><span class="p">.</span><span class="n">name</span><span class="p">);</span>
    <span class="p">}</span>
+   
+   <span class="c1">//添加拖拽事件
+</span><span class="c1"></span>   <span class="k">public</span> <span class="k">void</span> <span class="n">AddDragHandler</span><span class="p">(</span><span class="kt">string</span> <span class="n">wigageName</span><span class="p">,</span> <span class="n">UnityAction</span><span class="p">&lt;</span><span class="n">BaseEventData</span><span class="p">&gt;</span> <span class="n">action</span><span class="p">)</span>
+   <span class="p">{</span>
+       <span class="n">UIBehaviour</span> <span class="n">tmpBehaviour</span> <span class="p">=</span> <span class="n">GetBehaviour</span><span class="p">(</span><span class="n">wigageName</span><span class="p">);</span>
+
+       <span class="k">if</span> <span class="p">(</span><span class="n">tmpBehaviour</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+       <span class="p">{</span>
+           <span class="n">tmpBehaviour</span><span class="p">.</span><span class="n">AddDragHandler</span><span class="p">(</span><span class="n">action</span><span class="p">);</span>
+       <span class="p">}</span>
+   <span class="p">}</span>
 <span class="p">}</span>
 
 <span class="c1">/// &lt;summary&gt;
-</span><span class="c1">/// 控件上的 UI Behaviour
+</span><span class="c1">/// 控件上的 UIBehaviour
 </span><span class="c1">/// &lt;/summary&gt;
 </span><span class="c1"></span><span class="k">public</span> <span class="k">class</span> <span class="nc">UIBehaviour</span> <span class="p">:</span> <span class="n">MonoBehaviour</span>
 <span class="p">{</span>
@@ -1707,11 +1882,20 @@ var bodyBgSwitchIndex = 0;var gradients = [
        <span class="n">AddButtonListener</span><span class="p">(</span><span class="s">&#34;_NLoadingButton&#34;</span><span class="p">,</span> <span class="n">OnClick</span><span class="p">);</span>
 
        <span class="n">ChangeTextContent</span><span class="p">(</span><span class="s">&#34;_NText&#34;</span><span class="p">,</span> <span class="s">&#34;更改文字成功!!&#34;</span><span class="p">);</span>
+       
+       <span class="n">AddDragHandler</span><span class="p">(</span><span class="s">&#34;_NImage&#34;</span><span class="p">,</span> <span class="n">DragHandler</span><span class="p">);</span>
    <span class="p">}</span>
 
    <span class="k">public</span> <span class="k">void</span> <span class="n">OnClick</span><span class="p">()</span>
    <span class="p">{</span>
        <span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="s">&#34;LoadingButton is click!!&#34;</span><span class="p">);</span>
+   <span class="p">}</span>
+   
+   <span class="k">public</span> <span class="k">void</span> <span class="n">DragHandler</span><span class="p">(</span><span class="n">BaseEventData</span> <span class="n">eventData</span><span class="p">)</span>
+   <span class="p">{</span>
+       <span class="n">PointerEventData</span> <span class="n">pointerEventData</span> <span class="p">=</span> <span class="p">(</span><span class="n">PointerEventData</span><span class="p">)</span><span class="n">eventData</span><span class="p">;</span>
+
+       <span class="n">transform</span><span class="p">.</span><span class="n">position</span> <span class="p">=</span> <span class="n">pointerEventData</span><span class="p">.</span><span class="n">position</span><span class="p">;</span>
    <span class="p">}</span>
 <span class="p">}</span>
 
@@ -1761,16 +1945,52 @@ var bodyBgSwitchIndex = 0;var gradients = [
    <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="cm">/********************************************************/</span></code></pre></td></tr></table>
+<span class="cm">/********************************************************/</span>
+
+<span class="c1">/// &lt;summary&gt;
+</span><span class="c1">/// UISubManager绑定在管理二级子控件的控件上
+</span><span class="c1">/// &lt;/summary&gt;
+</span><span class="c1"></span><span class="k">public</span> <span class="k">class</span> <span class="nc">UISubManager</span> <span class="p">:</span> <span class="n">MonoBehaviour</span>
+<span class="p">{</span>
+   <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span> <span class="p">,</span> <span class="n">Transform</span><span class="p">&gt;</span> <span class="n">allChild</span><span class="p">;</span>
+
+   <span class="k">void</span> <span class="n">Awake</span><span class="p">()</span>
+   <span class="p">{</span>
+       <span class="n">UIBase</span> <span class="n">tmpBase</span> <span class="p">=</span> <span class="n">GetComponentInParent</span><span class="p">&lt;</span><span class="n">UIBase</span><span class="p">&gt;();</span>
+
+       <span class="n">UIManager</span><span class="p">.</span><span class="n">instance</span><span class="p">.</span><span class="n">RegistGameObject</span><span class="p">(</span><span class="n">tmpBase</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="n">transform</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="n">gameObject</span><span class="p">);</span>
+
+       <span class="n">allChild</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="n">Transform</span><span class="p">&gt;();</span>
+
+       <span class="n">Transform</span><span class="na">[]</span> <span class="n">tmpChild</span> <span class="p">=</span> <span class="n">transform</span><span class="p">.</span><span class="n">GetComponentsInChildren</span><span class="p">&lt;</span><span class="n">Transform</span><span class="p">&gt;();</span>
+
+       <span class="c1">//所有子控件存到allChild里
+</span><span class="c1"></span>       <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">tmpChild</span><span class="p">.</span><span class="n">Length</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
+       <span class="p">{</span>
+          <span class="c1">//如果二级子控件前缀有’_NC‘则存入allChild里
+</span><span class="c1"></span>           <span class="k">if</span> <span class="p">(</span><span class="n">tmpChild</span><span class="na">[i]</span><span class="p">.</span><span class="n">name</span><span class="p">.</span><span class="n">StartsWith</span><span class="p">(</span><span class="s">&#34;_NC&#34;</span><span class="p">))</span>
+               <span class="n">allChild</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">tmpChild</span><span class="na">[i]</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="n">tmpChild</span><span class="na">[i]</span><span class="p">);</span>
+       <span class="p">}</span>
+   <span class="p">}</span>
+
+   <span class="c1">//根据名字获取ChildTransform
+</span><span class="c1"></span>   <span class="k">public</span> <span class="n">Transform</span> <span class="n">GetChildTransform</span><span class="p">(</span><span class="kt">string</span> <span class="n">widgetName</span><span class="p">)</span>
+   <span class="p">{</span>
+       <span class="k">return</span> <span class="n">allChild</span><span class="na">[widgetName]</span><span class="p">;</span><span class="c1">//只有一层，所以不存在就返回null
+</span><span class="c1"></span>   <span class="p">}</span>
+
+   <span class="c1">//提供销毁借口
+</span><span class="c1"></span>   <span class="k">void</span> <span class="n">OnDestroy</span><span class="p">()</span>
+   <span class="p">{</span>
+       <span class="k">if</span> <span class="p">(</span><span class="n">allChild</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+       <span class="p">{</span>
+           <span class="n">allChild</span><span class="p">.</span><span class="n">Clear</span><span class="p">();</span>
+           <span class="n">allChild</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+       <span class="p">}</span>
+   <span class="p">}</span>
+<span class="p">}</span></code></pre></td></tr></table>
 </div>
 </div></blockquote>
-
-<hr />
-
-<h2 id="背包ui结构">背包UI结构&nbsp;<a class="anchor" href="#背包ui结构"><i class="small linkify icon"></i></a> </h2>
-
-<blockquote>
-</blockquote>
 
 			</article>
 		</section>
