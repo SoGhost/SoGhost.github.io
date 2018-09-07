@@ -6,10 +6,24 @@
     <description>Recent content in Game Frame on PY-&gt; Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>us-en</language>
-    <lastBuildDate>Fri, 31 Aug 2018 17:52:54 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 07 Sep 2018 18:18:05 +0800</lastBuildDate>
     
 	<atom:link href="/categories/game-frame/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>EasyTouch模块封装——游戏框架-06</title>
+      <link>/post/game-frame-06/</link>
+      <pubDate>Fri, 07 Sep 2018 18:18:05 +0800</pubDate>
+      
+      <guid>/post/game-frame-06/</guid>
+      <description> EasyTouch 制作流程：
+ 获取鼠标到圆心的半径 &amp;gt;deltaDistance = 鼠标点 &amp;ndash; 圆心 &amp;ndash;&amp;gt; 判断距离
+ 移动范围
+ 在圆内可以任意移动   deltaDistance.magnitude&amp;lt; 半径（deltaDistance.magnitude = Vector2.Distance()，求两向量间距离）
+  超过半径只能在圆上移动    实现物体跟着旋转
+ 让图片随着摇杆移动旋转  弧度：Π = 180° 3.1415926 / 2 ≈ 1.57 = 90° 角度：180° = Π     </description>
+    </item>
     
     <item>
       <title>UI模块封装——游戏框架-05</title>

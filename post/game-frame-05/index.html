@@ -200,6 +200,13 @@ var bodyBgSwitchIndex = 0;var gradients = [
 </div>
 <div class="content">
 
+	<a class="item" href="/post/game-frame-06/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>EasyTouch模块封装——游戏框架-06</p>
+		</div>
+	</a>
+
 	<a class="item" href="/post/game-frame-05/">
 		<div>
 			<i class="cocktail icon"></i>
@@ -594,6 +601,13 @@ var bodyBgSwitchIndex = 0;var gradients = [
 </div>
 <div class="content">
 
+	<a class="item" href="/post/game-frame-06/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>EasyTouch模块封装——游戏框架-06</p>
+		</div>
+	</a>
+
 	<a class="item" href="/post/game-frame-05/">
 		<div>
 			<i class="cocktail icon"></i>
@@ -845,7 +859,7 @@ var bodyBgSwitchIndex = 0;var gradients = [
 			</h1>
 			<div class="sub header">
 					<div><span><i class="calendar outline icon"></i>Aug 31, 2018</span></div><div><span class="disqusComment"><i class="comment outline icon"></i><a href="/post/game-frame-05/#disqus_thread" class="disqus-comment-count" data-disqus-identifier="434613a9d28e4352d1668078daf0a921"></a></span></div>
-					<div><span><i class="clock outline icon"></i>8 min read</span></div>
+					<div><span><i class="clock outline icon"></i>11 min read</span></div>
 					<div><span><i class="angle double up icon"></i>更新于 Aug 31, 2018</span></div>
 			</div>
 			<hr><div class="toc"><nav id="TableOfContents">
@@ -1553,32 +1567,32 @@ var bodyBgSwitchIndex = 0;var gradients = [
        <span class="p">}</span>
    <span class="p">}</span>
    
-<span class="c1">/// &lt;summary&gt;
-</span><span class="c1">/// 销毁 Dictionary 不用的
-</span><span class="c1">/// &lt;/summary&gt;
-</span><span class="c1"></span><span class="cp">#region Destory
+  <span class="c1">/// &lt;summary&gt;
+</span><span class="c1"></span>  <span class="c1">/// 销毁 Dictionary 不用的
+</span><span class="c1"></span>  <span class="c1">/// &lt;/summary&gt;
+</span><span class="c1"></span>  <span class="cp">#region Destory
 </span><span class="cp"></span>
-<span class="c1">//只能删除一个子控件
-</span><span class="c1"></span><span class="k">public</span> <span class="k">void</span> <span class="n">UnRegistGameObject</span><span class="p">(</span><span class="kt">string</span> <span class="n">panelName</span><span class="p">,</span> <span class="kt">string</span> <span class="n">widgetName</span><span class="p">)</span>
-<span class="p">{</span>
-   <span class="c1">//将子控件从allWidget删除
-</span><span class="c1"></span>   <span class="k">if</span> <span class="p">(</span><span class="n">allWidget</span><span class="p">.</span><span class="n">ContainsKey</span><span class="p">(</span><span class="n">panelName</span><span class="p">))</span>
-   <span class="p">{</span>
-       <span class="k">if</span> <span class="p">(</span><span class="n">allWidget</span><span class="na">[panelName]</span><span class="p">.</span><span class="n">ContainsKey</span><span class="p">(</span><span class="n">widgetName</span><span class="p">))</span>
-           <span class="n">allWidget</span><span class="na">[panelName]</span><span class="p">.</span><span class="n">Remove</span><span class="p">(</span><span class="n">widgetName</span><span class="p">);</span>
-   <span class="p">}</span>
-<span class="p">}</span>
+  <span class="c1">//只能删除一个子控件
+</span><span class="c1"></span>  <span class="k">public</span> <span class="k">void</span> <span class="n">UnRegistGameObject</span><span class="p">(</span><span class="kt">string</span> <span class="n">panelName</span><span class="p">,</span> <span class="kt">string</span> <span class="n">widgetName</span><span class="p">)</span>
+  <span class="p">{</span>
+      <span class="c1">//将子控件从allWidget删除
+</span><span class="c1"></span>      <span class="k">if</span> <span class="p">(</span><span class="n">allWidget</span><span class="p">.</span><span class="n">ContainsKey</span><span class="p">(</span><span class="n">panelName</span><span class="p">))</span>
+      <span class="p">{</span>
+          <span class="k">if</span> <span class="p">(</span><span class="n">allWidget</span><span class="na">[panelName]</span><span class="p">.</span><span class="n">ContainsKey</span><span class="p">(</span><span class="n">widgetName</span><span class="p">))</span>
+              <span class="n">allWidget</span><span class="na">[panelName]</span><span class="p">.</span><span class="n">Remove</span><span class="p">(</span><span class="n">widgetName</span><span class="p">);</span>
+      <span class="p">}</span>
+  <span class="p">}</span>
 
-<span class="c1">//删除Panel（删除所有子控件）
-</span><span class="c1"></span><span class="k">public</span> <span class="k">void</span> <span class="n">UnRegistPanel</span><span class="p">(</span><span class="kt">string</span> <span class="n">panelName</span><span class="p">)</span>
-<span class="p">{</span>
-   <span class="k">if</span> <span class="p">(</span><span class="n">allWidget</span><span class="p">.</span><span class="n">ContainsKey</span><span class="p">(</span><span class="n">panelName</span><span class="p">))</span>
-   <span class="p">{</span>
-       <span class="n">allWidget</span><span class="na">[panelName]</span><span class="p">.</span><span class="n">Clear</span><span class="p">();</span>
-       <span class="n">allWidget</span><span class="na">[panelName]</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
-   <span class="p">}</span>
-<span class="p">}</span>
-<span class="cp">#endregion
+  <span class="c1">//删除Panel（删除所有子控件）
+</span><span class="c1"></span>  <span class="k">public</span> <span class="k">void</span> <span class="n">UnRegistPanel</span><span class="p">(</span><span class="kt">string</span> <span class="n">panelName</span><span class="p">)</span>
+  <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">allWidget</span><span class="p">.</span><span class="n">ContainsKey</span><span class="p">(</span><span class="n">panelName</span><span class="p">))</span>
+      <span class="p">{</span>
+          <span class="n">allWidget</span><span class="na">[panelName]</span><span class="p">.</span><span class="n">Clear</span><span class="p">();</span>
+          <span class="n">allWidget</span><span class="na">[panelName]</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+      <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="cp">#endregion
 </span><span class="cp"></span><span class="p">}</span>
 
 <span class="c1">/// &lt;summary&gt;
@@ -2016,9 +2030,578 @@ var bodyBgSwitchIndex = 0;var gradients = [
 <hr />
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-c#" data-lang="c#"></code></pre></td>
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span><span class="lnt">125
+</span><span class="lnt">126
+</span><span class="lnt">127
+</span><span class="lnt">128
+</span><span class="lnt">129
+</span><span class="lnt">130
+</span><span class="lnt">131
+</span><span class="lnt">132
+</span><span class="lnt">133
+</span><span class="lnt">134
+</span><span class="lnt">135
+</span><span class="lnt">136
+</span><span class="lnt">137
+</span><span class="lnt">138
+</span><span class="lnt">139
+</span><span class="lnt">140
+</span><span class="lnt">141
+</span><span class="lnt">142
+</span><span class="lnt">143
+</span><span class="lnt">144
+</span><span class="lnt">145
+</span><span class="lnt">146
+</span><span class="lnt">147
+</span><span class="lnt">148
+</span><span class="lnt">149
+</span><span class="lnt">150
+</span><span class="lnt">151
+</span><span class="lnt">152
+</span><span class="lnt">153
+</span><span class="lnt">154
+</span><span class="lnt">155
+</span><span class="lnt">156
+</span><span class="lnt">157
+</span><span class="lnt">158
+</span><span class="lnt">159
+</span><span class="lnt">160
+</span><span class="lnt">161
+</span><span class="lnt">162
+</span><span class="lnt">163
+</span><span class="lnt">164
+</span><span class="lnt">165
+</span><span class="lnt">166
+</span><span class="lnt">167
+</span><span class="lnt">168
+</span><span class="lnt">169
+</span><span class="lnt">170
+</span><span class="lnt">171
+</span><span class="lnt">172
+</span><span class="lnt">173
+</span><span class="lnt">174
+</span><span class="lnt">175
+</span><span class="lnt">176
+</span><span class="lnt">177
+</span><span class="lnt">178
+</span><span class="lnt">179
+</span><span class="lnt">180
+</span><span class="lnt">181
+</span><span class="lnt">182
+</span><span class="lnt">183
+</span><span class="lnt">184
+</span><span class="lnt">185
+</span><span class="lnt">186
+</span><span class="lnt">187
+</span><span class="lnt">188
+</span><span class="lnt">189
+</span><span class="lnt">190
+</span><span class="lnt">191
+</span><span class="lnt">192
+</span><span class="lnt">193
+</span><span class="lnt">194
+</span><span class="lnt">195
+</span><span class="lnt">196
+</span><span class="lnt">197
+</span><span class="lnt">198
+</span><span class="lnt">199
+</span><span class="lnt">200
+</span><span class="lnt">201
+</span><span class="lnt">202
+</span><span class="lnt">203
+</span><span class="lnt">204
+</span><span class="lnt">205
+</span><span class="lnt">206
+</span><span class="lnt">207
+</span><span class="lnt">208
+</span><span class="lnt">209
+</span><span class="lnt">210
+</span><span class="lnt">211
+</span><span class="lnt">212
+</span><span class="lnt">213
+</span><span class="lnt">214
+</span><span class="lnt">215
+</span><span class="lnt">216
+</span><span class="lnt">217
+</span><span class="lnt">218
+</span><span class="lnt">219
+</span><span class="lnt">220
+</span><span class="lnt">221
+</span><span class="lnt">222
+</span><span class="lnt">223
+</span><span class="lnt">224
+</span><span class="lnt">225
+</span><span class="lnt">226
+</span><span class="lnt">227
+</span><span class="lnt">228
+</span><span class="lnt">229
+</span><span class="lnt">230
+</span><span class="lnt">231
+</span><span class="lnt">232
+</span><span class="lnt">233
+</span><span class="lnt">234
+</span><span class="lnt">235
+</span><span class="lnt">236
+</span><span class="lnt">237
+</span><span class="lnt">238
+</span><span class="lnt">239
+</span><span class="lnt">240
+</span><span class="lnt">241
+</span><span class="lnt">242
+</span><span class="lnt">243
+</span><span class="lnt">244
+</span><span class="lnt">245
+</span><span class="lnt">246
+</span><span class="lnt">247
+</span><span class="lnt">248
+</span><span class="lnt">249
+</span><span class="lnt">250
+</span><span class="lnt">251
+</span><span class="lnt">252
+</span><span class="lnt">253
+</span><span class="lnt">254
+</span><span class="lnt">255
+</span><span class="lnt">256
+</span><span class="lnt">257
+</span><span class="lnt">258
+</span><span class="lnt">259
+</span><span class="lnt">260
+</span><span class="lnt">261
+</span><span class="lnt">262
+</span><span class="lnt">263
+</span><span class="lnt">264
+</span><span class="lnt">265
+</span><span class="lnt">266
+</span><span class="lnt">267
+</span><span class="lnt">268
+</span><span class="lnt">269
+</span><span class="lnt">270
+</span><span class="lnt">271
+</span><span class="lnt">272
+</span><span class="lnt">273
+</span><span class="lnt">274
+</span><span class="lnt">275
+</span><span class="lnt">276
+</span><span class="lnt">277
+</span><span class="lnt">278
+</span><span class="lnt">279
+</span><span class="lnt">280
+</span><span class="lnt">281
+</span><span class="lnt">282
+</span><span class="lnt">283
+</span><span class="lnt">284
+</span><span class="lnt">285
+</span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-c#" data-lang="c#"></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">UnityEngine</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">UnityEngine.Events</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">UnityEngine.UI</span><span class="p">;</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">LoginCtr</span> <span class="p">:</span> <span class="n">UIBase</span> <span class="p">{</span>
+
+   <span class="n">LoginModel</span> <span class="n">loginModel</span><span class="p">;</span>
+   <span class="n">LoginLogic</span> <span class="n">loginLogic</span><span class="p">;</span>
+
+   <span class="k">void</span> <span class="n">Start</span> <span class="p">()</span> <span class="p">{</span>
+       <span class="n">loginModel</span> <span class="p">=</span> <span class="k">new</span> <span class="n">LoginModel</span><span class="p">();</span>
+       <span class="n">loginLogic</span> <span class="p">=</span> <span class="k">new</span> <span class="n">LoginLogic</span><span class="p">(</span><span class="n">loginModel</span><span class="p">,</span> <span class="k">this</span><span class="p">);</span>
+
+       <span class="n">BindEvent</span><span class="p">();</span>
+   <span class="p">}</span>
+
+   <span class="c1">// 事件绑定
+</span><span class="c1"></span>   <span class="k">public</span> <span class="k">void</span> <span class="n">BindEvent</span><span class="p">()</span>
+   <span class="p">{</span>
+       <span class="n">AddInputFiledListener</span><span class="p">(</span><span class="s">&#34;UserName_N&#34;</span><span class="p">,</span> <span class="k">new</span> <span class="n">UnityAction</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;(</span><span class="n">loginLogic</span><span class="p">.</span><span class="n">GetUserName</span><span class="p">));</span>
+       <span class="n">AddInputFiledListener</span><span class="p">(</span><span class="s">&#34;Password_N&#34;</span><span class="p">,</span> <span class="k">new</span> <span class="n">UnityAction</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;(</span><span class="n">loginLogic</span><span class="p">.</span><span class="n">GetPassword</span><span class="p">));</span>
+
+       <span class="n">AddButtonListener</span><span class="p">(</span><span class="s">&#34;Login_Btn_N&#34;</span><span class="p">,</span> <span class="k">new</span> <span class="n">UnityAction</span><span class="p">(</span><span class="n">loginLogic</span><span class="p">.</span><span class="n">LoginClick</span><span class="p">));</span>
+       <span class="n">AddButtonListener</span><span class="p">(</span><span class="s">&#34;Regist_Btn_N&#34;</span><span class="p">,</span> <span class="k">new</span> <span class="n">UnityAction</span><span class="p">(</span><span class="n">loginLogic</span><span class="p">.</span><span class="n">RegistClick</span><span class="p">));</span>
+   <span class="p">}</span>
+
+   <span class="k">public</span> <span class="k">void</span> <span class="n">HideSelf</span><span class="p">()</span>
+   <span class="p">{</span>
+       <span class="n">GameObject</span> <span class="n">root</span> <span class="p">=</span> <span class="n">GetWidget</span><span class="p">(</span><span class="s">&#34;Root_N&#34;</span><span class="p">);</span>
+
+       <span class="n">root</span><span class="p">.</span><span class="n">SetActive</span><span class="p">(</span><span class="k">false</span><span class="p">);</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">LoginModel</span>
+<span class="p">{</span>
+   <span class="c1">// 封装性 避免修改
+</span><span class="c1"></span>   <span class="k">public</span> <span class="kt">string</span> <span class="n">UserName</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+   <span class="k">public</span> <span class="kt">string</span> <span class="n">Password</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">LoginLogic</span>
+<span class="p">{</span>
+   <span class="n">LoginModel</span> <span class="n">loginModel</span><span class="p">;</span>
+   <span class="n">LoginCtr</span> <span class="n">loginCtr</span><span class="p">;</span>
+
+   <span class="k">public</span> <span class="n">LoginLogic</span><span class="p">(</span><span class="n">LoginModel</span> <span class="n">model</span><span class="p">,</span> <span class="n">LoginCtr</span> <span class="n">ctr</span><span class="p">)</span>
+   <span class="p">{</span>
+       <span class="n">loginModel</span> <span class="p">=</span> <span class="n">model</span><span class="p">;</span>
+       <span class="n">loginCtr</span> <span class="p">=</span> <span class="n">ctr</span><span class="p">;</span>
+   <span class="p">}</span>
+
+   <span class="k">public</span> <span class="k">void</span> <span class="n">GetUserName</span><span class="p">(</span><span class="kt">string</span> <span class="n">userName</span><span class="p">)</span>
+   <span class="p">{</span>
+       <span class="n">loginModel</span><span class="p">.</span><span class="n">UserName</span> <span class="p">=</span> <span class="n">userName</span><span class="p">;</span>
+   <span class="p">}</span>
+
+   <span class="k">public</span> <span class="k">void</span> <span class="n">GetPassword</span><span class="p">(</span><span class="kt">string</span> <span class="n">password</span><span class="p">)</span>
+   <span class="p">{</span>
+       <span class="n">loginModel</span><span class="p">.</span><span class="n">Password</span> <span class="p">=</span> <span class="n">password</span><span class="p">;</span>
+   <span class="p">}</span>
+
+   <span class="k">public</span> <span class="k">void</span> <span class="n">LoginClick</span><span class="p">()</span>
+   <span class="p">{</span>
+       <span class="c1">// 1. 从网络请求 检测用户名和密码是否正确
+</span><span class="c1"></span>       <span class="c1">// 2. 从本地数据库查询
+</span><span class="c1"></span>
+       <span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="s">&#34;Login is click!!&#34;</span><span class="p">);</span>
+   <span class="p">}</span>
+
+   <span class="c1">/// &lt;summary&gt;
+</span><span class="c1"></span>   <span class="c1">/// 通用的代码 都可以写到 UIBase 父类里面
+</span><span class="c1"></span>   <span class="c1">/// &lt;/summary&gt;
+</span><span class="c1"></span>   <span class="k">public</span> <span class="k">void</span> <span class="n">RegistClick</span><span class="p">()</span>
+   <span class="p">{</span>
+       <span class="c1">//弹出注册界面
+</span><span class="c1"></span>       <span class="c1">//加载Regist的Prefab到内存，还没有实例化
+</span><span class="c1"></span>       <span class="n">Object</span> <span class="n">obj</span> <span class="p">=</span> <span class="n">Resources</span><span class="p">.</span><span class="n">Load</span><span class="p">(</span><span class="s">&#34;UI/Regist/Regist&#34;</span><span class="p">);</span>
+
+       <span class="c1">//实例化 Panel
+</span><span class="c1"></span>       <span class="n">GameObject</span> <span class="n">registPanel</span> <span class="p">=</span> <span class="n">Object</span><span class="p">.</span><span class="n">Instantiate</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span> <span class="k">as</span> <span class="n">GameObject</span><span class="p">;</span>
+
+       <span class="c1">//去掉实例化多余Clone名字
+</span><span class="c1"></span>       <span class="n">registPanel</span><span class="p">.</span><span class="n">name</span> <span class="p">=</span> <span class="n">registPanel</span><span class="p">.</span><span class="n">name</span><span class="p">.</span><span class="n">Replace</span><span class="p">(</span><span class="s">&#34;(Clone)&#34;</span><span class="p">,</span> <span class="s">&#34;&#34;</span><span class="p">);</span>
+       
+       <span class="n">Transform</span> <span class="n">mainCanvas</span> <span class="p">=</span> <span class="n">loginCtr</span><span class="p">.</span><span class="n">GetCanvas</span><span class="p">();</span>
+
+       <span class="c1">//设置父类
+</span><span class="c1"></span>       <span class="n">registPanel</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">SetParent</span><span class="p">(</span><span class="n">mainCanvas</span><span class="p">,</span> <span class="k">false</span><span class="p">);</span>
+
+       <span class="c1">//给注册界面添加控制层
+</span><span class="c1"></span>       <span class="n">registPanel</span><span class="p">.</span><span class="n">AddComponent</span><span class="p">&lt;</span><span class="n">RegistCtr</span><span class="p">&gt;();</span>
+
+       <span class="c1">//隐藏登录界面
+</span><span class="c1"></span>       <span class="n">loginCtr</span><span class="p">.</span><span class="n">HideSelf</span><span class="p">();</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="cm">/********************* UIBase ************************/</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">UIBase</span> <span class="p">:</span> <span class="n">MonoBehaviour</span>
+<span class="p">{</span>
+   <span class="c1">/// &lt;summary&gt;
+</span><span class="c1"></span>   <span class="c1">/// 给需要用到的控件动态添加Behaviour脚本
+</span><span class="c1"></span>   <span class="c1">/// &lt;/summary&gt;
+</span><span class="c1"></span>   <span class="k">void</span> <span class="n">Awake</span><span class="p">()</span>
+   <span class="p">{</span>
+      <span class="c1">//获得挂载脚本物体下所有控件
+</span><span class="c1"></span>       <span class="n">Transform</span><span class="na">[]</span> <span class="n">allChildren</span> <span class="p">=</span> <span class="n">transform</span><span class="p">.</span><span class="n">GetComponentsInChildren</span><span class="p">&lt;</span><span class="n">Transform</span><span class="p">&gt;();</span>
+
+       <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">allChildren</span><span class="p">.</span><span class="n">Length</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
+       <span class="p">{</span>
+           <span class="k">if</span> <span class="p">(</span><span class="n">allChildren</span><span class="na">[i]</span><span class="p">.</span><span class="n">name</span><span class="p">.</span><span class="n">EndsWith</span><span class="p">(</span><span class="s">&#34;_N&#34;</span><span class="p">))</span>
+           <span class="p">{</span>
+               <span class="n">allChildren</span><span class="na">[i]</span><span class="p">.</span><span class="n">gameObject</span><span class="p">.</span><span class="n">AddComponent</span><span class="p">&lt;</span><span class="n">UIBehaviour</span><span class="p">&gt;();</span>
+           <span class="p">}</span>
+       <span class="p">}</span>
+   <span class="p">}</span>
+
+   <span class="k">public</span> <span class="n">GameObject</span> <span class="n">GetWidget</span><span class="p">(</span><span class="kt">string</span> <span class="n">widgetName</span><span class="p">)</span>
+   <span class="p">{</span>
+       <span class="c1">// transform.name是GetWidget()被GetBehaviour()被挂在UIBehaviour上的控件所调用出来的名字
+</span><span class="c1"></span>       <span class="c1">// transform.name就是挂有UIBehaviour控件的名字
+</span><span class="c1"></span>       <span class="k">return</span> <span class="n">UIManager</span><span class="p">.</span><span class="n">instance</span><span class="p">.</span><span class="n">GetGameObject</span><span class="p">(</span><span class="n">transform</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="n">widgetName</span><span class="p">);</span>
+   <span class="p">}</span>
+
+   <span class="k">public</span> <span class="n">UIBehaviour</span> <span class="n">GetBehaviour</span><span class="p">(</span><span class="kt">string</span> <span class="n">widgetName</span><span class="p">)</span>
+   <span class="p">{</span>
+       <span class="n">GameObject</span> <span class="n">obj</span> <span class="p">=</span> <span class="n">GetWidget</span><span class="p">(</span><span class="n">widgetName</span><span class="p">);</span>
+
+       <span class="k">if</span> <span class="p">(</span><span class="n">obj</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+       <span class="p">{</span>
+           <span class="k">return</span> <span class="n">obj</span><span class="p">.</span><span class="n">GetComponent</span><span class="p">&lt;</span><span class="n">UIBehaviour</span><span class="p">&gt;();</span>
+       <span class="p">}</span>
+
+       <span class="k">return</span> <span class="k">null</span><span class="p">;</span>
+   <span class="p">}</span>
+
+   <span class="k">public</span> <span class="k">void</span> <span class="n">AddButtonListener</span><span class="p">(</span><span class="kt">string</span> <span class="n">widgetName</span><span class="p">,</span> <span class="n">UnityAction</span> <span class="n">action</span><span class="p">)</span>
+   <span class="p">{</span>
+       <span class="n">UIBehaviour</span> <span class="n">tmpBehaviour</span> <span class="p">=</span> <span class="n">GetBehaviour</span><span class="p">(</span><span class="n">widgetName</span><span class="p">);</span>
+
+       <span class="k">if</span> <span class="p">(</span><span class="n">tmpBehaviour</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+       <span class="p">{</span>
+           <span class="n">tmpBehaviour</span><span class="p">.</span><span class="n">AddButtonListener</span><span class="p">(</span><span class="n">action</span><span class="p">);</span>
+       <span class="p">}</span>
+   <span class="p">}</span>
+
+   <span class="k">public</span> <span class="k">void</span> <span class="n">AddInputFiledListener</span><span class="p">(</span><span class="kt">string</span> <span class="n">widgetName</span><span class="p">,</span> <span class="n">UnityAction</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="n">action</span><span class="p">)</span>
+   <span class="p">{</span>
+       <span class="n">UIBehaviour</span> <span class="n">tmpBehaviour</span> <span class="p">=</span> <span class="n">GetBehaviour</span><span class="p">(</span><span class="n">widgetName</span><span class="p">);</span>
+
+       <span class="k">if</span> <span class="p">(</span><span class="n">tmpBehaviour</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+       <span class="p">{</span>
+           <span class="n">tmpBehaviour</span><span class="p">.</span><span class="n">AddInputFiledEndEditorListener</span><span class="p">(</span><span class="n">action</span><span class="p">);</span>
+       <span class="p">}</span>
+   <span class="p">}</span>
+
+   <span class="cp">#region 获取Canvas
+</span><span class="cp"></span>   <span class="k">public</span> <span class="n">Transform</span> <span class="n">GetCanvas</span><span class="p">()</span>
+   <span class="p">{</span>
+       <span class="k">return</span> <span class="n">UIManager</span><span class="p">.</span><span class="n">instance</span><span class="p">.</span><span class="n">MainCanvas</span><span class="p">;</span>
+   <span class="p">}</span>
+   <span class="cp">#endregion
+</span><span class="cp"></span><span class="p">}</span>
+
+<span class="cm">/********************* UIBehaviour ************************/</span>
+
+<span class="c1">/// &lt;summary&gt;
+</span><span class="c1">/// UIBehaviour主要作用：
+</span><span class="c1">/// 1. 获取控件父物体名字
+</span><span class="c1">/// 2. 创建接口--&gt;添加事件
+</span><span class="c1">/// &lt;/summary&gt;
+</span><span class="c1"></span><span class="k">public</span> <span class="k">class</span> <span class="nc">UIBehaviour</span> <span class="p">:</span> <span class="n">MonoBehaviour</span>
+<span class="p">{</span>
+   <span class="k">void</span> <span class="n">Awake</span><span class="p">()</span>
+   <span class="p">{</span>
+       <span class="c1">//获取每个子控件父物体上的UIBase
+</span><span class="c1"></span>       <span class="n">UIBase</span> <span class="n">tmpBase</span> <span class="p">=</span> <span class="n">transform</span><span class="p">.</span><span class="n">GetComponentInParent</span><span class="p">&lt;</span><span class="n">UIBase</span><span class="p">&gt;();</span>
+
+       <span class="n">UIManager</span><span class="p">.</span><span class="n">instance</span><span class="p">.</span><span class="n">RegistGameObject</span><span class="p">(</span><span class="n">tmpBase</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="n">transform</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="n">gameObject</span><span class="p">);</span>
+   <span class="p">}</span>
+
+   <span class="c1">//添加按钮点击事件
+</span><span class="c1"></span>   <span class="k">public</span> <span class="k">void</span> <span class="n">AddButtonListener</span><span class="p">(</span><span class="n">UnityAction</span> <span class="n">action</span><span class="p">)</span>
+   <span class="p">{</span>
+       <span class="n">Button</span> <span class="n">tmpButton</span> <span class="p">=</span> <span class="n">transform</span><span class="p">.</span><span class="n">GetComponent</span><span class="p">&lt;</span><span class="n">Button</span><span class="p">&gt;();</span>
+
+       <span class="k">if</span> <span class="p">(</span><span class="n">tmpButton</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+       <span class="p">{</span>
+           <span class="n">tmpButton</span><span class="p">.</span><span class="n">onClick</span><span class="p">.</span><span class="n">AddListener</span><span class="p">(</span><span class="n">action</span><span class="p">);</span>
+       <span class="p">}</span>
+   <span class="p">}</span>
+
+   <span class="c1">//添加输入框文字编辑结束事件
+</span><span class="c1"></span>   <span class="k">public</span> <span class="k">void</span> <span class="n">AddInputFiledEndEditorListener</span><span class="p">(</span><span class="n">UnityAction</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="n">action</span><span class="p">)</span>
+   <span class="p">{</span>
+       <span class="n">InputField</span> <span class="n">tmpInput</span> <span class="p">=</span> <span class="n">transform</span><span class="p">.</span><span class="n">GetComponent</span><span class="p">&lt;</span><span class="n">InputField</span><span class="p">&gt;();</span>
+
+       <span class="k">if</span> <span class="p">(</span><span class="n">tmpInput</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+       <span class="p">{</span>
+           <span class="n">tmpInput</span><span class="p">.</span><span class="n">onEndEdit</span><span class="p">.</span><span class="n">AddListener</span><span class="p">(</span><span class="n">action</span><span class="p">);</span>
+       <span class="p">}</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="cm">/********************* UIManager ************************/</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">UIManager</span> <span class="p">:</span> <span class="n">MonoBehaviour</span>
+<span class="p">{</span>
+   <span class="k">public</span> <span class="k">static</span> <span class="n">UIManager</span> <span class="n">instance</span><span class="p">;</span>
+
+   <span class="c1">//将Canvas存在UIManager中，只查找一次
+</span><span class="c1"></span>   <span class="k">public</span> <span class="n">Transform</span> <span class="n">mainCanvas</span><span class="p">;</span>
+
+   <span class="k">public</span> <span class="n">Transform</span> <span class="n">MainCanvas</span>
+   <span class="p">{</span>
+       <span class="k">get</span>
+       <span class="p">{</span>
+           <span class="k">return</span> <span class="n">mainCanvas</span><span class="p">;</span>
+       <span class="p">}</span>
+   <span class="p">}</span>
+
+   <span class="c1">// allWidget存储用到的一级控件名字 及其子控件名字和物体
+</span><span class="c1"></span>   <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="n">GameObject</span><span class="p">&gt;&gt;</span> <span class="n">allWidget</span><span class="p">;</span>
+
+   <span class="k">void</span> <span class="n">Awake</span><span class="p">()</span>
+   <span class="p">{</span>
+       <span class="n">instance</span> <span class="p">=</span> <span class="k">this</span><span class="p">;</span>
+
+       <span class="n">allWidget</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="n">GameObject</span><span class="p">&gt;&gt;();</span>
+
+       <span class="n">mainCanvas</span> <span class="p">=</span> <span class="n">GameObject</span><span class="p">.</span><span class="n">FindGameObjectWithTag</span><span class="p">(</span><span class="s">&#34;MainCanvas&#34;</span><span class="p">).</span><span class="n">transform</span><span class="p">;</span>
+   <span class="p">}</span>
+
+   <span class="c1">//存储用到的控件
+</span><span class="c1"></span>   <span class="k">public</span> <span class="k">void</span> <span class="n">RegistGameObject</span><span class="p">(</span><span class="kt">string</span> <span class="n">panelName</span><span class="p">,</span> <span class="kt">string</span> <span class="n">widgetName</span><span class="p">,</span> <span class="n">GameObject</span> <span class="n">obj</span><span class="p">)</span>
+   <span class="p">{</span>
+       <span class="c1">// 1. 判断输入的一级控件名字是否存在，不存在则先对包含的二级Dictionary实例化
+</span><span class="c1"></span>       <span class="c1">// 2. 再将其加入到Dictionary中
+</span><span class="c1"></span>       <span class="k">if</span> <span class="p">(</span><span class="n">allWidget</span><span class="p">.</span><span class="n">ContainsKey</span><span class="p">(</span><span class="n">panelName</span><span class="p">))</span>
+       <span class="p">{</span>
+           <span class="n">allWidget</span><span class="na">[panelName]</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="n">GameObject</span><span class="p">&gt;();</span>
+       <span class="p">}</span>
+
+       <span class="n">allWidget</span><span class="na">[panelName]</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">widgetName</span><span class="p">,</span> <span class="n">obj</span><span class="p">);</span><span class="c1">//加入二级Dictionary中
+</span><span class="c1"></span>   <span class="p">}</span>
+
+   <span class="c1">//获得组件
+</span><span class="c1"></span>   <span class="k">public</span> <span class="n">GameObject</span> <span class="n">GetGameObject</span><span class="p">(</span><span class="kt">string</span> <span class="n">panelName</span><span class="p">,</span> <span class="kt">string</span> <span class="n">widgetName</span><span class="p">)</span>
+   <span class="p">{</span>
+       <span class="c1">//如果在所有控件名字中找到widgetName
+</span><span class="c1"></span>       <span class="k">if</span> <span class="p">(</span><span class="n">allWidget</span><span class="p">.</span><span class="n">ContainsKey</span><span class="p">(</span><span class="n">widgetName</span><span class="p">))</span>
+       <span class="p">{</span>
+           <span class="k">return</span> <span class="n">allWidget</span><span class="na">[panelName][widgetName]</span><span class="p">;</span>
+       <span class="p">}</span>
+
+       <span class="k">return</span> <span class="k">null</span><span class="p">;</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="cm">/********************* Regist ************************/</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">RegistCtr</span> <span class="p">:</span> <span class="n">UIBase</span> <span class="p">{</span>
+
+  <span class="k">void</span> <span class="n">Start</span> <span class="p">()</span> <span class="p">{</span>
+      
+  <span class="p">}</span>
+
+   <span class="k">public</span> <span class="k">void</span> <span class="n">BindEvent</span><span class="p">()</span>
+   <span class="p">{</span>
+
+   <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">RegistModel</span>
+<span class="p">{</span>
+
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">RegistLogic</span>
+<span class="p">{</span>
+   
+<span class="p">}</span></code></pre></td></tr></table>
 </div>
 </div></blockquote>
 
