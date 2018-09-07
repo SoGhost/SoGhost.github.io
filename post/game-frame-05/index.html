@@ -21,8 +21,7 @@ UI模块封装——游戏框架-05
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<meta name="author" content="So Serious" />
 	<meta name="description" content="UI模块  UI 流程：  拼出大致UI效果图 UI小图片 &amp;mdash;&amp;gt; TexturePacker打包图集 （.png有A通道，.jpg没有） &amp;mdash;&amp;gt; Unity下载TexturePacker的导入插件 拼UI： 新建Canves &amp;mdash;&amp;gt; 新建Panel （背景设为UI效果图，照着拼，以Panel为单位，一个Panel一个界面） &amp;mdash;&amp;gt; 划分UI层级 写代码： ↓↓↓↓       MVC模式（Model–view–controller）     模型（Model） 数据模型（数据结构，username、password）。用于封装与应用程序的业务逻辑相关的数据以及对数据的处理方法。   视图（View） 能够实现数据有目的的显示（理论上，这不是必需的）。   控制器（Controller） 逻辑控制层。起到不同层面间的组织作用，用于控制应用程序的流程。它处理事件并作出响应。“事件”包括用户的行为和数据 Model 上的改变。     控制器（Controller）：由UIManager管理所有Panel，由PanelManager管理所有子控件。
-  子控件发生事件让其主动’上报‘，所以给需要的控件添加UIBehaviour脚本。 UIBehaviour会将自己注册到UIManager。    UIManager：保存注册到UIManager里的子控件。
-销毁：
+ 子控件发生事件让其主动’上报‘，所以给需要的控件添加UIBehaviour脚本。 UIBehaviour会将自己注册到UIManager。 UIManager：保存注册到UIManager里的子控件。  销毁：
  将后面还用到的界面隐藏（背包界面，菜单界面） 将后面用不到的界面Destory（登录界面）  资源的加载：
  Loading界面 还会加载后面要用的资源到内存（Resources.Load），不实例化。用到时GameObject.Instantiate将内存中资源实例化到场景中。 进入二级Loading界面会将前面的资源卸载，加载后面的资源。   注意事项：   在同一个Panel里要使用的控件的名字不能一样！" />
 <meta name="generator" content="Hugo 0.44" />
@@ -855,7 +854,8 @@ var bodyBgSwitchIndex = 0;var gradients = [
 <ul>
 <li><a href="#ui-流程">UI 流程：</a></li>
 <li><a href="#注意事项">注意事项：</a></li>
-<li><a href="#ui-mvc架构演示">UI MVC架构演示</a></li>
+<li><a href="#ui-mvc-架构演示">UI MVC 架构演示</a></li>
+<li><a href="#ui-实例">UI 实例</a></li>
 </ul></li>
 </ul>
 </nav></div>
@@ -908,16 +908,13 @@ var bodyBgSwitchIndex = 0;var gradients = [
 <blockquote>
 <p><strong>控制器（Controller）：</strong>由<strong>UIManager</strong>管理所有Panel，由<strong>PanelManager</strong>管理所有子控件。</p>
 
-<blockquote>
 <ol>
 <li>子控件发生事件让其主动’上报‘，所以给需要的控件添加UIBehaviour脚本。</li>
-<li>UIBehaviour会将自己注册到UIManager。
-
-<br /></li>
+<li>UIBehaviour会将自己注册到UIManager。</li>
+<li><strong>UIManager：</strong>保存注册到UIManager里的子控件。</li>
 </ol>
-</blockquote>
 
-<p><strong>UIManager：</strong>保存注册到UIManager里的子控件。</p>
+<hr />
 
 <p><strong>销毁：</strong></p>
 
@@ -925,6 +922,8 @@ var bodyBgSwitchIndex = 0;var gradients = [
 <li>将后面还<u>用到</u>的界面<strong>隐藏</strong>（背包界面，菜单界面）</li>
 <li>将后面<u>用不到</u>的界面<strong>Destory</strong>（登录界面）</li>
 </ol>
+
+<hr />
 
 <p><strong>资源的加载：</strong></p>
 
@@ -962,7 +961,7 @@ var bodyBgSwitchIndex = 0;var gradients = [
 
 <hr />
 
-<h2 id="ui-mvc架构演示">UI MVC架构演示&nbsp;<a class="anchor" href="#ui-mvc架构演示"><i class="small linkify icon"></i></a> </h2>
+<h2 id="ui-mvc-架构演示">UI MVC 架构演示&nbsp;<a class="anchor" href="#ui-mvc-架构演示"><i class="small linkify icon"></i></a> </h2>
 
 <blockquote>
 <div class="highlight"><div class="chroma">
@@ -1481,13 +1480,15 @@ var bodyBgSwitchIndex = 0;var gradients = [
 </span><span class="lnt">512
 </span><span class="lnt">513
 </span><span class="lnt">514
+</span><span class="lnt">515
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-c#" data-lang="c#"><span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
 <span class="k">using</span> <span class="nn">UnityEngine</span><span class="p">;</span>
 <span class="k">using</span> <span class="nn">UnityEngine.UI</span><span class="p">;</span>
 <span class="k">using</span> <span class="nn">UnityEngine.Events</span><span class="p">;</span>
-
+<span class="k">using</span> <span class="nn">UnityEngine.EventSystems</span><span class="p">;</span><span class="c1">//事件类型
+</span><span class="c1"></span>
 <span class="c1">/// &lt;summary&gt;
 </span><span class="c1">/// UIManager --- UI管理器
 </span><span class="c1">/// &lt;/summary&gt;
@@ -1607,7 +1608,7 @@ var bodyBgSwitchIndex = 0;var gradients = [
 </span><span class="c1"></span>           <span class="k">if</span> <span class="p">(</span><span class="n">allChildren</span><span class="na">[i]</span><span class="p">.</span><span class="n">name</span><span class="p">.</span><span class="n">StartsWith</span><span class="p">(</span><span class="s">&#34;_C&#34;</span><span class="p">))</span>
            <span class="p">{</span>
                <span class="c1">//给有特殊开头的物体，添加 UISubBehaviour 脚本
-</span><span class="c1"></span>              <span class="n">allChildren</span><span class="na">[i]</span><span class="p">.</span><span class="n">gameObject</span><span class="p">.</span><span class="n">AddComponent</span><span class="p">&lt;</span><span class="n">UISubBehaviour</span><span class="p">&gt;();</span>
+</span><span class="c1"></span>          <span class="n">allChildren</span><span class="na">[i]</span><span class="p">.</span><span class="n">gameObject</span><span class="p">.</span><span class="n">AddComponent</span><span class="p">&lt;</span><span class="n">UISubBehaviour</span><span class="p">&gt;();</span>
            <span class="p">}</span>
        <span class="p">}</span>
    <span class="p">}</span>
@@ -1639,13 +1640,13 @@ var bodyBgSwitchIndex = 0;var gradients = [
 
        <span class="k">return</span> <span class="k">null</span><span class="p">;</span>
    <span class="p">}</span>
-  
+
   <span class="c1">//获得控件物体
 </span><span class="c1"></span>   <span class="k">public</span> <span class="n">GameObject</span> <span class="n">GetWidget</span><span class="p">(</span><span class="kt">string</span> <span class="n">widgetName</span><span class="p">)</span>
    <span class="p">{</span>
        <span class="k">return</span>  <span class="n">UIManager</span><span class="p">.</span><span class="n">instance</span><span class="p">.</span><span class="n">GetGameObject</span><span class="p">(</span><span class="n">transform</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="n">widgetName</span><span class="p">);</span>
    <span class="p">}</span>
-  
+
   <span class="c1">//获得控件上的UIBehaviour
 </span><span class="c1"></span>   <span class="k">public</span> <span class="n">UIBehaviour</span> <span class="n">GetBehaviour</span><span class="p">(</span><span class="kt">string</span> <span class="n">widgetName</span><span class="p">)</span>
    <span class="p">{</span>
@@ -1997,6 +1998,27 @@ var bodyBgSwitchIndex = 0;var gradients = [
        <span class="p">}</span>
    <span class="p">}</span>
 <span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div></blockquote>
+
+<hr />
+
+<h2 id="ui-实例">UI 实例&nbsp;<a class="anchor" href="#ui-实例"><i class="small linkify icon"></i></a> </h2>
+
+<blockquote>
+<p><strong><font color=#8FBC8F>制作登录注册界面</font></strong></p>
+
+<ol>
+<li>获取用户名和密码的输入（给控件加上特殊名字标记表示使用）</li>
+<li></li>
+</ol>
+
+<hr />
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"></code></pre></td></tr></table>
 </div>
 </div></blockquote>
 
