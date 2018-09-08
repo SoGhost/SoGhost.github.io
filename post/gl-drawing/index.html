@@ -1,0 +1,1486 @@
+<!DOCTYPE html>
+<html lang="us-en">
+
+<head><style>
+body {
+	display: block;
+	--colorBG: "#40e0d0, #ff8c00, #ff0080";background: linear-gradient(to right, var(--colorBG)) !important;
+	
+}
+
+body, body.pushable {
+	background-repeat: no-repeat;
+  	background-attachment: fixed;
+  	background-size: cover !important;
+}
+
+</style><title>
+GL画图功能
+</title><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="author" content="So Serious" />
+	<meta name="description" content="画图：  鼠标（或触摸）画出的图形显示在屏幕上
+ 获取鼠标（或触摸）的坐标
+ 记录鼠标（或触摸）在屏幕的比例
+   世界坐标系：以(0, 0)坐标为原点，记录的相对位置。
+物体坐标系(Local Position)：以父类坐标为参考，记录的相对位置。
+相机坐标系：以相机坐标为参考，记录的相对位置。
+视图坐标系：坐标系x y范围为(0 ~ 1)，记录比例。
+屏幕坐标系(Input.mousePosition)：原点（左下角）：(0, 0) 右上角：(屏幕分辨率宽, 屏幕分辨率高)。
+ 在屏幕上画图
+ Line Renderer OpenGL（Open Graphics Library）  屏幕上画的图形显示到图片或者3D物体上（旗帜、布）
+ 截屏：ScreenCapture.CaptureScreenshot() 点在图片上画：根据顶点坐标设置像素位置  图形映射到物体：用新建Texture2D存储图片，再替换修改纹理。
+ 2D：替换Image的Sprite   transform.GetComponent().sprite = Sprite.Create(texture2D, new Rect(0, 0, texture2D.width, texture2D.height), new Vector2(0.5f, 0.5f));
+  3D：替换Render里的Texture   transform.GetComponent().material.mainTexture = texture2D;
+   1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125 126 127 128 129 130 131 132 133 134 135 136 137 138 139 140 141 142 143 144 145 146 147 148 149 150 151 152 153 154 155 156 157 158 159 160 161 162 163 164 165 166 167 168 169 170 171 172 173 174 175 176 177 178 179 180  using System." />
+<meta name="generator" content="Hugo 0.44" />
+
+<link rel="shortcut icon" href="/img/PY-Blog.ico">
+
+<link rel="canonical" href="/post/gl-drawing/" />
+<link rel="alternative" href="/index.xml" title="PY-&gt; Blog" type="application/atom+xml"/>
+<link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet"> 
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script >hljs.initHighlightingOnLoad();</script> 
+
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.css">
+<style>
+body.pushable {
+	display: block;background: linear-gradient(to right, var(--colorBG)) !important;
+	 ;
+}
+</style>
+<link rel="stylesheet" type="text/css" href="/css/site.css">
+<script>
+	var colorBG =  true 
+	var enabledPost = true
+	var isMobile = ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) )
+	console.log("The client device is a "+(isMobile?"mobile":"PC")+".")
+</script>
+</head>
+
+<body><script>
+var prevBgIndex = 0;
+var bodyBgSwitchIndex = 0;var gradients = [
+	  [],
+	  ['#40e0d0', '#ff8c00', '#ff0080'], 
+	  ['#3e5151', '#decba4'], 
+	  ['#11998e', '#38ef7d'], 
+	  ['#108dc7', '#ef8e38'], 
+	  ['#fc5c7d', '#6a82fb'], 
+	  ['#fc466b', '#3f5efb'], 
+	  ['#c94b4b', '#4b134f'], 
+	  ['#23074d', '#cc5333'] 
+	]
+	document.body.style.setProperty('--colorBG', connect(gradients[getRandomInt(0, gradients.length)]))
+	function getRandomInt(min, max) {
+	  min = Math.ceil(min)
+	  max = Math.floor(max)
+	  var random
+	  while (1) {
+	    random = Math.floor(Math.random() * (max - min)) + min
+	    if (random !== prevBgIndex) {
+	      prevBgIndex = random
+	      break
+	    }
+	  }
+	  return random
+	}
+
+	function connect(arr) {
+	  var str = ''
+	  for (var i = 0; i < arr.length; i++) {
+	    if (i !== arr.length - 1) {
+	      str += arr[i] + ', '
+	    } else {
+	      str += arr[i]
+	    }
+	  }
+	  return str
+	}
+</script><div id="sidebar" class="ui sidebar inverted vertical menu">
+	<section id="author" class="ui top attached center aligned inverted segment"><div class="ui small circular image">
+	<img src="/img/avatar.png">
+</div>
+<h3 class="ui header">So Serious
+	<div class="sub header">Do your best.</div>
+</h3>
+
+</section><section class="ui attached center aligned inverted segment sidebar-dream-tags">
+<a class="ui label" href="/tags/2d" title="2d">2d</a>
+
+<a class="ui label" href="/tags/ae" title="ae">ae</a>
+
+<a class="ui label" href="/tags/ai" title="ai">ai</a>
+
+<a class="ui label" href="/tags/animator" title="animator">animator</a>
+
+<a class="ui label" href="/tags/audio" title="audio">audio</a>
+
+<a class="ui label" href="/tags/c" title="c#">c#</a>
+
+<a class="ui label" href="/tags/effect" title="effect">effect</a>
+
+<a class="ui label" href="/tags/english" title="english">english</a>
+
+<a class="ui label" href="/tags/fps" title="fps">fps</a>
+
+<a class="ui label" href="/tags/gl" title="gl">gl</a>
+
+<a class="ui label" href="/tags/knowledge" title="knowledge">knowledge</a>
+
+<a class="ui label" href="/tags/notes" title="notes">notes</a>
+
+<a class="ui label" href="/tags/rpg" title="rpg">rpg</a>
+
+<a class="ui label" href="/tags/tilemap" title="tilemap">tilemap</a>
+
+<a class="ui label" href="/tags/ui" title="ui">ui</a>
+
+<a class="ui label" href="/tags/unity" title="unity">unity</a>
+
+<a class="ui label" href="/tags/word" title="word">word</a>
+
+<a class="ui label" href="/tags/word-book" title="word-book">word-book</a>
+
+<a class="ui label" href="/tags/%E6%8A%80%E5%B7%A7" title="技巧">技巧</a>
+
+<a class="ui label" href="/tags/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93" title="数据传输">数据传输</a>
+
+</section>	
+	
+	<section class="ui attached inverted segment sidebar-dream-categories both flexbox">
+		<div class="ui inverted accordion">
+<div class="title">
+	<i class="dropdown icon"></i>
+	<a class="link" href="/categories/ae">ae</a>
+</div>
+<div class="content">
+
+	<a class="item" href="/post/ui-effects-01/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>UI 特效制作</p>
+		</div>
+	</a>
+
+</div>
+
+<div class="title">
+	<i class="dropdown icon"></i>
+	<a class="link" href="/categories/c">c#</a>
+</div>
+<div class="content">
+
+	<a class="item" href="/post/c-sharp-notes-02/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>C# _语言基础</p>
+		</div>
+	</a>
+
+	<a class="item" href="/post/c-sharp-notes-01/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>C# _基本操作</p>
+		</div>
+	</a>
+
+</div>
+
+<div class="title">
+	<i class="dropdown icon"></i>
+	<a class="link" href="/categories/english">english</a>
+</div>
+<div class="content">
+
+	<a class="item" href="/post/english-sentence-01/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>English Sentence</p>
+		</div>
+	</a>
+
+</div>
+
+<div class="title">
+	<i class="dropdown icon"></i>
+	<a class="link" href="/categories/game-frame">game-frame</a>
+</div>
+<div class="content">
+
+	<a class="item" href="/post/game-frame-07/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>小地图封装——游戏框架-07</p>
+		</div>
+	</a>
+
+	<a class="item" href="/post/game-frame-06/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>EasyTouch模块封装——游戏框架-06</p>
+		</div>
+	</a>
+
+	<a class="item" href="/post/game-frame-05/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>UI模块封装——游戏框架-05</p>
+		</div>
+	</a>
+
+	<a class="item" href="/post/game-frame-04/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>音效模块封装——游戏框架-04</p>
+		</div>
+	</a>
+
+	<a class="item" href="/post/game-frame-03/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>http WWW封装——游戏框架-03</p>
+		</div>
+	</a>
+
+	<a class="item" href="/post/game-frame-02/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>常用设计模式——游戏框架-02</p>
+		</div>
+	</a>
+
+	<a class="item" href="/post/game-frame-01/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>设计原则——游戏框架-01</p>
+		</div>
+	</a>
+
+</div>
+
+<div class="title">
+	<i class="dropdown icon"></i>
+	<a class="link" href="/categories/notes">notes</a>
+</div>
+<div class="content">
+
+	<a class="item" href="/post/game-words/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>游戏常用英文</p>
+		</div>
+	</a>
+
+	<a class="item" href="/post/words-notes/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>Word Book</p>
+		</div>
+	</a>
+
+</div>
+
+<div class="title">
+	<i class="dropdown icon"></i>
+	<a class="link" href="/categories/opengl">opengl</a>
+</div>
+<div class="content">
+
+	<a class="item" href="/post/gl-drawing/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>GL画图功能</p>
+		</div>
+	</a>
+
+</div>
+
+<div class="title">
+	<i class="dropdown icon"></i>
+	<a class="link" href="/categories/pain">pain</a>
+</div>
+<div class="content">
+
+	<a class="item" href="/post/pain-to-learn-unity-notes-01/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>【Pain To Learn Unity】——案例之像素鸟</p>
+		</div>
+	</a>
+
+	<a class="item" href="/post/pain-to-learn-unity-notes-02/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>【Pain To Learn Unity】——案例之吃豆人</p>
+		</div>
+	</a>
+
+</div>
+
+<div class="title">
+	<i class="dropdown icon"></i>
+	<a class="link" href="/categories/ugui">ugui</a>
+</div>
+<div class="content">
+
+	<a class="item" href="/post/ugui-01/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>UGUI</p>
+		</div>
+	</a>
+
+</div>
+
+<div class="title">
+	<i class="dropdown icon"></i>
+	<a class="link" href="/categories/unity">unity</a>
+</div>
+<div class="content">
+
+	<a class="item" href="/post/ui-effects-01/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>UI 特效制作</p>
+		</div>
+	</a>
+
+	<a class="item" href="/post/unity-tilemap_mod/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>Unity Tilemap模块</p>
+		</div>
+	</a>
+
+	<a class="item" href="/post/unity-ai-01/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>AI逻辑</p>
+		</div>
+	</a>
+
+	<a class="item" href="/post/unity-fps-view_move/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>FPS_视角和移动</p>
+		</div>
+	</a>
+
+	<a class="item" href="/post/unity-audio-01/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>Unity Audio</p>
+		</div>
+	</a>
+
+	<a class="item" href="/post/script-input_control/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>脚本的输入与控制</p>
+		</div>
+	</a>
+
+	<a class="item" href="/post/monobehavior-common_method-01/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>MonoBehavior 常用方法</p>
+		</div>
+	</a>
+
+	<a class="item" href="/post/unity-script-01/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>Monobehavior事件响应（1）</p>
+		</div>
+	</a>
+
+	<a class="item" href="/post/unity-notes-01/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>Unity 注意事项</p>
+		</div>
+	</a>
+
+</div>
+
+<div class="title">
+	<i class="dropdown icon"></i>
+	<a class="link" href="/categories/unity-animator">unity-animator</a>
+</div>
+<div class="content">
+
+	<a class="item" href="/post/unity-animation-system-04/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>Unity 动画系统（4）</p>
+		</div>
+	</a>
+
+	<a class="item" href="/post/unity-animation-system-03/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>Unity 动画系统（3）</p>
+		</div>
+	</a>
+
+	<a class="item" href="/post/unity-animation-system-02/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>Unity 动画系统（2）</p>
+		</div>
+	</a>
+
+	<a class="item" href="/post/unity-animation-system-01/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>Unity 动画系统（1）</p>
+		</div>
+	</a>
+
+</div>
+
+<div class="title">
+	<i class="dropdown icon"></i>
+	<a class="link" href="/categories/windows">windows</a>
+</div>
+<div class="content">
+
+	<a class="item" href="/post/use-skill/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>使用软件突发小技巧</p>
+		</div>
+	</a>
+
+</div>
+
+<div class="title">
+	<i class="dropdown icon"></i>
+	<a class="link" href="/categories/%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86">网络知识</a>
+</div>
+<div class="content">
+
+	<a class="item" href="/post/computer-illiteracy-p2p/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>网络知识——P2P</p>
+		</div>
+	</a>
+
+</div>
+</div>
+	</section>
+	
+	
+	<section id="footer" class="ui bottom attached center aligned inverted segment">
+
+© 2018 PY-&gt; Blog</p>
+    
+
+<p>Py by <a href="https://gohugo.io/" target="_blank">Hugo</a> with <a href="https://github.com/UtkarshVerma/hugo-dream-plus" target="_blank">Dream Plus</a> theme.</p>
+
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=200 height=52 src="//music.163.com/outchain/player?type=0&id=65781201&auto=0&height=32"></iframe></section>
+</div>
+<div class="pusher">
+		<div class="flipper">
+			<div class="front">
+<nav class="ui top secondary menu bar">
+	<div class="item">
+		<i class="inverted big link bullseye icon dream-flip-toggle" title="翻转"></i>
+	</div><div class="item">
+		<a href="/">
+			<i class="inverted big link home icon" title="Home"></i>
+		</a>
+	</div>
+	<div class="item">
+		<a href="/post">
+			<i class="inverted big link archive icon" title="档案"></i>
+		</a>
+	</div>
+	<div class="item">
+		<a href="/tags">
+			<i class="inverted big link tags icon" title="全部标签"></i>
+		</a>
+	</div>
+	<div class="item">
+		<a href="/categories">
+			<i class="inverted big link cubes icon" title="所有类别"></i>
+		</a>
+    </div>
+	<div class="ui container tablet computer only grid">
+		<div class="item" onClick="$('.ui.sidebar').sidebar('setting', 'transition', 'overlay').sidebar('toggle');">
+			<i class="inverted big link sidebar icon" title="Show Sidebar"></i>
+		</div>
+	</div>
+	
+</nav>
+
+<div class="ui centered grid">
+	<div class="sixteen wide mobile only column"><div class="ui inverted accordion">
+	<div id="header" class="ui inverted segment column box">
+		<header id="author" class="ui top attached center aligned inverted segment"><div class="ui small circular image">
+	<img src="/img/avatar.png">
+</div>
+<h3 class="ui header">So Serious
+	<div class="sub header">Do your best.</div>
+</h3>
+
+</header>
+		<div class=" title header-title"><div id="tag-category-pop" class="ui red right corner label">		
+				<i class="hand point icon down"title="点击弹出标签和分类"></i>		
+			</div></div>
+		<div id="tag-category" class=" content"><section class="ui attached center aligned inverted segment dream-tags none flexbox">
+<a class="ui label" href="/tags/2d" title="2d">2d</a>
+
+<a class="ui label" href="/tags/ae" title="ae">ae</a>
+
+<a class="ui label" href="/tags/ai" title="ai">ai</a>
+
+<a class="ui label" href="/tags/animator" title="animator">animator</a>
+
+<a class="ui label" href="/tags/audio" title="audio">audio</a>
+
+<a class="ui label" href="/tags/c" title="c#">c#</a>
+
+<a class="ui label" href="/tags/effect" title="effect">effect</a>
+
+<a class="ui label" href="/tags/english" title="english">english</a>
+
+<a class="ui label" href="/tags/fps" title="fps">fps</a>
+
+<a class="ui label" href="/tags/gl" title="gl">gl</a>
+
+<a class="ui label" href="/tags/knowledge" title="knowledge">knowledge</a>
+
+<a class="ui label" href="/tags/notes" title="notes">notes</a>
+
+<a class="ui label" href="/tags/rpg" title="rpg">rpg</a>
+
+<a class="ui label" href="/tags/tilemap" title="tilemap">tilemap</a>
+
+<a class="ui label" href="/tags/ui" title="ui">ui</a>
+
+<a class="ui label" href="/tags/unity" title="unity">unity</a>
+
+<a class="ui label" href="/tags/word" title="word">word</a>
+
+<a class="ui label" href="/tags/word-book" title="word-book">word-book</a>
+
+<a class="ui label" href="/tags/%E6%8A%80%E5%B7%A7" title="技巧">技巧</a>
+
+<a class="ui label" href="/tags/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93" title="数据传输">数据传输</a>
+
+</section><section class="ui attached inverted segment dream-categories both flexbox">
+			<div class="inverted accordion">
+<div class="title">
+	<i class="dropdown icon"></i>
+	<a class="link" href="/categories/ae">ae</a>
+</div>
+<div class="content">
+
+	<a class="item" href="/post/ui-effects-01/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>UI 特效制作</p>
+		</div>
+	</a>
+
+</div>
+
+<div class="title">
+	<i class="dropdown icon"></i>
+	<a class="link" href="/categories/c">c#</a>
+</div>
+<div class="content">
+
+	<a class="item" href="/post/c-sharp-notes-02/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>C# _语言基础</p>
+		</div>
+	</a>
+
+	<a class="item" href="/post/c-sharp-notes-01/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>C# _基本操作</p>
+		</div>
+	</a>
+
+</div>
+
+<div class="title">
+	<i class="dropdown icon"></i>
+	<a class="link" href="/categories/english">english</a>
+</div>
+<div class="content">
+
+	<a class="item" href="/post/english-sentence-01/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>English Sentence</p>
+		</div>
+	</a>
+
+</div>
+
+<div class="title">
+	<i class="dropdown icon"></i>
+	<a class="link" href="/categories/game-frame">game-frame</a>
+</div>
+<div class="content">
+
+	<a class="item" href="/post/game-frame-07/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>小地图封装——游戏框架-07</p>
+		</div>
+	</a>
+
+	<a class="item" href="/post/game-frame-06/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>EasyTouch模块封装——游戏框架-06</p>
+		</div>
+	</a>
+
+	<a class="item" href="/post/game-frame-05/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>UI模块封装——游戏框架-05</p>
+		</div>
+	</a>
+
+	<a class="item" href="/post/game-frame-04/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>音效模块封装——游戏框架-04</p>
+		</div>
+	</a>
+
+	<a class="item" href="/post/game-frame-03/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>http WWW封装——游戏框架-03</p>
+		</div>
+	</a>
+
+	<a class="item" href="/post/game-frame-02/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>常用设计模式——游戏框架-02</p>
+		</div>
+	</a>
+
+	<a class="item" href="/post/game-frame-01/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>设计原则——游戏框架-01</p>
+		</div>
+	</a>
+
+</div>
+
+<div class="title">
+	<i class="dropdown icon"></i>
+	<a class="link" href="/categories/notes">notes</a>
+</div>
+<div class="content">
+
+	<a class="item" href="/post/game-words/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>游戏常用英文</p>
+		</div>
+	</a>
+
+	<a class="item" href="/post/words-notes/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>Word Book</p>
+		</div>
+	</a>
+
+</div>
+
+<div class="title">
+	<i class="dropdown icon"></i>
+	<a class="link" href="/categories/opengl">opengl</a>
+</div>
+<div class="content">
+
+	<a class="item" href="/post/gl-drawing/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>GL画图功能</p>
+		</div>
+	</a>
+
+</div>
+
+<div class="title">
+	<i class="dropdown icon"></i>
+	<a class="link" href="/categories/pain">pain</a>
+</div>
+<div class="content">
+
+	<a class="item" href="/post/pain-to-learn-unity-notes-01/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>【Pain To Learn Unity】——案例之像素鸟</p>
+		</div>
+	</a>
+
+	<a class="item" href="/post/pain-to-learn-unity-notes-02/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>【Pain To Learn Unity】——案例之吃豆人</p>
+		</div>
+	</a>
+
+</div>
+
+<div class="title">
+	<i class="dropdown icon"></i>
+	<a class="link" href="/categories/ugui">ugui</a>
+</div>
+<div class="content">
+
+	<a class="item" href="/post/ugui-01/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>UGUI</p>
+		</div>
+	</a>
+
+</div>
+
+<div class="title">
+	<i class="dropdown icon"></i>
+	<a class="link" href="/categories/unity">unity</a>
+</div>
+<div class="content">
+
+	<a class="item" href="/post/ui-effects-01/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>UI 特效制作</p>
+		</div>
+	</a>
+
+	<a class="item" href="/post/unity-tilemap_mod/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>Unity Tilemap模块</p>
+		</div>
+	</a>
+
+	<a class="item" href="/post/unity-ai-01/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>AI逻辑</p>
+		</div>
+	</a>
+
+	<a class="item" href="/post/unity-fps-view_move/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>FPS_视角和移动</p>
+		</div>
+	</a>
+
+	<a class="item" href="/post/unity-audio-01/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>Unity Audio</p>
+		</div>
+	</a>
+
+	<a class="item" href="/post/script-input_control/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>脚本的输入与控制</p>
+		</div>
+	</a>
+
+	<a class="item" href="/post/monobehavior-common_method-01/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>MonoBehavior 常用方法</p>
+		</div>
+	</a>
+
+	<a class="item" href="/post/unity-script-01/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>Monobehavior事件响应（1）</p>
+		</div>
+	</a>
+
+	<a class="item" href="/post/unity-notes-01/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>Unity 注意事项</p>
+		</div>
+	</a>
+
+</div>
+
+<div class="title">
+	<i class="dropdown icon"></i>
+	<a class="link" href="/categories/unity-animator">unity-animator</a>
+</div>
+<div class="content">
+
+	<a class="item" href="/post/unity-animation-system-04/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>Unity 动画系统（4）</p>
+		</div>
+	</a>
+
+	<a class="item" href="/post/unity-animation-system-03/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>Unity 动画系统（3）</p>
+		</div>
+	</a>
+
+	<a class="item" href="/post/unity-animation-system-02/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>Unity 动画系统（2）</p>
+		</div>
+	</a>
+
+	<a class="item" href="/post/unity-animation-system-01/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>Unity 动画系统（1）</p>
+		</div>
+	</a>
+
+</div>
+
+<div class="title">
+	<i class="dropdown icon"></i>
+	<a class="link" href="/categories/windows">windows</a>
+</div>
+<div class="content">
+
+	<a class="item" href="/post/use-skill/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>使用软件突发小技巧</p>
+		</div>
+	</a>
+
+</div>
+
+<div class="title">
+	<i class="dropdown icon"></i>
+	<a class="link" href="/categories/%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86">网络知识</a>
+</div>
+<div class="content">
+
+	<a class="item" href="/post/computer-illiteracy-p2p/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>网络知识——P2P</p>
+		</div>
+	</a>
+
+</div>
+</div>
+			</section></div>
+		<footer class="ui bottom attached center aligned inverted segment">
+
+© 2018 PY-&gt; Blog</p>
+    
+
+<p>Py by <a href="https://gohugo.io/" target="_blank">Hugo</a> with <a href="https://github.com/UtkarshVerma/hugo-dream-plus" target="_blank">Dream Plus</a> theme.</p>
+
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=200 height=52 src="//music.163.com/outchain/player?type=0&id=65781201&auto=0&height=32"></iframe></footer>
+	</div>
+</div></div>
+	<div class="sixteen wide mobile fifteen wide tablet twelve wide computer column post-list">
+		<section class="ui secondary top attached black segment post-head">
+			<h1 class="post-title">
+				GL画图功能
+			</h1>
+			<div class="sub header">
+					<div><span><i class="calendar outline icon"></i>Sep 8, 2018</span></div><div><span class="disqusComment"><i class="comment outline icon"></i><a href="/post/gl-drawing/#disqus_thread" class="disqus-comment-count" data-disqus-identifier="a229428b024269ef7ef4630bea391010"></a></span></div>
+					<div><span><i class="clock outline icon"></i>4 min read</span></div>
+					<div><span><i class="angle double up icon"></i>更新于 Sep 8, 2018</span></div>
+			</div>
+			<hr><div class="toc"><nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#画图">画图：</a></li>
+</ul></li>
+</ul>
+</nav></div>
+			
+			
+			<article class="post-content twemoji">
+				
+
+<blockquote>
+<h2 id="画图">画图：&nbsp;<a class="anchor" href="#画图"><i class="small linkify icon"></i></a> </h2>
+
+<ol>
+<li><p><strong>鼠标（或触摸）画出的图形显示在屏幕上</strong></p>
+
+<ol>
+<li><p>获取鼠标（或触摸）的坐标</p></li>
+
+<li><p>记录鼠标（或触摸）在屏幕的比例</p></li>
+</ol>
+
+<blockquote>
+<p><strong>世界坐标系：</strong>以(0, 0)坐标为原点，记录的相对位置。</p>
+
+<p><strong>物体坐标系(Local Position)：</strong>以父类坐标为参考，记录的相对位置。</p>
+
+<p><strong>相机坐标系：</strong>以相机坐标为参考，记录的相对位置。</p>
+
+<p><strong>视图坐标系：</strong>坐标系x y范围为(0 ~ 1)，记录比例。</p>
+
+<p><strong>屏幕坐标系(Input.mousePosition)：</strong>原点（左下角）：(0, 0) 右上角：(屏幕分辨率宽, 屏幕分辨率高)。</p>
+</blockquote></li>
+
+<li><p><strong>在屏幕上画图</strong></p>
+
+<ol>
+<li><strong>Line Renderer</strong></li>
+<li><strong>OpenGL</strong>（Open Graphics Library）</li>
+</ol></li>
+
+<li><p><strong>屏幕上画的图形显示到图片或者3D物体上（旗帜、布）</strong></p>
+
+<ol>
+<li><strong>截屏：</strong>ScreenCapture.CaptureScreenshot()</li>
+<li><strong>点在图片上画：</strong>根据顶点坐标设置像素位置</li>
+</ol></li>
+
+<li><p><strong>图形映射到物体：</strong>用新建Texture2D存储图片，再替换修改纹理。</p>
+
+<ol>
+<li><strong>2D：</strong>替换Image的Sprite</li>
+</ol>
+
+<blockquote>
+<p><strong>transform.GetComponent<Image>().sprite = Sprite.Create(texture2D, new Rect(0, 0, texture2D.width, texture2D.height), new Vector2(0.5f, 0.5f));</strong></p>
+</blockquote>
+
+<ol>
+<li><strong>3D：</strong>替换Render里的Texture</li>
+</ol>
+
+<blockquote>
+<p><strong>transform.GetComponent<Renderer>().material.mainTexture = texture2D;</strong></p>
+</blockquote></li>
+</ol>
+</blockquote>
+
+<hr />
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span><span class="lnt">125
+</span><span class="lnt">126
+</span><span class="lnt">127
+</span><span class="lnt">128
+</span><span class="lnt">129
+</span><span class="lnt">130
+</span><span class="lnt">131
+</span><span class="lnt">132
+</span><span class="lnt">133
+</span><span class="lnt">134
+</span><span class="lnt">135
+</span><span class="lnt">136
+</span><span class="lnt">137
+</span><span class="lnt">138
+</span><span class="lnt">139
+</span><span class="lnt">140
+</span><span class="lnt">141
+</span><span class="lnt">142
+</span><span class="lnt">143
+</span><span class="lnt">144
+</span><span class="lnt">145
+</span><span class="lnt">146
+</span><span class="lnt">147
+</span><span class="lnt">148
+</span><span class="lnt">149
+</span><span class="lnt">150
+</span><span class="lnt">151
+</span><span class="lnt">152
+</span><span class="lnt">153
+</span><span class="lnt">154
+</span><span class="lnt">155
+</span><span class="lnt">156
+</span><span class="lnt">157
+</span><span class="lnt">158
+</span><span class="lnt">159
+</span><span class="lnt">160
+</span><span class="lnt">161
+</span><span class="lnt">162
+</span><span class="lnt">163
+</span><span class="lnt">164
+</span><span class="lnt">165
+</span><span class="lnt">166
+</span><span class="lnt">167
+</span><span class="lnt">168
+</span><span class="lnt">169
+</span><span class="lnt">170
+</span><span class="lnt">171
+</span><span class="lnt">172
+</span><span class="lnt">173
+</span><span class="lnt">174
+</span><span class="lnt">175
+</span><span class="lnt">176
+</span><span class="lnt">177
+</span><span class="lnt">178
+</span><span class="lnt">179
+</span><span class="lnt">180
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">UnityEngine</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">UnityEngine.UI</span><span class="p">;</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">Painter</span> <span class="p">:</span> <span class="n">MonoBehaviour</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="n">Vector3</span> <span class="n">screenPos</span><span class="p">;</span>
+
+    <span class="k">private</span> <span class="n">Texture2D</span> <span class="n">painter</span><span class="p">;</span>
+
+    <span class="k">private</span> <span class="n">Sprite</span> <span class="n">sprite</span><span class="p">;</span>
+
+    <span class="n">List</span><span class="p">&lt;</span><span class="n">Vector3</span><span class="p">&gt;</span> <span class="n">allPoints</span><span class="p">;</span><span class="c1">//allPoints存储画出的点
+</span><span class="c1"></span>
+    <span class="k">void</span> <span class="n">Start</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">allPoints</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Vector3</span><span class="p">&gt;();</span>
+    <span class="p">}</span>
+
+    <span class="k">void</span> <span class="n">Update</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">Input</span><span class="p">.</span><span class="n">GetMouseButton</span><span class="p">(</span><span class="m">0</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="n">screenPos</span> <span class="p">=</span> <span class="n">Camera</span><span class="p">.</span><span class="n">main</span><span class="p">.</span><span class="n">ScreenToViewportPoint</span><span class="p">(</span><span class="n">Input</span><span class="p">.</span><span class="n">mousePosition</span><span class="p">);</span><span class="c1">//当前鼠标所在位置
+</span><span class="c1"></span>
+            <span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="s">&#34;当前鼠标坐标&#34;</span> <span class="p">+</span> <span class="n">screenPos</span><span class="p">);</span>
+
+            <span class="n">allPoints</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">screenPos</span><span class="p">);</span><span class="c1">//存储画出的点
+</span><span class="c1"></span>
+            <span class="n">OnRenderObject</span><span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span><span class="p">(</span><span class="n">Input</span><span class="p">.</span><span class="n">GetMouseButtonUp</span><span class="p">(</span><span class="m">0</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">transform</span><span class="p">.</span><span class="n">name</span> <span class="p">==</span> <span class="s">&#34;_3D_DrawBoard&#34;</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">DrawTexture</span><span class="p">();</span>
+            <span class="p">}</span>
+            <span class="k">else</span>
+            <span class="p">{</span>
+                <span class="n">DrawTexture2D</span><span class="p">();</span>
+            <span class="p">}</span>
+
+            <span class="n">allPoints</span><span class="p">.</span><span class="n">Clear</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="k">static</span> <span class="n">Material</span> <span class="n">lineMaterial</span><span class="p">;</span>
+    <span class="k">static</span> <span class="k">void</span> <span class="n">CreateLineMaterial</span><span class="p">()</span><span class="c1">//创建一个材质
+</span><span class="c1"></span>    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(!</span><span class="n">lineMaterial</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="c1">// Unity has a built-in shader that is useful for drawing
+</span><span class="c1"></span>            <span class="c1">// simple colored things.
+</span><span class="c1"></span>            <span class="n">Shader</span> <span class="n">shader</span> <span class="p">=</span> <span class="n">Shader</span><span class="p">.</span><span class="n">Find</span><span class="p">(</span><span class="s">&#34;Hidden/Internal-Colored&#34;</span><span class="p">);</span>
+            <span class="n">lineMaterial</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Material</span><span class="p">(</span><span class="n">shader</span><span class="p">);</span>
+            <span class="n">lineMaterial</span><span class="p">.</span><span class="n">hideFlags</span> <span class="p">=</span> <span class="n">HideFlags</span><span class="p">.</span><span class="n">HideAndDontSave</span><span class="p">;</span>
+            <span class="c1">// Turn on alpha blending
+</span><span class="c1"></span>            <span class="n">lineMaterial</span><span class="p">.</span><span class="n">SetInt</span><span class="p">(</span><span class="s">&#34;_SrcBlend&#34;</span><span class="p">,</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">UnityEngine</span><span class="p">.</span><span class="n">Rendering</span><span class="p">.</span><span class="n">BlendMode</span><span class="p">.</span><span class="n">SrcAlpha</span><span class="p">);</span>
+            <span class="n">lineMaterial</span><span class="p">.</span><span class="n">SetInt</span><span class="p">(</span><span class="s">&#34;_DstBlend&#34;</span><span class="p">,</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">UnityEngine</span><span class="p">.</span><span class="n">Rendering</span><span class="p">.</span><span class="n">BlendMode</span><span class="p">.</span><span class="n">OneMinusSrcAlpha</span><span class="p">);</span>
+            <span class="c1">// Turn backface culling off
+</span><span class="c1"></span>            <span class="n">lineMaterial</span><span class="p">.</span><span class="n">SetInt</span><span class="p">(</span><span class="s">&#34;_Cull&#34;</span><span class="p">,</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">UnityEngine</span><span class="p">.</span><span class="n">Rendering</span><span class="p">.</span><span class="n">CullMode</span><span class="p">.</span><span class="n">Off</span><span class="p">);</span>
+            <span class="c1">// Turn off depth writes
+</span><span class="c1"></span>            <span class="n">lineMaterial</span><span class="p">.</span><span class="n">SetInt</span><span class="p">(</span><span class="s">&#34;_ZWrite&#34;</span><span class="p">,</span> <span class="m">0</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Will be called after all regular rendering is done
+</span><span class="c1"></span>    <span class="k">public</span> <span class="k">void</span> <span class="n">OnRenderObject</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">CreateLineMaterial</span><span class="p">();</span>
+        <span class="c1">// Apply the line material
+</span><span class="c1"></span>        <span class="n">lineMaterial</span><span class="p">.</span><span class="n">SetPass</span><span class="p">(</span><span class="m">0</span><span class="p">);</span>
+
+        <span class="c1">//将所有顶点矩阵的位置 转换到父类坐标，与父类共同变换位置方向
+</span><span class="c1"></span>        <span class="c1">//GL.MultMatrix(transform.localToWorldMatrix);
+</span><span class="c1"></span>
+        <span class="c1">// LoadOrtho()正交投影 坐标x，y范围为 0~1
+</span><span class="c1"></span>        <span class="c1">//在屏幕上画图 且图形会按比例显示
+</span><span class="c1"></span>        <span class="n">GL</span><span class="p">.</span><span class="n">LoadOrtho</span><span class="p">();</span>
+
+        <span class="c1">//开始画 TRIANGLES 三角形，QUADS 四边形，LINES 画线...
+</span><span class="c1"></span>        <span class="n">GL</span><span class="p">.</span><span class="n">Begin</span><span class="p">(</span><span class="n">GL</span><span class="p">.</span><span class="n">LINE_STRIP</span><span class="p">);</span>
+
+        <span class="c1">//更换画笔颜色
+</span><span class="c1"></span>        <span class="n">GL</span><span class="p">.</span><span class="n">Color</span><span class="p">(</span><span class="n">Color</span><span class="p">.</span><span class="n">red</span><span class="p">);</span>
+
+        <span class="c1">// 1. 画一条直线
+</span><span class="c1"></span>        <span class="c1">// 两点确定一条直线
+</span><span class="c1"></span>        <span class="c1">//GL.Vertex3(0, 0, 0);
+</span><span class="c1"></span>        <span class="c1">//GL.Vertex3(1, 1, 0);
+</span><span class="c1"></span>
+        <span class="c1">// 2. 多点画图
+</span><span class="c1"></span>        <span class="c1">// 依次把存储的顶点 成对画出来
+</span><span class="c1"></span>        <span class="c1">// for循环 i=1 判断起码有两个点才能继续循环画线
+</span><span class="c1"></span>        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">1</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">allPoints</span><span class="p">.</span><span class="n">Count</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
+        <span class="p">{</span>
+            <span class="n">Vector3</span> <span class="n">frontPoint</span> <span class="p">=</span> <span class="n">allPoints</span><span class="na">[i - 1]</span><span class="p">;</span>
+            <span class="n">Vector3</span> <span class="n">backPoint</span> <span class="p">=</span> <span class="n">allPoints</span><span class="na">[i]</span><span class="p">;</span>
+
+            <span class="n">GL</span><span class="p">.</span><span class="n">Vertex3</span><span class="p">(</span><span class="n">frontPoint</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="n">frontPoint</span><span class="p">.</span><span class="n">y</span><span class="p">,</span> <span class="n">frontPoint</span><span class="p">.</span><span class="n">z</span><span class="p">);</span>
+            <span class="n">GL</span><span class="p">.</span><span class="n">Vertex3</span><span class="p">(</span><span class="n">backPoint</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="n">backPoint</span><span class="p">.</span><span class="n">y</span><span class="p">,</span> <span class="n">backPoint</span><span class="p">.</span><span class="n">z</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="n">GL</span><span class="p">.</span><span class="n">End</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="c1">//画到3D物体上
+</span><span class="c1"></span>    <span class="k">public</span> <span class="k">void</span> <span class="n">DrawTexture</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">//Texture2D来保存图片
+</span><span class="c1"></span>        <span class="n">painter</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Texture2D</span><span class="p">(</span><span class="n">Screen</span><span class="p">.</span><span class="n">width</span><span class="p">,</span> <span class="n">Screen</span><span class="p">.</span><span class="n">height</span><span class="p">);</span>
+
+        <span class="c1">// 根据顶点位置设置图片上的像素
+</span><span class="c1"></span>        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">1</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">allPoints</span><span class="p">.</span><span class="n">Count</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
+        <span class="p">{</span>
+            <span class="n">Vector3</span> <span class="n">tmpFront</span> <span class="p">=</span> <span class="n">allPoints</span><span class="na">[i - 1]</span><span class="p">;</span>
+            <span class="n">Vector3</span> <span class="n">tmpBack</span> <span class="p">=</span> <span class="n">allPoints</span><span class="na">[i]</span><span class="p">;</span>
+
+            <span class="kt">float</span> <span class="n">frontX</span> <span class="p">=</span> <span class="n">painter</span><span class="p">.</span><span class="n">width</span> <span class="p">*</span> <span class="n">tmpFront</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+            <span class="kt">float</span> <span class="n">frontY</span> <span class="p">=</span> <span class="n">painter</span><span class="p">.</span><span class="n">height</span> <span class="p">*</span> <span class="n">tmpFront</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+            <span class="kt">float</span> <span class="n">backX</span> <span class="p">=</span> <span class="n">painter</span><span class="p">.</span><span class="n">width</span> <span class="p">*</span> <span class="n">tmpBack</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+            <span class="kt">float</span> <span class="n">backY</span> <span class="p">=</span> <span class="n">painter</span><span class="p">.</span><span class="n">height</span> <span class="p">*</span> <span class="n">tmpBack</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+
+            <span class="kt">int</span> <span class="n">lerpPointCount</span> <span class="p">=</span> <span class="m">200</span><span class="p">;</span>
+
+            <span class="c1">//两点之间插值 添加点
+</span><span class="c1"></span>            <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">j</span> <span class="p">&lt;</span> <span class="n">lerpPointCount</span><span class="p">;</span> <span class="n">j</span><span class="p">++)</span>
+            <span class="p">{</span>
+                <span class="kt">int</span> <span class="n">x</span> <span class="p">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">Mathf</span><span class="p">.</span><span class="n">Lerp</span><span class="p">(</span><span class="n">frontX</span><span class="p">,</span> <span class="n">backX</span><span class="p">,</span> <span class="n">j</span> <span class="p">/</span> <span class="p">(</span><span class="kt">float</span><span class="p">)</span><span class="n">lerpPointCount</span><span class="p">);</span>
+                <span class="kt">int</span> <span class="n">y</span> <span class="p">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">Mathf</span><span class="p">.</span><span class="n">Lerp</span><span class="p">(</span><span class="n">frontY</span><span class="p">,</span> <span class="n">backY</span><span class="p">,</span> <span class="n">j</span> <span class="p">/</span> <span class="p">(</span><span class="kt">float</span><span class="p">)</span><span class="n">lerpPointCount</span><span class="p">);</span>
+
+                <span class="n">painter</span><span class="p">.</span><span class="n">SetPixel</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">Color</span><span class="p">.</span><span class="n">red</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="n">painter</span><span class="p">.</span><span class="n">Apply</span><span class="p">();</span><span class="c1">//应用修改到纹理上
+</span><span class="c1"></span>
+        <span class="c1">//更换物体纹理
+</span><span class="c1"></span>        <span class="n">transform</span><span class="p">.</span><span class="n">GetComponent</span><span class="p">&lt;</span><span class="n">Renderer</span><span class="p">&gt;().</span><span class="n">material</span><span class="p">.</span><span class="n">mainTexture</span> <span class="p">=</span> <span class="n">painter</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">//画到2D图片上
+</span><span class="c1"></span>    <span class="k">public</span> <span class="k">void</span> <span class="n">DrawTexture2D</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">painter</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Texture2D</span><span class="p">(</span><span class="n">Screen</span><span class="p">.</span><span class="n">width</span><span class="p">,</span> <span class="n">Screen</span><span class="p">.</span><span class="n">height</span><span class="p">);</span>
+
+        <span class="c1">// 根据顶点位置设置图片上的像素
+</span><span class="c1"></span>        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">1</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">allPoints</span><span class="p">.</span><span class="n">Count</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
+        <span class="p">{</span>
+            <span class="n">Vector3</span> <span class="n">tmpFront</span> <span class="p">=</span> <span class="n">allPoints</span><span class="na">[i - 1]</span><span class="p">;</span>
+            <span class="n">Vector3</span> <span class="n">tmpBack</span> <span class="p">=</span> <span class="n">allPoints</span><span class="na">[i]</span><span class="p">;</span>
+
+            <span class="kt">float</span> <span class="n">frontX</span> <span class="p">=</span> <span class="n">painter</span><span class="p">.</span><span class="n">width</span> <span class="p">*</span> <span class="n">tmpFront</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+            <span class="kt">float</span> <span class="n">frontY</span> <span class="p">=</span> <span class="n">painter</span><span class="p">.</span><span class="n">height</span> <span class="p">*</span> <span class="n">tmpFront</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+            <span class="kt">float</span> <span class="n">backX</span> <span class="p">=</span> <span class="n">painter</span><span class="p">.</span><span class="n">width</span> <span class="p">*</span> <span class="n">tmpBack</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+            <span class="kt">float</span> <span class="n">backY</span> <span class="p">=</span> <span class="n">painter</span><span class="p">.</span><span class="n">height</span> <span class="p">*</span> <span class="n">tmpBack</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+
+            <span class="kt">int</span> <span class="n">lerpPointCount</span> <span class="p">=</span> <span class="m">200</span><span class="p">;</span><span class="c1">//两点之间需插的点的数量
+</span><span class="c1"></span>
+            <span class="c1">//两点之间插值 添加点
+</span><span class="c1"></span>            <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">j</span> <span class="p">&lt;</span> <span class="n">lerpPointCount</span><span class="p">;</span> <span class="n">j</span><span class="p">++)</span>
+            <span class="p">{</span>
+                <span class="kt">int</span> <span class="n">x</span> <span class="p">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">Mathf</span><span class="p">.</span><span class="n">Lerp</span><span class="p">(</span><span class="n">frontX</span><span class="p">,</span> <span class="n">backX</span><span class="p">,</span> <span class="n">j</span> <span class="p">/</span> <span class="p">(</span><span class="kt">float</span><span class="p">)</span><span class="n">lerpPointCount</span><span class="p">);</span>
+                <span class="kt">int</span> <span class="n">y</span> <span class="p">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">Mathf</span><span class="p">.</span><span class="n">Lerp</span><span class="p">(</span><span class="n">frontY</span><span class="p">,</span> <span class="n">backY</span><span class="p">,</span> <span class="n">j</span> <span class="p">/</span> <span class="p">(</span><span class="kt">float</span><span class="p">)</span><span class="n">lerpPointCount</span><span class="p">);</span>
+
+                <span class="n">painter</span><span class="p">.</span><span class="n">SetPixel</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">Color</span><span class="p">.</span><span class="n">red</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="n">painter</span><span class="p">.</span><span class="n">Apply</span><span class="p">();</span><span class="c1">//应用修改到纹理上
+</span><span class="c1"></span>
+        <span class="c1">//更换Image图片纹理
+</span><span class="c1"></span>        <span class="c1">//Image需创建Sprite后才能修改纹理
+</span><span class="c1"></span>        <span class="n">transform</span><span class="p">.</span><span class="n">GetComponent</span><span class="p">&lt;</span><span class="n">Image</span><span class="p">&gt;().</span><span class="n">sprite</span> <span class="p">=</span>
+            <span class="n">Sprite</span><span class="p">.</span><span class="n">Create</span><span class="p">(</span><span class="n">painter</span><span class="p">,</span>
+                        <span class="k">new</span> <span class="n">Rect</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="n">painter</span><span class="p">.</span><span class="n">width</span><span class="p">,</span> <span class="n">painter</span><span class="p">.</span><span class="n">height</span><span class="p">),</span>
+                        <span class="k">new</span> <span class="n">Vector2</span><span class="p">(</span><span class="m">0.5f</span><span class="p">,</span> <span class="m">0.5f</span><span class="p">));</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+			</article>
+		</section>
+		<section class="ui secondary attached segment dream-tags">
+<a class="ui label" href="/tags/2d" title="2d">2d</a>
+
+<a class="ui label" href="/tags/ae" title="ae">ae</a>
+
+<a class="ui label" href="/tags/ai" title="ai">ai</a>
+
+<a class="ui label" href="/tags/animator" title="animator">animator</a>
+
+<a class="ui label" href="/tags/audio" title="audio">audio</a>
+
+<a class="ui label" href="/tags/c" title="c#">c#</a>
+
+<a class="ui label" href="/tags/effect" title="effect">effect</a>
+
+<a class="ui label" href="/tags/english" title="english">english</a>
+
+<a class="ui label" href="/tags/fps" title="fps">fps</a>
+
+<a class="ui label" href="/tags/gl" title="gl">gl</a>
+
+<a class="ui label" href="/tags/knowledge" title="knowledge">knowledge</a>
+
+<a class="ui label" href="/tags/notes" title="notes">notes</a>
+
+<a class="ui label" href="/tags/rpg" title="rpg">rpg</a>
+
+<a class="ui label" href="/tags/tilemap" title="tilemap">tilemap</a>
+
+<a class="ui label" href="/tags/ui" title="ui">ui</a>
+
+<a class="ui label" href="/tags/unity" title="unity">unity</a>
+
+<a class="ui label" href="/tags/word" title="word">word</a>
+
+<a class="ui label" href="/tags/word-book" title="word-book">word-book</a>
+
+<a class="ui label" href="/tags/%E6%8A%80%E5%B7%A7" title="技巧">技巧</a>
+
+<a class="ui label" href="/tags/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93" title="数据传输">数据传输</a>
+
+
+		</section><section class="ui secondary  attached segment share row box"><div class="author"><img class="avatar" src="/img/avatar.png">
+	
+</div>
+<div class="info grow flexbox">
+	<p class="name">So Serious</p>
+	<p class="desc">Do your best.</p>		
+</div>
+<section class="buttons row box">
+	<div class="facebook none flexbox" href="#" onclick="window.open(
+			'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),
+			'facebook-share-dialog',
+			'width=626,height=436'); return false;">
+		<button class="ui facebook button"><i class="facebook icon"></i>Share</button>
+	</div>
+	<div class="twitter none flexbox" onclick="window.open('https://twitter.com/intent/tweet?text=Read &quot;GL画图功能  \/post\/gl-drawing\/','_self')">
+		<button class="ui twitter button"><i class="twitter icon"></i>Tweet</button>
+	</div>
+</section></section>
+		<section class="ui secondary attached segment copyright">
+			
+		</section>
+		<div class="ui secondary bottom attached stacked segment disqus"><div id="disqus_thread"></div>
+<script>
+	var disqus_config = function () {
+		this.page.url = '\/post\/gl-drawing\/';
+		this.page.identifier = 'a229428b024269ef7ef4630bea391010';
+	};
+	(function() {
+   	var d = document, s = d.createElement('script');
+   	s.src = 'https://' + 'So Serious' + '.disqus.com/embed.js';
+   	s.setAttribute('data-timestamp', +new Date());
+   	(d.head || d.body).appendChild(s);
+	})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+</div>
+		
+	</div>
+</div>
+
+			</div>
+			<div class="back"><nav class="ui top secondary menu bar">
+	<div class="item">
+		<i class="inverted big link bullseye icon dream-flip-toggle" title="翻转"></i>
+	</div><div class="item">
+	<a href="https://github.com/SoGhost" target="_blank">
+		<i id="ico" class="inverted big link github icon" title="GitHub"></i>
+	</a>
+</div>
+<div class="item">
+	<a href="mailto:17051224442zx@gmail.com">
+		<i id="ico" class="inverted big link mail icon" title="Email"></i>
+	</a>
+</div>
+
+</nav>
+<div class="ui centered grid about">
+	<div class="sixteen wide mobile fifteen wide tablet fifteen wide computer column about">
+		<section class="ui stacked segments"><div class="ui inverted segment">
+	<article class="twemoji"><h1>So, Who Am I?</h1>
+
+<hr />
+
+<p><br></article>
+</div></section>
+	</div>
+</div></div>
+		</div>
+	</div><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/site.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.js"></script><script src="https://twemoji.maxcdn.com/2/twemoji.min.js?2.6"></script>
+<script id="dsq-count-scr" src="//So%20Serious.disqus.com/count.js" async></script>
+
+<script>
+	(function () {
+	  console.log("Twemoji up and making stuff colourful!");
+	  for (var b = document.getElementsByClassName("twemoji"), a = 0; a < b.length; a++) {
+		twemoji.parse(b[a]);
+	  }
+	})();
+</script>
+
+</body>
+
+</html>
