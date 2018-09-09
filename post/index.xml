@@ -6,10 +6,39 @@
     <description>Recent content in Posts on PY-&gt; Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>us-en</language>
-    <lastBuildDate>Sat, 08 Sep 2018 09:43:45 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 09 Sep 2018 16:15:05 +0800</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>2D攻击范围</title>
+      <link>/post/2d-attack-range/</link>
+      <pubDate>Sun, 09 Sep 2018 16:15:05 +0800</pubDate>
+      
+      <guid>/post/2d-attack-range/</guid>
+      <description>攻击范围判断：
+ 物理触发器：极其消耗性能，休闲类可以使用物理触发器，大型游戏不可以。
+ 向量点乘(Vector3.Dot)：
+ A · B = |A| * |B| * cosθ |A|就是A向量长度    假如 A 是单位向量 |A| = 1 得到 B 在 A 向量上的投影。 假如 A 和 B 都是单位向量得到 cosθ arcos(A, B) 得到一个弧度。   将被攻击者坐标系变换到攻击者坐标系，在进行 x, z点位置判断
+  矩形攻击：
+transform.forward：表示Player的正前方（forward和right均为单位向量）
+transform.right：表示Player的正右方
+-transform.right：表示Player的正左方
+-transform.forward：表示Player的正后方
+A = Enemy.position - Player.position（玩家与敌人的距离是A）
+  yLength = A · transform.forward：等于A在forward线上的投影，yLength也是矩形的宽度y  A · transform.forward = |A| * cosθ, cosθ范围 (θ：π/2 ~ -π/2 = 0~180°) 从正数到负数（判断上下方向）。 如果A是正数说明在前方，负数为后方（得到敌人在前或后的哪个方向，在进行下一步判断） 如果yLength大于矩形的宽度说明不在范围内（小于矩形的宽度也不一定在范围内）。  xLength = A · transform.</description>
+    </item>
+    
+    <item>
+      <title>有限状态机</title>
+      <link>/post/finite-state-machine/</link>
+      <pubDate>Sun, 09 Sep 2018 09:16:19 +0800</pubDate>
+      
+      <guid>/post/finite-state-machine/</guid>
+      <description> 有限状态机（Finite-state machine,FSM），又称有限状态自动机，简称状态机，是表示有限个状态以及在这些状态之间的转移和动作等行为的数学模型。
+ </description>
+    </item>
     
     <item>
       <title>GL画图功能</title>
@@ -30,7 +59,7 @@
  截屏：ScreenCapture.CaptureScreenshot() 点在图片上画：根据顶点坐标设置像素位置  图形映射到物体：用新建Texture2D存储图片，再替换修改纹理。
  2D：替换Image的Sprite   transform.GetComponent().sprite = Sprite.Create(texture2D, new Rect(0, 0, texture2D.width, texture2D.height), new Vector2(0.5f, 0.5f));
   3D：替换Render里的Texture   transform.GetComponent().material.mainTexture = texture2D;
-   1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125 126 127 128 129 130 131 132 133 134 135 136 137 138 139 140 141 142 143 144 145 146 147 148 149 150 151 152 153 154 155 156 157 158 159 160 161 162 163 164 165 166 167 168 169 170 171 172 173 174 175 176 177 178 179 180  using System.</description>
+   1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125 126 127 128 129 130 131 132 133 134 135 136 137 138 139 140 141 142 143 144 145 146 147 148 149 150 151 152 153 154 155 156 157 158 159 160 161 162 163 164 165 166 167 168 169 170 171 172 173 174 175 176 177 178 179  using System.</description>
     </item>
     
     <item>
@@ -39,9 +68,9 @@
       <pubDate>Sat, 08 Sep 2018 07:59:20 +0800</pubDate>
       
       <guid>/post/game-frame-07/</guid>
-      <description>简单小地图(mini-map)：
- 两个相机（消耗性能）
- (3D&amp;ndash;&amp;gt;2D)等比例映射： 控制的物体位置实时映射到地图上的图片中   求出物体与地图的比例：Player位置 - 地形位置 = Player相对于地形的位置 = tmpPos tmpPos.x / 地形宽度 = x比例 tmpPos.z / 地形长度 = y比例 (地图背景图片 * x比例, 地图背景图片 * y比例) = 地图里Player图片的位置  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51  using UnityEngine; // LitMap挂载到Player地图的图片上 public class LitMap : MonoBehaviour { public Transform player; public RectTransform parenrRect;//Player父类位置（mini-map背景图）  public Terrain terrain; float xRatio; float yRatio; //float xPos;  //float yPos;  Vector2 vector2 = -Vector2.</description>
+      <description>小地图(mini-map)&amp;mdash;DEMO：  两个相机（消耗性能）
+ (3D&amp;ndash;&amp;gt;2D)等比例映射： 控制的物体位置实时映射到地图上的图片中
+ 求出物体与地图的比例：Player位置 - 地形位置 = Player相对于地形的位置 = tmpPos tmpPos.x / 地形宽度 = x比例 tmpPos.z / 地形长度 = y比例 (地图背景图片 * x比例, 地图背景图片 * y比例) = 地图里Player图片的位置   1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54  using UnityEngine; /// &amp;lt;summary&amp;gt; /// 1.</description>
     </item>
     
     <item>
@@ -55,7 +84,7 @@
  在圆内可以任意移动   deltaDistance.magnitude&amp;lt; 半径（deltaDistance.magnitude = Vector2.Distance()，求两向量间距离）
   超过半径只能在圆上移动    实现物体跟着旋转
  让图片随着摇杆移动旋转
- 切线：Z = Tan α &amp;ndash;&amp;gt; Q = ArcTan z（Q 弧度） 弧度：Π = 180° 3.1415926 / 2 ≈ 1.57 = 90° 角度：180° = Π  摇杆原点随着摇杆移动变化
+ 切线：Z = Tan α &amp;ndash;&amp;gt; Q = ArcTan z（Q 弧度） 弧度：π = 180° π / 2 = 3.1415926 / 2 ≈ 1.57 = 90° 角度：180° = π  摇杆原点随着摇杆移动变化
  1    测试简单 EasyTouch 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56  using UnityEngine; using UnityEngine.</description>
     </item>
     

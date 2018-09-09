@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>2d on PY-&gt; Blog</title>
+    <link>/categories/2d/</link>
+    <description>Recent content in 2d on PY-&gt; Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>us-en</language>
+    <lastBuildDate>Sun, 09 Sep 2018 16:15:05 +0800</lastBuildDate>
+    
+	<atom:link href="/categories/2d/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>2D攻击范围</title>
+      <link>/post/2d-attack-range/</link>
+      <pubDate>Sun, 09 Sep 2018 16:15:05 +0800</pubDate>
+      
+      <guid>/post/2d-attack-range/</guid>
+      <description>攻击范围判断：
+ 物理触发器：极其消耗性能，休闲类可以使用物理触发器，大型游戏不可以。
+ 向量点乘(Vector3.Dot)：
+ A · B = |A| * |B| * cosθ |A|就是A向量长度    假如 A 是单位向量 |A| = 1 得到 B 在 A 向量上的投影。 假如 A 和 B 都是单位向量得到 cosθ arcos(A, B) 得到一个弧度。   将被攻击者坐标系变换到攻击者坐标系，在进行 x, z点位置判断
+  矩形攻击：
+transform.forward：表示Player的正前方（forward和right均为单位向量）
+transform.right：表示Player的正右方
+-transform.right：表示Player的正左方
+-transform.forward：表示Player的正后方
+A = Enemy.position - Player.position（玩家与敌人的距离是A）
+  yLength = A · transform.forward：等于A在forward线上的投影，yLength也是矩形的宽度y  A · transform.forward = |A| * cosθ, cosθ范围 (θ：π/2 ~ -π/2 = 0~180°) 从正数到负数（判断上下方向）。 如果A是正数说明在前方，负数为后方（得到敌人在前或后的哪个方向，在进行下一步判断） 如果yLength大于矩形的宽度说明不在范围内（小于矩形的宽度也不一定在范围内）。  xLength = A · transform.</description>
+    </item>
+    
+  </channel>
+</rss>

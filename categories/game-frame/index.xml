@@ -17,9 +17,9 @@
       <pubDate>Sat, 08 Sep 2018 07:59:20 +0800</pubDate>
       
       <guid>/post/game-frame-07/</guid>
-      <description>简单小地图(mini-map)：
- 两个相机（消耗性能）
- (3D&amp;ndash;&amp;gt;2D)等比例映射： 控制的物体位置实时映射到地图上的图片中   求出物体与地图的比例：Player位置 - 地形位置 = Player相对于地形的位置 = tmpPos tmpPos.x / 地形宽度 = x比例 tmpPos.z / 地形长度 = y比例 (地图背景图片 * x比例, 地图背景图片 * y比例) = 地图里Player图片的位置  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51  using UnityEngine; // LitMap挂载到Player地图的图片上 public class LitMap : MonoBehaviour { public Transform player; public RectTransform parenrRect;//Player父类位置（mini-map背景图）  public Terrain terrain; float xRatio; float yRatio; //float xPos;  //float yPos;  Vector2 vector2 = -Vector2.</description>
+      <description>小地图(mini-map)&amp;mdash;DEMO：  两个相机（消耗性能）
+ (3D&amp;ndash;&amp;gt;2D)等比例映射： 控制的物体位置实时映射到地图上的图片中
+ 求出物体与地图的比例：Player位置 - 地形位置 = Player相对于地形的位置 = tmpPos tmpPos.x / 地形宽度 = x比例 tmpPos.z / 地形长度 = y比例 (地图背景图片 * x比例, 地图背景图片 * y比例) = 地图里Player图片的位置   1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54  using UnityEngine; /// &amp;lt;summary&amp;gt; /// 1.</description>
     </item>
     
     <item>
@@ -33,7 +33,7 @@
  在圆内可以任意移动   deltaDistance.magnitude&amp;lt; 半径（deltaDistance.magnitude = Vector2.Distance()，求两向量间距离）
   超过半径只能在圆上移动    实现物体跟着旋转
  让图片随着摇杆移动旋转
- 切线：Z = Tan α &amp;ndash;&amp;gt; Q = ArcTan z（Q 弧度） 弧度：Π = 180° 3.1415926 / 2 ≈ 1.57 = 90° 角度：180° = Π  摇杆原点随着摇杆移动变化
+ 切线：Z = Tan α &amp;ndash;&amp;gt; Q = ArcTan z（Q 弧度） 弧度：π = 180° π / 2 = 3.1415926 / 2 ≈ 1.57 = 90° 角度：180° = π  摇杆原点随着摇杆移动变化
  1    测试简单 EasyTouch 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56  using UnityEngine; using UnityEngine.</description>
     </item>
     

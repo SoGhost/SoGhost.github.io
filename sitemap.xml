@@ -3,6 +3,16 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/post/2d-attack-range/</loc>
+    <lastmod>2018-09-09T16:15:05+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/finite-state-machine/</loc>
+    <lastmod>2018-09-09T09:16:19+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/post/gl-drawing/</loc>
     <lastmod>2018-09-08T09:43:45+08:00</lastmod>
   </url>
@@ -177,6 +187,12 @@
   </url>
   
   <url>
+    <loc>/categories/2d/</loc>
+    <lastmod>2018-09-09T16:15:05+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/tags/ae/</loc>
     <lastmod>2018-08-13T19:05:36+08:00</lastmod>
     <priority>0</priority>
@@ -201,6 +217,12 @@
   </url>
   
   <url>
+    <loc>/tags/attackrange/</loc>
+    <lastmod>2018-09-09T16:15:05+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/tags/audio/</loc>
     <lastmod>2018-08-05T09:39:51+08:00</lastmod>
     <priority>0</priority>
@@ -220,7 +242,7 @@
   
   <url>
     <loc>/categories/</loc>
-    <lastmod>2018-08-13T19:05:36+08:00</lastmod>
+    <lastmod>2018-09-09T16:15:05+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -245,6 +267,18 @@
   <url>
     <loc>/tags/fps/</loc>
     <lastmod>2018-08-05T14:48:37+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/fsm/</loc>
+    <lastmod>2018-09-09T09:16:19+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/fsm/</loc>
+    <lastmod>2018-09-09T09:16:19+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -286,7 +320,7 @@
   
   <url>
     <loc>/</loc>
-    <lastmod>2018-09-08T09:43:45+08:00</lastmod>
+    <lastmod>2018-09-09T16:15:05+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -298,7 +332,7 @@
   
   <url>
     <loc>/post/</loc>
-    <lastmod>2018-09-08T09:43:45+08:00</lastmod>
+    <lastmod>2018-09-09T16:15:05+08:00</lastmod>
     <priority>0</priority>
   </url>
   

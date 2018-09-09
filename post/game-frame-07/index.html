@@ -20,9 +20,9 @@ body, body.pushable {
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<meta name="author" content="So Serious" />
-	<meta name="description" content="简单小地图(mini-map)：
- 两个相机（消耗性能）
- (3D&amp;ndash;&amp;gt;2D)等比例映射： 控制的物体位置实时映射到地图上的图片中   求出物体与地图的比例：Player位置 - 地形位置 = Player相对于地形的位置 = tmpPos tmpPos.x / 地形宽度 = x比例 tmpPos.z / 地形长度 = y比例 (地图背景图片 * x比例, 地图背景图片 * y比例) = 地图里Player图片的位置  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51  using UnityEngine; // LitMap挂载到Player地图的图片上 public class LitMap : MonoBehaviour { public Transform player; public RectTransform parenrRect;//Player父类位置（mini-map背景图）  public Terrain terrain; float xRatio; float yRatio; //float xPos;  //float yPos;  Vector2 vector2 = -Vector2." />
+	<meta name="description" content="小地图(mini-map)&amp;mdash;DEMO：  两个相机（消耗性能）
+ (3D&amp;ndash;&amp;gt;2D)等比例映射： 控制的物体位置实时映射到地图上的图片中
+ 求出物体与地图的比例：Player位置 - 地形位置 = Player相对于地形的位置 = tmpPos tmpPos.x / 地形宽度 = x比例 tmpPos.z / 地形长度 = y比例 (地图背景图片 * x比例, 地图背景图片 * y比例) = 地图里Player图片的位置   1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54  using UnityEngine; /// &amp;lt;summary&amp;gt; /// 1." />
 <meta name="generator" content="Hugo 0.44" />
 
 <link rel="shortcut icon" href="/img/PY-Blog.ico">
@@ -105,6 +105,8 @@ var bodyBgSwitchIndex = 0;var gradients = [
 
 <a class="ui label" href="/tags/animator" title="animator">animator</a>
 
+<a class="ui label" href="/tags/attackrange" title="attackrange">attackrange</a>
+
 <a class="ui label" href="/tags/audio" title="audio">audio</a>
 
 <a class="ui label" href="/tags/c" title="c#">c#</a>
@@ -114,6 +116,8 @@ var bodyBgSwitchIndex = 0;var gradients = [
 <a class="ui label" href="/tags/english" title="english">english</a>
 
 <a class="ui label" href="/tags/fps" title="fps">fps</a>
+
+<a class="ui label" href="/tags/fsm" title="fsm">fsm</a>
 
 <a class="ui label" href="/tags/gl" title="gl">gl</a>
 
@@ -141,6 +145,21 @@ var bodyBgSwitchIndex = 0;var gradients = [
 	
 	<section class="ui attached inverted segment sidebar-dream-categories both flexbox">
 		<div class="ui inverted accordion">
+<div class="title">
+	<i class="dropdown icon"></i>
+	<a class="link" href="/categories/2d">2d</a>
+</div>
+<div class="content">
+
+	<a class="item" href="/post/2d-attack-range/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>2D攻击范围</p>
+		</div>
+	</a>
+
+</div>
+
 <div class="title">
 	<i class="dropdown icon"></i>
 	<a class="link" href="/categories/ae">ae</a>
@@ -188,6 +207,21 @@ var bodyBgSwitchIndex = 0;var gradients = [
 		<div>
 			<i class="cocktail icon"></i>
 			<p>English Sentence</p>
+		</div>
+	</a>
+
+</div>
+
+<div class="title">
+	<i class="dropdown icon"></i>
+	<a class="link" href="/categories/fsm">fsm</a>
+</div>
+<div class="content">
+
+	<a class="item" href="/post/finite-state-machine/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>有限状态机</p>
 		</div>
 	</a>
 
@@ -530,6 +564,8 @@ var bodyBgSwitchIndex = 0;var gradients = [
 
 <a class="ui label" href="/tags/animator" title="animator">animator</a>
 
+<a class="ui label" href="/tags/attackrange" title="attackrange">attackrange</a>
+
 <a class="ui label" href="/tags/audio" title="audio">audio</a>
 
 <a class="ui label" href="/tags/c" title="c#">c#</a>
@@ -539,6 +575,8 @@ var bodyBgSwitchIndex = 0;var gradients = [
 <a class="ui label" href="/tags/english" title="english">english</a>
 
 <a class="ui label" href="/tags/fps" title="fps">fps</a>
+
+<a class="ui label" href="/tags/fsm" title="fsm">fsm</a>
 
 <a class="ui label" href="/tags/gl" title="gl">gl</a>
 
@@ -564,6 +602,21 @@ var bodyBgSwitchIndex = 0;var gradients = [
 
 </section><section class="ui attached inverted segment dream-categories both flexbox">
 			<div class="inverted accordion">
+<div class="title">
+	<i class="dropdown icon"></i>
+	<a class="link" href="/categories/2d">2d</a>
+</div>
+<div class="content">
+
+	<a class="item" href="/post/2d-attack-range/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>2D攻击范围</p>
+		</div>
+	</a>
+
+</div>
+
 <div class="title">
 	<i class="dropdown icon"></i>
 	<a class="link" href="/categories/ae">ae</a>
@@ -611,6 +664,21 @@ var bodyBgSwitchIndex = 0;var gradients = [
 		<div>
 			<i class="cocktail icon"></i>
 			<p>English Sentence</p>
+		</div>
+	</a>
+
+</div>
+
+<div class="title">
+	<i class="dropdown icon"></i>
+	<a class="link" href="/categories/fsm">fsm</a>
+</div>
+<div class="content">
+
+	<a class="item" href="/post/finite-state-machine/">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>有限状态机</p>
 		</div>
 	</a>
 
@@ -902,28 +970,42 @@ var bodyBgSwitchIndex = 0;var gradients = [
 			</h1>
 			<div class="sub header">
 					<div><span><i class="calendar outline icon"></i>Sep 8, 2018</span></div><div><span class="disqusComment"><i class="comment outline icon"></i><a href="/post/game-frame-07/#disqus_thread" class="disqus-comment-count" data-disqus-identifier="effbc45ffd68fe286d2855d261532f33"></a></span></div>
-					<div><span><i class="clock outline icon"></i>1 min read</span></div>
+					<div><span><i class="clock outline icon"></i>4 min read</span></div>
 					<div><span><i class="angle double up icon"></i>更新于 Sep 8, 2018</span></div>
 			</div>
-			<hr>
+			<hr><div class="toc"><nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#小地图-mini-map-demo">小地图(mini-map)&mdash;DEMO：</a></li>
+<li><a href="#war3小地图">War3小地图</a>
+<ul>
+<li><a href="#cameraview">CameraView</a></li>
+<li><a href="#minimapview">MiniMapView</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav></div>
+			
 			
 			<article class="post-content twemoji">
-				<blockquote>
-<p>简单小地图(mini-map)：</p>
+				
+
+<blockquote>
+<h2 id="小地图-mini-map-demo">小地图(mini-map)&mdash;DEMO：&nbsp;<a class="anchor" href="#小地图-mini-map-demo"><i class="small linkify icon"></i></a> </h2>
 
 <ul>
-<li><p>两个相机（消耗性能）</p>
+<li><p>两个相机（消耗性能）</p></li>
 
-<ul>
-<li>(3D&ndash;&gt;2D)等比例映射：   控制的物体位置实时映射到地图上的图片中</li>
-</ul>
+<li><p>(3D&ndash;&gt;2D)等比例映射： 控制的物体位置实时映射到地图上的图片中</p>
 
 <ol>
 <li>求出物体与地图的比例：Player位置 - 地形位置 = Player相对于地形的位置 = tmpPos</li>
 <li>tmpPos.x / 地形宽度 = x比例</li>
 <li>tmpPos.z / 地形长度 = y比例</li>
 <li>(地图背景图片 * x比例, 地图背景图片 * y比例) = 地图里Player图片的位置</li>
-</ol>
+</ol></li>
+</ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-c#" data-lang="c#"><span class="lnt"> 1
@@ -977,63 +1059,487 @@ var bodyBgSwitchIndex = 0;var gradients = [
 </span><span class="lnt">49
 </span><span class="lnt">50
 </span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-c#" data-lang="c#"><span class="k">using</span> <span class="nn">UnityEngine</span><span class="p">;</span>
-    
-<span class="c1">// LitMap挂载到Player地图的图片上
-</span><span class="c1"></span><span class="k">public</span> <span class="k">class</span> <span class="nc">LitMap</span> <span class="p">:</span> <span class="n">MonoBehaviour</span> <span class="p">{</span>
-    
+
+<span class="c1">/// &lt;summary&gt;
+</span><span class="c1">/// 1. 实现映射位置到小地图上
+</span><span class="c1">/// 2. MiniMap挂载到Player地图的图片上
+</span><span class="c1">/// &lt;/summary&gt;
+</span><span class="c1"></span><span class="k">public</span> <span class="k">class</span> <span class="nc">MiniMap</span> <span class="p">:</span> <span class="n">MonoBehaviour</span> <span class="p">{</span>
+
     <span class="k">public</span> <span class="n">Transform</span> <span class="n">player</span><span class="p">;</span>
-    
+
     <span class="k">public</span>  <span class="n">RectTransform</span> <span class="n">parenrRect</span><span class="p">;</span><span class="c1">//Player父类位置（mini-map背景图）
-</span><span class="c1"></span>    
+</span><span class="c1"></span>
     <span class="k">public</span> <span class="n">Terrain</span> <span class="n">terrain</span><span class="p">;</span>
-    
+
     <span class="kt">float</span> <span class="n">xRatio</span><span class="p">;</span>
     <span class="kt">float</span> <span class="n">yRatio</span><span class="p">;</span>
     <span class="c1">//float xPos;
 </span><span class="c1"></span>    <span class="c1">//float yPos;
-</span><span class="c1"></span>    
+</span><span class="c1"></span>
     <span class="n">Vector2</span> <span class="n">vector2</span> <span class="p">=</span> <span class="p">-</span><span class="n">Vector2</span><span class="p">.</span><span class="n">one</span><span class="p">;</span><span class="c1">// Vector2.one=(1, 1)
-</span><span class="c1"></span>    
+</span><span class="c1"></span>
     <span class="n">Vector3</span> <span class="n">deltaPos</span><span class="p">;</span>
-    
+
     <span class="k">void</span> <span class="n">Start</span><span class="p">()</span>
     <span class="p">{</span>
         <span class="c1">//从地图中Player图片上获取父物体（地图背景图片）的RectTransform
 </span><span class="c1"></span>        <span class="n">parenrRect</span> <span class="p">=</span> <span class="n">transform</span><span class="p">.</span><span class="n">parent</span><span class="p">.</span><span class="n">GetComponent</span><span class="p">&lt;</span><span class="n">RectTransform</span><span class="p">&gt;();</span>
     <span class="p">}</span>
-    
+
     <span class="k">void</span> <span class="n">Update</span> <span class="p">()</span> <span class="p">{</span>
         <span class="c1">//Player与Terrain相对位置
 </span><span class="c1"></span>        <span class="n">deltaPos</span> <span class="p">=</span> <span class="n">player</span><span class="p">.</span><span class="n">position</span> <span class="p">-</span> <span class="n">terrain</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">position</span><span class="p">;</span>
-    
+
         <span class="c1">//Player与Terrain的x y 比例
 </span><span class="c1"></span>        <span class="c1">//terrain.terrainData.size.x z 地形的长宽
 </span><span class="c1"></span>        <span class="n">xRatio</span> <span class="p">=</span> <span class="n">deltaPos</span><span class="p">.</span><span class="n">x</span> <span class="p">/</span> <span class="n">terrain</span><span class="p">.</span><span class="n">terrainData</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
         <span class="n">yRatio</span> <span class="p">=</span> <span class="n">deltaPos</span><span class="p">.</span><span class="n">z</span> <span class="p">/</span> <span class="n">terrain</span><span class="p">.</span><span class="n">terrainData</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">z</span><span class="p">;</span>
-    
+
         <span class="c1">//父类 背景图片的宽 parenrRect.sizeDelta.x
 </span><span class="c1"></span>        <span class="c1">//父类 背景图片的长 parenrRect.sizeDelta.y
-</span><span class="c1"></span>    
+</span><span class="c1"></span>
         <span class="c1">//mini-map 图片等比缩放后mini-map x,y坐标位置
-</span><span class="c1"></span>        <span class="c1">// 1. 
+</span><span class="c1"></span>        <span class="c1">// eg 1. 
 </span><span class="c1"></span>        <span class="c1">// xPos = parenrRect.sizeDelta.x * xRatio;
 </span><span class="c1"></span>        <span class="c1">// yPos = parenrRect.sizeDelta.y * yRatio;
-</span><span class="c1"></span>    
-        <span class="c1">// 2. 进一步精简代码
+</span><span class="c1"></span>
+        <span class="c1">// eg 2. 进一步精简代码
 </span><span class="c1"></span>        <span class="n">vector2</span><span class="p">.</span><span class="n">x</span> <span class="p">=</span> <span class="n">parenrRect</span><span class="p">.</span><span class="n">sizeDelta</span><span class="p">.</span><span class="n">x</span> <span class="p">*</span> <span class="n">xRatio</span><span class="p">;</span>
         <span class="n">vector2</span><span class="p">.</span><span class="n">y</span> <span class="p">=</span> <span class="n">parenrRect</span><span class="p">.</span><span class="n">sizeDelta</span><span class="p">.</span><span class="n">y</span> <span class="p">*</span> <span class="n">yRatio</span><span class="p">;</span>
-    
+
         <span class="c1">//mini-map Player相对于父类的位置
 </span><span class="c1"></span>        <span class="n">transform</span><span class="p">.</span><span class="n">localPosition</span> <span class="p">=</span> <span class="n">vector2</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span></code></pre></td></tr></table>
 </div>
-</div></li>
+</div>
+<ul>
+<li>计算放在Update中（如果为60帧，≈0.16s就要计算一次数据），应该用计时器适当缩短计算间隔。</li>
 </ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#">      <span class="kt">float</span> <span class="n">timeCount</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span><span class="c1">//计时器
+</span><span class="c1"></span>  
+      <span class="c1">// 3. 根据地图大小适当缩减计算间隔
+</span><span class="c1"></span>      <span class="k">public</span> <span class="k">void</span> <span class="n">CalculatePosition</span><span class="p">()</span>
+      <span class="p">{</span>
+          <span class="n">timeCount</span> <span class="p">+=</span> <span class="n">Time</span><span class="p">.</span><span class="n">deltaTime</span><span class="p">;</span>
+  
+          <span class="k">if</span> <span class="p">(</span><span class="n">timeCount</span> <span class="p">&gt;</span> <span class="m">0.2f</span><span class="p">)</span>
+          <span class="p">{</span>
+              <span class="n">timeCount</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+  
+              <span class="n">deltaPos</span> <span class="p">=</span> <span class="n">player</span><span class="p">.</span><span class="n">position</span> <span class="p">-</span> <span class="n">terrain</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">position</span><span class="p">;</span>
+  
+              <span class="n">xRatio</span> <span class="p">=</span> <span class="n">deltaPos</span><span class="p">.</span><span class="n">x</span> <span class="p">/</span> <span class="n">terrain</span><span class="p">.</span><span class="n">terrainData</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+              <span class="n">yRatio</span> <span class="p">=</span> <span class="n">deltaPos</span><span class="p">.</span><span class="n">z</span> <span class="p">/</span> <span class="n">terrain</span><span class="p">.</span><span class="n">terrainData</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">z</span><span class="p">;</span>
+  
+              <span class="n">vector2</span><span class="p">.</span><span class="n">x</span> <span class="p">=</span> <span class="n">parenrRect</span><span class="p">.</span><span class="n">sizeDelta</span><span class="p">.</span><span class="n">x</span> <span class="p">*</span> <span class="n">xRatio</span><span class="p">;</span>
+              <span class="n">vector2</span><span class="p">.</span><span class="n">y</span> <span class="p">=</span> <span class="n">parenrRect</span><span class="p">.</span><span class="n">sizeDelta</span><span class="p">.</span><span class="n">y</span> <span class="p">*</span> <span class="n">yRatio</span><span class="p">;</span>
+  
+              <span class="n">transform</span><span class="p">.</span><span class="n">localPosition</span> <span class="p">=</span> <span class="n">vector2</span><span class="p">;</span>
+          <span class="p">}</span>
+      <span class="p">}</span>
+  
+      <span class="k">void</span> <span class="n">Update</span><span class="p">(){</span>
+          <span class="n">CalculatePosition</span><span class="p">();</span>
+      <span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<hr />
 </blockquote>
+
+<h2 id="war3小地图">War3小地图&nbsp;<a class="anchor" href="#war3小地图"><i class="small linkify icon"></i></a> </h2>
+
+<blockquote>
+<p><a href="https://sofuck.top/post/gl-drawing" title="GL绘图部分参考链接"><font color=#6A5ACD>GL绘图参考链接</font></a></p>
+
+<p>小地图：根据相机可视大小对应变化到小地图上小矩形的大小。</p>
+
+<ol>
+<li><p>得到相机可视区域</p>
+
+<ul>
+<li>找到相机四个角对应的世界位置
+
+<ul>
+<li>从相机四个角发出射线，射向地面</li>
+</ul></li>
+</ul></li>
+
+<li><p>将可视区域映射到小地图上(等比例映射)</p>
+
+<ul>
+<li>将对应的世界位置映射到小地图上
+
+<ul>
+<li>相对地形的位置 = 世界坐标 - 地形的位置</li>
+<li>映射比例 = 相对地形的位置 / 地形长宽</li>
+<li>相对小地图位置 = 小地图长宽 * 映射比例</li>
+</ul></li>
+</ul></li>
+
+<li><p>将位置画出来显示在小地图上</p>
+
+<ol>
+<li>根据点位置画直线</li>
+<li>根据比例画直线</li>
+</ol></li>
+</ol>
+
+<hr />
+
+<h3 id="cameraview">CameraView&nbsp;<a class="anchor" href="#cameraview"><i class="small linkify icon"></i></a> </h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="k">using</span> <span class="nn">UnityEngine</span><span class="p">;</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">CameraView</span> <span class="p">:</span> <span class="n">MonoBehaviour</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="n">Terrain</span> <span class="n">terrain</span><span class="p">;</span>
+
+    <span class="n">Vector3</span><span class="na">[]</span> <span class="n">rayPoint</span><span class="p">;</span><span class="c1">//存储所有射线
+</span><span class="c1"></span>
+    <span class="k">void</span> <span class="n">Start</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="n">rayPoint</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Vector3</span><span class="na">[4]</span><span class="p">;</span><span class="c1">//总共有四条射线，存入数组
+</span><span class="c1"></span>
+        <span class="c1">//初始化
+</span><span class="c1"></span>        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">rayPoint</span><span class="p">.</span><span class="n">Length</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
+        <span class="p">{</span>
+            <span class="n">rayPoint</span><span class="na">[i]</span> <span class="p">=</span> <span class="n">Vector3</span><span class="p">.</span><span class="n">zero</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+  
+  <span class="k">void</span> <span class="n">Update</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="c1">//从视图坐标系发出射线，范围只有0~1，方便找到相机四个角位置
+</span><span class="c1"></span>        <span class="n">Ray</span> <span class="n">zeroRay</span> <span class="p">=</span> <span class="n">Camera</span><span class="p">.</span><span class="n">main</span><span class="p">.</span><span class="n">ViewportPointToRay</span><span class="p">(</span><span class="n">Vector3</span><span class="p">.</span><span class="n">zero</span><span class="p">);</span>
+        <span class="n">Debug</span><span class="p">.</span><span class="n">DrawRay</span><span class="p">(</span><span class="n">zeroRay</span><span class="p">.</span><span class="n">origin</span><span class="p">,</span> <span class="n">zeroRay</span><span class="p">.</span><span class="n">direction</span><span class="p">,</span> <span class="n">Color</span><span class="p">.</span><span class="n">red</span><span class="p">);</span><span class="c1">//打印射线
+</span><span class="c1"></span>
+        <span class="n">Ray</span> <span class="n">rightRay</span> <span class="p">=</span> <span class="n">Camera</span><span class="p">.</span><span class="n">main</span><span class="p">.</span><span class="n">ViewportPointToRay</span><span class="p">(</span><span class="n">Vector3</span><span class="p">.</span><span class="n">right</span><span class="p">);</span>
+        <span class="n">Debug</span><span class="p">.</span><span class="n">DrawRay</span><span class="p">(</span><span class="n">rightRay</span><span class="p">.</span><span class="n">origin</span><span class="p">,</span> <span class="n">rightRay</span><span class="p">.</span><span class="n">direction</span><span class="p">,</span> <span class="n">Color</span><span class="p">.</span><span class="n">blue</span><span class="p">);</span>
+
+        <span class="n">Ray</span> <span class="n">upRightRay</span> <span class="p">=</span> <span class="n">Camera</span><span class="p">.</span><span class="n">main</span><span class="p">.</span><span class="n">ViewportPointToRay</span><span class="p">(</span><span class="n">Vector3</span><span class="p">.</span><span class="n">one</span><span class="p">);</span>
+        <span class="n">Debug</span><span class="p">.</span><span class="n">DrawRay</span><span class="p">(</span><span class="n">upRightRay</span><span class="p">.</span><span class="n">origin</span><span class="p">,</span> <span class="n">upRightRay</span><span class="p">.</span><span class="n">direction</span><span class="p">,</span> <span class="n">Color</span><span class="p">.</span><span class="n">green</span><span class="p">);</span>
+
+        <span class="n">Ray</span> <span class="n">upRay</span> <span class="p">=</span> <span class="n">Camera</span><span class="p">.</span><span class="n">main</span><span class="p">.</span><span class="n">ViewportPointToRay</span><span class="p">(</span><span class="n">Vector3</span><span class="p">.</span><span class="n">up</span><span class="p">);</span>
+        <span class="n">Debug</span><span class="p">.</span><span class="n">DrawRay</span><span class="p">(</span><span class="n">upRay</span><span class="p">.</span><span class="n">origin</span><span class="p">,</span> <span class="n">upRay</span><span class="p">.</span><span class="n">direction</span><span class="p">,</span> <span class="n">Color</span><span class="p">.</span><span class="n">cyan</span><span class="p">);</span>
+
+        <span class="n">RaycastHit</span><span class="p">(</span><span class="n">zeroRay</span><span class="p">,</span> <span class="n">rightRay</span><span class="p">,</span> <span class="n">upRightRay</span><span class="p">,</span> <span class="n">upRay</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="n">Vector2</span> <span class="n">GetRatio</span><span class="p">(</span><span class="kt">int</span> <span class="n">index</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">Vector2</span> <span class="n">resul</span> <span class="p">=</span> <span class="n">Vector2</span><span class="p">.</span><span class="n">zero</span><span class="p">;</span><span class="c1">//把映射比例存在Vector2中
+</span><span class="c1"></span>
+        <span class="c1">//防止index越界(范围永远是0~3)
+</span><span class="c1"></span>        <span class="n">index</span> <span class="p">=</span> <span class="n">index</span> <span class="p">%</span> <span class="n">rayPoint</span><span class="p">.</span><span class="n">Length</span><span class="p">;</span>
+
+        <span class="n">Vector3</span> <span class="n">localToTerrain</span> <span class="p">=</span> <span class="n">rayPoint</span><span class="na">[index]</span> <span class="p">-</span> <span class="n">terrain</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">position</span><span class="p">;</span>
+        
+        <span class="n">resul</span><span class="p">.</span><span class="n">x</span> <span class="p">=</span> <span class="n">localToTerrain</span><span class="p">.</span><span class="n">x</span> <span class="p">/</span> <span class="n">terrain</span><span class="p">.</span><span class="n">terrainData</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+        <span class="n">resul</span><span class="p">.</span><span class="n">y</span> <span class="p">=</span> <span class="n">localToTerrain</span><span class="p">.</span><span class="n">z</span> <span class="p">/</span> <span class="n">terrain</span><span class="p">.</span><span class="n">terrainData</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">z</span><span class="p">;</span>
+
+        <span class="k">return</span> <span class="n">resul</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">void</span> <span class="n">RaycastHit</span><span class="p">(</span><span class="n">Ray</span> <span class="n">zeroRay</span><span class="p">,</span> <span class="n">Ray</span> <span class="n">rightRay</span><span class="p">,</span> <span class="n">Ray</span> <span class="n">upRightRay</span><span class="p">,</span> <span class="n">Ray</span> <span class="n">upRay</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">RaycastHit</span> <span class="n">hitOut</span><span class="p">;</span>
+
+        <span class="kt">float</span> <span class="n">distance</span> <span class="p">=</span> <span class="m">1000</span><span class="p">;</span><span class="c1">//射线射向地面最长距离
+</span><span class="c1"></span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">Physics</span><span class="p">.</span><span class="n">Raycast</span><span class="p">(</span><span class="n">zeroRay</span><span class="p">,</span> <span class="k">out</span> <span class="n">hitOut</span><span class="p">,</span> <span class="n">distance</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="n">rayPoint</span><span class="na">[0]</span> <span class="p">=</span> <span class="n">hitOut</span><span class="p">.</span><span class="n">point</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">Physics</span><span class="p">.</span><span class="n">Raycast</span><span class="p">(</span><span class="n">rightRay</span><span class="p">,</span> <span class="k">out</span> <span class="n">hitOut</span><span class="p">,</span> <span class="n">distance</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="n">rayPoint</span><span class="na">[1]</span> <span class="p">=</span> <span class="n">hitOut</span><span class="p">.</span><span class="n">point</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">Physics</span><span class="p">.</span><span class="n">Raycast</span><span class="p">(</span><span class="n">upRightRay</span><span class="p">,</span> <span class="k">out</span> <span class="n">hitOut</span><span class="p">,</span> <span class="n">distance</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="n">rayPoint</span><span class="na">[2]</span> <span class="p">=</span> <span class="n">hitOut</span><span class="p">.</span><span class="n">point</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">Physics</span><span class="p">.</span><span class="n">Raycast</span><span class="p">(</span><span class="n">upRay</span><span class="p">,</span> <span class="k">out</span> <span class="n">hitOut</span><span class="p">,</span> <span class="n">distance</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="n">rayPoint</span><span class="na">[3]</span> <span class="p">=</span> <span class="n">hitOut</span><span class="p">.</span><span class="n">point</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<hr />
+
+<h3 id="minimapview">MiniMapView&nbsp;<a class="anchor" href="#minimapview"><i class="small linkify icon"></i></a> </h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="k">using</span> <span class="nn">UnityEngine</span><span class="p">;</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">MiniMapView</span> <span class="p">:</span> <span class="n">MonoBehaviour</span> <span class="p">{</span>
+
+    <span class="n">CameraView</span> <span class="n">cameraView</span><span class="p">;</span><span class="c1">// CameraView脚本
+</span><span class="c1"></span>
+    <span class="n">RectTransform</span> <span class="n">rectTrans</span><span class="p">;</span>
+
+    <span class="k">void</span> <span class="n">Start</span><span class="p">(){</span>
+
+        <span class="n">cameraView</span> <span class="p">=</span> <span class="n">Camera</span><span class="p">.</span><span class="n">main</span><span class="p">.</span><span class="n">GetComponent</span><span class="p">&lt;</span><span class="n">CameraView</span><span class="p">&gt;();</span><span class="c1">//获取Camera上的CameraView脚本
+</span><span class="c1"></span>
+        <span class="n">rectTrans</span> <span class="p">=</span> <span class="n">transform</span><span class="p">.</span><span class="n">GetComponent</span><span class="p">&lt;</span><span class="n">RectTransform</span><span class="p">&gt;();</span>
+    <span class="p">}</span>
+
+    <span class="k">void</span> <span class="n">Update</span> <span class="p">()</span> <span class="p">{</span>
+
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="n">Vector2</span> <span class="n">CaculatePosition</span><span class="p">(</span><span class="kt">int</span> <span class="n">index</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">Vector2</span> <span class="n">result</span> <span class="p">=</span> <span class="n">Vector2</span><span class="p">.</span><span class="n">zero</span><span class="p">;</span>
+
+        <span class="n">Vector2</span> <span class="n">tmpRate</span> <span class="p">=</span> <span class="n">cameraView</span><span class="p">.</span><span class="n">GetRatio</span><span class="p">(</span><span class="n">index</span><span class="p">);</span>
+
+        <span class="n">result</span><span class="p">.</span><span class="n">x</span> <span class="p">=</span> <span class="n">rectTrans</span><span class="p">.</span><span class="n">sizeDelta</span><span class="p">.</span><span class="n">x</span> <span class="p">*</span> <span class="n">tmpRate</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+        <span class="n">result</span><span class="p">.</span><span class="n">y</span> <span class="p">=</span> <span class="n">rectTrans</span><span class="p">.</span><span class="n">sizeDelta</span><span class="p">.</span><span class="n">y</span> <span class="p">*</span> <span class="n">tmpRate</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+
+        <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">static</span> <span class="n">Material</span> <span class="n">lineMaterial</span><span class="p">;</span>
+    <span class="k">static</span> <span class="k">void</span> <span class="n">CreateLineMaterial</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(!</span><span class="n">lineMaterial</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">Shader</span> <span class="n">shader</span> <span class="p">=</span> <span class="n">Shader</span><span class="p">.</span><span class="n">Find</span><span class="p">(</span><span class="s">&#34;Hidden/Internal-Colored&#34;</span><span class="p">);</span>
+            <span class="n">lineMaterial</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Material</span><span class="p">(</span><span class="n">shader</span><span class="p">);</span>
+            <span class="n">lineMaterial</span><span class="p">.</span><span class="n">hideFlags</span> <span class="p">=</span> <span class="n">HideFlags</span><span class="p">.</span><span class="n">HideAndDontSave</span><span class="p">;</span>
+            <span class="c1">// Turn on alpha blending
+</span><span class="c1"></span>            <span class="n">lineMaterial</span><span class="p">.</span><span class="n">SetInt</span><span class="p">(</span><span class="s">&#34;_SrcBlend&#34;</span><span class="p">,</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">UnityEngine</span><span class="p">.</span><span class="n">Rendering</span><span class="p">.</span><span class="n">BlendMode</span><span class="p">.</span><span class="n">SrcAlpha</span><span class="p">);</span>
+            <span class="n">lineMaterial</span><span class="p">.</span><span class="n">SetInt</span><span class="p">(</span><span class="s">&#34;_DstBlend&#34;</span><span class="p">,</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">UnityEngine</span><span class="p">.</span><span class="n">Rendering</span><span class="p">.</span><span class="n">BlendMode</span><span class="p">.</span><span class="n">OneMinusSrcAlpha</span><span class="p">);</span>
+            <span class="c1">// Turn backface culling off
+</span><span class="c1"></span>            <span class="n">lineMaterial</span><span class="p">.</span><span class="n">SetInt</span><span class="p">(</span><span class="s">&#34;_Cull&#34;</span><span class="p">,</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">UnityEngine</span><span class="p">.</span><span class="n">Rendering</span><span class="p">.</span><span class="n">CullMode</span><span class="p">.</span><span class="n">Off</span><span class="p">);</span>
+            <span class="c1">// Turn off depth writes
+</span><span class="c1"></span>            <span class="n">lineMaterial</span><span class="p">.</span><span class="n">SetInt</span><span class="p">(</span><span class="s">&#34;_ZWrite&#34;</span><span class="p">,</span> <span class="m">0</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">void</span> <span class="n">OnRenderObject</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">CreateLineMaterial</span><span class="p">();</span>
+
+        <span class="n">lineMaterial</span><span class="p">.</span><span class="n">SetPass</span><span class="p">(</span><span class="m">0</span><span class="p">);</span>
+        
+        <span class="n">GL</span><span class="p">.</span><span class="n">Begin</span><span class="p">(</span><span class="n">GL</span><span class="p">.</span><span class="n">LINES</span><span class="p">);</span>
+
+        <span class="n">GL</span><span class="p">.</span><span class="n">MultMatrix</span><span class="p">(</span><span class="n">transform</span><span class="p">.</span><span class="n">localToWorldMatrix</span><span class="p">);</span>
+
+        <span class="n">GL</span><span class="p">.</span><span class="n">Color</span><span class="p">(</span><span class="n">Color</span><span class="p">.</span><span class="n">red</span><span class="p">);</span>
+
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">1</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="m">5</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
+        <span class="p">{</span>
+            <span class="n">Vector2</span> <span class="n">tmpFront</span> <span class="p">=</span> <span class="n">CaculatePosition</span><span class="p">(</span><span class="n">i</span> <span class="p">-</span> <span class="m">1</span><span class="p">);</span>
+            <span class="n">Vector2</span> <span class="n">tmpBack</span> <span class="p">=</span> <span class="n">CaculatePosition</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+
+            <span class="n">GL</span><span class="p">.</span><span class="n">Vertex3</span><span class="p">(</span><span class="n">tmpFront</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="n">tmpFront</span><span class="p">.</span><span class="n">y</span><span class="p">,</span> <span class="m">0</span><span class="p">);</span>
+            <span class="n">GL</span><span class="p">.</span><span class="n">Vertex3</span><span class="p">(</span><span class="n">tmpBack</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="n">tmpBack</span><span class="p">.</span><span class="n">y</span><span class="p">,</span> <span class="m">0</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="n">GL</span><span class="p">.</span><span class="n">End</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div></blockquote>
 
 			</article>
 		</section>
@@ -1046,6 +1552,8 @@ var bodyBgSwitchIndex = 0;var gradients = [
 
 <a class="ui label" href="/tags/animator" title="animator">animator</a>
 
+<a class="ui label" href="/tags/attackrange" title="attackrange">attackrange</a>
+
 <a class="ui label" href="/tags/audio" title="audio">audio</a>
 
 <a class="ui label" href="/tags/c" title="c#">c#</a>
@@ -1055,6 +1563,8 @@ var bodyBgSwitchIndex = 0;var gradients = [
 <a class="ui label" href="/tags/english" title="english">english</a>
 
 <a class="ui label" href="/tags/fps" title="fps">fps</a>
+
+<a class="ui label" href="/tags/fsm" title="fsm">fsm</a>
 
 <a class="ui label" href="/tags/gl" title="gl">gl</a>
 
