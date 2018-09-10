@@ -37,6 +37,10 @@ A = Enemy.position - Player.position（玩家与敌人的距离是A）
       
       <guid>/post/finite-state-machine/</guid>
       <description> 有限状态机（Finite-state machine,FSM），又称有限状态自动机，简称状态机，是表示有限个状态以及在这些状态之间的转移和动作等行为的数学模型。
+动画：
+ 关节动画：多个物体组成一个整体，物体之间有间隙。  MeshFilter：要显示的模型顶点数据。 MeshRender：将MeshFilter筛选出来的顶点数据传递给GPU。  蒙皮动画：由顶点将骨骼包围成一个无缝整体。  SkinMeshRender：显示那个模型，将模型文件传给GPU。  顶点动画：对模型的顶点位置变化进行制作动画。  状态机动画：
+ Generic：非人形动画 Humanoid：人形动画  通常模型一个fbx，动画一个fbx（人形动画是通用）。
+通常为原地动画，代码控制位移（动画选项里可以禁止位移）。
  </description>
     </item>
     
