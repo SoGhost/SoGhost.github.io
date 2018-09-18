@@ -2018,6 +2018,16 @@ var bodyBgSwitchIndex = 0;var gradients = [
 </span><span class="lnt">19
 </span><span class="lnt">20
 </span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-c#" data-lang="c#"><span class="k">using</span> <span class="nn">UnityEngine</span><span class="p">;</span>
@@ -2027,15 +2037,25 @@ var bodyBgSwitchIndex = 0;var gradients = [
 </span><span class="c1">/// &lt;/summary&gt;
 </span><span class="c1"></span><span class="k">public</span> <span class="k">class</span> <span class="nc">Main</span> <span class="p">:</span> <span class="n">MonoBehaviour</span>
 <span class="p">{</span>
+    <span class="c1">//可以在Main里实例化单例
+</span><span class="c1"></span>    <span class="k">public</span> <span class="k">static</span> <span class="n">Main</span> <span class="n">Instance</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="n">UIManager</span> <span class="n">uiManager</span><span class="p">;</span>
+
     <span class="k">void</span> <span class="n">Awake</span><span class="p">()</span>
     <span class="p">{</span>
-        <span class="n">gameObject</span><span class="p">.</span><span class="n">AddComponent</span><span class="p">&lt;</span><span class="n">UIManager</span><span class="p">&gt;();</span>
-
+        <span class="c1">// 1. 可以找到 uiManager
+</span><span class="c1"></span>        <span class="n">uiManager</span> <span class="p">=</span> <span class="n">gameObject</span><span class="p">.</span><span class="n">AddComponent</span><span class="p">&lt;</span><span class="n">UIManager</span><span class="p">&gt;();</span>
+        <span class="c1">// 2. 同样可以找到 uiManager 调用里面方法
+</span><span class="c1"></span>        <span class="c1">// uiManager = Main.Instance.uiManager.methods;
+</span><span class="c1"></span>
         <span class="n">gameObject</span><span class="p">.</span><span class="n">AddComponent</span><span class="p">&lt;</span><span class="n">WWWManager</span><span class="p">&gt;();</span>
 
         <span class="n">gameObject</span><span class="p">.</span><span class="n">AddComponent</span><span class="p">&lt;</span><span class="n">AudioManager</span><span class="p">&gt;();</span>
 
         <span class="n">gameObject</span><span class="p">.</span><span class="n">AddComponent</span><span class="p">&lt;</span><span class="n">NPCManager</span><span class="p">&gt;();</span>
+
+        
 
         <span class="c1">//只是实例化一次，跨场景也不销毁
 </span><span class="c1"></span>        <span class="n">DontDestroyOnLoad</span><span class="p">(</span><span class="n">gameObject</span><span class="p">);</span>
