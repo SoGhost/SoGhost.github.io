@@ -15,19 +15,19 @@ body, body.pushable {
 }
 
 </style><title>
-
-Category | c#
-
+相机和EasyTouch封装——游戏框架-09
 </title><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<meta name="author" content="So Serious" />
-	<meta name="description" content="Do your best." />
+	<meta name="description" content="相机跟随
+ 当Camer的Tag为MainCamera时，它就是Camera.main。
+ " />
 <meta name="generator" content="Hugo 0.48" />
 
 <link rel="shortcut icon" href="/img/PY-Blog.ico">
 
-<link rel="canonical" href="/categories/c/" />
+<link rel="canonical" href="/post/game-frame-09/" />
 <link rel="alternative" href="/index.xml" title="PY-&gt; Blog" type="application/atom+xml"/>
 <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet"> 
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
@@ -547,22 +547,16 @@ var bodyBgSwitchIndex = 0;var gradients = [
 			<i class="inverted big link cubes icon" title="所有类别"></i>
 		</a>
     </div>
-	
-	<div class="item">
-		
-		<i class="disabled inverted big chevron circle left icon" title="前一页"></i>
-  	
-  </div>
-	<div class="item">	
-		<i class="disabled inverted big chevron circle right icon" title="后一页"></i>
-		
+	<div class="ui container tablet computer only grid">
+		<div class="item" onClick="$('.ui.sidebar').sidebar('setting', 'transition', 'overlay').sidebar('toggle');">
+			<i class="inverted big link sidebar icon" title="Show Sidebar"></i>
+		</div>
 	</div>
 	
 </nav>
 
 <div class="ui centered grid">
-	<div class="fifteen wide mobile fifteen wide tablet four wide computer column">
-		<div class="ui inverted accordion">
+	<div class="sixteen wide mobile only column"><div class="ui inverted accordion">
 	<div id="header" class="ui inverted segment column box">
 		<header id="author" class="ui top attached center aligned inverted segment"><div class="ui small circular image">
 	<img src="/img/avatar.png">
@@ -572,10 +566,10 @@ var bodyBgSwitchIndex = 0;var gradients = [
 </h3>
 
 </header>
-		<div class="active title header-title"><div id="tag-category-pop" class="ui red right corner label">		
-				<i class="hand point icon up"title="点击弹出标签和分类"></i>		
+		<div class=" title header-title"><div id="tag-category-pop" class="ui red right corner label">		
+				<i class="hand point icon down"title="点击弹出标签和分类"></i>		
 			</div></div>
-		<div id="tag-category" class="active content"><section class="ui attached center aligned inverted segment dream-tags none flexbox">
+		<div id="tag-category" class=" content"><section class="ui attached center aligned inverted segment dream-tags none flexbox">
 <a class="ui label" href="/tags/2d" title="2d">2d</a>
 
 <a class="ui label" href="/tags/ae" title="ae">ae</a>
@@ -996,52 +990,112 @@ var bodyBgSwitchIndex = 0;var gradients = [
 
 <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=200 height=52 src="//music.163.com/outchain/player?type=0&id=65781201&auto=0&height=32"></iframe></footer>
 	</div>
-</div>
-	</div>
-	<div class="fifteen wide mobile fifteen wide tablet eleven wide computer column post-list">
-		<div class="cards row box">
+</div></div>
+	<div class="sixteen wide mobile fifteen wide tablet twelve wide computer column post-list">
+		<section class="ui secondary top attached black segment post-head">
+			<h1 class="post-title">
+				相机和EasyTouch封装——游戏框架-09
+			</h1>
+			<div class="sub header">
+					<div><span><i class="calendar outline icon"></i>Sep 18, 2018</span></div><div><span class="disqusComment"><i class="comment outline icon"></i><a href="/post/game-frame-09/#disqus_thread" class="disqus-comment-count" data-disqus-identifier="a897b435adce9fa3be486046cb9e9f0f"></a></span></div>
+					<div><span><i class="clock outline icon"></i>1 min read</span></div>
+					<div><span><i class="angle double up icon"></i>更新于 Sep 18, 2018</span></div>
+			</div>
+			<hr>
 			
-	<article class="blog-card none flexbox" style="background-image: url(/img/default6.jpg)">
-<img class="image" src="/img/default6.jpg"></img>
-<div class="title-content twemoji">
-	<h3><a class="title" href=/post/c-sharp-notes-02/>C# _语言基础</a></h3>
-	<div class="intro twemoji"></div>
-</div>
-<div class="utility-info">
-	<ul class="utility-list">
-		
-		<div><i class="comment icon"></i><span class="disqus-comment-count" data-disqus-identifier="7e3e994e3a3b1ce6000c679152658a46"></span></div>
-		
-		<div><span><i class="calendar icon"></i>Jul 27, 2018</span></div>
-		<div><span><i class="clock icon"></i>8 min read</span></div>
-	</ul>
-</div>
-<div class="color-overlay"></div>
-</article>
+			<article class="post-content twemoji">
+				<p><strong>相机跟随</strong></p>
 
+<blockquote>
+<p>当Camer的Tag为MainCamera时，它就是Camera.main。</p>
+</blockquote>
+
+			</article>
+		</section>
+		<section class="ui secondary attached segment dream-tags">
+<a class="ui label" href="/tags/2d" title="2d">2d</a>
+
+<a class="ui label" href="/tags/ae" title="ae">ae</a>
+
+<a class="ui label" href="/tags/ai" title="ai">ai</a>
+
+<a class="ui label" href="/tags/animator" title="animator">animator</a>
+
+<a class="ui label" href="/tags/attackrange" title="attackrange">attackrange</a>
+
+<a class="ui label" href="/tags/audio" title="audio">audio</a>
+
+<a class="ui label" href="/tags/c" title="c#">c#</a>
+
+<a class="ui label" href="/tags/effect" title="effect">effect</a>
+
+<a class="ui label" href="/tags/english" title="english">english</a>
+
+<a class="ui label" href="/tags/fps" title="fps">fps</a>
+
+<a class="ui label" href="/tags/fsm" title="fsm">fsm</a>
+
+<a class="ui label" href="/tags/gl" title="gl">gl</a>
+
+<a class="ui label" href="/tags/knowledge" title="knowledge">knowledge</a>
+
+<a class="ui label" href="/tags/notes" title="notes">notes</a>
+
+<a class="ui label" href="/tags/rpg" title="rpg">rpg</a>
+
+<a class="ui label" href="/tags/tilemap" title="tilemap">tilemap</a>
+
+<a class="ui label" href="/tags/ui" title="ui">ui</a>
+
+<a class="ui label" href="/tags/unity" title="unity">unity</a>
+
+<a class="ui label" href="/tags/word" title="word">word</a>
+
+<a class="ui label" href="/tags/word-book" title="word-book">word-book</a>
+
+<a class="ui label" href="/tags/%E6%8A%80%E5%B7%A7" title="技巧">技巧</a>
+
+<a class="ui label" href="/tags/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93" title="数据传输">数据传输</a>
+
+
+		</section><section class="ui secondary  attached segment share row box"><div class="author"><img class="avatar" src="/img/avatar.png">
 	
-<article class="blog-card none flexbox" style="background-image: url(/img/bg2.jpg)">
-<img class="image" src="/img/bg2.jpg"></img>
-<div class="title-content twemoji">
-	<h3><a class="title" href=/post/c-sharp-notes-01/>C# _基本操作</a></h3>
-	<div class="intro twemoji"></div>
 </div>
-<div class="utility-info">
-	<ul class="utility-list">
-		
-		<div><i class="comment icon"></i><span class="disqus-comment-count" data-disqus-identifier="382ef56c43ee3455d52d11731175e6dc"></span></div>
-		
-		<div><span><i class="calendar icon"></i>Jul 24, 2018</span></div>
-		<div><span><i class="clock icon"></i>11 min read</span></div>
-	</ul>
+<div class="info grow flexbox">
+	<p class="name">So Serious</p>
+	<p class="desc">Do your best.</p>		
 </div>
-<div class="color-overlay"></div>
-</article>
+<section class="buttons row box">
+	<div class="facebook none flexbox" href="#" onclick="window.open(
+			'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),
+			'facebook-share-dialog',
+			'width=626,height=436'); return false;">
+		<button class="ui facebook button"><i class="facebook icon"></i>Share</button>
+	</div>
+	<div class="twitter none flexbox" onclick="window.open('https://twitter.com/intent/tweet?text=Read &quot;相机和EasyTouch封装——游戏框架-09  \/post\/game-frame-09\/','_self')">
+		<button class="ui twitter button"><i class="twitter icon"></i>Tweet</button>
+	</div>
+</section></section>
+		<section class="ui secondary attached segment copyright">
+			
+		</section>
+		<div class="ui secondary bottom attached stacked segment disqus"><div id="disqus_thread"></div>
+<script>
+	var disqus_config = function () {
+		this.page.url = '\/post\/game-frame-09\/';
+		this.page.identifier = 'a897b435adce9fa3be486046cb9e9f0f';
+	};
+	(function() {
+   	var d = document, s = d.createElement('script');
+   	s.src = 'https://' + 'So Serious' + '.disqus.com/embed.js';
+   	s.setAttribute('data-timestamp', +new Date());
+   	(d.head || d.body).appendChild(s);
+	})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
-	
-
-
-		</div>
+</div>
+		
 	</div>
 </div>
 
