@@ -17,7 +17,7 @@
       <pubDate>Fri, 26 Oct 2018 21:38:20 +0800</pubDate>
       
       <guid>/post/android/beginner-android/</guid>
-      <description> 控件属性 </description>
+      <description> 控件属性 1 2 3 4 5 6 7  &amp;lt;LinearLayout //线性布局 android:id=&amp;#34;@+id/11_1&amp;#34; //控件id android:layout_height=&amp;#34;match_parent&amp;#34; //高度，match_parent根据父物体改变 android:layout_width=&amp;#34;200dp&amp;#34; //控件宽度，由dp计量自动调整相对大小 android:orientation=&amp;#34;vertical&amp;#34; //方向 android:background=&amp;#34;#449099&amp;#34; //背景颜色 &amp;gt;&amp;lt;/LinearLayout&amp;gt;  </description>
     </item>
     
     <item>
