@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/post/android/beginner-android/</loc>
+    <lastmod>2018-10-26T21:38:20+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/post/game-frame-09/</loc>
     <lastmod>2018-09-18T14:18:46+08:00</lastmod>
   </url>
@@ -221,6 +226,12 @@
   </url>
   
   <url>
+    <loc>/tags/android/</loc>
+    <lastmod>2018-10-26T21:38:20+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/tags/animator/</loc>
     <lastmod>2018-08-09T14:57:50+08:00</lastmod>
     <priority>0</priority>
@@ -330,7 +341,7 @@
   
   <url>
     <loc>/</loc>
-    <lastmod>2018-09-18T14:18:46+08:00</lastmod>
+    <lastmod>2018-10-26T21:38:20+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -342,7 +353,7 @@
   
   <url>
     <loc>/post/</loc>
-    <lastmod>2018-09-18T14:18:46+08:00</lastmod>
+    <lastmod>2018-10-26T21:38:20+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -409,6 +420,12 @@
   <url>
     <loc>/tags/word-book/</loc>
     <lastmod>2018-07-20T14:48:20+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/%E5%AE%89%E5%8D%93/</loc>
+    <lastmod>2018-10-26T21:38:20+08:00</lastmod>
     <priority>0</priority>
   </url>
   
