@@ -20,7 +20,8 @@ Beginner
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<meta name="author" content="So Serious" />
-	<meta name="description" content=" 控件属性 1 2 3 4 5 6 7  &amp;lt;LinearLayout //线性布局 android:id=&amp;#34;@&#43;id/11_1&amp;#34; //控件id android:layout_height=&amp;#34;match_parent&amp;#34; //高度，match_parent根据父物体改变 android:layout_width=&amp;#34;200dp&amp;#34; //控件宽度，由dp计量自动调整相对大小 android:orientation=&amp;#34;vertical&amp;#34; //方向 android:background=&amp;#34;#449099&amp;#34; //背景颜色 &amp;gt;&amp;lt;/LinearLayout&amp;gt;  " />
+	<meta name="description" content="控件布局 1.线性布局(LinearLayout)  android:orientation=&amp;ldquo;vertical&amp;rdquo; 线性布局才会用到的布局属性
+ 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29  &amp;lt;LinearLayout android:id=&amp;#34;@&#43;id/11_1&amp;#34; //控件id android:layout_height=&amp;#34;match_parent&amp;#34; //高度，match_parent匹配父物体位置而自动改变位置 android:layout_width=&amp;#34;200dp&amp;#34; //控件宽度，由dp计量自动调整相对大小 android:orientation=&amp;#34;vertical&amp;#34; //方向 android:background=&amp;#34;#449099&amp;#34; //背景颜色 android:gravity=&amp;#34;Top&amp;#34; //内部元素的对齐方向 Top左上角 center_horizontal水平居中... android:padding=&amp;#34;20dp&amp;#34; //本控件对外控件的间距 //paddingLeft Right Top Bottom各个方向都可以单独设置间距 //父物体方向设置为horizontal, match_parent子控件就会纵向自动排列 //layout_margin设置的是控件之间的间距&amp;gt; &amp;lt;View //View是所有控件的父物体（自动成为其父物体，可以改变子控件与其间距等等） android:layout_height=&amp;#34;match_parent&amp;#34; android:layout_width=&amp;#34;match_parent&amp;#34; android:background=&amp;#34;#FFCC99&amp;#34;/&amp;gt; &amp;lt;View //让两个控件对半分，设置宽度为0dp，增加属性layout_weight权重为1，子控件就会对半分 android:layout_width=&amp;#34;190dp&amp;#34; android:layout_height=&amp;#34;match_parent&amp;#34; android:layout_weight=&amp;#34;1&amp;#34; //权重，按照父控件剩下的位置，所有子控件根据权重大小分配 android:background=&amp;#34;#dd0&amp;#34; /&amp;gt; &amp;lt;View android:layout_width=&amp;#34;190dp&amp;#34; android:layout_height=&amp;#34;match_parent&amp;#34; android:layout_weight=&amp;#34;1&amp;#34; //权重 android:background=&amp;#34;#000000&amp;#34; /&amp;gt; &amp;lt;/LinearLayout&amp;gt;   2." />
 <meta name="generator" content="Hugo 0.49.2" />
 
 <link rel="shortcut icon" href="/img/PY-Blog.ico">
@@ -1035,7 +1036,15 @@ var bodyBgSwitchIndex = 0;var gradients = [
 			</div>
 			<hr><div class="toc"><nav id="TableOfContents">
 <ul>
-<li><a href="#控件属性">控件属性</a></li>
+<li><a href="#控件布局">控件布局</a>
+<ul>
+<li><a href="#1-线性布局-linearlayout">1.线性布局(LinearLayout)</a></li>
+<li><a href="#2-相对布局-relativelayout">2.相对布局(RelativeLayout)</a></li>
+</ul></li>
+<li><a href="#控件">控件</a>
+<ul>
+<li><a href="#textview">TextView</a></li>
+</ul></li>
 </ul>
 </nav></div>
 			
@@ -1043,27 +1052,205 @@ var bodyBgSwitchIndex = 0;var gradients = [
 			<article class="post-content twemoji">
 				
 
-<h1 id="控件属性">控件属性&nbsp;<a class="anchor" href="#控件属性"><i class="small linkify icon"></i></a> </h1>
+<h1 id="控件布局">控件布局&nbsp;<a class="anchor" href="#控件布局"><i class="small linkify icon"></i></a> </h1>
+
+<h2 id="1-线性布局-linearlayout">1.线性布局(LinearLayout)&nbsp;<a class="anchor" href="#1-线性布局-linearlayout"><i class="small linkify icon"></i></a> </h2>
+
+<blockquote>
+<p>android:orientation=&ldquo;vertical&rdquo; 线性布局才会用到的布局属性</p>
+</blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml">    <span class="nt">&lt;LinearLayout</span> <span class="err">//线性布局</span>
-        <span class="na">android:id=</span><span class="s">&#34;@+id/11_1&#34;</span> <span class="err">//控件id</span>
-        <span class="na">android:layout_height=</span><span class="s">&#34;match_parent&#34;</span> <span class="err">//高度，match_parent根据父物体改变</span>
-        <span class="na">android:layout_width=</span><span class="s">&#34;200dp&#34;</span> <span class="err">//控件宽度，由dp计量自动调整相对大小</span>
-        <span class="na">android:orientation=</span><span class="s">&#34;vertical&#34;</span> <span class="err">//方向</span>
-        <span class="na">android:background=</span><span class="s">&#34;#449099&#34;</span> <span class="err">//背景颜色</span>
-    <span class="nt">&gt;&lt;/LinearLayout&gt;</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;LinearLayout</span> 
+    <span class="na">android:id=</span><span class="s">&#34;@+id/11_1&#34;</span> <span class="err">//控件id</span>
+    <span class="na">android:layout_height=</span><span class="s">&#34;match_parent&#34;</span> <span class="err">//高度，match_parent匹配父物体位置而自动改变位置</span>
+    <span class="na">android:layout_width=</span><span class="s">&#34;200dp&#34;</span> <span class="err">//控件宽度，由dp计量自动调整相对大小</span>
+    <span class="na">android:orientation=</span><span class="s">&#34;vertical&#34;</span> <span class="err">//方向</span>
+    <span class="na">android:background=</span><span class="s">&#34;#449099&#34;</span> <span class="err">//背景颜色</span>
+    <span class="na">android:gravity=</span><span class="s">&#34;Top&#34;</span> <span class="err">//内部元素的对齐方向</span> <span class="err">Top左上角</span> <span class="err">center_horizontal水平居中...</span>
+    <span class="na">android:padding=</span><span class="s">&#34;20dp&#34;</span> 
+  	<span class="err">//本控件对外控件的间距</span>
+  	<span class="err">//paddingLeft</span> <span class="err">Right</span> <span class="err">Top</span> <span class="err">Bottom各个方向都可以单独设置间距</span>
+  	<span class="err">//父物体方向设置为horizontal,</span> <span class="err">match_parent子控件就会纵向自动排列</span>
+  	<span class="err">//layout_margin设置的是控件之间的间距</span><span class="nt">&gt;</span>
+
+<span class="nt">&lt;View</span> <span class="err">//View是所有控件的父物体（自动成为其父物体，可以改变子控件与其间距等等）</span>
+    <span class="na">android:layout_height=</span><span class="s">&#34;match_parent&#34;</span>
+    <span class="na">android:layout_width=</span><span class="s">&#34;match_parent&#34;</span>
+    <span class="na">android:background=</span><span class="s">&#34;#FFCC99&#34;</span><span class="nt">/&gt;</span>
+
+<span class="nt">&lt;View</span> <span class="err">//让两个控件对半分，设置宽度为0dp，增加属性layout_weight权重为1，子控件就会对半分</span>
+    <span class="na">android:layout_width=</span><span class="s">&#34;190dp&#34;</span>
+    <span class="na">android:layout_height=</span><span class="s">&#34;match_parent&#34;</span>
+    <span class="na">android:layout_weight=</span><span class="s">&#34;1&#34;</span> <span class="err">//权重，按照父控件剩下的位置，所有子控件根据权重大小分配</span>
+    <span class="na">android:background=</span><span class="s">&#34;#dd0&#34;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;View</span>
+    <span class="na">android:layout_width=</span><span class="s">&#34;190dp&#34;</span>
+    <span class="na">android:layout_height=</span><span class="s">&#34;match_parent&#34;</span>
+    <span class="na">android:layout_weight=</span><span class="s">&#34;1&#34;</span> <span class="err">//权重</span>
+    <span class="na">android:background=</span><span class="s">&#34;#000000&#34;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/LinearLayout&gt;</span></code></pre></td></tr></table>
 </div>
 </div>
+<hr />
+
+<h2 id="2-相对布局-relativelayout">2.相对布局(RelativeLayout)&nbsp;<a class="anchor" href="#2-相对布局-relativelayout"><i class="small linkify icon"></i></a> </h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-xml-dtd" data-lang="xml-dtd"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml-dtd" data-lang="xml-dtd">&lt;RelativeLayout xmlns:android=&#34;http://schemas.android.com/apk/res/android&#34;
+    android:layout_width=&#34;match_parent&#34;
+    android:layout_height=&#34;match_parent&#34;&gt;
+
+    &lt;View
+        android:id=&#34;@+id/line1&#34;
+        android:layout_width=&#34;100dp&#34;
+        android:layout_height=&#34;100dp&#34;
+        android:background=&#34;#cc00&#34;
+        android:layout_alignParentBottom=&#34;true&#34; //相对父物体底部对齐
+        android:layout_alignParentRight=&#34;true&#34; //底部对齐后再右侧对齐，即可达到右下角对齐
+        android:layout_toRightOf=&#34;@id/SomeWidget&#34; //移动到某个控件的右边
+        android:layout_below=&#34;@id/SomeWidget&#34; //移动到某个控件的下边/&gt;
+
+&lt;/RelativeLayout&gt;</code></pre></td></tr></table>
+</div>
+</div>
+<h1 id="控件">控件&nbsp;<a class="anchor" href="#控件"><i class="small linkify icon"></i></a> </h1>
+
+<h2 id="textview">TextView&nbsp;<a class="anchor" href="#textview"><i class="small linkify icon"></i></a> </h2>
+
+<blockquote>
+<p>常用效果:</p>
+
+<ol>
+<li>文字大小、颜色</li>
+<li>显示不下 使用&hellip;</li>
+<li>文字 + icon（图文混排）</li>
+<li>中划线、下划线</li>
+<li>跑马灯</li>
+</ol>
+</blockquote>
+
+<hr />
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;LinearLayout</span> <span class="na">xmlns:android=</span><span class="s">&#34;http://schemas.android.com/apk/res/android&#34;</span>
+    <span class="na">android:layout_width=</span><span class="s">&#34;match_parent&#34;</span>
+    <span class="na">android:layout_height=</span><span class="s">&#34;match_parent&#34;</span>
+    <span class="na">android:orientation=</span><span class="s">&#34;vertical&#34;</span>
+    <span class="na">android:padding=</span><span class="s">&#34;20dp&#34;</span><span class="nt">&gt;</span>
+    
+    <span class="nt">&lt;TextView</span>
+        <span class="na">android:id=</span><span class="s">&#34;@+id/text_2&#34;</span>
+        <span class="na">android:layout_width=</span><span class="s">&#34;100dp&#34;</span>
+        <span class="na">android:layout_height=</span><span class="s">&#34;wrap_content&#34;</span>
+        <span class="na">android:maxLines=</span><span class="s">&#34;1&#34;</span> <span class="err">//文字最大行数</span>
+        <span class="na">android:ellipsize=</span><span class="s">&#34;end&#34;</span> <span class="err">//当文字超出范围</span> <span class="err">会在结尾显示...</span>
+        <span class="na">android:text=</span><span class="s">&#34;第二蛤蟆你好好么654987!&#34;</span>
+        <span class="na">android:drawableRight=</span><span class="s">&#34;@drawable/ic_launcher_background&#34;</span> <span class="err">//图文混排，在文字右侧添加图片</span>
+        <span class="na">android:textColor=</span><span class="s">&#34;#000000&#34;</span>
+        <span class="na">android:textSize=</span><span class="s">&#34;24sp&#34;</span>
+        <span class="na">android:layout_marginTop=</span><span class="s">&#34;10dp&#34;</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;TextView</span>
+        <span class="na">android:id=</span><span class="s">&#34;@+id/text_4&#34;</span>
+        <span class="na">android:layout_width=</span><span class="s">&#34;wrap_content&#34;</span>
+        <span class="na">android:layout_height=</span><span class="s">&#34;wrap_content&#34;</span> <span class="err">//随文字长度而变大</span>
+        <span class="na">android:text=</span><span class="s">&#34;回帖发帖和回帖发帖和回帖发帖和回帖发帖和回帖发帖和回帖发帖和回帖发帖和&#34;</span>
+        <span class="na">android:layout_marginTop=</span><span class="s">&#34;10dp&#34;</span> <span class="err">//间距</span>
+        <span class="na">android:textColor=</span><span class="s">&#34;#0288D1&#34;</span> <span class="err">//文字颜色</span>
+        <span class="na">android:textSize=</span><span class="s">&#34;24sp&#34;</span> <span class="err">//文字大小</span>
+        <span class="na">android:singleLine=</span><span class="s">&#34;true&#34;</span> <span class="err">//设置跑马灯</span> <span class="err">必须设置文字单行</span>
+        <span class="na">android:ellipsize=</span><span class="s">&#34;marquee&#34;</span> <span class="err">//文字模式为跑马灯（循环移动播放）</span>
+        <span class="na">android:marqueeRepeatLimit=</span><span class="s">&#34;marquee_forever&#34;</span> <span class="err">//循环次数</span>
+        <span class="na">android:focusable=</span><span class="s">&#34;true&#34;</span> <span class="err">//启用</span> <span class="err">是否获取焦点</span>
+        <span class="na">android:focusableInTouchMode=</span><span class="s">&#34;true&#34;</span> <span class="err">//启用</span> <span class="err">触摸模式下可聚焦</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/LinearLayout&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+<hr />
+
 			</article>
 		</section>
 		<section class="ui secondary attached segment dream-tags">
