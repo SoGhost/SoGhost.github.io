@@ -22,10 +22,10 @@ enableEmoji=true
 	enableToc = true
 	enableShareCard = true
 
-	favicon = "/img/Fav.gif"	#博客图标
+	favicon = "/img/PY-Blog.ico"	#博客图标
 
   	#Background settings
-	enableColorBG= false		#随机颜色-背景
+	enableColorBG= true		#随机颜色-背景
 	bgBlur = "0px"
 	#bgList = ["/img/bg1.jpeg", "/img/bg2.jpg"] 
 	bgImage = "/img/bg1.jpeg"	#背景图
@@ -35,7 +35,7 @@ enableEmoji=true
 	enableCategories = true
 	
 	#Cards or posts shown per page
-	itemsPerPage = 4
+	itemsPerPage = 6
 	
 	#Set whether you're hosting "cards" or "post"
 	contentType = "post"
@@ -44,7 +44,7 @@ enableEmoji=true
 	twitterEmoji=true
 
 [social]
-	email = "17051224442zx@gmail.com"
+	email = "ReaperOfBlack@gmail.com"
 	github = "SoGhost"
 	stackoverflow = ""
 	medium = ""
