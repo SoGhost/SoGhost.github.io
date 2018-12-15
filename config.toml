@@ -14,7 +14,7 @@ googleAnalytics = "UA-131035751-1"
 enableRobotsTXT = true
 
 #Enable Hugo Emoji Conversion
-enableEmoji=true
+enableEmoji = true
 
 [params]
 	author = "So Serious"		#名字
@@ -48,7 +48,7 @@ enableEmoji=true
 [social]
 	email = "ReaperOfBlack@gmail.com"
 	github = "SoGhost"
-    stackoverflow = ""
+    	stackoverflow = ""
 	medium = ""
 	twitter = "" 
 	siteStartYear = 2018
