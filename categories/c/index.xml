@@ -6,10 +6,19 @@
     <description>Recent content in C# on PY-&gt;Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 27 Jul 2018 08:18:12 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 15 Dec 2018 11:01:51 +0800</lastBuildDate>
     
 	<atom:link href="https://sofuck.top/categories/c/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>CSharp Regular_Expression</title>
+      <link>https://sofuck.top/posts/csharp-regular_expression/</link>
+      <pubDate>Sat, 15 Dec 2018 11:01:51 +0800</pubDate>
+      
+      <guid>https://sofuck.top/posts/csharp-regular_expression/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>C# _语言基础</title>
