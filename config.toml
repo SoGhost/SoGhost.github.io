@@ -1,13 +1,15 @@
 baseURL = ""
-languageCode = "us-en"
+languageCode = "en-us"
 defaultContentLanguage = "zh"
-title = "PY-> Blog"
+title = "PY->Blog"
 
 pygmentsCodeFences = true
 pygmentsUseClasses = true
 pygmentsOptions = "linenos=table"
 
 disqusShortname = "So Serious"
+
+googleAnalytics = "UA-131035751-1"
 
 enableRobotsTXT = true
 
@@ -35,10 +37,10 @@ enableEmoji=true
 	enableCategories = true
 	
 	#Cards or posts shown per page
-	itemsPerPage = 6
+	itemsPerPage = 4
 	
-	#Set whether you're hosting "cards" or "post"
-	contentType = "post"
+	#Set whether you're hosting "cards" or "posts"
+	contentType = "posts"
 	
 	#Enable Twitter Emoji
 	twitterEmoji=true
