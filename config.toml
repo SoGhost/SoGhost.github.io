@@ -9,8 +9,6 @@ pygmentsOptions = "linenos=table"
 
 disqusShortname = "So Serious"
 
-googleAnalytics = "UA-131035751-1"
-
 enableRobotsTXT = true
 
 #Enable Hugo Emoji Conversion
