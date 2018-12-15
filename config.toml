@@ -1,5 +1,5 @@
-baseURL = "https://sofuck.top"
-languageCode = "en-us"
+baseURL = ""
+languageCode = "us-en"
 defaultContentLanguage = "zh"
 title = "PY->Blog"
 
