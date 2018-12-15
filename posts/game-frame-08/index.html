@@ -1,0 +1,2575 @@
+<!DOCTYPE html>
+<html lang="en-us">
+	<head>
+		<title>
+	角色模块封装——游戏框架-08
+</title>
+		<style>
+	body {
+		display: block;
+		--colorBG: "#40e0d0, #ff8c00, #ff0080";
+		
+			background: linear-gradient(to right, var(--colorBG)) !important;
+		
+	}
+
+	body, body.pushable {
+		background-repeat: no-repeat;
+	  	background-attachment: fixed;
+	  	background-size: cover !important;
+	}
+</style>
+
+		<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+	
+	<meta name="author" content="So Serious" />
+	<meta name="description" content="角色封装" />
+
+
+
+<meta name="generator" content="Hugo 0.49.2" />
+
+
+<link rel="shortcut icon" href="/img/PY-Blog.ico">
+
+
+
+
+		
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.js"></script>
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/site.css">
+
+
+
+
+
+
+
+
+<style>
+	body.pushable {
+		display: block;
+		
+			background: linear-gradient(to right, var(--colorBG)) !important;
+		 ;
+	}
+</style>
+
+
+
+<script>
+	var colorBG =  true 
+	var enabledPost =  false 
+	
+	var isMobile = ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) )
+	console.log("The client device is a "+(isMobile?"mobile":"PC")+".")
+</script>
+
+	</head>
+
+	<body>
+		<script>
+var prevBgIndex = 0;
+var bodyBgSwitchIndex = 0;
+
+
+	var gradients = [
+	  [],
+	  ['#40e0d0', '#ff8c00', '#ff0080'], 
+	  ['#3e5151', '#decba4'], 
+	  ['#11998e', '#38ef7d'], 
+	  ['#108dc7', '#ef8e38'], 
+	  ['#fc5c7d', '#6a82fb'], 
+	  ['#fc466b', '#3f5efb'], 
+	  ['#c94b4b', '#4b134f'], 
+	  ['#23074d', '#cc5333'] 
+	];
+	document.body.style.setProperty('--colorBG', connect(gradients[getRandomInt(0, gradients.length)]));
+
+
+	function getRandomInt(min, max) {
+	  min = Math.ceil(min);
+	  max = Math.floor(max);
+	  var random;
+	  while (1) {
+	    random = Math.floor(Math.random() * (max - min)) + min;
+	    if (random !== prevBgIndex) {
+	      prevBgIndex = random;
+	      break;
+	    }
+	  }
+	  return random;
+	}
+
+	function connect(arr) {
+	  var str = '';
+	  for (var i = 0; i < arr.length; i++) {
+	    if (i !== arr.length - 1) {
+	      str += arr[i] + ', ';
+	    } else {
+	      str += arr[i];
+	    }
+	  }
+	  return str;
+	}
+</script>
+
+
+
+
+		<div id="sidebar" class="ui sidebar inverted vertical menu">
+	
+	<section id="author" class="ui top attached center aligned inverted segment">
+		
+<div class="ui small circular image">
+	
+		<img src="/img/avatar.png">
+	
+</div>
+
+
+<h3 class="ui header">
+	So Serious
+	<div class="sub header">Do your best.</div>
+</h3>
+
+	</section>
+
+	
+	
+		<section class="ui attached center aligned inverted segment sidebar-dream-tags">
+			
+			
+
+
+
+
+	
+		<a class="ui label pink " href="/tags/2d" title="2d">2d</a>
+	
+		<a class="ui label orange " href="/tags/ae" title="ae">ae</a>
+	
+		<a class="ui label brown " href="/tags/ai" title="ai">ai</a>
+	
+		<a class="ui label red " href="/tags/android" title="android">android</a>
+	
+		<a class="ui label teal " href="/tags/animator" title="animator">animator</a>
+	
+		<a class="ui label red " href="/tags/attackrange" title="attackrange">attackrange</a>
+	
+		<a class="ui label olive " href="/tags/audio" title="audio">audio</a>
+	
+		<a class="ui label teal " href="/tags/c" title="c#">c#</a>
+	
+		<a class="ui label orange " href="/tags/effect" title="effect">effect</a>
+	
+		<a class="ui label teal " href="/tags/english" title="english">english</a>
+	
+		<a class="ui label yellow " href="/tags/fps" title="fps">fps</a>
+	
+		<a class="ui label red " href="/tags/fsm" title="fsm">fsm</a>
+	
+		<a class="ui label yellow " href="/tags/gl" title="gl">gl</a>
+	
+		<a class="ui label red " href="/tags/knowledge" title="knowledge">knowledge</a>
+	
+		<a class="ui label teal " href="/tags/notes" title="notes">notes</a>
+	
+		<a class="ui label teal " href="/tags/rpg" title="rpg">rpg</a>
+	
+		<a class="ui label violet " href="/tags/tilemap" title="tilemap">tilemap</a>
+	
+		<a class="ui label brown " href="/tags/ui" title="ui">ui</a>
+	
+		<a class="ui label purple " href="/tags/unity" title="unity">unity</a>
+	
+		<a class="ui label red " href="/tags/word" title="word">word</a>
+	
+		<a class="ui label pink " href="/tags/word-book" title="word-book">word-book</a>
+	
+		<a class="ui label orange " href="/tags/%E6%8A%80%E5%B7%A7" title="技巧">技巧</a>
+	
+		<a class="ui label yellow " href="/tags/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93" title="数据传输">数据传输</a>
+	
+
+
+		</section>
+	
+
+	
+	
+		<section class="ui attached inverted segment sidebar-dream-categories both flexbox">
+			<div class="ui inverted accordion">
+				
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/2d">2d</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/2d-attack-range/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>2D攻击范围</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/ae">ae</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/ui-effects-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>UI 特效制作</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/c">c#</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/c-sharp-notes-02/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>C# _语言基础</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/c-sharp-notes-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>C# _基本操作</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/english">english</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/english-sentence-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>English Sentence</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/fsm">fsm</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/finite-state-machine/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>有限状态机</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/game-frame">game-frame</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/game-frame-09/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>相机和EasyTouch封装——游戏框架-09</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/game-frame-08/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>角色模块封装——游戏框架-08</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/game-frame-07/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>小地图封装——游戏框架-07</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/game-frame-06/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>EasyTouch模块封装——游戏框架-06</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/game-frame-05/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>UI模块封装——游戏框架-05</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/game-frame-04/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>音效模块封装——游戏框架-04</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/game-frame-03/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>WWW封装——游戏框架-03</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/game-frame-02/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>常用设计模式——游戏框架-02</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/game-frame-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>设计原则——游戏框架-01</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/notes">notes</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/game-words/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>游戏常用英文</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/words-notes/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Word Book</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/opengl">opengl</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/gl-drawing/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>GL画图功能</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/pain">pain</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/pain-to-learn-unity-notes-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>【Pain To Learn Unity】——案例之像素鸟</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/pain-to-learn-unity-notes-02/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>【Pain To Learn Unity】——案例之吃豆人</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/ugui">ugui</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/ugui-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>UGUI</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/unity">unity</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/ui-effects-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>UI 特效制作</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/unity-tilemap_mod/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Unity Tilemap模块</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/unity-ai-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>AI逻辑</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/unity-fps-view_move/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>FPS_视角和移动</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/unity-audio-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Unity Audio</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/script-input_control/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>脚本的输入与控制</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/monobehavior-common_method-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>MonoBehavior 常用方法</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/unity-script-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Monobehavior事件响应（1）</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/unity-notes-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Unity 注意事项</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/unity-animator">unity-animator</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/unity-animation-system-04/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Unity 动画系统（4）</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/unity-animation-system-03/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Unity 动画系统（3）</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/unity-animation-system-02/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Unity 动画系统（2）</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/unity-animation-system-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Unity 动画系统（1）</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/windows">windows</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/use-skill/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>使用软件突发小技巧</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/%E5%AE%89%E5%8D%93">安卓</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/android/beginner-android/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Beginner</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86">网络知识</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/computer-illiteracy-p2p/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>网络知识——P2P</p>
+				</div>
+			</a>
+		
+	</div>
+
+
+			</div>
+		</section>
+	
+
+	
+	<section id="footer" class="ui bottom attached center aligned inverted segment">
+		
+
+	<p>© 2018 PY-&gt;Blog</p>
+
+
+<p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with <a href="https://github.com/UtkarshVerma/hugo-dream-plus" target="_blank">Dream Plus</a> theme.</p>
+
+	</section>
+</div>
+
+
+		<div class="pusher">
+			<div class="flipper">
+				<div class="front">
+					
+	<nav class="ui top secondary menu bar">
+	
+	<div class="item">
+		<i class="inverted big link bullseye icon dream-flip-toggle" title="翻转"></i>
+	</div>
+
+	
+	
+		<div class="item">
+			<a href="/">
+				<i class="inverted big link home icon" title="首页"></i>
+			</a>
+		</div>
+	
+
+	
+	
+		
+			<div class="item">
+				<a href="/posts">
+					<i class="inverted big link archive icon" title="档案"></i>
+				</a>
+			</div>
+		
+	
+
+	
+	
+		<div class="item">
+			<a href="/tags">
+				<i class="inverted big link tags icon" title="全部标签"></i>
+			</a>
+		</div>
+	
+
+	
+	
+		<div class="item">
+			<a href="/categories">
+				<i class="inverted big link cubes icon" title="所有类别"></i>
+			</a>
+    	</div>
+	
+
+	
+	
+
+	
+	
+		<div class="ui container tablet computer only grid">
+			<div class="item" onClick="$('.ui.sidebar').sidebar('setting', 'transition', 'overlay').sidebar('toggle');">
+				<i class="inverted big link sidebar icon" title=""></i>
+			</div>
+		</div>
+	
+
+	
+	
+		<div class="item right">
+			<a href="/posts/index.xml">
+				<i class="inverted big link rss icon" title=""></i>
+			</a>
+		</div>
+	
+</nav>
+
+
+	<div class="ui centered grid">
+		
+		<div class="sixteen wide mobile only column">
+				<div class="ui inverted accordion">
+	<div id="header" class="ui inverted segment column box">		
+		
+		<header id="author" class="ui top attached center aligned inverted segment">
+			
+<div class="ui small circular image">
+	
+		<img src="/img/avatar.png">
+	
+</div>
+
+
+<h3 class="ui header">
+	So Serious
+	<div class="sub header">Do your best.</div>
+</h3>
+
+		</header>
+
+		
+		<div class=" title header-title">
+			
+				<div id="tag-category-pop" class="ui red right corner label">
+					<i class="hand point icon down"title="点击弹出标签和分类"></i>
+				</div>
+			
+		</div>
+		
+		
+		<div id="tag-category" class=" content">
+			
+				<section class="ui attached center aligned inverted segment dream-tags none flexbox">
+					
+
+
+
+
+	
+		<a class="ui label pink " href="/tags/2d" title="2d">2d</a>
+	
+		<a class="ui label olive " href="/tags/ae" title="ae">ae</a>
+	
+		<a class="ui label pink " href="/tags/ai" title="ai">ai</a>
+	
+		<a class="ui label olive " href="/tags/android" title="android">android</a>
+	
+		<a class="ui label red " href="/tags/animator" title="animator">animator</a>
+	
+		<a class="ui label pink " href="/tags/attackrange" title="attackrange">attackrange</a>
+	
+		<a class="ui label teal " href="/tags/audio" title="audio">audio</a>
+	
+		<a class="ui label teal " href="/tags/c" title="c#">c#</a>
+	
+		<a class="ui label purple " href="/tags/effect" title="effect">effect</a>
+	
+		<a class="ui label yellow " href="/tags/english" title="english">english</a>
+	
+		<a class="ui label yellow " href="/tags/fps" title="fps">fps</a>
+	
+		<a class="ui label green " href="/tags/fsm" title="fsm">fsm</a>
+	
+		<a class="ui label olive " href="/tags/gl" title="gl">gl</a>
+	
+		<a class="ui label red " href="/tags/knowledge" title="knowledge">knowledge</a>
+	
+		<a class="ui label violet " href="/tags/notes" title="notes">notes</a>
+	
+		<a class="ui label violet " href="/tags/rpg" title="rpg">rpg</a>
+	
+		<a class="ui label green " href="/tags/tilemap" title="tilemap">tilemap</a>
+	
+		<a class="ui label pink " href="/tags/ui" title="ui">ui</a>
+	
+		<a class="ui label blue " href="/tags/unity" title="unity">unity</a>
+	
+		<a class="ui label orange " href="/tags/word" title="word">word</a>
+	
+		<a class="ui label pink " href="/tags/word-book" title="word-book">word-book</a>
+	
+		<a class="ui label red " href="/tags/%E6%8A%80%E5%B7%A7" title="技巧">技巧</a>
+	
+		<a class="ui label yellow " href="/tags/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93" title="数据传输">数据传输</a>
+	
+
+
+				</section>
+			
+
+			
+				<section class="ui attached inverted segment dream-categories both flexbox">
+					<div class="inverted accordion">
+						
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/2d">2d</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/2d-attack-range/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>2D攻击范围</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/ae">ae</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/ui-effects-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>UI 特效制作</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/c">c#</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/c-sharp-notes-02/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>C# _语言基础</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/c-sharp-notes-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>C# _基本操作</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/english">english</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/english-sentence-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>English Sentence</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/fsm">fsm</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/finite-state-machine/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>有限状态机</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/game-frame">game-frame</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/game-frame-09/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>相机和EasyTouch封装——游戏框架-09</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/game-frame-08/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>角色模块封装——游戏框架-08</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/game-frame-07/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>小地图封装——游戏框架-07</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/game-frame-06/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>EasyTouch模块封装——游戏框架-06</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/game-frame-05/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>UI模块封装——游戏框架-05</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/game-frame-04/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>音效模块封装——游戏框架-04</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/game-frame-03/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>WWW封装——游戏框架-03</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/game-frame-02/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>常用设计模式——游戏框架-02</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/game-frame-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>设计原则——游戏框架-01</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/notes">notes</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/game-words/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>游戏常用英文</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/words-notes/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Word Book</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/opengl">opengl</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/gl-drawing/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>GL画图功能</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/pain">pain</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/pain-to-learn-unity-notes-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>【Pain To Learn Unity】——案例之像素鸟</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/pain-to-learn-unity-notes-02/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>【Pain To Learn Unity】——案例之吃豆人</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/ugui">ugui</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/ugui-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>UGUI</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/unity">unity</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/ui-effects-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>UI 特效制作</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/unity-tilemap_mod/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Unity Tilemap模块</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/unity-ai-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>AI逻辑</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/unity-fps-view_move/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>FPS_视角和移动</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/unity-audio-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Unity Audio</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/script-input_control/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>脚本的输入与控制</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/monobehavior-common_method-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>MonoBehavior 常用方法</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/unity-script-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Monobehavior事件响应（1）</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/unity-notes-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Unity 注意事项</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/unity-animator">unity-animator</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/unity-animation-system-04/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Unity 动画系统（4）</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/unity-animation-system-03/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Unity 动画系统（3）</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/unity-animation-system-02/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Unity 动画系统（2）</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/unity-animation-system-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Unity 动画系统（1）</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/windows">windows</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/use-skill/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>使用软件突发小技巧</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/%E5%AE%89%E5%8D%93">安卓</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/android/beginner-android/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Beginner</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86">网络知识</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/computer-illiteracy-p2p/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>网络知识——P2P</p>
+				</div>
+			</a>
+		
+	</div>
+
+
+					</div>
+				</section>
+			
+		</div>
+
+		
+		<footer class="ui bottom attached center aligned inverted segment">
+			
+
+	<p>© 2018 PY-&gt;Blog</p>
+
+
+<p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with <a href="https://github.com/UtkarshVerma/hugo-dream-plus" target="_blank">Dream Plus</a> theme.</p>
+
+		</footer>
+	</div>
+</div>
+
+		</div>
+
+		<div class="sixteen wide mobile fifteen wide tablet twelve wide computer column post-list">
+			
+			<section class="ui secondary top attached black segment post-head">
+				<h1 class="post-title">
+					角色模块封装——游戏框架-08
+				</h1>
+
+				<div class="sub header">
+					<div><span><i class="calendar outline icon"></i>Sep 17, 2018</span></div>
+					
+					<div><span class="disqusComment"><i class="comment outline icon"></i><a href="https://sofuck.top/posts/game-frame-08/#disqus_thread" class="disqus-comment-count" data-disqus-identifier="83b8ed164b240df5a9a2f8b703fd4aa3"></a></span></div>
+					<div><span><i class="clock outline icon"></i>7 min read</span></div>
+					<div><span><i class="angle double up icon"></i>更新于 Sep 17, 2018</span></div>
+				</div>
+				<hr>
+
+				
+
+				<article class="post-content twemoji">
+					<blockquote>
+<p>Role（角色基类）：</p>
+
+<ul>
+<li><p>FSM</p></li>
+
+<li><p>CharactorController</p></li>
+</ul>
+
+<ol>
+<li><p>玩家：</p>
+
+<ul>
+<li><p>EasyTouch 控制移动和旋转</p></li>
+
+<li><p>矩形攻击&hellip;</p></li>
+</ul></li>
+
+<li><p>NPC：</p>
+
+<ul>
+<li>AI 攻击</li>
+</ul></li>
+</ol>
+</blockquote>
+
+<hr />
+
+<p>NPCManager管理NPC</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span><span class="lnt">125
+</span><span class="lnt">126
+</span><span class="lnt">127
+</span><span class="lnt">128
+</span><span class="lnt">129
+</span><span class="lnt">130
+</span><span class="lnt">131
+</span><span class="lnt">132
+</span><span class="lnt">133
+</span><span class="lnt">134
+</span><span class="lnt">135
+</span><span class="lnt">136
+</span><span class="lnt">137
+</span><span class="lnt">138
+</span><span class="lnt">139
+</span><span class="lnt">140
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">UnityEngine</span><span class="p">;</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">NPCManager</span> <span class="p">:</span> <span class="n">MonoBehaviour</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="n">NPCManager</span> <span class="n">Instance</span><span class="p">;</span>
+
+    <span class="k">private</span> <span class="n">Transform</span> <span class="n">player</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="n">Transform</span> <span class="n">Player</span>
+    <span class="p">{</span>
+        <span class="k">get</span>
+        <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">player</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">player</span> <span class="p">=</span> <span class="n">GameObject</span><span class="p">.</span><span class="n">FindGameObjectWithTag</span><span class="p">(</span><span class="s">&#34;Player&#34;</span><span class="p">).</span><span class="n">transform</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">return</span> <span class="n">player</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="n">NPCManangerModel</span> <span class="n">npcManagerModel</span><span class="p">;</span>
+
+    <span class="k">void</span> <span class="n">Awake</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">Instance</span> <span class="p">=</span> <span class="k">this</span><span class="p">;</span>
+
+        <span class="n">allNPC</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">NPCCell</span><span class="p">&gt;();</span>
+
+        <span class="n">npcManagerModel</span> <span class="p">=</span> <span class="k">new</span> <span class="n">NPCManangerModel</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="n">List</span><span class="p">&lt;</span><span class="n">NPCCell</span><span class="p">&gt;</span> <span class="n">allNPC</span><span class="p">;</span><span class="c1">//存储所有NPC
+</span><span class="c1"></span>
+    <span class="c1">/// &lt;summary&gt;
+</span><span class="c1"></span>    <span class="c1">/// 工厂模式，生产一个NPC
+</span><span class="c1"></span>    <span class="c1">/// &lt;/summary&gt;
+</span><span class="c1"></span>    <span class="c1">/// &lt;param name=&#34;path&#34;&gt;NPC资源路径&lt;/param&gt;
+</span><span class="c1"></span>    <span class="c1">/// &lt;param name=&#34;npcParent&#34;&gt;NPC Parent&lt;/param&gt;
+</span><span class="c1"></span>    <span class="c1">/// &lt;returns&gt;&lt;/returns&gt;
+</span><span class="c1"></span>    <span class="k">public</span> <span class="n">GameObject</span> <span class="n">FactoryNPC</span><span class="p">(</span><span class="kt">string</span> <span class="n">path</span><span class="p">,</span> <span class="n">Transform</span> <span class="n">npcParent</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">//读取Prefab，内存创造一个NPC
+</span><span class="c1"></span>        <span class="n">Object</span> <span class="n">tmpObj</span> <span class="p">=</span> <span class="n">Resources</span><span class="p">.</span><span class="n">Load</span><span class="p">(</span><span class="n">path</span><span class="p">);</span>
+
+        <span class="c1">//实例化NPC
+</span><span class="c1"></span>        <span class="n">GameObject</span> <span class="n">tmpNPC</span> <span class="p">=</span> <span class="n">Instantiate</span><span class="p">(</span><span class="n">tmpObj</span><span class="p">)</span> <span class="k">as</span> <span class="n">GameObject</span><span class="p">;</span>
+
+        <span class="c1">//设置父类
+</span><span class="c1"></span>        <span class="n">tmpNPC</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">SetParent</span><span class="p">(</span><span class="n">npcParent</span><span class="p">,</span> <span class="k">false</span><span class="p">);</span>
+
+        <span class="c1">//添加必要组件
+</span><span class="c1"></span>        <span class="n">NPCCell</span> <span class="n">tmpCell</span> <span class="p">=</span> <span class="n">tmpNPC</span><span class="p">.</span><span class="n">AddComponent</span><span class="p">&lt;</span><span class="n">NPCCell</span><span class="p">&gt;();</span>
+
+        <span class="c1">//存入管理
+</span><span class="c1"></span>        <span class="n">allNPC</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">tmpCell</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="n">tmpNPC</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">/// &lt;summary&gt;
+</span><span class="c1"></span>    <span class="c1">/// 玩家释放技能
+</span><span class="c1"></span>    <span class="c1">/// &lt;/summary&gt;
+</span><span class="c1"></span>    <span class="k">public</span> <span class="k">void</span> <span class="n">AttackedByPlayer</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">allNPC</span><span class="p">.</span><span class="n">Count</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
+        <span class="p">{</span>
+            <span class="n">NPCCell</span> <span class="n">tmpCell</span> <span class="p">=</span> <span class="n">allNPC</span><span class="na">[i]</span><span class="p">;</span>
+
+            <span class="c1">// RectAttackHudge()矩形攻击检测
+</span><span class="c1"></span>            <span class="c1">//如果判断NPC在矩形攻击范围内，则攻击
+</span><span class="c1"></span>            <span class="k">if</span> <span class="p">(</span><span class="n">RectAttackHudge</span><span class="p">(</span><span class="n">player</span><span class="p">,</span><span class="n">tmpCell</span><span class="p">.</span><span class="n">transform</span><span class="p">,</span><span class="n">npcManagerModel</span><span class="p">.</span><span class="n">forwardDistance</span><span class="p">,</span><span class="n">npcManagerModel</span><span class="p">.</span><span class="n">rightDistance</span><span class="p">))</span>
+            <span class="p">{</span>
+                <span class="n">tmpCell</span><span class="p">.</span><span class="n">ReduceHealthPoint</span><span class="p">(</span><span class="n">npcManagerModel</span><span class="p">.</span><span class="n">AttackPoint</span><span class="p">);</span><span class="c1">//NPC掉血
+</span><span class="c1"></span>            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">/// &lt;summary&gt;
+</span><span class="c1"></span>    <span class="c1">/// NPC是否跟随移动
+</span><span class="c1"></span>    <span class="c1">/// &lt;/summary&gt;
+</span><span class="c1"></span>    <span class="k">public</span> <span class="k">void</span> <span class="n">AIFollowPlayer</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">allNPC</span><span class="p">.</span><span class="n">Count</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
+        <span class="p">{</span>
+            <span class="n">NPCCell</span> <span class="n">tmpCell</span> <span class="p">=</span> <span class="n">allNPC</span><span class="na">[i]</span><span class="p">;</span>
+
+            <span class="c1">//可以适当更改计算间隔
+</span><span class="c1"></span>            <span class="n">tmpCell</span><span class="p">.</span><span class="n">AIAttack</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">void</span> <span class="n">Update</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">AIFollowPlayer</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">NPCManangerModel</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="kt">float</span> <span class="n">forwardDistance</span> <span class="p">=</span> <span class="m">10</span><span class="p">;</span>
+    <span class="k">public</span> <span class="kt">float</span> <span class="n">ForwardDistance</span>
+    <span class="p">{</span>
+        <span class="k">get</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="n">forwardDistance</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">set</span>
+        <span class="p">{</span>
+            <span class="n">forwardDistance</span> <span class="p">=</span> <span class="k">value</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="kt">float</span> <span class="n">rightDistance</span> <span class="p">=</span> <span class="m">5</span><span class="p">;</span>
+    <span class="k">public</span> <span class="kt">float</span> <span class="n">RightDistance</span>
+    <span class="p">{</span>
+        <span class="k">get</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="n">rightDistance</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">set</span>
+        <span class="p">{</span>
+            <span class="n">rightDistance</span> <span class="p">=</span> <span class="k">value</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">//Player攻击力
+</span><span class="c1"></span>    <span class="k">public</span> <span class="kt">float</span> <span class="n">attackPoint</span> <span class="p">=</span> <span class="m">5</span><span class="p">;</span>
+    <span class="k">public</span> <span class="kt">float</span> <span class="n">AttackPoint</span>
+    <span class="p">{</span>
+        <span class="k">get</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="n">attackPoint</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">set</span>
+        <span class="p">{</span>
+            <span class="n">attackPoint</span> <span class="p">=</span> <span class="k">value</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<hr />
+
+<p>PlayerController控制Player</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span><span class="lnt">125
+</span><span class="lnt">126
+</span><span class="lnt">127
+</span><span class="lnt">128
+</span><span class="lnt">129
+</span><span class="lnt">130
+</span><span class="lnt">131
+</span><span class="lnt">132
+</span><span class="lnt">133
+</span><span class="lnt">134
+</span><span class="lnt">135
+</span><span class="lnt">136
+</span><span class="lnt">137
+</span><span class="lnt">138
+</span><span class="lnt">139
+</span><span class="lnt">140
+</span><span class="lnt">141
+</span><span class="lnt">142
+</span><span class="lnt">143
+</span><span class="lnt">144
+</span><span class="lnt">145
+</span><span class="lnt">146
+</span><span class="lnt">147
+</span><span class="lnt">148
+</span><span class="lnt">149
+</span><span class="lnt">150
+</span><span class="lnt">151
+</span><span class="lnt">152
+</span><span class="lnt">153
+</span><span class="lnt">154
+</span><span class="lnt">155
+</span><span class="lnt">156
+</span><span class="lnt">157
+</span><span class="lnt">158
+</span><span class="lnt">159
+</span><span class="lnt">160
+</span><span class="lnt">161
+</span><span class="lnt">162
+</span><span class="lnt">163
+</span><span class="lnt">164
+</span><span class="lnt">165
+</span><span class="lnt">166
+</span><span class="lnt">167
+</span><span class="lnt">168
+</span><span class="lnt">169
+</span><span class="lnt">170
+</span><span class="lnt">171
+</span><span class="lnt">172
+</span><span class="lnt">173
+</span><span class="lnt">174
+</span><span class="lnt">175
+</span><span class="lnt">176
+</span><span class="lnt">177
+</span><span class="lnt">178
+</span><span class="lnt">179
+</span><span class="lnt">180
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="k">using</span> <span class="nn">UnityEngine</span><span class="p">;</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">PlayerIdle</span> <span class="p">:</span> <span class="n">FSMBase</span>
+<span class="p">{</span>
+    <span class="n">Animator</span> <span class="n">animator</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="n">PlayerIdle</span><span class="p">(</span><span class="n">Animator</span> <span class="n">tmpAmnimator</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">animator</span> <span class="p">=</span> <span class="n">tmpAmnimator</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="n">OnEnter</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">animator</span><span class="p">.</span><span class="n">SetInteger</span><span class="p">(</span><span class="s">&#34;Index&#34;</span><span class="p">,</span> <span class="m">1</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">PlayerWalk</span> <span class="p">:</span> <span class="n">FSMBase</span>
+<span class="p">{</span>
+    <span class="n">Animator</span> <span class="n">animator</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="n">PlayerWalk</span><span class="p">(</span><span class="n">Animator</span> <span class="n">tmpAmnimator</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">animator</span> <span class="p">=</span> <span class="n">tmpAmnimator</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="n">OnEnter</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">animator</span><span class="p">.</span><span class="n">SetInteger</span><span class="p">(</span><span class="s">&#34;Index&#34;</span><span class="p">,</span> <span class="m">2</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">PlayerRun</span> <span class="p">:</span> <span class="n">FSMBase</span>
+<span class="p">{</span>
+    <span class="n">Animator</span> <span class="n">animator</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="n">PlayerRun</span><span class="p">(</span><span class="n">Animator</span> <span class="n">tmpAmnimator</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">animator</span> <span class="p">=</span> <span class="n">tmpAmnimator</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="n">OnEnter</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">animator</span><span class="p">.</span><span class="n">SetInteger</span><span class="p">(</span><span class="s">&#34;Index&#34;</span><span class="p">,</span> <span class="m">3</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">PlayerAttack</span> <span class="p">:</span> <span class="n">FSMBase</span>
+<span class="p">{</span>
+    <span class="n">Animator</span> <span class="n">animator</span><span class="p">;</span>
+
+    <span class="n">PlayerCtrl</span> <span class="n">playerCtrl</span><span class="p">;</span><span class="c1">//playerCtrl拿到指针
+</span><span class="c1"></span>
+    <span class="k">public</span> <span class="n">PlayerAttack</span><span class="p">(</span><span class="n">Animator</span> <span class="n">tmpAmnimator</span><span class="p">,</span> <span class="n">PlayerCtrl</span> <span class="n">ctl</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">animator</span> <span class="p">=</span> <span class="n">tmpAmnimator</span><span class="p">;</span>
+
+        <span class="n">playerCtrl</span> <span class="p">=</span> <span class="n">ctl</span><span class="p">;</span><span class="c1">//引用PlayerCtrl类
+</span><span class="c1"></span>    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="n">OnEnter</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">animator</span><span class="p">.</span><span class="n">SetInteger</span><span class="p">(</span><span class="s">&#34;Index&#34;</span><span class="p">,</span> <span class="m">4</span><span class="p">);</span>
+
+        <span class="n">isPlayPaticle</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+        <span class="n">timeCount</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kt">float</span> <span class="n">timeCount</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+
+    <span class="kt">bool</span> <span class="n">isPlayPaticle</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="n">OnStay</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">//一直在调用
+</span><span class="c1"></span>        <span class="n">timeCount</span> <span class="p">+=</span> <span class="n">Time</span><span class="p">.</span><span class="n">deltaTime</span><span class="p">;</span>
+
+        <span class="c1">// 0.15f为需要动画do something的时间
+</span><span class="c1"></span>        <span class="k">if</span> <span class="p">(</span><span class="n">timeCount</span> <span class="p">&gt;</span> <span class="m">0.15f</span> <span class="p">&amp;&amp;</span> <span class="p">!</span><span class="n">isPlayPaticle</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">isPlayPaticle</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+            <span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="s">&#34;Is Attack!&#34;</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">timeCount</span> <span class="p">&gt;</span> <span class="m">1.0f</span><span class="p">)</span><span class="c1">//大于1s切换状态
+</span><span class="c1"></span>        <span class="p">{</span>
+            <span class="c1">// 1. 引用 控制器方法，降低耦合性
+</span><span class="c1"></span>            <span class="c1">// 2. 委托
+</span><span class="c1"></span>
+            <span class="n">playerCtrl</span><span class="p">.</span><span class="n">ChangeState</span><span class="p">((</span><span class="kt">sbyte</span><span class="p">)</span><span class="n">PlayerCtrl</span><span class="p">.</span><span class="n">AnimationEnum</span><span class="p">.</span><span class="n">Ilde</span><span class="p">);</span><span class="c1">//切换到Idle状态
+</span><span class="c1"></span>        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="n">OnExit</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="s">&#34;Exit!&#34;</span><span class="p">);</span>
+        <span class="n">isPlayPaticle</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+        <span class="n">timeCount</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">PlayerJump</span> <span class="p">:</span> <span class="n">FSMBase</span>
+<span class="p">{</span>
+    <span class="n">Animator</span> <span class="n">animator</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="n">PlayerJump</span><span class="p">(</span><span class="n">Animator</span> <span class="n">tmpAmnimator</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">animator</span> <span class="p">=</span> <span class="n">tmpAmnimator</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="n">OnEnter</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">animator</span><span class="p">.</span><span class="n">SetInteger</span><span class="p">(</span><span class="s">&#34;Index&#34;</span><span class="p">,</span> <span class="m">5</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">PlayerCtrl</span> <span class="p">:</span> <span class="n">MonoBehaviour</span>
+<span class="p">{</span>
+    <span class="n">FSMManager</span> <span class="n">fsmManager</span><span class="p">;</span>
+
+    <span class="n">PlayerModel</span> <span class="n">playerModel</span><span class="p">;</span><span class="c1">//负责数据
+</span><span class="c1"></span>
+    <span class="n">PlayerController</span> <span class="n">playerController</span><span class="p">;</span><span class="c1">//负责行走移动
+</span><span class="c1"></span>
+    <span class="c1">//体现可扩展性
+</span><span class="c1"></span>    <span class="k">public</span> <span class="k">enum</span> <span class="n">AnimationEnum</span>
+    <span class="p">{</span>
+        <span class="n">Ilde</span><span class="p">,</span>
+        <span class="n">Walk</span><span class="p">,</span>
+        <span class="n">Run</span><span class="p">,</span>
+        <span class="n">Attack</span><span class="p">,</span>
+        <span class="n">Jump</span><span class="p">,</span>
+        <span class="n">Max</span>
+    <span class="p">}</span>
+
+    <span class="k">void</span> <span class="n">Start</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">fsmManager</span> <span class="p">=</span> <span class="k">new</span> <span class="n">FSMManager</span><span class="p">((</span><span class="kt">int</span><span class="p">)</span><span class="n">AnimationEnum</span><span class="p">.</span><span class="n">Max</span><span class="p">);</span>
+
+        <span class="n">playerModel</span> <span class="p">=</span> <span class="k">new</span> <span class="n">PlayerModel</span><span class="p">();</span>
+
+        <span class="n">Animator</span> <span class="n">animator</span> <span class="p">=</span> <span class="n">GetComponent</span><span class="p">&lt;</span><span class="n">Animator</span><span class="p">&gt;();</span>
+
+        <span class="n">PlayerIdle</span> <span class="n">tmpIdle</span> <span class="p">=</span> <span class="k">new</span> <span class="n">PlayerIdle</span><span class="p">(</span><span class="n">animator</span><span class="p">);</span>
+        <span class="n">fsmManager</span><span class="p">.</span><span class="n">AddState</span><span class="p">(</span><span class="n">tmpIdle</span><span class="p">);</span>
+
+        <span class="n">PlayerWalk</span> <span class="n">tmpWalk</span> <span class="p">=</span> <span class="k">new</span> <span class="n">PlayerWalk</span><span class="p">(</span><span class="n">animator</span><span class="p">);</span>
+        <span class="n">fsmManager</span><span class="p">.</span><span class="n">AddState</span><span class="p">(</span><span class="n">tmpWalk</span><span class="p">);</span>
+
+        <span class="n">PlayerRun</span> <span class="n">tmpRun</span> <span class="p">=</span> <span class="k">new</span> <span class="n">PlayerRun</span><span class="p">(</span><span class="n">animator</span><span class="p">);</span>
+        <span class="n">fsmManager</span><span class="p">.</span><span class="n">AddState</span><span class="p">(</span><span class="n">tmpRun</span><span class="p">);</span>
+
+        <span class="n">PlayerAttack</span> <span class="n">tmpAttack</span> <span class="p">=</span> <span class="k">new</span> <span class="n">PlayerAttack</span><span class="p">(</span><span class="n">animator</span><span class="p">,</span> <span class="k">this</span><span class="p">);</span>
+        <span class="n">fsmManager</span><span class="p">.</span><span class="n">AddState</span><span class="p">(</span><span class="n">tmpAttack</span><span class="p">);</span>
+
+        <span class="n">PlayerJump</span> <span class="n">tmpJump</span> <span class="p">=</span> <span class="k">new</span> <span class="n">PlayerJump</span><span class="p">(</span><span class="n">animator</span><span class="p">);</span>
+        <span class="n">fsmManager</span><span class="p">.</span><span class="n">AddState</span><span class="p">(</span><span class="n">tmpJump</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">void</span> <span class="n">Update</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">//处于运动状态 一直保持
+</span><span class="c1"></span>        <span class="n">fsmManager</span><span class="p">.</span><span class="n">Stay</span><span class="p">();</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">Input</span><span class="p">.</span><span class="n">GetKeyDown</span><span class="p">(</span><span class="n">KeyCode</span><span class="p">.</span><span class="n">W</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="n">fsmManager</span><span class="p">.</span><span class="n">ChangeState</span><span class="p">((</span><span class="kt">sbyte</span><span class="p">)</span><span class="n">AnimationEnum</span><span class="p">.</span><span class="n">Walk</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">Input</span><span class="p">.</span><span class="n">GetKeyDown</span><span class="p">(</span><span class="n">KeyCode</span><span class="p">.</span><span class="n">Space</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="n">fsmManager</span><span class="p">.</span><span class="n">ChangeState</span><span class="p">((</span><span class="kt">sbyte</span><span class="p">)</span><span class="n">AnimationEnum</span><span class="p">.</span><span class="n">Jump</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">//给状态需要交换是，提供交换API
+</span><span class="c1"></span>    <span class="k">public</span> <span class="k">void</span> <span class="n">ChangeState</span><span class="p">(</span><span class="kt">sbyte</span> <span class="n">stateIndex</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">fsmManager</span><span class="p">.</span><span class="n">ChangeState</span><span class="p">(</span><span class="n">stateIndex</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<hr />
+
+<p>RoleBase所有角色基类</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="k">using</span> <span class="nn">UnityEngine</span><span class="p">;</span>
+
+<span class="c1">//如果没有组件则不运行，添加依赖CharacterController组件
+</span><span class="c1"></span><span class="na">[RequireComponent(typeof(CharacterController))]</span>
+<span class="k">public</span> <span class="k">class</span> <span class="nc">RoleBase</span> <span class="p">:</span> <span class="n">MonoBehaviour</span>
+<span class="p">{</span>
+    <span class="n">FSMManager</span> <span class="n">fsmManager</span><span class="p">;</span>
+
+    <span class="n">CharacterController</span> <span class="n">charController</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">enum</span> <span class="n">AnimationEnum</span>
+    <span class="p">{</span>
+        <span class="n">Ilde</span><span class="p">,</span>
+        <span class="n">Walk</span><span class="p">,</span>
+        <span class="n">Run</span><span class="p">,</span>
+        <span class="n">Attack</span><span class="p">,</span>
+        <span class="n">Jump</span><span class="p">,</span>
+
+        <span class="n">Max</span>
+    <span class="p">}</span>
+    
+    <span class="k">public</span> <span class="k">virtual</span> <span class="k">void</span> <span class="n">Initial</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">fsmManager</span> <span class="p">=</span> <span class="k">new</span> <span class="n">FSMManager</span><span class="p">((</span><span class="kt">int</span><span class="p">)</span><span class="n">AnimationEnum</span><span class="p">.</span><span class="n">Max</span><span class="p">);</span>
+
+        <span class="n">charController</span> <span class="p">=</span> <span class="n">GetComponent</span><span class="p">&lt;</span><span class="n">CharacterController</span><span class="p">&gt;();</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">virtual</span> <span class="k">void</span> <span class="n">SimpleMove</span><span class="p">(</span><span class="n">Vector3</span> <span class="n">speed</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">charController</span><span class="p">.</span><span class="n">SimpleMove</span><span class="p">(</span><span class="n">speed</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">virtual</span> <span class="k">void</span> <span class="n">ChangeState</span><span class="p">(</span><span class="kt">sbyte</span> <span class="n">state</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">fsmManager</span><span class="p">.</span><span class="n">ChangeState</span><span class="p">(</span><span class="n">state</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<hr />
+
+<p>NPCCell控制NPC</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="k">using</span> <span class="nn">UnityEngine</span><span class="p">;</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">NPCCell</span> <span class="p">:</span> <span class="n">RoleBase</span>
+<span class="p">{</span>
+    <span class="n">NPCDate</span> <span class="n">npcDate</span><span class="p">;</span>
+
+    <span class="k">void</span> <span class="n">Awake</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">Initial</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="n">Initial</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">npcDate</span> <span class="p">=</span> <span class="k">new</span> <span class="n">NPCDate</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="c1">//先找到玩家，在检测是否在范围内
+</span><span class="c1"></span>    <span class="k">public</span> <span class="k">void</span> <span class="n">AIAttack</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">//NPC距离玩家小于10，则跟随，小于5攻击
+</span><span class="c1"></span>        <span class="n">Vector3</span> <span class="n">deltaA</span> <span class="p">=</span> <span class="n">NPCManager</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">Player</span><span class="p">.</span><span class="n">position</span> <span class="p">-</span> <span class="n">transform</span><span class="p">.</span><span class="n">position</span><span class="p">;</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">deltaA</span><span class="p">.</span><span class="n">magnitude</span> <span class="p">&lt;</span> <span class="n">npcDate</span><span class="p">.</span><span class="n">FollowDistance</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">deltaA</span><span class="p">.</span><span class="n">magnitude</span> <span class="p">&lt;</span> <span class="n">npcDate</span><span class="p">.</span><span class="n">AttackDistance</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="c1">//开始攻击
+</span><span class="c1"></span>                <span class="n">ChangeState</span><span class="p">((</span><span class="kt">sbyte</span><span class="p">)</span><span class="n">AnimationEnum</span><span class="p">.</span><span class="n">Attack</span><span class="p">);</span>
+
+                <span class="c1">//掉血
+</span><span class="c1"></span>                <span class="n">ReduceHealthPoint</span><span class="p">(</span><span class="n">npcDate</span><span class="p">.</span><span class="n">attackPoint</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="k">else</span>
+            <span class="p">{</span>
+                <span class="c1">//开始跟随
+</span><span class="c1"></span>                <span class="c1">//向玩家方向移动
+</span><span class="c1"></span>                <span class="n">SimpleMove</span><span class="p">(</span><span class="n">deltaA</span><span class="p">.</span><span class="n">normalized</span> <span class="p">*</span> <span class="n">npcDate</span><span class="p">.</span><span class="n">MoveSpeed</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">//被攻击 掉血
+</span><span class="c1"></span>    <span class="k">public</span> <span class="k">void</span> <span class="n">ReduceHealthPoint</span><span class="p">(</span><span class="kt">float</span> <span class="n">hp</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">npcDate</span><span class="p">.</span><span class="n">healthPoint</span> <span class="p">-=</span> <span class="n">hp</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">/// &lt;summary&gt;
+</span><span class="c1">/// 数据 从配置表 读取
+</span><span class="c1">/// &lt;/summary&gt;
+</span><span class="c1"></span><span class="k">public</span> <span class="k">class</span> <span class="nc">NPCDate</span>
+<span class="p">{</span>
+    <span class="c1">//NPC血量
+</span><span class="c1"></span>    <span class="k">public</span> <span class="kt">float</span> <span class="n">healthPoint</span><span class="p">;</span>
+    <span class="k">public</span> <span class="kt">float</span> <span class="n">HealthPoint</span>
+    <span class="p">{</span>
+        <span class="k">get</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="n">healthPoint</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">set</span>
+        <span class="p">{</span>
+            <span class="n">healthPoint</span> <span class="p">=</span> <span class="k">value</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">//NPC跟随距离
+</span><span class="c1"></span>    <span class="k">public</span> <span class="kt">float</span> <span class="n">followDistance</span> <span class="p">=</span> <span class="m">10</span><span class="p">;</span>
+    <span class="k">public</span> <span class="kt">float</span> <span class="n">FollowDistance</span>
+    <span class="p">{</span>
+        <span class="k">get</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="n">followDistance</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">set</span>
+        <span class="p">{</span>
+            <span class="n">followDistance</span> <span class="p">=</span> <span class="k">value</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">//NPC攻击范围
+</span><span class="c1"></span>    <span class="k">public</span> <span class="kt">float</span> <span class="n">attackDistance</span> <span class="p">=</span> <span class="m">5</span><span class="p">;</span>
+    <span class="k">public</span> <span class="kt">float</span> <span class="n">AttackDistance</span>
+    <span class="p">{</span>
+        <span class="k">get</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="n">attackDistance</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">set</span>
+        <span class="p">{</span>
+            <span class="n">attackDistance</span> <span class="p">=</span> <span class="k">value</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">//NPC移动速度
+</span><span class="c1"></span>    <span class="k">public</span> <span class="kt">float</span> <span class="n">moveSpeed</span> <span class="p">=</span> <span class="m">2</span><span class="p">;</span>
+    <span class="k">public</span> <span class="kt">float</span> <span class="n">MoveSpeed</span>
+    <span class="p">{</span>
+        <span class="k">get</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="n">moveSpeed</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">set</span>
+        <span class="p">{</span>
+            <span class="n">moveSpeed</span> <span class="p">=</span> <span class="k">value</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<hr />
+
+<p>Main启动组织框架(所有控件管理)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="k">using</span> <span class="nn">UnityEngine</span><span class="p">;</span>
+
+<span class="c1">/// &lt;summary&gt;
+</span><span class="c1">/// 启动组织框架(所有控件管理)
+</span><span class="c1">/// &lt;/summary&gt;
+</span><span class="c1"></span><span class="k">public</span> <span class="k">class</span> <span class="nc">Main</span> <span class="p">:</span> <span class="n">MonoBehaviour</span>
+<span class="p">{</span>
+    <span class="c1">//可以在Main里实例化单例
+</span><span class="c1"></span>    <span class="k">public</span> <span class="k">static</span> <span class="n">Main</span> <span class="n">Instance</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="n">UIManager</span> <span class="n">uiManager</span><span class="p">;</span>
+
+    <span class="k">void</span> <span class="n">Awake</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// 1. 可以找到 uiManager
+</span><span class="c1"></span>        <span class="n">uiManager</span> <span class="p">=</span> <span class="n">gameObject</span><span class="p">.</span><span class="n">AddComponent</span><span class="p">&lt;</span><span class="n">UIManager</span><span class="p">&gt;();</span>
+        <span class="c1">// 2. 同样可以找到 uiManager 调用里面方法
+</span><span class="c1"></span>        <span class="c1">// uiManager = Main.Instance.uiManager.methods;
+</span><span class="c1"></span>
+        <span class="n">gameObject</span><span class="p">.</span><span class="n">AddComponent</span><span class="p">&lt;</span><span class="n">WWWManager</span><span class="p">&gt;();</span>
+
+        <span class="n">gameObject</span><span class="p">.</span><span class="n">AddComponent</span><span class="p">&lt;</span><span class="n">AudioManager</span><span class="p">&gt;();</span>
+
+        <span class="n">gameObject</span><span class="p">.</span><span class="n">AddComponent</span><span class="p">&lt;</span><span class="n">NPCManager</span><span class="p">&gt;();</span>
+
+        
+
+        <span class="c1">//只是实例化一次，跨场景也不销毁
+</span><span class="c1"></span>        <span class="n">DontDestroyOnLoad</span><span class="p">(</span><span class="n">gameObject</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<hr />
+
+				</article>				
+			</section>
+
+			
+			<section class="ui secondary attached segment dream-tags">
+				
+					
+
+
+
+
+	
+
+
+				
+			</section>
+
+			
+			
+				<section class="ui secondary  attached segment share row box">
+					
+
+
+
+
+
+
+
+
+<div class="author">
+	
+	<img class="avatar" src="/img/avatar.png">
+	
+</div>
+<div class="info grow flexbox">
+	
+	<p class="name">So Serious</p>
+	
+	<p class="desc">Do your best.</p>
+</div>
+
+
+<section class="buttons row box">
+	<div class="facebook none flexbox" href="#" onclick="window.open(
+			'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),
+			'facebook-share-dialog',
+			'width=626,height=436'); return false;">
+		<button class="ui facebook button"><i class="facebook icon"></i>Share</button>
+	</div>
+	<div class="twitter none flexbox" onclick="window.open('https://twitter.com/intent/tweet?text=Read &quot;角色模块封装——游戏框架-08  https:\/\/sofuck.top\/posts\/game-frame-08\/','_self')">
+		<button class="ui twitter button"><i class="twitter icon"></i>Tweet</button>
+	</div>
+</section>
+
+				</section>
+				<section class="ui secondary attached segment copyright">
+					
+
+				</section>
+			
+
+			
+			
+				<div class="ui secondary bottom attached stacked segment disqus">
+					
+<div id="disqus_thread"></div>
+<script>
+	var disqus_config = function () {
+		this.page.url = 'https:\/\/sofuck.top\/posts\/game-frame-08\/';
+		this.page.identifier = '83b8ed164b240df5a9a2f8b703fd4aa3';
+	};
+	(function() {
+   	var d = document, s = d.createElement('script');
+   	s.src = 'https://' + 'So Serious' + '.disqus.com/embed.js';
+   	s.setAttribute('data-timestamp', +new Date());
+   	(d.head || d.body).appendChild(s);
+	})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+				</div>
+			
+		</div>
+	</div>
+
+				</div>
+				<div class="back">
+					
+<nav class="ui top secondary menu bar">
+	<div class="item">
+		<i class="inverted big link bullseye icon dream-flip-toggle" title="翻转"></i>
+	</div>
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+
+	
+	
+	
+	
+	
+	
+	
+		
+		
+			<div class="item">
+				<a href="https://github.com/SoGhost" target="	_blank">
+					<i id="ico" class="inverted big link github icon" title="GitHub"></i>
+				</a>
+			</div>
+		
+	
+		
+		
+			<div class="item">
+				<a href="mailto:ReaperOfBlack@gmail.com" target="	_blank">
+					<i id="ico" class="inverted big link mail icon" title="Email"></i>
+				</a>
+			</div>
+		
+	
+		
+		
+	
+		
+		
+	
+		
+		
+	
+		
+		
+	
+		
+		
+	
+		
+		
+	
+		
+		
+	
+</nav>
+
+
+
+<div class="ui centered grid about">
+	<div class="sixteen wide mobile fifteen wide tablet fifteen wide computer column about">
+		<section class="ui stacked segments">
+			<div class="ui inverted segment">
+				<article class="twemoji">
+					<h1>So, Who Am I?</h1>
+
+<hr />
+
+<p><br>
+				</article>
+				
+				
+			</div>
+		</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+		</div>
+
+		
+
+<script src="/js/site.js"></script>
+
+<script src="https://twemoji.maxcdn.com/2/twemoji.min.js?2.6"></script>
+
+
+
+
+
+
+
+	<script id="dsq-count-scr" src="//So%20Serious.disqus.com/count.js" async></script>
+
+
+
+
+	
+	<script>
+		window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+		ga('create', 'UA-131035751-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+	<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+		
+
+
+		
+
+	<script>
+		(function () {
+		  console.log("Twemoji up and making stuff colourful!");
+		  for (var b = document.getElementsByClassName("twemoji"), a = 0; a < b.length; a++) {
+			twemoji.parse(b[a]);
+		  }
+		})();
+	</script>
+
+
+	</body>
+</html>

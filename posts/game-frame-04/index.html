@@ -1,0 +1,2156 @@
+<!DOCTYPE html>
+<html lang="en-us">
+	<head>
+		<title>
+	音效模块封装——游戏框架-04
+</title>
+		<style>
+	body {
+		display: block;
+		--colorBG: "#40e0d0, #ff8c00, #ff0080";
+		
+			background: linear-gradient(to right, var(--colorBG)) !important;
+		
+	}
+
+	body, body.pushable {
+		background-repeat: no-repeat;
+	  	background-attachment: fixed;
+	  	background-size: cover !important;
+	}
+</style>
+
+		<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+	
+	<meta name="author" content="So Serious" />
+	<meta name="description" content="音效模块封装" />
+
+
+
+<meta name="generator" content="Hugo 0.49.2" />
+
+
+<link rel="shortcut icon" href="/img/PY-Blog.ico">
+
+
+
+
+		
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.js"></script>
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/site.css">
+
+
+
+
+
+
+
+
+<style>
+	body.pushable {
+		display: block;
+		
+			background: linear-gradient(to right, var(--colorBG)) !important;
+		 ;
+	}
+</style>
+
+
+
+<script>
+	var colorBG =  true 
+	var enabledPost =  false 
+	
+	var isMobile = ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) )
+	console.log("The client device is a "+(isMobile?"mobile":"PC")+".")
+</script>
+
+	</head>
+
+	<body>
+		<script>
+var prevBgIndex = 0;
+var bodyBgSwitchIndex = 0;
+
+
+	var gradients = [
+	  [],
+	  ['#40e0d0', '#ff8c00', '#ff0080'], 
+	  ['#3e5151', '#decba4'], 
+	  ['#11998e', '#38ef7d'], 
+	  ['#108dc7', '#ef8e38'], 
+	  ['#fc5c7d', '#6a82fb'], 
+	  ['#fc466b', '#3f5efb'], 
+	  ['#c94b4b', '#4b134f'], 
+	  ['#23074d', '#cc5333'] 
+	];
+	document.body.style.setProperty('--colorBG', connect(gradients[getRandomInt(0, gradients.length)]));
+
+
+	function getRandomInt(min, max) {
+	  min = Math.ceil(min);
+	  max = Math.floor(max);
+	  var random;
+	  while (1) {
+	    random = Math.floor(Math.random() * (max - min)) + min;
+	    if (random !== prevBgIndex) {
+	      prevBgIndex = random;
+	      break;
+	    }
+	  }
+	  return random;
+	}
+
+	function connect(arr) {
+	  var str = '';
+	  for (var i = 0; i < arr.length; i++) {
+	    if (i !== arr.length - 1) {
+	      str += arr[i] + ', ';
+	    } else {
+	      str += arr[i];
+	    }
+	  }
+	  return str;
+	}
+</script>
+
+
+
+
+		<div id="sidebar" class="ui sidebar inverted vertical menu">
+	
+	<section id="author" class="ui top attached center aligned inverted segment">
+		
+<div class="ui small circular image">
+	
+		<img src="/img/avatar.png">
+	
+</div>
+
+
+<h3 class="ui header">
+	So Serious
+	<div class="sub header">Do your best.</div>
+</h3>
+
+	</section>
+
+	
+	
+		<section class="ui attached center aligned inverted segment sidebar-dream-tags">
+			
+			
+
+
+
+
+	
+		<a class="ui label pink " href="/tags/2d" title="2d">2d</a>
+	
+		<a class="ui label yellow " href="/tags/ae" title="ae">ae</a>
+	
+		<a class="ui label violet " href="/tags/ai" title="ai">ai</a>
+	
+		<a class="ui label violet " href="/tags/android" title="android">android</a>
+	
+		<a class="ui label red " href="/tags/animator" title="animator">animator</a>
+	
+		<a class="ui label teal " href="/tags/attackrange" title="attackrange">attackrange</a>
+	
+		<a class="ui label blue " href="/tags/audio" title="audio">audio</a>
+	
+		<a class="ui label brown " href="/tags/c" title="c#">c#</a>
+	
+		<a class="ui label olive " href="/tags/effect" title="effect">effect</a>
+	
+		<a class="ui label yellow " href="/tags/english" title="english">english</a>
+	
+		<a class="ui label purple " href="/tags/fps" title="fps">fps</a>
+	
+		<a class="ui label purple " href="/tags/fsm" title="fsm">fsm</a>
+	
+		<a class="ui label pink " href="/tags/gl" title="gl">gl</a>
+	
+		<a class="ui label pink " href="/tags/knowledge" title="knowledge">knowledge</a>
+	
+		<a class="ui label orange " href="/tags/notes" title="notes">notes</a>
+	
+		<a class="ui label brown " href="/tags/rpg" title="rpg">rpg</a>
+	
+		<a class="ui label pink " href="/tags/tilemap" title="tilemap">tilemap</a>
+	
+		<a class="ui label blue " href="/tags/ui" title="ui">ui</a>
+	
+		<a class="ui label pink " href="/tags/unity" title="unity">unity</a>
+	
+		<a class="ui label yellow " href="/tags/word" title="word">word</a>
+	
+		<a class="ui label brown " href="/tags/word-book" title="word-book">word-book</a>
+	
+		<a class="ui label red " href="/tags/%E6%8A%80%E5%B7%A7" title="技巧">技巧</a>
+	
+		<a class="ui label pink " href="/tags/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93" title="数据传输">数据传输</a>
+	
+
+
+		</section>
+	
+
+	
+	
+		<section class="ui attached inverted segment sidebar-dream-categories both flexbox">
+			<div class="ui inverted accordion">
+				
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/2d">2d</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/2d-attack-range/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>2D攻击范围</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/ae">ae</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/ui-effects-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>UI 特效制作</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/c">c#</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/c-sharp-notes-02/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>C# _语言基础</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/c-sharp-notes-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>C# _基本操作</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/english">english</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/english-sentence-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>English Sentence</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/fsm">fsm</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/finite-state-machine/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>有限状态机</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/game-frame">game-frame</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/game-frame-09/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>相机和EasyTouch封装——游戏框架-09</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/game-frame-08/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>角色模块封装——游戏框架-08</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/game-frame-07/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>小地图封装——游戏框架-07</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/game-frame-06/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>EasyTouch模块封装——游戏框架-06</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/game-frame-05/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>UI模块封装——游戏框架-05</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/game-frame-04/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>音效模块封装——游戏框架-04</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/game-frame-03/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>WWW封装——游戏框架-03</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/game-frame-02/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>常用设计模式——游戏框架-02</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/game-frame-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>设计原则——游戏框架-01</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/notes">notes</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/game-words/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>游戏常用英文</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/words-notes/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Word Book</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/opengl">opengl</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/gl-drawing/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>GL画图功能</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/pain">pain</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/pain-to-learn-unity-notes-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>【Pain To Learn Unity】——案例之像素鸟</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/pain-to-learn-unity-notes-02/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>【Pain To Learn Unity】——案例之吃豆人</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/ugui">ugui</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/ugui-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>UGUI</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/unity">unity</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/ui-effects-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>UI 特效制作</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/unity-tilemap_mod/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Unity Tilemap模块</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/unity-ai-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>AI逻辑</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/unity-fps-view_move/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>FPS_视角和移动</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/unity-audio-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Unity Audio</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/script-input_control/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>脚本的输入与控制</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/monobehavior-common_method-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>MonoBehavior 常用方法</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/unity-script-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Monobehavior事件响应（1）</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/unity-notes-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Unity 注意事项</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/unity-animator">unity-animator</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/unity-animation-system-04/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Unity 动画系统（4）</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/unity-animation-system-03/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Unity 动画系统（3）</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/unity-animation-system-02/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Unity 动画系统（2）</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/unity-animation-system-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Unity 动画系统（1）</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/windows">windows</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/use-skill/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>使用软件突发小技巧</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/%E5%AE%89%E5%8D%93">安卓</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/android/beginner-android/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Beginner</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86">网络知识</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/computer-illiteracy-p2p/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>网络知识——P2P</p>
+				</div>
+			</a>
+		
+	</div>
+
+
+			</div>
+		</section>
+	
+
+	
+	<section id="footer" class="ui bottom attached center aligned inverted segment">
+		
+
+	<p>© 2018 PY-&gt;Blog</p>
+
+
+<p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with <a href="https://github.com/UtkarshVerma/hugo-dream-plus" target="_blank">Dream Plus</a> theme.</p>
+
+	</section>
+</div>
+
+
+		<div class="pusher">
+			<div class="flipper">
+				<div class="front">
+					
+	<nav class="ui top secondary menu bar">
+	
+	<div class="item">
+		<i class="inverted big link bullseye icon dream-flip-toggle" title="翻转"></i>
+	</div>
+
+	
+	
+		<div class="item">
+			<a href="/">
+				<i class="inverted big link home icon" title="首页"></i>
+			</a>
+		</div>
+	
+
+	
+	
+		
+			<div class="item">
+				<a href="/posts">
+					<i class="inverted big link archive icon" title="档案"></i>
+				</a>
+			</div>
+		
+	
+
+	
+	
+		<div class="item">
+			<a href="/tags">
+				<i class="inverted big link tags icon" title="全部标签"></i>
+			</a>
+		</div>
+	
+
+	
+	
+		<div class="item">
+			<a href="/categories">
+				<i class="inverted big link cubes icon" title="所有类别"></i>
+			</a>
+    	</div>
+	
+
+	
+	
+
+	
+	
+		<div class="ui container tablet computer only grid">
+			<div class="item" onClick="$('.ui.sidebar').sidebar('setting', 'transition', 'overlay').sidebar('toggle');">
+				<i class="inverted big link sidebar icon" title=""></i>
+			</div>
+		</div>
+	
+
+	
+	
+		<div class="item right">
+			<a href="/posts/index.xml">
+				<i class="inverted big link rss icon" title=""></i>
+			</a>
+		</div>
+	
+</nav>
+
+
+	<div class="ui centered grid">
+		
+		<div class="sixteen wide mobile only column">
+				<div class="ui inverted accordion">
+	<div id="header" class="ui inverted segment column box">		
+		
+		<header id="author" class="ui top attached center aligned inverted segment">
+			
+<div class="ui small circular image">
+	
+		<img src="/img/avatar.png">
+	
+</div>
+
+
+<h3 class="ui header">
+	So Serious
+	<div class="sub header">Do your best.</div>
+</h3>
+
+		</header>
+
+		
+		<div class=" title header-title">
+			
+				<div id="tag-category-pop" class="ui red right corner label">
+					<i class="hand point icon down"title="点击弹出标签和分类"></i>
+				</div>
+			
+		</div>
+		
+		
+		<div id="tag-category" class=" content">
+			
+				<section class="ui attached center aligned inverted segment dream-tags none flexbox">
+					
+
+
+
+
+	
+		<a class="ui label brown " href="/tags/2d" title="2d">2d</a>
+	
+		<a class="ui label violet " href="/tags/ae" title="ae">ae</a>
+	
+		<a class="ui label pink " href="/tags/ai" title="ai">ai</a>
+	
+		<a class="ui label green " href="/tags/android" title="android">android</a>
+	
+		<a class="ui label green " href="/tags/animator" title="animator">animator</a>
+	
+		<a class="ui label brown " href="/tags/attackrange" title="attackrange">attackrange</a>
+	
+		<a class="ui label brown " href="/tags/audio" title="audio">audio</a>
+	
+		<a class="ui label blue " href="/tags/c" title="c#">c#</a>
+	
+		<a class="ui label purple " href="/tags/effect" title="effect">effect</a>
+	
+		<a class="ui label teal " href="/tags/english" title="english">english</a>
+	
+		<a class="ui label orange " href="/tags/fps" title="fps">fps</a>
+	
+		<a class="ui label orange " href="/tags/fsm" title="fsm">fsm</a>
+	
+		<a class="ui label purple " href="/tags/gl" title="gl">gl</a>
+	
+		<a class="ui label red " href="/tags/knowledge" title="knowledge">knowledge</a>
+	
+		<a class="ui label brown " href="/tags/notes" title="notes">notes</a>
+	
+		<a class="ui label orange " href="/tags/rpg" title="rpg">rpg</a>
+	
+		<a class="ui label brown " href="/tags/tilemap" title="tilemap">tilemap</a>
+	
+		<a class="ui label pink " href="/tags/ui" title="ui">ui</a>
+	
+		<a class="ui label red " href="/tags/unity" title="unity">unity</a>
+	
+		<a class="ui label blue " href="/tags/word" title="word">word</a>
+	
+		<a class="ui label orange " href="/tags/word-book" title="word-book">word-book</a>
+	
+		<a class="ui label brown " href="/tags/%E6%8A%80%E5%B7%A7" title="技巧">技巧</a>
+	
+		<a class="ui label violet " href="/tags/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93" title="数据传输">数据传输</a>
+	
+
+
+				</section>
+			
+
+			
+				<section class="ui attached inverted segment dream-categories both flexbox">
+					<div class="inverted accordion">
+						
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/2d">2d</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/2d-attack-range/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>2D攻击范围</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/ae">ae</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/ui-effects-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>UI 特效制作</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/c">c#</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/c-sharp-notes-02/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>C# _语言基础</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/c-sharp-notes-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>C# _基本操作</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/english">english</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/english-sentence-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>English Sentence</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/fsm">fsm</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/finite-state-machine/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>有限状态机</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/game-frame">game-frame</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/game-frame-09/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>相机和EasyTouch封装——游戏框架-09</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/game-frame-08/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>角色模块封装——游戏框架-08</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/game-frame-07/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>小地图封装——游戏框架-07</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/game-frame-06/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>EasyTouch模块封装——游戏框架-06</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/game-frame-05/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>UI模块封装——游戏框架-05</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/game-frame-04/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>音效模块封装——游戏框架-04</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/game-frame-03/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>WWW封装——游戏框架-03</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/game-frame-02/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>常用设计模式——游戏框架-02</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/game-frame-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>设计原则——游戏框架-01</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/notes">notes</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/game-words/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>游戏常用英文</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/words-notes/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Word Book</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/opengl">opengl</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/gl-drawing/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>GL画图功能</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/pain">pain</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/pain-to-learn-unity-notes-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>【Pain To Learn Unity】——案例之像素鸟</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/pain-to-learn-unity-notes-02/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>【Pain To Learn Unity】——案例之吃豆人</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/ugui">ugui</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/ugui-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>UGUI</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/unity">unity</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/ui-effects-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>UI 特效制作</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/unity-tilemap_mod/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Unity Tilemap模块</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/unity-ai-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>AI逻辑</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/unity-fps-view_move/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>FPS_视角和移动</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/unity-audio-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Unity Audio</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/script-input_control/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>脚本的输入与控制</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/monobehavior-common_method-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>MonoBehavior 常用方法</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/unity-script-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Monobehavior事件响应（1）</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/unity-notes-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Unity 注意事项</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/unity-animator">unity-animator</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/unity-animation-system-04/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Unity 动画系统（4）</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/unity-animation-system-03/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Unity 动画系统（3）</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/unity-animation-system-02/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Unity 动画系统（2）</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/unity-animation-system-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Unity 动画系统（1）</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/windows">windows</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/use-skill/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>使用软件突发小技巧</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/%E5%AE%89%E5%8D%93">安卓</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/android/beginner-android/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Beginner</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86">网络知识</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/computer-illiteracy-p2p/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>网络知识——P2P</p>
+				</div>
+			</a>
+		
+	</div>
+
+
+					</div>
+				</section>
+			
+		</div>
+
+		
+		<footer class="ui bottom attached center aligned inverted segment">
+			
+
+	<p>© 2018 PY-&gt;Blog</p>
+
+
+<p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with <a href="https://github.com/UtkarshVerma/hugo-dream-plus" target="_blank">Dream Plus</a> theme.</p>
+
+		</footer>
+	</div>
+</div>
+
+		</div>
+
+		<div class="sixteen wide mobile fifteen wide tablet twelve wide computer column post-list">
+			
+			<section class="ui secondary top attached black segment post-head">
+				<h1 class="post-title">
+					音效模块封装——游戏框架-04
+				</h1>
+
+				<div class="sub header">
+					<div><span><i class="calendar outline icon"></i>Aug 30, 2018</span></div>
+					
+					<div><span class="disqusComment"><i class="comment outline icon"></i><a href="https://sofuck.top/posts/game-frame-04/#disqus_thread" class="disqus-comment-count" data-disqus-identifier="67395cab7dbb56d4dd153af692734475"></a></span></div>
+					<div><span><i class="clock outline icon"></i>5 min read</span></div>
+					<div><span><i class="angle double up icon"></i>更新于 Aug 30, 2018</span></div>
+				</div>
+				<hr>
+
+				
+					<div class="toc">
+						<nav id="TableOfContents">
+<ul>
+<li><a href="#音效模块">音效模块</a></li>
+</ul>
+</nav>
+					</div>
+				
+
+				<article class="post-content twemoji">
+					
+
+<h1 id="音效模块">音效模块&nbsp;<a class="anchor" href="#音效模块"><i class="small linkify icon"></i></a> </h1>
+
+<blockquote>
+<p><strong>Audio Manager</strong>（音效管理）管理<strong>Source Manager</strong>和<strong>Clips Manager</strong>，Source Manager管理多个AudioSource，Clips Manager管理多个AudioClips。</p>
+
+<table>
+<thead>
+<tr>
+<th>抽象AudioSource：</th>
+<th>抽象AudioClips：</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>1. 能够从所有的AudioSource中拿出一个空闲的AudioSource</td>
+<td>1. 根据名字找出对应的Clips</td>
+</tr>
+
+<tr>
+<td>2. 释放多余的（空闲的）AudioSource</td>
+<td>2. 通过配置文件读取名字</td>
+</tr>
+
+<tr>
+<td>3. 播放一个音效</td>
+<td>3. 加载到内存</td>
+</tr>
+
+<tr>
+<td>4. 停止播放</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span><span class="lnt">125
+</span><span class="lnt">126
+</span><span class="lnt">127
+</span><span class="lnt">128
+</span><span class="lnt">129
+</span><span class="lnt">130
+</span><span class="lnt">131
+</span><span class="lnt">132
+</span><span class="lnt">133
+</span><span class="lnt">134
+</span><span class="lnt">135
+</span><span class="lnt">136
+</span><span class="lnt">137
+</span><span class="lnt">138
+</span><span class="lnt">139
+</span><span class="lnt">140
+</span><span class="lnt">141
+</span><span class="lnt">142
+</span><span class="lnt">143
+</span><span class="lnt">144
+</span><span class="lnt">145
+</span><span class="lnt">146
+</span><span class="lnt">147
+</span><span class="lnt">148
+</span><span class="lnt">149
+</span><span class="lnt">150
+</span><span class="lnt">151
+</span><span class="lnt">152
+</span><span class="lnt">153
+</span><span class="lnt">154
+</span><span class="lnt">155
+</span><span class="lnt">156
+</span><span class="lnt">157
+</span><span class="lnt">158
+</span><span class="lnt">159
+</span><span class="lnt">160
+</span><span class="lnt">161
+</span><span class="lnt">162
+</span><span class="lnt">163
+</span><span class="lnt">164
+</span><span class="lnt">165
+</span><span class="lnt">166
+</span><span class="lnt">167
+</span><span class="lnt">168
+</span><span class="lnt">169
+</span><span class="lnt">170
+</span><span class="lnt">171
+</span><span class="lnt">172
+</span><span class="lnt">173
+</span><span class="lnt">174
+</span><span class="lnt">175
+</span><span class="lnt">176
+</span><span class="lnt">177
+</span><span class="lnt">178
+</span><span class="lnt">179
+</span><span class="lnt">180
+</span><span class="lnt">181
+</span><span class="lnt">182
+</span><span class="lnt">183
+</span><span class="lnt">184
+</span><span class="lnt">185
+</span><span class="lnt">186
+</span><span class="lnt">187
+</span><span class="lnt">188
+</span><span class="lnt">189
+</span><span class="lnt">190
+</span><span class="lnt">191
+</span><span class="lnt">192
+</span><span class="lnt">193
+</span><span class="lnt">194
+</span><span class="lnt">195
+</span><span class="lnt">196
+</span><span class="lnt">197
+</span><span class="lnt">198
+</span><span class="lnt">199
+</span><span class="lnt">200
+</span><span class="lnt">201
+</span><span class="lnt">202
+</span><span class="lnt">203
+</span><span class="lnt">204
+</span><span class="lnt">205
+</span><span class="lnt">206
+</span><span class="lnt">207
+</span><span class="lnt">208
+</span><span class="lnt">209
+</span><span class="lnt">210
+</span><span class="lnt">211
+</span><span class="lnt">212
+</span><span class="lnt">213
+</span><span class="lnt">214
+</span><span class="lnt">215
+</span><span class="lnt">216
+</span><span class="lnt">217
+</span><span class="lnt">218
+</span><span class="lnt">219
+</span><span class="lnt">220
+</span><span class="lnt">221
+</span><span class="lnt">222
+</span><span class="lnt">223
+</span><span class="lnt">224
+</span><span class="lnt">225
+</span><span class="lnt">226
+</span><span class="lnt">227
+</span><span class="lnt">228
+</span><span class="lnt">229
+</span><span class="lnt">230
+</span><span class="lnt">231
+</span><span class="lnt">232
+</span><span class="lnt">233
+</span><span class="lnt">234
+</span><span class="lnt">235
+</span><span class="lnt">236
+</span><span class="lnt">237
+</span><span class="lnt">238
+</span><span class="lnt">239
+</span><span class="lnt">240
+</span><span class="lnt">241
+</span><span class="lnt">242
+</span><span class="lnt">243
+</span><span class="lnt">244
+</span><span class="lnt">245
+</span><span class="lnt">246
+</span><span class="lnt">247
+</span><span class="lnt">248
+</span><span class="lnt">249
+</span><span class="lnt">250
+</span><span class="lnt">251
+</span><span class="lnt">252
+</span><span class="lnt">253
+</span><span class="lnt">254
+</span><span class="lnt">255
+</span><span class="lnt">256
+</span><span class="lnt">257
+</span><span class="lnt">258
+</span><span class="lnt">259
+</span><span class="lnt">260
+</span><span class="lnt">261
+</span><span class="lnt">262
+</span><span class="lnt">263
+</span><span class="lnt">264
+</span><span class="lnt">265
+</span><span class="lnt">266
+</span><span class="lnt">267
+</span><span class="lnt">268
+</span><span class="lnt">269
+</span><span class="lnt">270
+</span><span class="lnt">271
+</span><span class="lnt">272
+</span><span class="lnt">273
+</span><span class="lnt">274
+</span><span class="lnt">275
+</span><span class="lnt">276
+</span><span class="lnt">277
+</span><span class="lnt">278
+</span><span class="lnt">279
+</span><span class="lnt">280
+</span><span class="lnt">281
+</span><span class="lnt">282
+</span><span class="lnt">283
+</span><span class="lnt">284
+</span><span class="lnt">285
+</span><span class="lnt">286
+</span><span class="lnt">287
+</span><span class="lnt">288
+</span><span class="lnt">289
+</span><span class="lnt">290
+</span><span class="lnt">291
+</span><span class="lnt">292
+</span><span class="lnt">293
+</span><span class="lnt">294
+</span><span class="lnt">295
+</span><span class="lnt">296
+</span><span class="lnt">297
+</span><span class="lnt">298
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">UnityEngine</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.IO</span><span class="p">;</span><span class="c1">//FileInfo打开文件
+</span><span class="c1"></span>
+<span class="k">public</span> <span class="k">class</span> <span class="nc">UseAudioManager</span> <span class="p">:</span> <span class="n">MonoBehaviour</span>
+<span class="p">{</span>
+    <span class="k">void</span> <span class="n">Update</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">Input</span><span class="p">.</span><span class="n">GetKeyDown</span><span class="p">(</span><span class="n">KeyCode</span><span class="p">.</span><span class="n">Space</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="n">AudioManager</span><span class="p">.</span><span class="n">audiooManager</span><span class="p">.</span><span class="n">Play</span><span class="p">(</span><span class="s">&#34;BGM&#34;</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">Input</span><span class="p">.</span><span class="n">GetKeyDown</span><span class="p">(</span><span class="n">KeyCode</span><span class="p">.</span><span class="n">Space</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="n">AudioManager</span><span class="p">.</span><span class="n">audiooManager</span><span class="p">.</span><span class="n">Stop</span><span class="p">(</span><span class="s">&#34;BGM&#34;</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">AudioManager</span> <span class="p">:</span> <span class="n">MonoBehaviour</span>
+<span class="p">{</span>
+    <span class="c1">//单例模式
+</span><span class="c1"></span>    <span class="k">public</span> <span class="k">static</span> <span class="n">AudioManager</span> <span class="n">audiooManager</span><span class="p">;</span>
+
+    <span class="n">SourceManager</span> <span class="n">sourceManager</span><span class="p">;</span>
+
+    <span class="n">ClipManager</span> <span class="n">clipManager</span><span class="p">;</span>
+
+    <span class="k">void</span> <span class="n">Start</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">audiooManager</span> <span class="p">=</span> <span class="k">this</span><span class="p">;</span>
+
+        <span class="n">sourceManager</span> <span class="p">=</span> <span class="k">new</span> <span class="n">SourceManager</span><span class="p">(</span><span class="n">gameObject</span><span class="p">);</span>
+
+        <span class="n">clipManager</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ClipManager</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">void</span> <span class="n">Play</span><span class="p">(</span><span class="kt">string</span> <span class="n">audioName</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">//获取空闲Source
+</span><span class="c1"></span>        <span class="n">AudioSource</span> <span class="n">audioSource</span> <span class="p">=</span> <span class="n">sourceManager</span><span class="p">.</span><span class="n">GetFreeAudioSource</span><span class="p">();</span>
+
+        <span class="c1">//获取播放音频名字
+</span><span class="c1"></span>        <span class="n">SingleClip</span> <span class="n">tmpClip</span> <span class="p">=</span> <span class="n">clipManager</span><span class="p">.</span><span class="n">FindClipByName</span><span class="p">(</span><span class="n">audioName</span><span class="p">);</span>
+
+        <span class="c1">//当获取到音频名字再播放，防止报错
+</span><span class="c1"></span>        <span class="k">if</span> <span class="p">(</span><span class="n">tmpClip</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="c1">//调用接口 播放Clip
+</span><span class="c1"></span>            <span class="n">tmpClip</span><span class="p">.</span><span class="n">Play</span><span class="p">(</span><span class="n">audioSource</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">void</span> <span class="n">Stop</span><span class="p">(</span><span class="kt">string</span> <span class="n">audioName</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">sourceManager</span><span class="p">.</span><span class="n">Stop</span><span class="p">(</span><span class="n">audioName</span><span class="p">);</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">SourceManager</span> <span class="p">:</span> <span class="n">MonoBehaviour</span>
+<span class="p">{</span>
+    <span class="c1">/// &lt;summary&gt;
+</span><span class="c1"></span>    <span class="c1">/// 在new这个对象时，就启动了Initial()
+</span><span class="c1"></span>    <span class="c1">/// &lt;/summary&gt;
+</span><span class="c1"></span>    <span class="c1">/// &lt;param name=&#34;tmpOwer&#34;&gt;&lt;/param&gt;
+</span><span class="c1"></span>    <span class="k">public</span> <span class="n">SourceManager</span><span class="p">(</span><span class="n">GameObject</span> <span class="n">tmpOwer</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">ower</span> <span class="p">=</span> <span class="n">tmpOwer</span><span class="p">;</span>
+
+        <span class="n">Initial</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="c1">//存放所有AudioSource
+</span><span class="c1"></span>    <span class="n">List</span><span class="p">&lt;</span><span class="n">AudioSource</span><span class="p">&gt;</span> <span class="n">allSources</span><span class="p">;</span>
+
+    <span class="n">GameObject</span> <span class="n">ower</span><span class="p">;</span>
+
+    <span class="c1">//初始化List
+</span><span class="c1"></span>    <span class="k">public</span> <span class="k">void</span> <span class="n">Initial</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">allSources</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">AudioSource</span><span class="p">&gt;();</span>
+
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="m">10</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
+        <span class="p">{</span>
+            <span class="n">AudioSource</span> <span class="n">tmpSource</span> <span class="p">=</span> <span class="n">ower</span><span class="p">.</span><span class="n">AddComponent</span><span class="p">&lt;</span><span class="n">AudioSource</span><span class="p">&gt;();</span>
+
+            <span class="n">allSources</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">tmpSource</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">//获取空闲AudioSource
+</span><span class="c1"></span>    <span class="k">public</span> <span class="n">AudioSource</span> <span class="n">GetFreeAudioSource</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">//遍历判断是否有空闲
+</span><span class="c1"></span>        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">allSources</span><span class="p">.</span><span class="n">Count</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
+        <span class="p">{</span>
+            <span class="c1">//如果不在播放，返回出去，不再执行
+</span><span class="c1"></span>            <span class="k">if</span> <span class="p">(!</span><span class="n">allSources</span><span class="na">[i]</span><span class="p">.</span><span class="n">isPlaying</span><span class="p">)</span>
+                <span class="k">return</span> <span class="n">allSources</span><span class="na">[i]</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="n">AudioSource</span> <span class="n">tmpSource</span> <span class="p">=</span> <span class="n">ower</span><span class="p">.</span><span class="n">AddComponent</span><span class="p">&lt;</span><span class="n">AudioSource</span><span class="p">&gt;();</span>
+        <span class="n">allSources</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">tmpSource</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="n">tmpSource</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">/// &lt;summary&gt;
+</span><span class="c1"></span>    <span class="c1">/// 释放多余的AudioSource
+</span><span class="c1"></span>    <span class="c1">/// &lt;/summary&gt;
+</span><span class="c1"></span>    <span class="k">public</span> <span class="k">void</span> <span class="n">ReleaseFreeAudioSource</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">tmpCount</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+
+        <span class="n">List</span><span class="p">&lt;</span><span class="n">AudioSource</span><span class="p">&gt;</span> <span class="n">tmpSources</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">AudioSource</span><span class="p">&gt;();</span>
+
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">allSources</span><span class="p">.</span><span class="n">Count</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
+        <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(!</span><span class="n">allSources</span><span class="na">[i]</span><span class="p">.</span><span class="n">isPlaying</span><span class="p">)</span>
+                <span class="n">tmpCount</span><span class="p">++;</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">tmpCount</span> <span class="p">&gt;</span> <span class="m">3</span><span class="p">)</span><span class="c1">//空闲的AudioSource数量保持3个
+</span><span class="c1"></span>            <span class="p">{</span>
+                <span class="n">tmpSources</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">allSources</span><span class="na">[i]</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="c1">//移除多余AudioSource
+</span><span class="c1"></span>        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">tmpSources</span><span class="p">.</span><span class="n">Count</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
+        <span class="p">{</span>
+            <span class="n">AudioSource</span> <span class="n">tmpSource</span> <span class="p">=</span> <span class="n">allSources</span><span class="na">[i]</span><span class="p">;</span>
+
+            <span class="n">allSources</span><span class="p">.</span><span class="n">Remove</span><span class="p">(</span><span class="n">tmpSource</span><span class="p">);</span><span class="c1">//只从数组中移除，场景没有移除
+</span><span class="c1"></span>
+            <span class="n">Destroy</span><span class="p">(</span><span class="n">tmpSource</span><span class="p">);</span><span class="c1">//从场景中移除组件
+</span><span class="c1"></span>        <span class="p">}</span>
+
+        <span class="n">tmpSources</span><span class="p">.</span><span class="n">Clear</span><span class="p">();</span><span class="c1">//用完后清空List
+</span><span class="c1"></span>        <span class="n">tmpSources</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">/// &lt;summary&gt;
+</span><span class="c1"></span>    <span class="c1">/// 找到正在播放的AudioSource，并且停止播放
+</span><span class="c1"></span>    <span class="c1">/// &lt;/summary&gt;
+</span><span class="c1"></span>    <span class="c1">/// &lt;param name=&#34;audioName&#34;&gt;&lt;/param&gt;
+</span><span class="c1"></span>    <span class="k">public</span> <span class="k">void</span> <span class="n">Stop</span><span class="p">(</span><span class="kt">string</span> <span class="n">audioName</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">allSources</span><span class="p">.</span><span class="n">Count</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
+        <span class="p">{</span>
+            <span class="c1">//判断当前AudioSource播放的clip名字与输入的名字是否相等
+</span><span class="c1"></span>            <span class="k">if</span> <span class="p">(</span><span class="n">allSources</span><span class="na">[i]</span><span class="p">.</span><span class="n">isPlaying</span> <span class="p">&amp;&amp;</span> <span class="n">allSources</span><span class="na">[i]</span><span class="p">.</span><span class="n">clip</span><span class="p">.</span><span class="n">name</span><span class="p">.</span><span class="n">Equals</span><span class="p">(</span><span class="n">audioName</span><span class="p">))</span>
+            <span class="p">{</span>
+                <span class="n">allSources</span><span class="na">[i]</span><span class="p">.</span><span class="n">Stop</span><span class="p">();</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">/// &lt;summary&gt;
+</span><span class="c1">/// 1. 一般从配置文件加载Clip名字
+</span><span class="c1">/// 2. 直接拖到组件上占用空间，占用内存等待播放
+</span><span class="c1">/// &lt;/summary&gt;
+</span><span class="c1"></span><span class="k">public</span> <span class="k">class</span> <span class="nc">ClipManager</span>
+<span class="p">{</span>
+    <span class="c1">//构造函数
+</span><span class="c1"></span>    <span class="k">public</span> <span class="n">ClipManager</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">ReadConfig</span><span class="p">();</span>
+
+        <span class="n">LoadClips</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="c1">//从配置文件加载Clip名字
+</span><span class="c1"></span>    <span class="c1">//string[] clipName = { &#34;Click-one&#34;, &#34;Click-two&#34;, &#34;Click-three&#34; };
+</span><span class="c1"></span>    <span class="kt">string</span><span class="na">[]</span> <span class="n">clipName</span><span class="p">;</span>
+    <span class="n">SingleClip</span><span class="na">[]</span> <span class="n">allSingleClip</span><span class="p">;</span>
+
+    <span class="c1">/// &lt;summary&gt;
+</span><span class="c1"></span>    <span class="c1">/// 加载音频到内存
+</span><span class="c1"></span>    <span class="c1">/// &lt;/summary&gt;
+</span><span class="c1"></span>    <span class="c1">/// &lt;param name=&#34;clipName&#34;&gt;&lt;/param&gt;
+</span><span class="c1"></span>    <span class="k">public</span> <span class="k">void</span> <span class="n">LoadClips</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">allSingleClip</span> <span class="p">=</span> <span class="k">new</span> <span class="n">SingleClip</span><span class="na">[clipName.Length]</span><span class="p">;</span>
+
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">clipName</span><span class="p">.</span><span class="n">Length</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
+        <span class="p">{</span>
+            <span class="n">AudioClip</span> <span class="n">tmpClip</span> <span class="p">=</span> <span class="n">Resources</span><span class="p">.</span><span class="n">Load</span><span class="p">&lt;</span><span class="n">AudioClip</span><span class="p">&gt;(</span><span class="n">clipName</span><span class="na">[i]</span><span class="p">);</span>
+
+            <span class="n">SingleClip</span> <span class="n">tmpSingle</span> <span class="p">=</span> <span class="k">new</span> <span class="n">SingleClip</span><span class="p">(</span><span class="n">tmpClip</span><span class="p">);</span>
+
+            <span class="n">allSingleClip</span><span class="na">[i]</span> <span class="p">=</span> <span class="n">tmpSingle</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">/// &lt;summary&gt;
+</span><span class="c1"></span>    <span class="c1">/// 根据名字 找到 singleClip
+</span><span class="c1"></span>    <span class="c1">/// &lt;/summary&gt;
+</span><span class="c1"></span>    <span class="k">public</span> <span class="n">SingleClip</span> <span class="n">FindClipByName</span><span class="p">(</span><span class="kt">string</span> <span class="n">_clipName</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">tmpIndex</span> <span class="p">=</span> <span class="p">-</span><span class="m">1</span><span class="p">;</span><span class="c1">// -1做标记
+</span><span class="c1"></span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">clipName</span><span class="p">.</span><span class="n">Length</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
+        <span class="p">{</span>
+            <span class="c1">// Equals() 判断两个字符串是否相等
+</span><span class="c1"></span>            <span class="k">if</span> <span class="p">(</span><span class="n">clipName</span><span class="na">[i]</span><span class="p">.</span><span class="n">Equals</span><span class="p">(</span><span class="n">_clipName</span><span class="p">))</span>
+            <span class="p">{</span>
+                <span class="n">tmpIndex</span> <span class="p">=</span> <span class="n">i</span><span class="p">;</span><span class="c1">//获得匹配的角标
+</span><span class="c1"></span>            <span class="p">}</span>
+
+            <span class="c1">//不等于-1则 表明找到
+</span><span class="c1"></span>            <span class="k">if</span> <span class="p">(</span><span class="n">tmpIndex</span> <span class="p">!=</span> <span class="p">-</span><span class="m">1</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="n">allSingleClip</span><span class="na">[tmpIndex]</span><span class="p">;</span><span class="c1">//找到返回
+</span><span class="c1"></span>            <span class="p">}</span>
+
+            <span class="k">return</span> <span class="k">null</span><span class="p">;</span><span class="c1">//没找到就返回空
+</span><span class="c1"></span>        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">/// &lt;summary&gt;
+</span><span class="c1"></span>    <span class="c1">/// 读取音频的txt配置文件
+</span><span class="c1"></span>    <span class="c1">/// &lt;/summary&gt;
+</span><span class="c1"></span>    <span class="k">public</span> <span class="k">void</span> <span class="n">ReadConfig</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">//获得文件路径
+</span><span class="c1"></span>        <span class="kt">var</span> <span class="n">fileAddress</span> <span class="p">=</span> <span class="n">System</span><span class="p">.</span><span class="n">IO</span><span class="p">.</span><span class="n">Path</span><span class="p">.</span><span class="n">Combine</span><span class="p">(</span>
+            <span class="n">Application</span><span class="p">.</span><span class="n">streamingAssetsPath</span><span class="p">,</span> <span class="s">&#34;AudioConfig.txt&#34;</span><span class="p">);</span>
+
+        <span class="n">FileInfo</span> <span class="n">fInfo</span> <span class="p">=</span> <span class="k">new</span> <span class="n">FileInfo</span><span class="p">(</span><span class="n">fileAddress</span><span class="p">);</span><span class="c1">//打开文件
+</span><span class="c1"></span>
+        <span class="c1">//如果存在
+</span><span class="c1"></span>        <span class="k">if</span> <span class="p">(</span><span class="n">fInfo</span><span class="p">.</span><span class="n">Exists</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">StringReader</span> <span class="n">r</span> <span class="p">=</span> <span class="k">new</span> <span class="n">StringReader</span><span class="p">(</span><span class="n">fileAddress</span><span class="p">);</span><span class="c1">//读取文件
+</span><span class="c1"></span>            <span class="c1">//StringReader默认是UTF8，无需再转格式，部分中文字符需要转换
+</span><span class="c1"></span>            <span class="c1">//******************** 转成String *******************
+</span><span class="c1"></span>            <span class="c1">// byte[] date = new byte[1024];
+</span><span class="c1"></span>            <span class="c1">// date = Encoding.UTF8.GetBytes(r.ReadToEnd());
+</span><span class="c1"></span>            <span class="c1">// s = Encoding.UTF8.GetString(date, 0, date.Length);
+</span><span class="c1"></span>            <span class="c1">//***************************************************
+</span><span class="c1"></span>            <span class="kt">string</span> <span class="n">tmpLine</span> <span class="p">=</span> <span class="n">r</span><span class="p">.</span><span class="n">ReadToEnd</span><span class="p">();</span><span class="c1">//只读取一行
+</span><span class="c1"></span>
+            <span class="c1">//解析第一行
+</span><span class="c1"></span>            <span class="kt">int</span> <span class="n">lineCount</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span><span class="c1">//行数
+</span><span class="c1"></span>
+            <span class="c1">//试着解析字符串，如果成功返回到lineCount，将字符串变成整数
+</span><span class="c1"></span>            <span class="k">if</span> <span class="p">(</span><span class="kt">int</span><span class="p">.</span><span class="n">TryParse</span><span class="p">(</span><span class="n">tmpLine</span><span class="p">,</span> <span class="k">out</span> <span class="n">lineCount</span><span class="p">))</span>
+            <span class="p">{</span>
+                <span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="s">&#34;共有&#34;</span> <span class="p">+</span> <span class="n">tmpLine</span> <span class="p">+</span> <span class="s">&#34;行&#34;</span><span class="p">);</span><span class="c1">// 共有3行
+</span><span class="c1"></span>
+                <span class="n">clipName</span> <span class="p">=</span> <span class="k">new</span> <span class="kt">string</span><span class="na">[lineCount]</span><span class="p">;</span>
+
+                <span class="c1">//有几行打印几行
+</span><span class="c1"></span>                <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">lineCount</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
+                <span class="p">{</span>
+                    <span class="n">tmpLine</span> <span class="p">=</span> <span class="n">r</span><span class="p">.</span><span class="n">ReadToEnd</span><span class="p">();</span>
+
+                    <span class="c1">//分割字符串，变成数组
+</span><span class="c1"></span>                    <span class="kt">string</span><span class="na">[]</span> <span class="n">splits</span> <span class="p">=</span> <span class="n">tmpLine</span><span class="p">.</span><span class="n">Split</span><span class="p">(</span><span class="s">&#34; &#34;</span><span class="p">.</span><span class="n">ToCharArray</span><span class="p">());</span>
+
+                    <span class="c1">//Split将字符串分成多个部分，数组从0开始为第一部分，依次递增
+</span><span class="c1"></span>                    <span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="n">splits</span><span class="na">[0]</span><span class="p">);</span><span class="c1">// 0 空格前
+</span><span class="c1"></span>                    <span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="n">splits</span><span class="na">[1]</span><span class="p">);</span><span class="c1">// 1 空格后
+</span><span class="c1"></span>
+                    <span class="n">clipName</span><span class="na">[i]</span> <span class="p">=</span> <span class="n">splits</span><span class="na">[1]</span><span class="p">;</span>
+                <span class="p">}</span>
+
+                <span class="n">r</span><span class="p">.</span><span class="n">Close</span><span class="p">();</span><span class="c1">//用完后关闭
+</span><span class="c1"></span>            <span class="p">}</span>
+            <span class="n">tmpLine</span> <span class="p">=</span> <span class="n">r</span><span class="p">.</span><span class="n">ReadToEnd</span><span class="p">();</span><span class="c1">//读取完
+</span><span class="c1"></span>        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">/// &lt;summary&gt;
+</span><span class="c1">/// 1. 专用存储Clip
+</span><span class="c1">/// 2. 需要后续的操作，需要用类存储Clip
+</span><span class="c1">/// &lt;/summary&gt;
+</span><span class="c1"></span><span class="k">public</span> <span class="k">class</span> <span class="nc">SingleClip</span>
+<span class="p">{</span>
+    <span class="n">AudioClip</span> <span class="n">audioClip</span><span class="p">;</span>
+
+    <span class="c1">//构造函数 运行就执行下列代码
+</span><span class="c1"></span>    <span class="k">public</span> <span class="n">SingleClip</span><span class="p">(</span><span class="n">AudioClip</span> <span class="n">tmpClip</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">audioClip</span> <span class="p">=</span> <span class="n">tmpClip</span><span class="p">;</span><span class="c1">//替换传入的tmpClip
+</span><span class="c1"></span>    <span class="p">}</span>
+
+    <span class="c1">//提供播放接口
+</span><span class="c1"></span>    <span class="k">public</span> <span class="k">void</span> <span class="n">Play</span><span class="p">(</span><span class="n">AudioSource</span> <span class="n">audioSource</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">audioSource</span><span class="p">.</span><span class="n">clip</span> <span class="p">=</span> <span class="n">audioClip</span><span class="p">;</span><span class="c1">//替换audioSource里的clip
+</span><span class="c1"></span>
+        <span class="n">audioSource</span><span class="p">.</span><span class="n">Play</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div></blockquote>
+
+				</article>				
+			</section>
+
+			
+			<section class="ui secondary attached segment dream-tags">
+				
+					
+
+
+
+
+	
+
+
+				
+			</section>
+
+			
+			
+				<section class="ui secondary  attached segment share row box">
+					
+
+
+
+
+
+
+
+
+<div class="author">
+	
+	<img class="avatar" src="/img/avatar.png">
+	
+</div>
+<div class="info grow flexbox">
+	
+	<p class="name">So Serious</p>
+	
+	<p class="desc">Do your best.</p>
+</div>
+
+
+<section class="buttons row box">
+	<div class="facebook none flexbox" href="#" onclick="window.open(
+			'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),
+			'facebook-share-dialog',
+			'width=626,height=436'); return false;">
+		<button class="ui facebook button"><i class="facebook icon"></i>Share</button>
+	</div>
+	<div class="twitter none flexbox" onclick="window.open('https://twitter.com/intent/tweet?text=Read &quot;音效模块封装——游戏框架-04  https:\/\/sofuck.top\/posts\/game-frame-04\/','_self')">
+		<button class="ui twitter button"><i class="twitter icon"></i>Tweet</button>
+	</div>
+</section>
+
+				</section>
+				<section class="ui secondary attached segment copyright">
+					
+
+				</section>
+			
+
+			
+			
+				<div class="ui secondary bottom attached stacked segment disqus">
+					
+<div id="disqus_thread"></div>
+<script>
+	var disqus_config = function () {
+		this.page.url = 'https:\/\/sofuck.top\/posts\/game-frame-04\/';
+		this.page.identifier = '67395cab7dbb56d4dd153af692734475';
+	};
+	(function() {
+   	var d = document, s = d.createElement('script');
+   	s.src = 'https://' + 'So Serious' + '.disqus.com/embed.js';
+   	s.setAttribute('data-timestamp', +new Date());
+   	(d.head || d.body).appendChild(s);
+	})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+				</div>
+			
+		</div>
+	</div>
+
+				</div>
+				<div class="back">
+					
+<nav class="ui top secondary menu bar">
+	<div class="item">
+		<i class="inverted big link bullseye icon dream-flip-toggle" title="翻转"></i>
+	</div>
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+
+	
+	
+	
+	
+	
+	
+	
+		
+		
+			<div class="item">
+				<a href="https://github.com/SoGhost" target="	_blank">
+					<i id="ico" class="inverted big link github icon" title="GitHub"></i>
+				</a>
+			</div>
+		
+	
+		
+		
+			<div class="item">
+				<a href="mailto:ReaperOfBlack@gmail.com" target="	_blank">
+					<i id="ico" class="inverted big link mail icon" title="Email"></i>
+				</a>
+			</div>
+		
+	
+		
+		
+	
+		
+		
+	
+		
+		
+	
+		
+		
+	
+		
+		
+	
+		
+		
+	
+		
+		
+	
+</nav>
+
+
+
+<div class="ui centered grid about">
+	<div class="sixteen wide mobile fifteen wide tablet fifteen wide computer column about">
+		<section class="ui stacked segments">
+			<div class="ui inverted segment">
+				<article class="twemoji">
+					<h1>So, Who Am I?</h1>
+
+<hr />
+
+<p><br>
+				</article>
+				
+				
+			</div>
+		</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+		</div>
+
+		
+
+<script src="/js/site.js"></script>
+
+<script src="https://twemoji.maxcdn.com/2/twemoji.min.js?2.6"></script>
+
+
+
+
+
+
+
+	<script id="dsq-count-scr" src="//So%20Serious.disqus.com/count.js" async></script>
+
+
+
+
+	
+	<script>
+		window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+		ga('create', 'UA-131035751-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+	<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+		
+
+
+		
+
+	<script>
+		(function () {
+		  console.log("Twemoji up and making stuff colourful!");
+		  for (var b = document.getElementsByClassName("twemoji"), a = 0; a < b.length; a++) {
+			twemoji.parse(b[a]);
+		  }
+		})();
+	</script>
+
+
+	</body>
+</html>

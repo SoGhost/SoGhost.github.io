@@ -1,0 +1,1755 @@
+<!DOCTYPE html>
+<html lang="en-us">
+	<head>
+		<title>
+	FPS_视角和移动
+</title>
+		<style>
+	body {
+		display: block;
+		--colorBG: "#40e0d0, #ff8c00, #ff0080";
+		
+			background: linear-gradient(to right, var(--colorBG)) !important;
+		
+	}
+
+	body, body.pushable {
+		background-repeat: no-repeat;
+	  	background-attachment: fixed;
+	  	background-size: cover !important;
+	}
+</style>
+
+		<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+	
+	<meta name="author" content="So Serious" />
+	<meta name="description" content="鼠标和键盘控制移动。" />
+
+
+
+<meta name="generator" content="Hugo 0.49.2" />
+
+
+<link rel="shortcut icon" href="/img/PY-Blog.ico">
+
+
+
+
+		
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.js"></script>
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/site.css">
+
+
+
+
+
+
+
+
+<style>
+	body.pushable {
+		display: block;
+		
+			background: linear-gradient(to right, var(--colorBG)) !important;
+		 ;
+	}
+</style>
+
+
+
+<script>
+	var colorBG =  true 
+	var enabledPost =  false 
+	
+	var isMobile = ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) )
+	console.log("The client device is a "+(isMobile?"mobile":"PC")+".")
+</script>
+
+	</head>
+
+	<body>
+		<script>
+var prevBgIndex = 0;
+var bodyBgSwitchIndex = 0;
+
+
+	var gradients = [
+	  [],
+	  ['#40e0d0', '#ff8c00', '#ff0080'], 
+	  ['#3e5151', '#decba4'], 
+	  ['#11998e', '#38ef7d'], 
+	  ['#108dc7', '#ef8e38'], 
+	  ['#fc5c7d', '#6a82fb'], 
+	  ['#fc466b', '#3f5efb'], 
+	  ['#c94b4b', '#4b134f'], 
+	  ['#23074d', '#cc5333'] 
+	];
+	document.body.style.setProperty('--colorBG', connect(gradients[getRandomInt(0, gradients.length)]));
+
+
+	function getRandomInt(min, max) {
+	  min = Math.ceil(min);
+	  max = Math.floor(max);
+	  var random;
+	  while (1) {
+	    random = Math.floor(Math.random() * (max - min)) + min;
+	    if (random !== prevBgIndex) {
+	      prevBgIndex = random;
+	      break;
+	    }
+	  }
+	  return random;
+	}
+
+	function connect(arr) {
+	  var str = '';
+	  for (var i = 0; i < arr.length; i++) {
+	    if (i !== arr.length - 1) {
+	      str += arr[i] + ', ';
+	    } else {
+	      str += arr[i];
+	    }
+	  }
+	  return str;
+	}
+</script>
+
+
+
+
+		<div id="sidebar" class="ui sidebar inverted vertical menu">
+	
+	<section id="author" class="ui top attached center aligned inverted segment">
+		
+<div class="ui small circular image">
+	
+		<img src="/img/avatar.png">
+	
+</div>
+
+
+<h3 class="ui header">
+	So Serious
+	<div class="sub header">Do your best.</div>
+</h3>
+
+	</section>
+
+	
+	
+		<section class="ui attached center aligned inverted segment sidebar-dream-tags">
+			
+			
+
+
+
+
+	
+		<a class="ui label violet " href="/tags/2d" title="2d">2d</a>
+	
+		<a class="ui label teal " href="/tags/ae" title="ae">ae</a>
+	
+		<a class="ui label blue " href="/tags/ai" title="ai">ai</a>
+	
+		<a class="ui label green " href="/tags/android" title="android">android</a>
+	
+		<a class="ui label green " href="/tags/animator" title="animator">animator</a>
+	
+		<a class="ui label pink " href="/tags/attackrange" title="attackrange">attackrange</a>
+	
+		<a class="ui label green " href="/tags/audio" title="audio">audio</a>
+	
+		<a class="ui label red " href="/tags/c" title="c#">c#</a>
+	
+		<a class="ui label olive " href="/tags/effect" title="effect">effect</a>
+	
+		<a class="ui label green " href="/tags/english" title="english">english</a>
+	
+		<a class="ui label pink " href="/tags/fps" title="fps">fps</a>
+	
+		<a class="ui label blue " href="/tags/fsm" title="fsm">fsm</a>
+	
+		<a class="ui label orange " href="/tags/gl" title="gl">gl</a>
+	
+		<a class="ui label violet " href="/tags/knowledge" title="knowledge">knowledge</a>
+	
+		<a class="ui label red " href="/tags/notes" title="notes">notes</a>
+	
+		<a class="ui label pink " href="/tags/rpg" title="rpg">rpg</a>
+	
+		<a class="ui label teal " href="/tags/tilemap" title="tilemap">tilemap</a>
+	
+		<a class="ui label purple " href="/tags/ui" title="ui">ui</a>
+	
+		<a class="ui label violet " href="/tags/unity" title="unity">unity</a>
+	
+		<a class="ui label teal " href="/tags/word" title="word">word</a>
+	
+		<a class="ui label brown " href="/tags/word-book" title="word-book">word-book</a>
+	
+		<a class="ui label violet " href="/tags/%E6%8A%80%E5%B7%A7" title="技巧">技巧</a>
+	
+		<a class="ui label violet " href="/tags/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93" title="数据传输">数据传输</a>
+	
+
+
+		</section>
+	
+
+	
+	
+		<section class="ui attached inverted segment sidebar-dream-categories both flexbox">
+			<div class="ui inverted accordion">
+				
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/2d">2d</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/2d-attack-range/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>2D攻击范围</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/ae">ae</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/ui-effects-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>UI 特效制作</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/c">c#</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/c-sharp-notes-02/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>C# _语言基础</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/c-sharp-notes-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>C# _基本操作</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/english">english</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/english-sentence-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>English Sentence</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/fsm">fsm</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/finite-state-machine/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>有限状态机</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/game-frame">game-frame</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/game-frame-09/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>相机和EasyTouch封装——游戏框架-09</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/game-frame-08/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>角色模块封装——游戏框架-08</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/game-frame-07/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>小地图封装——游戏框架-07</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/game-frame-06/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>EasyTouch模块封装——游戏框架-06</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/game-frame-05/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>UI模块封装——游戏框架-05</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/game-frame-04/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>音效模块封装——游戏框架-04</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/game-frame-03/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>WWW封装——游戏框架-03</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/game-frame-02/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>常用设计模式——游戏框架-02</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/game-frame-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>设计原则——游戏框架-01</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/notes">notes</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/game-words/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>游戏常用英文</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/words-notes/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Word Book</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/opengl">opengl</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/gl-drawing/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>GL画图功能</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/pain">pain</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/pain-to-learn-unity-notes-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>【Pain To Learn Unity】——案例之像素鸟</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/pain-to-learn-unity-notes-02/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>【Pain To Learn Unity】——案例之吃豆人</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/ugui">ugui</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/ugui-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>UGUI</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/unity">unity</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/ui-effects-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>UI 特效制作</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/unity-tilemap_mod/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Unity Tilemap模块</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/unity-ai-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>AI逻辑</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/unity-fps-view_move/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>FPS_视角和移动</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/unity-audio-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Unity Audio</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/script-input_control/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>脚本的输入与控制</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/monobehavior-common_method-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>MonoBehavior 常用方法</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/unity-script-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Monobehavior事件响应（1）</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/unity-notes-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Unity 注意事项</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/unity-animator">unity-animator</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/unity-animation-system-04/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Unity 动画系统（4）</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/unity-animation-system-03/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Unity 动画系统（3）</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/unity-animation-system-02/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Unity 动画系统（2）</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/unity-animation-system-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Unity 动画系统（1）</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/windows">windows</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/use-skill/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>使用软件突发小技巧</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/%E5%AE%89%E5%8D%93">安卓</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/android/beginner-android/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Beginner</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86">网络知识</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/computer-illiteracy-p2p/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>网络知识——P2P</p>
+				</div>
+			</a>
+		
+	</div>
+
+
+			</div>
+		</section>
+	
+
+	
+	<section id="footer" class="ui bottom attached center aligned inverted segment">
+		
+
+	<p>© 2018 PY-&gt;Blog</p>
+
+
+<p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with <a href="https://github.com/UtkarshVerma/hugo-dream-plus" target="_blank">Dream Plus</a> theme.</p>
+
+	</section>
+</div>
+
+
+		<div class="pusher">
+			<div class="flipper">
+				<div class="front">
+					
+	<nav class="ui top secondary menu bar">
+	
+	<div class="item">
+		<i class="inverted big link bullseye icon dream-flip-toggle" title="翻转"></i>
+	</div>
+
+	
+	
+		<div class="item">
+			<a href="/">
+				<i class="inverted big link home icon" title="首页"></i>
+			</a>
+		</div>
+	
+
+	
+	
+		
+			<div class="item">
+				<a href="/posts">
+					<i class="inverted big link archive icon" title="档案"></i>
+				</a>
+			</div>
+		
+	
+
+	
+	
+		<div class="item">
+			<a href="/tags">
+				<i class="inverted big link tags icon" title="全部标签"></i>
+			</a>
+		</div>
+	
+
+	
+	
+		<div class="item">
+			<a href="/categories">
+				<i class="inverted big link cubes icon" title="所有类别"></i>
+			</a>
+    	</div>
+	
+
+	
+	
+
+	
+	
+		<div class="ui container tablet computer only grid">
+			<div class="item" onClick="$('.ui.sidebar').sidebar('setting', 'transition', 'overlay').sidebar('toggle');">
+				<i class="inverted big link sidebar icon" title=""></i>
+			</div>
+		</div>
+	
+
+	
+	
+		<div class="item right">
+			<a href="/posts/index.xml">
+				<i class="inverted big link rss icon" title=""></i>
+			</a>
+		</div>
+	
+</nav>
+
+
+	<div class="ui centered grid">
+		
+		<div class="sixteen wide mobile only column">
+				<div class="ui inverted accordion">
+	<div id="header" class="ui inverted segment column box">		
+		
+		<header id="author" class="ui top attached center aligned inverted segment">
+			
+<div class="ui small circular image">
+	
+		<img src="/img/avatar.png">
+	
+</div>
+
+
+<h3 class="ui header">
+	So Serious
+	<div class="sub header">Do your best.</div>
+</h3>
+
+		</header>
+
+		
+		<div class=" title header-title">
+			
+				<div id="tag-category-pop" class="ui red right corner label">
+					<i class="hand point icon down"title="点击弹出标签和分类"></i>
+				</div>
+			
+		</div>
+		
+		
+		<div id="tag-category" class=" content">
+			
+				<section class="ui attached center aligned inverted segment dream-tags none flexbox">
+					
+
+
+
+
+	
+		<a class="ui label green " href="/tags/2d" title="2d">2d</a>
+	
+		<a class="ui label red " href="/tags/ae" title="ae">ae</a>
+	
+		<a class="ui label orange " href="/tags/ai" title="ai">ai</a>
+	
+		<a class="ui label purple " href="/tags/android" title="android">android</a>
+	
+		<a class="ui label pink " href="/tags/animator" title="animator">animator</a>
+	
+		<a class="ui label pink " href="/tags/attackrange" title="attackrange">attackrange</a>
+	
+		<a class="ui label teal " href="/tags/audio" title="audio">audio</a>
+	
+		<a class="ui label orange " href="/tags/c" title="c#">c#</a>
+	
+		<a class="ui label green " href="/tags/effect" title="effect">effect</a>
+	
+		<a class="ui label olive " href="/tags/english" title="english">english</a>
+	
+		<a class="ui label green " href="/tags/fps" title="fps">fps</a>
+	
+		<a class="ui label pink " href="/tags/fsm" title="fsm">fsm</a>
+	
+		<a class="ui label violet " href="/tags/gl" title="gl">gl</a>
+	
+		<a class="ui label violet " href="/tags/knowledge" title="knowledge">knowledge</a>
+	
+		<a class="ui label purple " href="/tags/notes" title="notes">notes</a>
+	
+		<a class="ui label red " href="/tags/rpg" title="rpg">rpg</a>
+	
+		<a class="ui label yellow " href="/tags/tilemap" title="tilemap">tilemap</a>
+	
+		<a class="ui label orange " href="/tags/ui" title="ui">ui</a>
+	
+		<a class="ui label violet " href="/tags/unity" title="unity">unity</a>
+	
+		<a class="ui label pink " href="/tags/word" title="word">word</a>
+	
+		<a class="ui label red " href="/tags/word-book" title="word-book">word-book</a>
+	
+		<a class="ui label blue " href="/tags/%E6%8A%80%E5%B7%A7" title="技巧">技巧</a>
+	
+		<a class="ui label orange " href="/tags/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93" title="数据传输">数据传输</a>
+	
+
+
+				</section>
+			
+
+			
+				<section class="ui attached inverted segment dream-categories both flexbox">
+					<div class="inverted accordion">
+						
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/2d">2d</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/2d-attack-range/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>2D攻击范围</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/ae">ae</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/ui-effects-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>UI 特效制作</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/c">c#</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/c-sharp-notes-02/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>C# _语言基础</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/c-sharp-notes-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>C# _基本操作</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/english">english</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/english-sentence-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>English Sentence</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/fsm">fsm</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/finite-state-machine/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>有限状态机</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/game-frame">game-frame</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/game-frame-09/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>相机和EasyTouch封装——游戏框架-09</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/game-frame-08/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>角色模块封装——游戏框架-08</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/game-frame-07/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>小地图封装——游戏框架-07</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/game-frame-06/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>EasyTouch模块封装——游戏框架-06</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/game-frame-05/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>UI模块封装——游戏框架-05</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/game-frame-04/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>音效模块封装——游戏框架-04</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/game-frame-03/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>WWW封装——游戏框架-03</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/game-frame-02/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>常用设计模式——游戏框架-02</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/game-frame-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>设计原则——游戏框架-01</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/notes">notes</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/game-words/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>游戏常用英文</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/words-notes/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Word Book</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/opengl">opengl</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/gl-drawing/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>GL画图功能</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/pain">pain</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/pain-to-learn-unity-notes-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>【Pain To Learn Unity】——案例之像素鸟</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/pain-to-learn-unity-notes-02/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>【Pain To Learn Unity】——案例之吃豆人</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/ugui">ugui</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/ugui-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>UGUI</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/unity">unity</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/ui-effects-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>UI 特效制作</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/unity-tilemap_mod/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Unity Tilemap模块</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/unity-ai-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>AI逻辑</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/unity-fps-view_move/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>FPS_视角和移动</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/unity-audio-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Unity Audio</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/script-input_control/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>脚本的输入与控制</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/monobehavior-common_method-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>MonoBehavior 常用方法</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/unity-script-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Monobehavior事件响应（1）</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/unity-notes-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Unity 注意事项</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/unity-animator">unity-animator</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/unity-animation-system-04/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Unity 动画系统（4）</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/unity-animation-system-03/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Unity 动画系统（3）</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/unity-animation-system-02/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Unity 动画系统（2）</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/unity-animation-system-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Unity 动画系统（1）</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/windows">windows</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/use-skill/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>使用软件突发小技巧</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/%E5%AE%89%E5%8D%93">安卓</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/android/beginner-android/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Beginner</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86">网络知识</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/computer-illiteracy-p2p/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>网络知识——P2P</p>
+				</div>
+			</a>
+		
+	</div>
+
+
+					</div>
+				</section>
+			
+		</div>
+
+		
+		<footer class="ui bottom attached center aligned inverted segment">
+			
+
+	<p>© 2018 PY-&gt;Blog</p>
+
+
+<p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with <a href="https://github.com/UtkarshVerma/hugo-dream-plus" target="_blank">Dream Plus</a> theme.</p>
+
+		</footer>
+	</div>
+</div>
+
+		</div>
+
+		<div class="sixteen wide mobile fifteen wide tablet twelve wide computer column post-list">
+			
+			<section class="ui secondary top attached black segment post-head">
+				<h1 class="post-title">
+					FPS_视角和移动
+				</h1>
+
+				<div class="sub header">
+					<div><span><i class="calendar outline icon"></i>Aug 5, 2018</span></div>
+					
+					<div><span class="disqusComment"><i class="comment outline icon"></i><a href="https://sofuck.top/posts/unity-fps-view_move/#disqus_thread" class="disqus-comment-count" data-disqus-identifier="4a9d960dc6ab124ca4266b79a416af64"></a></span></div>
+					<div><span><i class="clock outline icon"></i>2 min read</span></div>
+					<div><span><i class="angle double up icon"></i>更新于 Aug 5, 2018</span></div>
+				</div>
+				<hr>
+
+				
+					<div class="toc">
+						<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#主要涉及知识">主要涉及知识</a></li>
+<li><a href="#镜头跟随鼠标旋转">镜头跟随鼠标旋转</a></li>
+<li><a href="#键盘控制角色移动">键盘控制角色移动</a></li>
+</ul></li>
+</ul>
+</nav>
+					</div>
+				
+
+				<article class="post-content twemoji">
+					
+
+<h2 id="主要涉及知识">主要涉及知识&nbsp;<a class="anchor" href="#主要涉及知识"><i class="small linkify icon"></i></a> </h2>
+
+<ul>
+<li>1、Input.GetAxis(“Mouse X”)：获取鼠标延左右移动的速度</li>
+<li>2、Input.GetAxis(“Mouse Y”)：获取鼠标延上下移动的速度</li>
+<li>3、Input.GetKeyDown(“escape”)：按下esc键</li>
+<li>4、transform.Rotate()：使物体旋转，如果最后一个参数relativeTo默认以局部坐标旋转，如果设置为-Space.World（世界坐标系），则旋转应用于世界x，y，z轴。</li>
+<li>5、transform.localEulerAngles：物体的欧拉角（相对于父级的坐标），此例子我们直接改变物体的欧拉角以达到旋转的效果。和用transform.Rotate()改变有所区别</li>
+<li>6、Mathf.Clamp()：</li>
+<li>7、Cursor.lockState = CursorLockMode.Locked;将光标锁定到游戏窗口的中心。
+Cursor.lockState = CursorLockMode.Confined;将光标限制在游戏窗口。</li>
+<li>8、Cursor.visible = false;隐藏光标</li>
+<li>9、CharacterController：CharacterController类。CharacterController允许你简单地做碰撞约束的移动，而不必处理刚体。</li>
+<li>10、CharacterController.Move()：通过运动移动控制器，并且受碰撞约束，会延着碰撞体表面滑动，它不受重力影响。（相对于世界坐标系来移动物品）</li>
+<li>11、transform.TransformDirection()：转换为世界坐标系</li>
+<li>12、Vector3.ClampMagnitude()：限制一个向量的最大长度。</li>
+</ul>
+
+<h2 id="镜头跟随鼠标旋转">镜头跟随鼠标旋转&nbsp;<a class="anchor" href="#镜头跟随鼠标旋转"><i class="small linkify icon"></i></a> </h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="k">using</span> <span class="nn">UnityEngine</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Collections</span><span class="p">;</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">MouseLook</span> <span class="p">:</span> <span class="n">MonoBehaviour</span> <span class="p">{</span>
+    <span class="c1">//定义枚举数据结构，将名称和设置关联起来
+</span><span class="c1"></span>    <span class="k">public</span> <span class="k">enum</span> <span class="n">RotationAxes</span>
+    <span class="p">{</span>
+        <span class="n">MouseXAndY</span> <span class="p">=</span> <span class="m">0</span><span class="p">,</span>
+        <span class="n">MouseX</span> <span class="p">=</span> <span class="m">1</span><span class="p">,</span>
+        <span class="n">MouseY</span> <span class="p">=</span> <span class="m">2</span>
+    <span class="p">}</span>
+    <span class="k">public</span> <span class="n">RotationAxes</span> <span class="n">axes</span> <span class="p">=</span> <span class="n">RotationAxes</span><span class="p">.</span><span class="n">MouseXAndY</span><span class="p">;</span>
+    <span class="k">public</span> <span class="kt">float</span> <span class="n">sensitivityHor</span> <span class="p">=</span> <span class="m">9.0f</span><span class="p">;</span><span class="c1">//水平旋转的速度
+</span><span class="c1"></span>    <span class="k">public</span> <span class="kt">float</span> <span class="n">sensitivityVert</span> <span class="p">=</span> <span class="m">9.0f</span><span class="p">;</span><span class="c1">//垂直旋转的速度
+</span><span class="c1"></span>    <span class="k">public</span> <span class="kt">float</span> <span class="n">minimumVert</span> <span class="p">=</span> <span class="p">-</span><span class="m">45.0f</span><span class="p">;</span><span class="c1">//垂直旋转的最小角度
+</span><span class="c1"></span>    <span class="k">public</span> <span class="kt">float</span> <span class="n">maximumVert</span> <span class="p">=</span> <span class="m">45.0f</span><span class="p">;</span><span class="c1">//垂直旋转的最小角度
+</span><span class="c1"></span>
+    <span class="k">private</span> <span class="kt">float</span> <span class="n">_rotationX</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span><span class="c1">//为垂直角度声明一个私有变量
+</span><span class="c1"></span>
+    <span class="k">void</span> <span class="n">Start</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">//将光标锁定到游戏窗口的中心。
+</span><span class="c1"></span>        <span class="n">Cursor</span><span class="p">.</span><span class="n">lockState</span> <span class="p">=</span> <span class="n">CursorLockMode</span><span class="p">.</span><span class="n">Locked</span><span class="p">;</span>
+        <span class="n">Cursor</span><span class="p">.</span><span class="n">visible</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">void</span> <span class="n">Update</span> <span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">axes</span> <span class="p">==</span> <span class="n">RotationAxes</span><span class="p">.</span><span class="n">MouseX</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="c1">//水平旋转代码
+</span><span class="c1"></span>            <span class="n">transform</span><span class="p">.</span><span class="n">Rotate</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="n">Input</span><span class="p">.</span><span class="n">GetAxis</span><span class="p">(</span><span class="s">&#34;Mouse X&#34;</span><span class="p">)</span> <span class="p">*</span> <span class="n">sensitivityHor</span><span class="p">,</span> <span class="m">0</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">axes</span> <span class="p">==</span> <span class="n">RotationAxes</span><span class="p">.</span><span class="n">MouseY</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="c1">//垂直旋转代码
+</span><span class="c1"></span>            <span class="n">_rotationX</span> <span class="p">-=</span> <span class="n">Input</span><span class="p">.</span><span class="n">GetAxis</span><span class="p">(</span><span class="s">&#34;Mouse Y&#34;</span><span class="p">)</span> <span class="p">*</span> <span class="n">sensitivityVert</span><span class="p">;</span>
+            <span class="n">_rotationX</span> <span class="p">=</span> <span class="n">Mathf</span><span class="p">.</span><span class="n">Clamp</span><span class="p">(</span><span class="n">_rotationX</span><span class="p">,</span><span class="n">minimumVert</span><span class="p">,</span><span class="n">maximumVert</span><span class="p">);</span>
+
+            <span class="kt">float</span> <span class="n">rotationY</span> <span class="p">=</span> <span class="n">transform</span><span class="p">.</span><span class="n">localEulerAngles</span><span class="p">.</span><span class="n">y</span><span class="p">;</span><span class="c1">//保持y轴与原来一样
+</span><span class="c1"></span>            <span class="n">transform</span><span class="p">.</span><span class="n">localEulerAngles</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Vector3</span><span class="p">(</span><span class="n">_rotationX</span><span class="p">,</span> <span class="n">rotationY</span><span class="p">,</span> <span class="m">0</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">else</span>
+        <span class="p">{</span>
+            <span class="c1">//水平且垂直旋转
+</span><span class="c1"></span>            <span class="n">_rotationX</span> <span class="p">-=</span> <span class="n">Input</span><span class="p">.</span><span class="n">GetAxis</span><span class="p">(</span><span class="s">&#34;Mouse Y&#34;</span><span class="p">)</span> <span class="p">*</span> <span class="n">sensitivityVert</span><span class="p">;</span>
+            <span class="n">_rotationX</span> <span class="p">=</span> <span class="n">Mathf</span><span class="p">.</span><span class="n">Clamp</span><span class="p">(</span><span class="n">_rotationX</span><span class="p">,</span> <span class="n">minimumVert</span><span class="p">,</span> <span class="n">maximumVert</span><span class="p">);</span><span class="c1">//限制角度大小
+</span><span class="c1"></span>
+            <span class="kt">float</span> <span class="n">delta</span> <span class="p">=</span> <span class="n">Input</span><span class="p">.</span><span class="n">GetAxis</span><span class="p">(</span><span class="s">&#34;Mouse X&#34;</span><span class="p">)</span> <span class="p">*</span> <span class="n">sensitivityHor</span><span class="p">;</span><span class="c1">//设置水平旋转的变化量
+</span><span class="c1"></span>            <span class="kt">float</span> <span class="n">rotationY</span> <span class="p">=</span> <span class="n">transform</span><span class="p">.</span><span class="n">localEulerAngles</span><span class="p">.</span><span class="n">y</span><span class="p">+</span><span class="n">delta</span><span class="p">;</span><span class="c1">//原来的角度加上变化量
+</span><span class="c1"></span>            <span class="n">transform</span><span class="p">.</span><span class="n">localEulerAngles</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Vector3</span><span class="p">(</span><span class="n">_rotationX</span><span class="p">,</span><span class="n">rotationY</span><span class="p">,</span><span class="m">0</span><span class="p">);</span><span class="c1">//相对于全局坐标空间的角度
+</span><span class="c1"></span>        <span class="p">}</span>
+
+        <span class="c1">//当点击esc后
+</span><span class="c1"></span>        <span class="k">if</span> <span class="p">(</span><span class="n">Input</span><span class="p">.</span><span class="n">GetKeyDown</span><span class="p">(</span><span class="s">&#34;escape&#34;</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="n">Cursor</span><span class="p">.</span><span class="n">visible</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+            <span class="n">Cursor</span><span class="p">.</span><span class="n">lockState</span> <span class="p">=</span> <span class="n">CursorLockMode</span><span class="p">.</span><span class="n">None</span><span class="p">;</span>
+            <span class="c1">//Cursor.lockState = CursorLockMode.Confined;//将光标限制在游戏窗口。
+</span><span class="c1"></span>        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">Input</span><span class="p">.</span><span class="n">GetButtonDown</span><span class="p">(</span><span class="s">&#34;Fire1&#34;</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="n">Cursor</span><span class="p">.</span><span class="n">visible</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+            <span class="n">Cursor</span><span class="p">.</span><span class="n">lockState</span> <span class="p">=</span> <span class="n">CursorLockMode</span><span class="p">.</span><span class="n">Locked</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<hr />
+
+<h2 id="键盘控制角色移动">键盘控制角色移动&nbsp;<a class="anchor" href="#键盘控制角色移动"><i class="small linkify icon"></i></a> </h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-C#" data-lang="C#"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-C#" data-lang="C#"><span class="k">using</span> <span class="nn">UnityEngine</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Collections</span><span class="p">;</span><span class="na">
+</span><span class="na">
+</span><span class="na">[RequireComponent(typeof(CharacterController))]</span><span class="c1">//RequireComponent表示此物体需要有 CharacterController才能运行此脚本,否则会报错
+</span><span class="c1"></span><span class="na">[AddComponentMenu(&#34;Control Script/FPS Input&#34;)]</span><span class="c1">//AddComponentMenu表示脚本将在unity编辑器中添加组件菜单。以后想添加FPSInput脚本，可以在AddComponent中添加
+</span><span class="c1"></span><span class="k">public</span> <span class="k">class</span> <span class="nc">FPSInput</span> <span class="p">:</span> <span class="n">MonoBehaviour</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="kt">float</span> <span class="n">speed</span> <span class="p">=</span> <span class="m">1f</span><span class="p">;</span>
+    <span class="k">public</span> <span class="kt">float</span> <span class="n">gravity</span> <span class="p">=</span> <span class="p">-</span><span class="m">9.8f</span><span class="p">;</span>
+
+    <span class="k">private</span> <span class="n">CharacterController</span> <span class="n">_charController</span><span class="p">;</span>
+
+    <span class="k">void</span> <span class="n">Start</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">_charController</span> <span class="p">=</span> <span class="n">GetComponent</span><span class="p">&lt;</span><span class="n">CharacterController</span><span class="p">&gt;();</span>
+    <span class="p">}</span>
+
+    <span class="k">void</span> <span class="n">Update</span> <span class="p">()</span>
+    <span class="p">{</span>
+        <span class="kt">float</span> <span class="n">deltaX</span> <span class="p">=</span> <span class="n">Input</span><span class="p">.</span><span class="n">GetAxis</span><span class="p">(</span><span class="s">&#34;Horizontal&#34;</span><span class="p">)*</span><span class="n">speed</span><span class="p">;</span>
+        <span class="kt">float</span> <span class="n">deltaZ</span> <span class="p">=</span> <span class="n">Input</span><span class="p">.</span><span class="n">GetAxis</span><span class="p">(</span><span class="s">&#34;Vertical&#34;</span><span class="p">)</span> <span class="p">*</span> <span class="n">speed</span><span class="p">;</span>
+        <span class="c1">//transform.Translate(deltaX*Time.deltaTime, 0, deltaZ * Time.deltaTime);//此方法直接相对于本体移动
+</span><span class="c1"></span>
+        <span class="n">Vector3</span> <span class="n">movement</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Vector3</span><span class="p">(</span><span class="n">deltaX</span><span class="p">,</span><span class="m">0</span><span class="p">,</span> <span class="n">deltaZ</span><span class="p">);</span><span class="c1">//此处是相对于本体的坐标
+</span><span class="c1"></span>        <span class="n">movement</span> <span class="p">=</span> <span class="n">Vector3</span><span class="p">.</span><span class="n">ClampMagnitude</span><span class="p">(</span><span class="n">movement</span><span class="p">,</span> <span class="n">speed</span><span class="p">);</span><span class="c1">//限制向量的最大长度，并返回此变化后的向量
+</span><span class="c1"></span>        <span class="n">movement</span><span class="p">.</span><span class="n">y</span> <span class="p">=</span> <span class="n">gravity</span><span class="p">;</span>
+
+        <span class="n">movement</span> <span class="p">*=</span> <span class="n">Time</span><span class="p">.</span><span class="n">deltaTime</span><span class="p">;</span>
+        <span class="n">movement</span> <span class="p">=</span> <span class="n">transform</span><span class="p">.</span><span class="n">TransformDirection</span><span class="p">(</span><span class="n">movement</span><span class="p">);</span><span class="c1">//转换为世界坐标系
+</span><span class="c1"></span>
+        <span class="n">_charController</span><span class="p">.</span><span class="n">Move</span><span class="p">(</span><span class="n">movement</span><span class="p">);</span><span class="c1">//move()是现对与世界坐标系移动物体的。
+</span><span class="c1"></span>    <span class="p">}</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+				</article>				
+			</section>
+
+			
+			<section class="ui secondary attached segment dream-tags">
+				
+					
+
+
+
+
+	
+
+
+				
+			</section>
+
+			
+			
+				<section class="ui secondary  attached segment share row box">
+					
+
+
+
+
+
+
+
+
+<div class="author">
+	
+	<img class="avatar" src="/img/avatar.png">
+	
+</div>
+<div class="info grow flexbox">
+	
+	<p class="name">So Serious</p>
+	
+	<p class="desc">Do your best.</p>
+</div>
+
+
+<section class="buttons row box">
+	<div class="facebook none flexbox" href="#" onclick="window.open(
+			'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),
+			'facebook-share-dialog',
+			'width=626,height=436'); return false;">
+		<button class="ui facebook button"><i class="facebook icon"></i>Share</button>
+	</div>
+	<div class="twitter none flexbox" onclick="window.open('https://twitter.com/intent/tweet?text=Read &quot;FPS_视角和移动  https:\/\/sofuck.top\/posts\/unity-fps-view_move\/','_self')">
+		<button class="ui twitter button"><i class="twitter icon"></i>Tweet</button>
+	</div>
+</section>
+
+				</section>
+				<section class="ui secondary attached segment copyright">
+					
+
+				</section>
+			
+
+			
+			
+				<div class="ui secondary bottom attached stacked segment disqus">
+					
+<div id="disqus_thread"></div>
+<script>
+	var disqus_config = function () {
+		this.page.url = 'https:\/\/sofuck.top\/posts\/unity-fps-view_move\/';
+		this.page.identifier = '4a9d960dc6ab124ca4266b79a416af64';
+	};
+	(function() {
+   	var d = document, s = d.createElement('script');
+   	s.src = 'https://' + 'So Serious' + '.disqus.com/embed.js';
+   	s.setAttribute('data-timestamp', +new Date());
+   	(d.head || d.body).appendChild(s);
+	})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+				</div>
+			
+		</div>
+	</div>
+
+				</div>
+				<div class="back">
+					
+<nav class="ui top secondary menu bar">
+	<div class="item">
+		<i class="inverted big link bullseye icon dream-flip-toggle" title="翻转"></i>
+	</div>
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+
+	
+	
+	
+	
+	
+	
+	
+		
+		
+			<div class="item">
+				<a href="https://github.com/SoGhost" target="	_blank">
+					<i id="ico" class="inverted big link github icon" title="GitHub"></i>
+				</a>
+			</div>
+		
+	
+		
+		
+			<div class="item">
+				<a href="mailto:ReaperOfBlack@gmail.com" target="	_blank">
+					<i id="ico" class="inverted big link mail icon" title="Email"></i>
+				</a>
+			</div>
+		
+	
+		
+		
+	
+		
+		
+	
+		
+		
+	
+		
+		
+	
+		
+		
+	
+		
+		
+	
+		
+		
+	
+</nav>
+
+
+
+<div class="ui centered grid about">
+	<div class="sixteen wide mobile fifteen wide tablet fifteen wide computer column about">
+		<section class="ui stacked segments">
+			<div class="ui inverted segment">
+				<article class="twemoji">
+					<h1>So, Who Am I?</h1>
+
+<hr />
+
+<p><br>
+				</article>
+				
+				
+			</div>
+		</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+		</div>
+
+		
+
+<script src="/js/site.js"></script>
+
+<script src="https://twemoji.maxcdn.com/2/twemoji.min.js?2.6"></script>
+
+
+
+
+
+
+
+	<script id="dsq-count-scr" src="//So%20Serious.disqus.com/count.js" async></script>
+
+
+
+
+	
+	<script>
+		window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+		ga('create', 'UA-131035751-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+	<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+		
+
+
+		
+
+	<script>
+		(function () {
+		  console.log("Twemoji up and making stuff colourful!");
+		  for (var b = document.getElementsByClassName("twemoji"), a = 0; a < b.length; a++) {
+			twemoji.parse(b[a]);
+		  }
+		})();
+	</script>
+
+
+	</body>
+</html>

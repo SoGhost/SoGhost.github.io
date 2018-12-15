@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Word on PY-&gt;Blog</title>
+    <link>https://sofuck.top/tags/word/</link>
+    <description>Recent content in Word on PY-&gt;Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 05 Aug 2018 14:48:59 +0800</lastBuildDate>
+    
+	<atom:link href="https://sofuck.top/tags/word/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>游戏常用英文</title>
+      <link>https://sofuck.top/posts/game-words/</link>
+      <pubDate>Sun, 05 Aug 2018 14:48:59 +0800</pubDate>
+      
+      <guid>https://sofuck.top/posts/game-words/</guid>
+      <description>常见单词 1.角色属性类：  角色 Character 力量 Strength 耐力 Stamina/Patience 智力 Intellect 免疫力 Immune/Immunity 生命力 Hit Point(HP) 魔法力 Magic Point(MP) 命中率 Accuracy 速度 speed 防御 Defense 敏锐 Subtlety 伤害 Damage 护甲 Armor 能量 power 危险 danger 安全 safety 经验点数 Experience Point 升级 Level Up
+ 2.技能效果类：  技能 skill 净化 Cleansing 复活 Reincarnate 石化 Petrify 灼烧 Cauterize 重击 Smite 伪装 Camouflage 致盲 Blind 背刺 Backstab 埋伏 Ambush 吸魔 Drain Mana 吸血 Drain Life 躲避 Miss 守护 Guard 隐形 Clock 祝福 Blessed 加血 add blood 持续时间 Duration</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>English on PY-&gt;Blog</title>
+    <link>https://sofuck.top/tags/english/</link>
+    <description>Recent content in English on PY-&gt;Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 14 Aug 2018 08:35:36 +0800</lastBuildDate>
+    
+	<atom:link href="https://sofuck.top/tags/english/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>English Sentence</title>
+      <link>https://sofuck.top/posts/english-sentence-01/</link>
+      <pubDate>Tue, 14 Aug 2018 08:35:36 +0800</pubDate>
+      
+      <guid>https://sofuck.top/posts/english-sentence-01/</guid>
+      <description>tutorial 辅导 &amp;gt;I made a tutorial on ways you can go about making a melon combat system with unity and c-sharp and so i thought i only normal to fallow up with a ranged combat video by the end of this tutorial you&amp;rsquo;ll have a character capable of handling a ranged weapon that rotates to face the mouse cursor and then shoots cool looking arrows that kill enemies of course you&amp;rsquo;ll be able to a plan you learn during this video to make all kinds of range shooting systems from huge powerful bullets and rockets to delicate little arrows now everything taugh here can be applied to any game in need for a shooting system without a child i&amp;rsquo;m sure or a side-scorlling platformer so as you can see i&amp;rsquo;ve set up this little seam with an archer like character who carries a simple ranged weapon and i can move left and right i also got an enemy character i&amp;rsquo;ll use has targets.</description>
+    </item>
+    
+  </channel>
+</rss>

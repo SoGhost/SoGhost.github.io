@@ -1,0 +1,1566 @@
+<!DOCTYPE html>
+<html lang="en-us">
+	<head>
+		<title>
+	Unity 注意事项
+</title>
+		<style>
+	body {
+		display: block;
+		--colorBG: "#40e0d0, #ff8c00, #ff0080";
+		
+			background: linear-gradient(to right, var(--colorBG)) !important;
+		
+	}
+
+	body, body.pushable {
+		background-repeat: no-repeat;
+	  	background-attachment: fixed;
+	  	background-size: cover !important;
+	}
+</style>
+
+		<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+	
+	<meta name="author" content="So Serious" />
+	<meta name="description" content="" />
+
+
+
+<meta name="generator" content="Hugo 0.49.2" />
+
+
+<link rel="shortcut icon" href="/img/PY-Blog.ico">
+
+
+
+
+		
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.js"></script>
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/site.css">
+
+
+
+
+
+
+
+
+<style>
+	body.pushable {
+		display: block;
+		
+			background: linear-gradient(to right, var(--colorBG)) !important;
+		 ;
+	}
+</style>
+
+
+
+<script>
+	var colorBG =  true 
+	var enabledPost =  false 
+	
+	var isMobile = ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) )
+	console.log("The client device is a "+(isMobile?"mobile":"PC")+".")
+</script>
+
+	</head>
+
+	<body>
+		<script>
+var prevBgIndex = 0;
+var bodyBgSwitchIndex = 0;
+
+
+	var gradients = [
+	  [],
+	  ['#40e0d0', '#ff8c00', '#ff0080'], 
+	  ['#3e5151', '#decba4'], 
+	  ['#11998e', '#38ef7d'], 
+	  ['#108dc7', '#ef8e38'], 
+	  ['#fc5c7d', '#6a82fb'], 
+	  ['#fc466b', '#3f5efb'], 
+	  ['#c94b4b', '#4b134f'], 
+	  ['#23074d', '#cc5333'] 
+	];
+	document.body.style.setProperty('--colorBG', connect(gradients[getRandomInt(0, gradients.length)]));
+
+
+	function getRandomInt(min, max) {
+	  min = Math.ceil(min);
+	  max = Math.floor(max);
+	  var random;
+	  while (1) {
+	    random = Math.floor(Math.random() * (max - min)) + min;
+	    if (random !== prevBgIndex) {
+	      prevBgIndex = random;
+	      break;
+	    }
+	  }
+	  return random;
+	}
+
+	function connect(arr) {
+	  var str = '';
+	  for (var i = 0; i < arr.length; i++) {
+	    if (i !== arr.length - 1) {
+	      str += arr[i] + ', ';
+	    } else {
+	      str += arr[i];
+	    }
+	  }
+	  return str;
+	}
+</script>
+
+
+
+
+		<div id="sidebar" class="ui sidebar inverted vertical menu">
+	
+	<section id="author" class="ui top attached center aligned inverted segment">
+		
+<div class="ui small circular image">
+	
+		<img src="/img/avatar.png">
+	
+</div>
+
+
+<h3 class="ui header">
+	So Serious
+	<div class="sub header">Do your best.</div>
+</h3>
+
+	</section>
+
+	
+	
+		<section class="ui attached center aligned inverted segment sidebar-dream-tags">
+			
+			
+
+
+
+
+	
+		<a class="ui label violet " href="/tags/2d" title="2d">2d</a>
+	
+		<a class="ui label red " href="/tags/ae" title="ae">ae</a>
+	
+		<a class="ui label pink " href="/tags/ai" title="ai">ai</a>
+	
+		<a class="ui label pink " href="/tags/android" title="android">android</a>
+	
+		<a class="ui label brown " href="/tags/animator" title="animator">animator</a>
+	
+		<a class="ui label brown " href="/tags/attackrange" title="attackrange">attackrange</a>
+	
+		<a class="ui label olive " href="/tags/audio" title="audio">audio</a>
+	
+		<a class="ui label violet " href="/tags/c" title="c#">c#</a>
+	
+		<a class="ui label yellow " href="/tags/effect" title="effect">effect</a>
+	
+		<a class="ui label purple " href="/tags/english" title="english">english</a>
+	
+		<a class="ui label teal " href="/tags/fps" title="fps">fps</a>
+	
+		<a class="ui label olive " href="/tags/fsm" title="fsm">fsm</a>
+	
+		<a class="ui label pink " href="/tags/gl" title="gl">gl</a>
+	
+		<a class="ui label violet " href="/tags/knowledge" title="knowledge">knowledge</a>
+	
+		<a class="ui label green " href="/tags/notes" title="notes">notes</a>
+	
+		<a class="ui label olive " href="/tags/rpg" title="rpg">rpg</a>
+	
+		<a class="ui label red " href="/tags/tilemap" title="tilemap">tilemap</a>
+	
+		<a class="ui label purple " href="/tags/ui" title="ui">ui</a>
+	
+		<a class="ui label brown " href="/tags/unity" title="unity">unity</a>
+	
+		<a class="ui label red " href="/tags/word" title="word">word</a>
+	
+		<a class="ui label brown " href="/tags/word-book" title="word-book">word-book</a>
+	
+		<a class="ui label violet " href="/tags/%E6%8A%80%E5%B7%A7" title="技巧">技巧</a>
+	
+		<a class="ui label teal " href="/tags/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93" title="数据传输">数据传输</a>
+	
+
+
+		</section>
+	
+
+	
+	
+		<section class="ui attached inverted segment sidebar-dream-categories both flexbox">
+			<div class="ui inverted accordion">
+				
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/2d">2d</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/2d-attack-range/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>2D攻击范围</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/ae">ae</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/ui-effects-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>UI 特效制作</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/c">c#</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/c-sharp-notes-02/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>C# _语言基础</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/c-sharp-notes-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>C# _基本操作</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/english">english</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/english-sentence-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>English Sentence</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/fsm">fsm</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/finite-state-machine/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>有限状态机</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/game-frame">game-frame</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/game-frame-09/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>相机和EasyTouch封装——游戏框架-09</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/game-frame-08/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>角色模块封装——游戏框架-08</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/game-frame-07/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>小地图封装——游戏框架-07</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/game-frame-06/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>EasyTouch模块封装——游戏框架-06</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/game-frame-05/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>UI模块封装——游戏框架-05</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/game-frame-04/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>音效模块封装——游戏框架-04</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/game-frame-03/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>WWW封装——游戏框架-03</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/game-frame-02/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>常用设计模式——游戏框架-02</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/game-frame-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>设计原则——游戏框架-01</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/notes">notes</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/game-words/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>游戏常用英文</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/words-notes/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Word Book</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/opengl">opengl</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/gl-drawing/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>GL画图功能</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/pain">pain</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/pain-to-learn-unity-notes-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>【Pain To Learn Unity】——案例之像素鸟</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/pain-to-learn-unity-notes-02/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>【Pain To Learn Unity】——案例之吃豆人</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/ugui">ugui</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/ugui-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>UGUI</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/unity">unity</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/ui-effects-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>UI 特效制作</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/unity-tilemap_mod/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Unity Tilemap模块</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/unity-ai-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>AI逻辑</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/unity-fps-view_move/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>FPS_视角和移动</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/unity-audio-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Unity Audio</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/script-input_control/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>脚本的输入与控制</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/monobehavior-common_method-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>MonoBehavior 常用方法</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/unity-script-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Monobehavior事件响应（1）</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/unity-notes-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Unity 注意事项</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/unity-animator">unity-animator</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/unity-animation-system-04/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Unity 动画系统（4）</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/unity-animation-system-03/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Unity 动画系统（3）</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/unity-animation-system-02/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Unity 动画系统（2）</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/unity-animation-system-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Unity 动画系统（1）</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/windows">windows</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/use-skill/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>使用软件突发小技巧</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/%E5%AE%89%E5%8D%93">安卓</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/android/beginner-android/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Beginner</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86">网络知识</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/computer-illiteracy-p2p/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>网络知识——P2P</p>
+				</div>
+			</a>
+		
+	</div>
+
+
+			</div>
+		</section>
+	
+
+	
+	<section id="footer" class="ui bottom attached center aligned inverted segment">
+		
+
+	<p>© 2018 PY-&gt;Blog</p>
+
+
+<p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with <a href="https://github.com/UtkarshVerma/hugo-dream-plus" target="_blank">Dream Plus</a> theme.</p>
+
+	</section>
+</div>
+
+
+		<div class="pusher">
+			<div class="flipper">
+				<div class="front">
+					
+	<nav class="ui top secondary menu bar">
+	
+	<div class="item">
+		<i class="inverted big link bullseye icon dream-flip-toggle" title="翻转"></i>
+	</div>
+
+	
+	
+		<div class="item">
+			<a href="/">
+				<i class="inverted big link home icon" title="首页"></i>
+			</a>
+		</div>
+	
+
+	
+	
+		
+			<div class="item">
+				<a href="/posts">
+					<i class="inverted big link archive icon" title="档案"></i>
+				</a>
+			</div>
+		
+	
+
+	
+	
+		<div class="item">
+			<a href="/tags">
+				<i class="inverted big link tags icon" title="全部标签"></i>
+			</a>
+		</div>
+	
+
+	
+	
+		<div class="item">
+			<a href="/categories">
+				<i class="inverted big link cubes icon" title="所有类别"></i>
+			</a>
+    	</div>
+	
+
+	
+	
+
+	
+	
+		<div class="ui container tablet computer only grid">
+			<div class="item" onClick="$('.ui.sidebar').sidebar('setting', 'transition', 'overlay').sidebar('toggle');">
+				<i class="inverted big link sidebar icon" title=""></i>
+			</div>
+		</div>
+	
+
+	
+	
+		<div class="item right">
+			<a href="/posts/index.xml">
+				<i class="inverted big link rss icon" title=""></i>
+			</a>
+		</div>
+	
+</nav>
+
+
+	<div class="ui centered grid">
+		
+		<div class="sixteen wide mobile only column">
+				<div class="ui inverted accordion">
+	<div id="header" class="ui inverted segment column box">		
+		
+		<header id="author" class="ui top attached center aligned inverted segment">
+			
+<div class="ui small circular image">
+	
+		<img src="/img/avatar.png">
+	
+</div>
+
+
+<h3 class="ui header">
+	So Serious
+	<div class="sub header">Do your best.</div>
+</h3>
+
+		</header>
+
+		
+		<div class=" title header-title">
+			
+				<div id="tag-category-pop" class="ui red right corner label">
+					<i class="hand point icon down"title="点击弹出标签和分类"></i>
+				</div>
+			
+		</div>
+		
+		
+		<div id="tag-category" class=" content">
+			
+				<section class="ui attached center aligned inverted segment dream-tags none flexbox">
+					
+
+
+
+
+	
+		<a class="ui label red " href="/tags/2d" title="2d">2d</a>
+	
+		<a class="ui label blue " href="/tags/ae" title="ae">ae</a>
+	
+		<a class="ui label green " href="/tags/ai" title="ai">ai</a>
+	
+		<a class="ui label brown " href="/tags/android" title="android">android</a>
+	
+		<a class="ui label teal " href="/tags/animator" title="animator">animator</a>
+	
+		<a class="ui label red " href="/tags/attackrange" title="attackrange">attackrange</a>
+	
+		<a class="ui label red " href="/tags/audio" title="audio">audio</a>
+	
+		<a class="ui label red " href="/tags/c" title="c#">c#</a>
+	
+		<a class="ui label blue " href="/tags/effect" title="effect">effect</a>
+	
+		<a class="ui label orange " href="/tags/english" title="english">english</a>
+	
+		<a class="ui label orange " href="/tags/fps" title="fps">fps</a>
+	
+		<a class="ui label violet " href="/tags/fsm" title="fsm">fsm</a>
+	
+		<a class="ui label orange " href="/tags/gl" title="gl">gl</a>
+	
+		<a class="ui label teal " href="/tags/knowledge" title="knowledge">knowledge</a>
+	
+		<a class="ui label blue " href="/tags/notes" title="notes">notes</a>
+	
+		<a class="ui label violet " href="/tags/rpg" title="rpg">rpg</a>
+	
+		<a class="ui label yellow " href="/tags/tilemap" title="tilemap">tilemap</a>
+	
+		<a class="ui label olive " href="/tags/ui" title="ui">ui</a>
+	
+		<a class="ui label green " href="/tags/unity" title="unity">unity</a>
+	
+		<a class="ui label orange " href="/tags/word" title="word">word</a>
+	
+		<a class="ui label violet " href="/tags/word-book" title="word-book">word-book</a>
+	
+		<a class="ui label violet " href="/tags/%E6%8A%80%E5%B7%A7" title="技巧">技巧</a>
+	
+		<a class="ui label yellow " href="/tags/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93" title="数据传输">数据传输</a>
+	
+
+
+				</section>
+			
+
+			
+				<section class="ui attached inverted segment dream-categories both flexbox">
+					<div class="inverted accordion">
+						
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/2d">2d</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/2d-attack-range/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>2D攻击范围</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/ae">ae</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/ui-effects-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>UI 特效制作</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/c">c#</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/c-sharp-notes-02/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>C# _语言基础</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/c-sharp-notes-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>C# _基本操作</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/english">english</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/english-sentence-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>English Sentence</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/fsm">fsm</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/finite-state-machine/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>有限状态机</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/game-frame">game-frame</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/game-frame-09/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>相机和EasyTouch封装——游戏框架-09</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/game-frame-08/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>角色模块封装——游戏框架-08</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/game-frame-07/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>小地图封装——游戏框架-07</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/game-frame-06/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>EasyTouch模块封装——游戏框架-06</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/game-frame-05/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>UI模块封装——游戏框架-05</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/game-frame-04/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>音效模块封装——游戏框架-04</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/game-frame-03/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>WWW封装——游戏框架-03</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/game-frame-02/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>常用设计模式——游戏框架-02</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/game-frame-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>设计原则——游戏框架-01</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/notes">notes</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/game-words/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>游戏常用英文</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/words-notes/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Word Book</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/opengl">opengl</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/gl-drawing/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>GL画图功能</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/pain">pain</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/pain-to-learn-unity-notes-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>【Pain To Learn Unity】——案例之像素鸟</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/pain-to-learn-unity-notes-02/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>【Pain To Learn Unity】——案例之吃豆人</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/ugui">ugui</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/ugui-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>UGUI</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/unity">unity</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/ui-effects-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>UI 特效制作</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/unity-tilemap_mod/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Unity Tilemap模块</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/unity-ai-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>AI逻辑</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/unity-fps-view_move/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>FPS_视角和移动</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/unity-audio-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Unity Audio</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/script-input_control/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>脚本的输入与控制</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/monobehavior-common_method-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>MonoBehavior 常用方法</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/unity-script-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Monobehavior事件响应（1）</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/unity-notes-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Unity 注意事项</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/unity-animator">unity-animator</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/unity-animation-system-04/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Unity 动画系统（4）</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/unity-animation-system-03/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Unity 动画系统（3）</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/unity-animation-system-02/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Unity 动画系统（2）</p>
+				</div>
+			</a>
+		
+			<a class="item" href="https://sofuck.top/posts/unity-animation-system-01/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Unity 动画系统（1）</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/windows">windows</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/use-skill/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>使用软件突发小技巧</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/%E5%AE%89%E5%8D%93">安卓</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/android/beginner-android/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>Beginner</p>
+				</div>
+			</a>
+		
+	</div>
+
+	
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<a class="link" href="/categories/%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86">网络知识</a>
+	</div>
+
+	
+	<div class="content">
+		
+			<a class="item" href="https://sofuck.top/posts/computer-illiteracy-p2p/">
+				<div>
+					<i class="cocktail icon"></i>
+					<p>网络知识——P2P</p>
+				</div>
+			</a>
+		
+	</div>
+
+
+					</div>
+				</section>
+			
+		</div>
+
+		
+		<footer class="ui bottom attached center aligned inverted segment">
+			
+
+	<p>© 2018 PY-&gt;Blog</p>
+
+
+<p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with <a href="https://github.com/UtkarshVerma/hugo-dream-plus" target="_blank">Dream Plus</a> theme.</p>
+
+		</footer>
+	</div>
+</div>
+
+		</div>
+
+		<div class="sixteen wide mobile fifteen wide tablet twelve wide computer column post-list">
+			
+			<section class="ui secondary top attached black segment post-head">
+				<h1 class="post-title">
+					Unity 注意事项
+				</h1>
+
+				<div class="sub header">
+					<div><span><i class="calendar outline icon"></i>Jul 21, 2018</span></div>
+					
+					<div><span class="disqusComment"><i class="comment outline icon"></i><a href="https://sofuck.top/posts/unity-notes-01/#disqus_thread" class="disqus-comment-count" data-disqus-identifier="675f7c7e5b66f4d2dee5c8e2038f887b"></a></span></div>
+					<div><span><i class="clock outline icon"></i>1 min read</span></div>
+					<div><span><i class="angle double up icon"></i>更新于 Jul 21, 2018</span></div>
+				</div>
+				<hr>
+
+				
+					<div class="toc">
+						<nav id="TableOfContents">
+<ul>
+<li><a href="#疑难杂症">疑难杂症——👇</a>
+<ul>
+<li><a href="#一亿个注意">一亿个注意:</a>
+<ul>
+<li><a href="#1-local和global">1.Local和Global</a></li>
+<li><a href="#2-awake-和start">2.Awake()和Start()</a></li>
+<li><a href="#3-update-和fixupdate">3.Update()和FixUpdate()</a></li>
+<li><a href="#4-transform01translate0">4.transform01translate0</a></li>
+<li><a href="#5">5.</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+					</div>
+				
+
+				<article class="post-content twemoji">
+					
+
+<h1 id="疑难杂症">疑难杂症——👇&nbsp;<a class="anchor" href="#疑难杂症"><i class="small linkify icon"></i></a> </h1>
+
+<h2 id="一亿个注意">一亿个注意:&nbsp;<a class="anchor" href="#一亿个注意"><i class="small linkify icon"></i></a> </h2>
+
+<h3 id="1-local和global">1.Local和Global&nbsp;<a class="anchor" href="#1-local和global"><i class="small linkify icon"></i></a> </h3>
+
+<blockquote>
+<p><font color=#191970>Local是指的自身的坐标，Global指的是世界坐标。</p>
+
+<p>假如一个物体没有父物体（即这个物体不是某个物体的子物体），或者父物体的坐标为（0，0，0）。这时候Local和Global的坐标是一样的。</p>
+
+<p>假如有父物体，Local坐标是相对与父物体的坐标，而Global是指在空间中实际的坐标。</font></p>
+</blockquote>
+
+<h3 id="2-awake-和start">2.Awake()和Start()&nbsp;<a class="anchor" href="#2-awake-和start"><i class="small linkify icon"></i></a> </h3>
+
+<blockquote>
+<p><font color=#008080>Awake()在游戏开始时自动调用，无论是否激活脚本组件都能被调用，一般用来创建变量。</p>
+
+<p>Start()在Awake之后Update之前，一般用来初始化变量。</font></p>
+</blockquote>
+
+<h3 id="3-update-和fixupdate">3.Update()和FixUpdate()&nbsp;<a class="anchor" href="#3-update-和fixupdate"><i class="small linkify icon"></i></a> </h3>
+
+<blockquote>
+<p>Update()每一帧调用一次，一般用于非物理运动，如逻辑运算 。</p>
+
+<p>Fixupdate()每隔固定时间调用一次，通过Edit-&gt;Project Settings-&gt;Time 进行设置，默认为20毫秒 ，一般用于物理运动。</p>
+</blockquote>
+
+<h3 id="4-transform01translate0">4.transform01translate0&nbsp;<a class="anchor" href="#4-transform01translate0"><i class="small linkify icon"></i></a> </h3>
+
+<blockquote>
+<p>transform是Gameobject的位置属性，translate是一个动作属性。</p>
+
+<p>获取某个object的位置信息时就是transform，若是对其做动作，那就translate。</p>
+</blockquote>
+
+<h3 id="5">5.&nbsp;<a class="anchor" href="#5"><i class="small linkify icon"></i></a> </h3>
+
+				</article>				
+			</section>
+
+			
+			<section class="ui secondary attached segment dream-tags">
+				
+					
+
+
+
+
+	
+
+
+				
+			</section>
+
+			
+			
+				<section class="ui secondary  attached segment share row box">
+					
+
+
+
+
+
+
+
+
+<div class="author">
+	
+	<img class="avatar" src="/img/avatar.png">
+	
+</div>
+<div class="info grow flexbox">
+	
+	<p class="name">So Serious</p>
+	
+	<p class="desc">Do your best.</p>
+</div>
+
+
+<section class="buttons row box">
+	<div class="facebook none flexbox" href="#" onclick="window.open(
+			'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),
+			'facebook-share-dialog',
+			'width=626,height=436'); return false;">
+		<button class="ui facebook button"><i class="facebook icon"></i>Share</button>
+	</div>
+	<div class="twitter none flexbox" onclick="window.open('https://twitter.com/intent/tweet?text=Read &quot;Unity 注意事项  https:\/\/sofuck.top\/posts\/unity-notes-01\/','_self')">
+		<button class="ui twitter button"><i class="twitter icon"></i>Tweet</button>
+	</div>
+</section>
+
+				</section>
+				<section class="ui secondary attached segment copyright">
+					
+
+				</section>
+			
+
+			
+			
+				<div class="ui secondary bottom attached stacked segment disqus">
+					
+<div id="disqus_thread"></div>
+<script>
+	var disqus_config = function () {
+		this.page.url = 'https:\/\/sofuck.top\/posts\/unity-notes-01\/';
+		this.page.identifier = '675f7c7e5b66f4d2dee5c8e2038f887b';
+	};
+	(function() {
+   	var d = document, s = d.createElement('script');
+   	s.src = 'https://' + 'So Serious' + '.disqus.com/embed.js';
+   	s.setAttribute('data-timestamp', +new Date());
+   	(d.head || d.body).appendChild(s);
+	})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+				</div>
+			
+		</div>
+	</div>
+
+				</div>
+				<div class="back">
+					
+<nav class="ui top secondary menu bar">
+	<div class="item">
+		<i class="inverted big link bullseye icon dream-flip-toggle" title="翻转"></i>
+	</div>
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+
+	
+	
+	
+	
+	
+	
+	
+		
+		
+			<div class="item">
+				<a href="https://github.com/SoGhost" target="	_blank">
+					<i id="ico" class="inverted big link github icon" title="GitHub"></i>
+				</a>
+			</div>
+		
+	
+		
+		
+			<div class="item">
+				<a href="mailto:ReaperOfBlack@gmail.com" target="	_blank">
+					<i id="ico" class="inverted big link mail icon" title="Email"></i>
+				</a>
+			</div>
+		
+	
+		
+		
+	
+		
+		
+	
+		
+		
+	
+		
+		
+	
+		
+		
+	
+		
+		
+	
+		
+		
+	
+</nav>
+
+
+
+<div class="ui centered grid about">
+	<div class="sixteen wide mobile fifteen wide tablet fifteen wide computer column about">
+		<section class="ui stacked segments">
+			<div class="ui inverted segment">
+				<article class="twemoji">
+					<h1>So, Who Am I?</h1>
+
+<hr />
+
+<p><br>
+				</article>
+				
+				
+			</div>
+		</section>
+	</div>
+</div>
+
+				</div>
+			</div>
+		</div>
+
+		
+
+<script src="/js/site.js"></script>
+
+<script src="https://twemoji.maxcdn.com/2/twemoji.min.js?2.6"></script>
+
+
+
+
+
+
+
+	<script id="dsq-count-scr" src="//So%20Serious.disqus.com/count.js" async></script>
+
+
+
+
+	
+	<script>
+		window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+		ga('create', 'UA-131035751-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+	<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+		
+
+
+		
+
+	<script>
+		(function () {
+		  console.log("Twemoji up and making stuff colourful!");
+		  for (var b = document.getElementsByClassName("twemoji"), a = 0; a < b.length; a++) {
+			twemoji.parse(b[a]);
+		  }
+		})();
+	</script>
+
+
+	</body>
+</html>

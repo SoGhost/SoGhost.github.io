@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Audio on PY-&gt;Blog</title>
+    <link>https://sofuck.top/tags/audio/</link>
+    <description>Recent content in Audio on PY-&gt;Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 05 Aug 2018 09:39:51 +0800</lastBuildDate>
+    
+	<atom:link href="https://sofuck.top/tags/audio/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Unity Audio</title>
+      <link>https://sofuck.top/posts/unity-audio-01/</link>
+      <pubDate>Sun, 05 Aug 2018 09:39:51 +0800</pubDate>
+      
+      <guid>https://sofuck.top/posts/unity-audio-01/</guid>
+      <description> Audio Source  1.Audio Source
+ Audio Clip：音频剪辑
+ Output：输出
+ Audio Mixer Group：音频混音器组
+ Mute：静音
+ Bypass Effectes：绕过效果
+ Bypass Listener Effects：绕过监听器效果
+ Bypass Reverb Zones：绕过混响区
+ Play On Wake：开始时播放
+ Loop：循环
+ Priority：优先
+ Volume：音量
+ Pitch：
+ Stereo Pan：
+ Spatial Blend：空间混合
+ Reverb Zone Mix：
+  2.3D Sound Setting
+ Doppler Level：多普勒级别 Spread：传播 Volume Rolloff： Min Distance：最小距离 Max Distance：最大距离   </description>
+    </item>
+    
+  </channel>
+</rss>
