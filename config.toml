@@ -48,7 +48,7 @@ enableEmoji=true
 [social]
 	email = "ReaperOfBlack@gmail.com"
 	github = "SoGhost"
-	stackoverflow = ""
+    stackoverflow = ""
 	medium = ""
 	twitter = "" 
 	siteStartYear = 2018
