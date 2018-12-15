@@ -1,5 +1,5 @@
 baseURL = ""
-languageCode = "us-en"
+languageCode = "en-us"
 defaultContentLanguage = "zh"
 title = "PY->Blog"
 
